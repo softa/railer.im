@@ -48,9 +48,11 @@ class GithubWorker
           :size => more.size
         sleep 1.1 unless Rails.env == :test
       end
-      #for follower in user.followers #TODO a
-      #end
-      #for follower in user.followings #TODO b
-      #end
+      for follower in user.followers
+        u.is_followed_by follower
+      end
+      for follower in user.following
+        u.follows follower        
+      end
   end
 end

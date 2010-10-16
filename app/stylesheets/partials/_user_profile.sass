@@ -86,6 +86,32 @@
     +reset-box-model
     li
       display: inline-block
-      a
+      a, a:visited
         padding: 4px 8px
-        +grad(#fff,#ccc)
+        color: #444
+        +grad(#F0F0F0,#CCC)
+        &:hover
+          +grad(#FFF,#BBB)
+        &:active
+          +grad(#CCC,#F0F0F0)
+.owns_the_repos
+  ul
+    +reset-box-model
+    list-style: none
+    margin: 1em 0
+    li
+      +border-radius
+      +grad(#e0e0e0,#ccc)
+      +box-shadow(#fff,0,1px,0,inset)
+      border: 1px solid #bbb
+      margin-bottom: 5px
+      padding: 4px
+      .language_icon
+        float: left
+        margin: 1em
+      .watchers
+        float: right
+        background: white
+        padding: 4px
+        +border-radius
+        +box-shadow(rgba(#000,.3),0,-1px,0)

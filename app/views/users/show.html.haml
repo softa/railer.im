@@ -30,7 +30,7 @@
               %hr
               .blog
                 %strong.small_caps Blog
-                %h3 #{@user.blog}
+                %h3 #{link_to nice_link(@user.blog), @user.blog, :target => :_blank}
             - unless @user.location.empty?
               %hr
               .location
@@ -56,37 +56,39 @@
               %hr
             .owns_the_repos
               %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
-              %br
-              %br
-              - for repo in @user.repositories.order('watchers desc').where('not fork')
-                = image_tag repo.language_icon, :style => 'float:left;margin:1em', :title => repo.language
-                %strong #{link_to repo.name, repo.url, :target => :_blank} &nbsp;
-                = image_tag 'icons/foaf.png', :title => :watchers, :style => 'width:14px'
-                #{repo.watchers}
-                %br
-                = repo.description
-
-                %br
-                %hr
-                
+              %ul
+                - for repo in @user.repositories.order('watchers desc').where('not fork')
+                  %li
+                    = image_tag repo.language_icon, :class => 'language_icon', :title => repo.language
+                    %strong #{link_to repo.name, repo.url, :target => :_blank}
+                    .watchers{ :title => :watchers }
+                      #{image_tag 'icons/foaf.png'} #{repo.watchers}
+                    %br
+                    = repo.description
+                    .clear
 = javascript_include_tag 'user_profile.js'
-- require 'forgery'
 %footer
   .container
     .span-11.append-1
-      .followers
-        %strong.small_caps Followers
-        %ul
-          - 20.times do
-            %li
-              = link_to user_path(@user) do
-                #{gravatar(@user.gravatar_id,24)}
-                #{Forgery::Internet.user_name}
+      - unless @user.followers.empty?
+        .followers
+          %strong.small_caps Followers
+          %ul
+            - @user.followers.each do |f|
+              %li
+                = link_to user_path(f.name) do
+                  #{gravatar(f.gravatar_id,24)}
+                  #{f.name}
+      - else
+        &nbsp;
     .span-11.prepend-1.last
-      .used_rubygems
-        %strong.small_caps Used rubygems
-        %ul
-          - 20.times do
-            %li
-              = link_to rubygems_path(Forgery::Name.company_name.downcase) do
-                %samp #{Forgery::Name.company_name.downcase}
+      - unless @user.used_gems.empty?
+        .used_rubygems
+          %strong.small_caps Used rubygems
+          %ul
+            - @user.used_gems.each do |g|
+              %li
+                = link_to rubygem_path(g.name) do
+                  %samp #{g.name}
+      - else
+        &nbsp;

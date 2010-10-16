@@ -15,23 +15,23 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test "should be able to recomend user" do
+  test "should be able to recommend user" do
     #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     #u = create_user
-    recomended = create_user
-    assert_difference('Recomendation.count') do
-      @u.recomend(recomended)
+    recommended = create_user
+    assert_difference('Recommendation.count') do
+      @u.recommend(recommended)
     end
-    assert_equal @u.recomends.first, recomended
-    assert_equal recomended.recomended_by.first, @u
+    assert_equal @u.recommends.first, recommended
+    assert_equal recommended.recommended_by.first, @u
 
   # 
-  # test "should be able to recomend user" do
-  #   recomended = create_user
-  #   @u.recomend(recomended)
-  #   assert_equal 1, Recomendation.count
-  #   assert_equal @u.recomends.first, recomended
-  #   assert_equal recomended.recomended_by.first, @u
+  # test "should be able to recommend user" do
+  #   recommended = create_user
+  #   @u.recommend(recommended)
+  #   assert_equal 1, Recommendation.count
+  #   assert_equal @u.recommends.first, recommended
+  #   assert_equal recommended.recommended_by.first, @u
   end
 
   #TODO ORGANIZATIONS!

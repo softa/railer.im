@@ -13,11 +13,17 @@ class Repository < ActiveRecord::Base
     when 'java':    "icons/cup.png"
     when 'c++':     "icons/script-code.png"
     when 'viml':    "icons/script-code.png"
-    when 'c#':      "icons/blue-document-number.png"
+    when 'c#':      "icons/script-visual-studio.png"
     when 'lisp':    "icons/game-monitor.png"
     when 'haskell': "icons/function.png"
-      
-      
+    when 'actionscript': "icons/blue-document-flash-movie.png"
+    when 'lua':     "icons/weather-moon.png"
+    when 'f#':      "icons/blue-document-attribute-f.png"
+    when 'visualbasic': "icons/blue-document-visual-studio.png"
+    when 'r':       "icons/script-attribute-r.png"
+    when 'd':       "icons/script-attribute-d.png"
+    when 'erlang':  "icons/mobile-phone.png"
+    when 'boo':     "icons/ghost.png"      
     else "icons/script-code.png"
     end
   end

@@ -3,11 +3,13 @@ class LocationsController < ApplicationController
   end
 
   def city
-    @users = User.by_vip.where(:city => params[:city])
+    @city = params[:id]
+    @users = User.by_vip.where(:city => @city)
   end
 
   def country
-    @users = User.by_vip.where(:country => params[:country])
+    @country = params[:id]
+    @users = User.by_vip.where(:state => @country)
   end
 
 end

@@ -26,8 +26,9 @@
             %hr
             %strong.small_caps Indicators
             %ul
-              - @rubygem.indicators.each do |key,value|
-                %li{:class => value } #{hash.key}
+              - if not @rubygem.indicators.nil?
+                - @rubygem.indicators.each do |key,value|
+                  %li{:class => value } #{hash.key}
           .right_column
             %dl
               - if @rubygem.homepage_uri

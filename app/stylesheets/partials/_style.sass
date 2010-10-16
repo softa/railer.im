@@ -1,6 +1,7 @@
+@import "partials/home"
 body
   +blueprint(true)
-  background: #E0E0E0
+  background-color: #F90
   article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary
     +reset-box-model
     display: block
@@ -20,9 +21,21 @@ body
       display: inline
     h1
       margin: 0
-  #root
-    margin-top: 130px
-  h1
+  h1, h2
+    margin-top: 30px
     font-weight: 900
     text-shadow: #fff 0 1px 1px
     color: #AAA
+  hr
+    border: 0 none
+    border-top: 1px solid #D0D0D0
+    border-bottom: 1px solid #F0F0F0
+    margin: 1em 0
+  ::-moz-selection
+    background: #b22 !important
+    color: white !important
+    text-shadow: none !important
+  ::selection
+    background: #b22 !important
+    color: white !important
+    text-shadow: none !important

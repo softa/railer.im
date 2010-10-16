@@ -1,0 +1,2 @@
+#!/bin/sh -e
+RAILS_ENV=local resque-web config/initializers/resque.rb

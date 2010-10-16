@@ -2,8 +2,7 @@
   ls = []
   locs = []
 %h2 Live view
-#map.map.span-16{:style => 'height:400px'}
-  #{image_tag 'placeholder_map.jpg'}
+#map.map.span-16{:style => 'height:400px; margin-bottom:30px;'}
 .new_users_list_wrapper.span-8.last
   %ul
     - for user in User.recent.six
@@ -13,7 +12,6 @@
 - for loc in Location.biggest.ten
   :javascript 
     locs.push([#{loc.lat}, #{loc.lng}, '#{loc.total}'])
-
 %script{:src => "http://maps.google.com/maps/api/js?sensor=false&hl=pt-br"}
 :javascript 
   last_id = #{User.recent.first.id rescue 0}
@@ -38,9 +36,7 @@
       });
 
     }
-
   })
-
   live = function(){
     $.getJSON('/home/live?last_id=' + last_id, function(data){
       if( ! data.length ) return

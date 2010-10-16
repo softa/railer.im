@@ -4,7 +4,7 @@ class GithubWorker
   def self.perform(user_id)
     u = User.find(user_id)
     user = Octopi::User.find u.login
-    company = Company.find_or_create_by_name(user.company) unless u.company_id
+    company = Company.find_or_create_by_name(user.company) if user.company && ! u.company_id
     location = Geokit::Geocoders::YahooGeocoder.geocode user.location
     u.update_attributes :name => u.name || user.name,
       :email => u.email || user.email,

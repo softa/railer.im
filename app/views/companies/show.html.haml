@@ -1,0 +1,28 @@
+#railer_profile.content_wrapper
+  .container
+    .wrapper
+      .span-7
+        .image_wrapper
+          %br
+      .span-17.last
+        .info_wrapper
+          .header
+            %h1#company_name
+              #{@company.name}
+            .clear
+          .clear
+          .left_column
+            .company_name
+              %strong.small_caps Users
+              %h3 
+                - for user in @company.users
+                  = link_to user.name, profile_path(user)
+            %hr
+
+          .right_column
+
+= javascript_include_tag 'company_profile.js'
+%footer
+  .container
+    .span-11.append-1
+    .span-11.prepend-1.last

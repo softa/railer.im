@@ -1,2 +1,8 @@
-%h1 Locations#city
-%p Find me in app/views/locations/city.html.haml
+#railer_profile.content_wrapper
+  .container
+    .wrapper
+      .span-7
+        %h1= @city
+        - for user in @users
+          = link_to user.name, profile_path(user)
+          %br

@@ -1,7 +1,5 @@
 @import "partials/login_form"
 body
-  .map, .new_users_list_wrapper
-    padding-top: 30px
   .map
     text-align: center
   .new_users_list_wrapper
@@ -13,26 +11,37 @@ body
         +grad(#DDD,#AAA)
         +border-radius
         -webkit-box-shadow: #fff 0 1px 0 inset, rgba(#000,.5) 0 1px 0
-        margin-bottom: 8px
-        padding: 4px
+        -moz-box-shadow: #fff 0 1px 0 inset, rgba(#000,.5) 0 1px 0
+        margin-bottom: 12px
+        padding: 8px
+        &:hover
+          +grad(#EEE,#999)
+        &:active
+          +grad(#AAA,#DDD)
+        a:hover
+          text-decoration: none
         .user_image
           float: left
-          width: 52px
+          width: 56px
+          img
+            border: 1px solid rgba(#fff,.5)
         .user_info
           width: 100%
         img
           vertical-align: top
         span, time
+          color: #444
           text-shadow: #fff 0 1px 0
         span
           &.username
+            line-height: 1em
             font:
               size: 16px
               weight: 900
           &.location
             color: #666
             font:
-              size: 13px
+              size: 14px
               weight: 500
         time.time
           float: right

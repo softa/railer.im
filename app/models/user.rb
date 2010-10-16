@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   acts_as_authentic
   belongs_to :company
   has_one :team_membership
+  has_one :team, :through => :team_membership
   # Recommendation
   has_many :recommendations_made, :class_name => 'Recommendation', :foreign_key => 'recommends_id'
   has_many :recommendations_received, :class_name => 'Recommendation', :foreign_key => 'recommended_id'
@@ -25,11 +26,20 @@ class User < ActiveRecord::Base
 
   scope :recent, order('id desc')
   scope :six, limit(6)
+  scope :by_vip, order('score desc')
   
   attr_accessible :login, :email, :password, :password_confirmation
   
   def used_gems
     Rubygem.used_by(self).all
+  end
+
+  def wwr_url
+    "http://workingwithrails.com/person/#{wwr_id}"
+  end
+
+  def wwr_recommendations_for_url
+   "http://workingwithrails.com/recommendation/for/person/#{wwr_id}"
   end
 
   def recommend(recommended_user)

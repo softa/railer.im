@@ -1,10 +1,9 @@
 #home.content_wrapper
   .container
     .home_wrapper{:style => 'max-width:1200px; margin: 0 auto;'}
-      %h1 Good text that it's not lorem ipsum goes here
-      .showcase{:style => 'text-align:right; margin-bottom: -5px;'}
-        #{image_tag('plintscleef.png')}
+      %h1{:style => 'text-align:center;'} Good text that it's not lorem ipsum goes here
+      .showcase{:style => 'text-align:center; margin-bottom: -10px; background: url(/images/plintscleef.png) no-repeat center bottom; height: 300px'}
       = render ('home/signup') unless current_user
 %footer
   .container
-    = render ('home/live') unless current_user
+    = render ('home/live')

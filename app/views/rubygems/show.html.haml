@@ -64,12 +64,13 @@
     .clear
 %footer
   .container
-    .gem_users
-      %h3 See who is using this Gem
-      %ul.list_of_gem_users
-        - @rubygem.repositories.each do |r|
-          %li
-            .info
-              #{gravatar(r.user.gravatar_id, 24)}
-              %strong #{r.user.name}
-              -# %span.level {level}
+    .span-11
+      .gem_users.list_with_pictures
+        %h3 See who is using this Gem
+        %ul
+          - @rubygem.repositories.each do |r|
+            %li
+              %a{:href => user_path(r.user.login)}
+                #{gravatar(r.user.gravatar_id, 24)}
+                %strong #{r.user.name}
+                -# %span.level {level}

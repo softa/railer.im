@@ -28,8 +28,14 @@ class ActiveSupport::TestCase
     Authorship.create!(defaults)
   end
 
+  def create_team_membership(params = {})
+    u = create_user
+    defaults = {:name => u.name, :team => create_team, :user => u}.merge(params)
+    TeamMembership.create!(defaults)
+  end
+
   def create_team(params = {})
-    defaults = {:name => "Foo", :team_home => '/teams/foo'}.merge(params)
+    defaults = {:name => "Foo #{get_id}", :team_home => "/teams/foo#{get_id}"}.merge(params)
     Team.create!(defaults)    
   end
 

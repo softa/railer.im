@@ -1,6 +1,7 @@
 #login_form
   +grad(#FFF, #AAA)
-  +border-radius(20px)
+  +border-radius(8px)
+  +box-shadow(#fff,0,0,60px)
   position: absolute
   top: 50%
   left: 50%
@@ -10,10 +11,14 @@
   margin-left: -270px
   z-index: 500
   padding: 20px
+  form
+    position: relative
+    height: 300px
   label
     color: #888
     text-shadow: #fff 0 1px 0
   input
+    font-family: $blueprint-font-family
     &[type="text"], &[type="password"]
       +reset-box-model
       +border-radius
@@ -22,11 +27,31 @@
       color: #444
       padding: 8px 2%
       width: 96%
+      &:hover
+        border-color: #000
       &:focus
-        background: #b4f4ff
-        border-color: #888
+        background: #B4F4FF
+        border-color: (#B4F4FF - #333)
     &[type="submit"]
-      float: right
-      font-size: 18px
+      position: absolute
+      bottom: 10px
+      width: 100%
+      font-size: 16px
+      padding: 10px
       cursor: pointer
       margin-top: 20px
+      border: 1px solid green
+      +box-shadow(rgba(#FFF,.6),0,1px,0,inset)
+      +border-radius
+      +grad(#2B2,#080)
+      font-weight: 900
+      text-shadow: #060 0 1px 0
+      color: #FFF
+      cursor: pointer
+      &:hover, &:focus
+        +grad(#4D4,#2B2)
+        outline: 0 none
+      &:active
+        position: relative
+        top: 1px
+      

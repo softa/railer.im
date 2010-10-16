@@ -112,12 +112,12 @@
   <body>
 
     <!-- Primary Index -->
-	<p><br><br>Dumped on 2010-10-15</p>
+	<p><br><br>Dumped on 2010-10-16</p>
 <h1><a name="index">Index of database - railerim_development</a></h1>
 <ul>
     
     <li><a name="public.schema">public</a></li><ul>
-    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.recomendations">recomendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
+    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.downloads">downloads</a></li><li><a href="#public.table.git-followers">git_followers</a></li><li><a href="#public.table.recomendations">recomendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.twitter-followers">twitter_followers</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
   	
     </ul>
     
@@ -575,6 +575,350 @@
 			 </tr>
             
             <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>updated_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+		
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
+		<h2>Table:
+			<a name="public.table.downloads">downloads</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>downloads Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>id</td>
+            	<td>serial</td>
+                <td><i>
+				
+					PRIMARY KEY
+					
+
+					
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                  <a href="#public.table.rubygems">rubygems.id</a>
+                  
+                
+                  
+                
+                </td>
+            	<td>rubygem_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>version</td>
+            	<td>text</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>counter</td>
+            	<td>integer</td>
+                <td><i>
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>created_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>updated_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+		
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
+		<h2>Table:
+			<a name="public.table.git-followers">git_followers</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>git_followers Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>id</td>
+            	<td>serial</td>
+                <td><i>
+				
+					PRIMARY KEY
+					
+
+					
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                  <a href="#public.table.users">users.id</a>
+                  
+                
+                  
+                
+                </td>
+            	<td>follower_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                  <a href="#public.table.users">users.id</a>
+                  
+                
+                  
+                
+                </td>
+            	<td>followee_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>created_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -1505,6 +1849,10 @@
 				<li><a href="#public.table.dependencies">dependencies</a></li>
 			</ul>
 		
+			<ul>
+				<li><a href="#public.table.downloads">downloads</a></li>
+			</ul>
+		
 		
 
     <!-- Indexes -->
@@ -1547,6 +1895,170 @@
 				
 
 				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+		
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
+		<h2>Table:
+			<a name="public.table.twitter-followers">twitter_followers</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>twitter_followers Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>id</td>
+            	<td>serial</td>
+                <td><i>
+				
+					PRIMARY KEY
+					
+
+					
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                  <a href="#public.table.twitter-profiles">twitter_profiles.id</a>
+                  
+                
+                  
+                
+                </td>
+            	<td>follower_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                  <a href="#public.table.twitter-profiles">twitter_profiles.id</a>
+                  
+                
+                  
+                
+                </td>
+            	<td>followee_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>created_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>updated_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
 				
 				</i>
 				
@@ -1755,6 +2267,13 @@
 
         <!-- Foreign Key Discovery -->
 		
+			<p>Tables referencing this one via Foreign Key Constraints:</p>
+		
+			<ul>
+				<li><a href="#public.table.twitter-followers">twitter_followers</a></li>
+			</ul>
+		
+		
 
     <!-- Indexes -->
     
@@ -1909,22 +2428,6 @@
 				<td>
                 
                 </td>
-            	<td>followers_count</td>
-            	<td>integer</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
             	<td>public_gist_count</td>
             	<td>integer</td>
                 <td><i>
@@ -1937,7 +2440,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -1953,7 +2456,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -1969,7 +2472,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -1985,7 +2488,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2001,7 +2504,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2017,7 +2520,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2033,7 +2536,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2049,7 +2552,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2065,7 +2568,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2081,7 +2584,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2097,7 +2600,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2113,7 +2616,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2129,7 +2632,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2145,7 +2648,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2161,7 +2664,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2177,7 +2680,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2193,7 +2696,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2209,7 +2712,7 @@
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                   
@@ -2251,6 +2754,10 @@
 		
 			<ul>
 				<li><a href="#public.table.authorships">authorships</a></li>
+			</ul>
+		
+			<ul>
+				<li><a href="#public.table.git-followers">git_followers</a></li>
 			</ul>
 		
 			<ul>

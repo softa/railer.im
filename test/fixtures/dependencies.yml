@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  repository_id: 1
+  rubygem_id: 1
+  environment: MyText
+
+two:
+  repository_id: 1
+  rubygem_id: 1
+  environment: MyText

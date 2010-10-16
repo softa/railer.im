@@ -117,7 +117,7 @@
 <ul>
     
     <li><a name="public.schema">public</a></li><ul>
-    	<li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.recomendations">recomendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
+    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.recomendations">recomendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
   	
     </ul>
     
@@ -128,6 +128,186 @@
 
 		
 		
+        <hr>
+		<h2>Table:
+			<a name="public.table.authorships">authorships</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>authorships Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>id</td>
+            	<td>serial</td>
+                <td><i>
+				
+					PRIMARY KEY
+					
+
+					
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                
+                  
+                  <a href="#public.table.rubygems">rubygems.id</a>
+                  
+                
+                </td>
+            	<td>rubygem_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+					
+
+					
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                  <a href="#public.table.users">users.id</a>
+                  
+                
+                </td>
+            	<td>user_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>author_name</td>
+            	<td>text</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>created_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>updated_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+		
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
         <hr>
 		<h2>Table:
 			<a name="public.table.companies">companies</a>
@@ -261,6 +441,186 @@
 	
         <hr>
 		<h2>Table:
+			<a name="public.table.dependencies">dependencies</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>dependencies Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>id</td>
+            	<td>serial</td>
+                <td><i>
+				
+					PRIMARY KEY
+					
+
+					
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                  <a href="#public.table.repositories">repositories.id</a>
+                  
+                
+                  
+                
+                </td>
+            	<td>repository_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                  
+                  <a href="#public.table.rubygems">rubygems.id</a>
+                  
+                
+                </td>
+            	<td>rubygem_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+					
+
+					
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>environments</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				NOT NULL
+				DEFAULT &#39;all&#39;::text
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>created_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>updated_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+		
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
+		<h2>Table:
 			<a name="public.table.recomendations">recomendations</a>
 		</h2>
         
@@ -305,6 +665,8 @@
                   <a href="#public.table.users">users.id</a>
                   
                 
+                  
+                
                 </td>
             	<td>recomends_id</td>
             	<td>integer</td>
@@ -313,6 +675,12 @@
 					
 
 					
+				
+					
+
+					
+                       UNIQUE#1
+                    
 				
 
 				NOT NULL
@@ -329,6 +697,8 @@
                   <a href="#public.table.users">users.id</a>
                   
                 
+                  
+                
                 </td>
             	<td>recomended_id</td>
             	<td>integer</td>
@@ -337,6 +707,12 @@
 					
 
 					
+				
+					
+
+					
+                       UNIQUE#1
+                    
 				
 
 				NOT NULL
@@ -635,7 +1011,7 @@
                 
                 </td>
             	<td>repo_id</td>
-            	<td>integer</td>
+            	<td>text</td>
                 <td><i>
 				
 
@@ -787,6 +1163,13 @@
 		
 
         <!-- Foreign Key Discovery -->
+		
+			<p>Tables referencing this one via Foreign Key Constraints:</p>
+		
+			<ul>
+				<li><a href="#public.table.dependencies">dependencies</a></li>
+			</ul>
+		
 		
 
     <!-- Indexes -->
@@ -1111,6 +1494,17 @@
 		
 
         <!-- Foreign Key Discovery -->
+		
+			<p>Tables referencing this one via Foreign Key Constraints:</p>
+		
+			<ul>
+				<li><a href="#public.table.authorships">authorships</a></li>
+			</ul>
+		
+			<ul>
+				<li><a href="#public.table.dependencies">dependencies</a></li>
+			</ul>
+		
 		
 
     <!-- Indexes -->
@@ -1854,6 +2248,10 @@
         <!-- Foreign Key Discovery -->
 		
 			<p>Tables referencing this one via Foreign Key Constraints:</p>
+		
+			<ul>
+				<li><a href="#public.table.authorships">authorships</a></li>
+			</ul>
 		
 			<ul>
 				<li><a href="#public.table.recomendations">recomendations</a></li>

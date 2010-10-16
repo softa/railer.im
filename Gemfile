@@ -17,6 +17,7 @@ gem 'wirble'
 gem 'jquery-rails'
 gem 'mongrel'
 gem 'will_paginate'
+gem 'mailee'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

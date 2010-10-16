@@ -4,51 +4,63 @@
       .rubygem_image
         RUBYGEM IMAGE
     .span-18.last
-      .gem_info
+      .gem_name
         %span.download #{@rubygem.downloads}
         %h1#gem_name #{@rubygem.name}
         .clear
       .clear
-      .span-8.append-1
-        %strong.small_caps Description
-        %p #{@rubygem.description}
+      .rubygem_info
+        .left_column
+          %strong.small_caps Description
+          %p #{@rubygem.description}
+        .right_column
+          %strong.small_caps Version
+          %p
+            %strong #{@rubygem.version}
+            (#{@rubygem.version_downloads} downloads)
+        .clear
         %hr
-        %strong.small_caps Version
-        %h2 #{@rubygem.version}
-        %hr 
-        %strong.small_caps Authors
-        %h2 #{@rubygem.authors}
-      .span-9.last
-        %strong.small_caps #{Rubygem.human_attribute_name :version_downloads}
-        %p= @rubygem.version_downloads
-        -#
-          %hr
-          %strong.small_caps= Rubygem.human_attribute_name :homepage_uri
-          %p= @rubygem.homepage_uri
-          %hr
-          %strong.small_caps= Rubygem.human_attribute_name :project_uri
-          %p= @rubygem.project_uri
-          %hr
-          %strong.small_caps= Rubygem.human_attribute_name :gem_uri
-          %p= @rubygem.gem_uri
-          %hr
-          %strong.small_caps= Rubygem.human_attribute_name :source_code_uri
-          %p= @rubygem.source_code_uri
-          %hr
-          %strong.small_caps= Rubygem.human_attribute_name :bug_tracker_uri
-          %p= @rubygem.bug_tracker_uri
-          %hr
-          %strong.small_caps= Rubygem.human_attribute_name :wiki_uri
-          %p= @rubygem.wiki_uri
-          %hr
-          %strong.small_caps= Rubygem.human_attribute_name :mailing_list_uri
-          %p= @rubygem.mailing_list_uri
+        .left_column
+          %strong.small_caps Authors
+          %h2 #{@rubygem.authors}
+        .right_column
+          - unless @rubygem.homepage_uri.empty?
+            %strong.small_caps= Rubygem.human_attribute_name :homepage_uri
+            %p= link_to @rubygem.homepage_uri, @rubygem.homepage_uri
+          - unless @rubygem.project_uri.empty?
+            %hr
+            %strong.small_caps= Rubygem.human_attribute_name :project_uri
+            %p= link_to @rubygem.project_uri, @rubygem.project_uri
+          - unless @rubygem.gem_uri.empty?
+            %hr
+            %strong.small_caps= Rubygem.human_attribute_name :gem_uri
+            %p= link_to @rubygem.gem_uri, @rubygem.gem_uri
+          -unless @rubygem.source_code_uri.empty?
+            %hr
+            %strong.small_caps= Rubygem.human_attribute_name :source_code_uri
+            %p= link_to @rubygem.source_code_uri, @rubygem.source_code_uri
+          - unless @rubygem.bug_tracker_uri.empty?
+            %hr
+            %strong.small_caps= Rubygem.human_attribute_name :bug_tracker_uri
+            %p= link_to @rubygem.bug_tracker_uri, @rubygem.bug_tracker_uri
+          - unless @rubygem.wiki_uri.empty?
+            %hr
+            %strong.small_caps= Rubygem.human_attribute_name :wiki_uri
+            %p= @rubygem.wiki_uri
+          - unless @rubygem.mailing_list_uri.empty?
+            %hr
+            %strong.small_caps= Rubygem.human_attribute_name :mailing_list_uri
+            %p= @rubygem.mailing_list_uri
+        .clear
     .clear
 .footer
   .container
     .gem_users
       %h3 See who is using this Gem
       %ul.list_of_gem_users
-        - 50.times do
-          %li.span-4.last
-            #{image_tag 'default_user_image.png', :size => '24x24'} {username} {level}
+        - 20.times do
+          %li
+            .info
+              #{image_tag 'default_user_image.png', :size => '24x24'}
+              %strong {username}
+              %span.level {level}

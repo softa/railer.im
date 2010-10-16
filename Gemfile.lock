@@ -32,11 +32,15 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    cgi_multipart_eof_fix (2.5.0)
     compass (0.10.5)
       haml (>= 3.0.4)
     crack (0.1.8)
+    daemons (1.1.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    fastthread (1.0.7)
+    gem_plugin (0.2.3)
     geokit (1.5.0)
     gravtastic (3.0.0)
     haml (3.0.21)
@@ -60,6 +64,11 @@ GEM
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
     mime-types (1.16)
+    mongrel (1.1.5)
+      cgi_multipart_eof_fix (>= 2.4)
+      daemons (>= 1.0.3)
+      fastthread (>= 1.0.1)
+      gem_plugin (>= 0.2.3)
     multi_json (0.0.4)
     nokogiri (1.4.3.1)
     oauth (0.4.3)
@@ -132,6 +141,7 @@ DEPENDENCIES
   inherited_resources (= 1.1.2)
   jquery-rails
   labelize (= 0.1.4)
+  mongrel
   octopi
   pg
   rails (= 3.0.0)

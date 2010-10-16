@@ -14,6 +14,7 @@ gem 'compass'
 gem 'geokit'
 gem 'wirble'
 gem 'jquery-rails'
+gem 'mongrel'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

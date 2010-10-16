@@ -2,7 +2,10 @@
   .container
     .span-6
       .rubygem_image
-        RUBYGEM IMAGE
+        - if @rubygem.uri
+          = thumbalizr @rubygem.uri
+        - else
+          TODO
     .span-18.last
       .gem_name
         %span.download #{@rubygem.downloads}
@@ -25,32 +28,32 @@
           %h2 #{@rubygem.authors}
         .right_column
           - if @rubygem.homepage_uri
-            %strong.small_caps= Rubygem.human_attribute_name :homepage_uri
-            %p= link_to @rubygem.homepage_uri, @rubygem.homepage_uri
+            %strong.small_caps Home
+            %p= nice_link @rubygem.homepage_uri
           - if @rubygem.project_uri
             %hr
-            %strong.small_caps= Rubygem.human_attribute_name :project_uri
-            %p= link_to @rubygem.project_uri, @rubygem.project_uri
+            %strong.small_caps Project
+            %p= nice_link @rubygem.project_uri
           - if @rubygem.gem_uri
             %hr
-            %strong.small_caps= Rubygem.human_attribute_name :gem_uri
-            %p= link_to @rubygem.gem_uri, @rubygem.gem_uri
+            %strong.small_caps Gem
+            %p= nice_link @rubygem.gem_uri
           - if @rubygem.source_code_uri
             %hr
-            %strong.small_caps= Rubygem.human_attribute_name :source_code_uri
-            %p= link_to @rubygem.source_code_uri, @rubygem.source_code_uri
+            %strong.small_caps Source
+            %p= nice_link @rubygem.source_code_uri
           - if @rubygem.bug_tracker_uri
             %hr
-            %strong.small_caps= Rubygem.human_attribute_name :bug_tracker_uri
-            %p= link_to @rubygem.bug_tracker_uri, @rubygem.bug_tracker_uri
+            %strong.small_caps Bugs
+            %p= nice_link @rubygem.bug_tracker_uri
           - if @rubygem.wiki_uri
             %hr
-            %strong.small_caps= Rubygem.human_attribute_name :wiki_uri
-            %p= @rubygem.wiki_uri
+            %strong.small_caps Wiki
+            %p= nice_link @rubygem.wiki_uri
           - if @rubygem.mailing_list_uri
             %hr
-            %strong.small_caps= Rubygem.human_attribute_name :mailing_list_uri
-            %p= @rubygem.mailing_list_uri
+            %strong.small_caps Mailing List
+            %p= nice_link @rubygem.mailing_list_uri
         .clear
     .clear
 .footer

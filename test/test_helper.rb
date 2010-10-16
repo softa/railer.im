@@ -18,6 +18,11 @@ class ActiveSupport::TestCase
     @unique_id = (@unique_id || 0) + 1
   end
 
+  def create_dependency(params = {})
+    defaults = {:rubygem => create_rubygem, :repository => create_repository}.merge(params)
+    Dependency.create!(defaults)
+  end
+
   def create_authorship(params = {})
     defaults = {:author_name => "Foo", :rubygem => create_rubygem, :author => create_user}.merge(params)
     Authorship.create!(defaults)

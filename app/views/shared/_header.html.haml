@@ -1,20 +1,19 @@
 %header
   .container
     .span-6
-      %h1
-        #{link_to image_tag('railerim_logo.png'), root_path}
+      %h1 #{link_to image_tag('railerim_logo.png'), root_path}
     .span-18.last
       %form
         %fieldset
           %nav
             - if current_user
-              = link_to "My profile", profile_path(current_user)
+              = link_to 'My profile', profile_path(current_user)
               &middot;&nbsp;
-              = link_to "Logout", user_sessions_path, :method => :delete
+              = link_to 'Logout', user_sessions_path, :method => :delete
             - else
               = link_to 'Login', '#', :id => 'open_login_form'
           &middot;&nbsp;
-          %input{:type => :search, :placeholder => 'Search'}
+          %input{ :type => :search, :placeholder => 'Search' }
     .clear
 - unless current_user
   .page_overlay.hide
@@ -22,13 +21,11 @@
       = form_for(@user_session) do |f|
         .close #{image_tag 'icons/minus-octagon-frame.png'}
         .clear
-        #login_error
-          %h2
+        %strong#login_error.hide
         %fieldset
           = f.label :login
           %br
           = f.text_field :login
-        %br
         %fieldset
           = f.label :password
           %br

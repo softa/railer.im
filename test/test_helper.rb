@@ -22,9 +22,6 @@ class ActiveSupport::TestCase
     defaults.merge(params)
     User.create!(defaults)
   end
-<<<<<<< HEAD
-end
-=======
 
   def create_repository(params = {})
     id = get_id(Repository)
@@ -34,4 +31,3 @@ end
     Repository.create!(defaults)
   end
 end
->>>>>>> 17d75a2490db1888c31875267b69768729bced7a

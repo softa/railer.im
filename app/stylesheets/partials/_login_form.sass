@@ -1,0 +1,32 @@
+#login_form
+  +grad(#FFF, #AAA)
+  +border-radius(20px)
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 500px
+  height: 220px
+  margin-top: -130px
+  margin-left: -270px
+  z-index: 500
+  padding: 20px
+  label
+    color: #888
+    text-shadow: #fff 0 1px 0
+  input
+    &[type="text"], &[type="password"]
+      +reset-box-model
+      +border-radius
+      font-size: 24px
+      border: 1px solid #AAA
+      color: #444
+      padding: 8px 2%
+      width: 96%
+      &:focus
+        background: #b4f4ff
+        border-color: #888
+    &[type="submit"]
+      float: right
+      font-size: 18px
+      cursor: pointer
+      margin-top: 20px

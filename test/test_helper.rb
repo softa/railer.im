@@ -35,7 +35,7 @@ class ActiveSupport::TestCase
   end
 
   def create_team(params = {})
-    defaults = {:name => "Foo", :team_home => '/teams/foo'}.merge(params)
+    defaults = {:name => "Foo #{get_id}", :team_home => "/teams/foo#{get_id}"}.merge(params)
     Team.create!(defaults)    
   end
 

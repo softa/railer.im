@@ -118,7 +118,7 @@
     
     <li><a name="public.schema">public</a></li><ul>
     	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.downloads">downloads</a></li><li><a href="#public.table.git-followers">git_followers</a></li><li><a href="#public.view.locations">locations</a></li><li><a href="#public.table.recommendations">recommendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.team-memberships">team_memberships</a></li><li><a href="#public.table.teams">teams</a></li><li><a href="#public.table.twitter-followers">twitter_followers</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
-  	
+  	<li><a href="#public.function.gin-extract-trgm-text-internal">gin_extract_trgm(text, internal)</a></li><li><a href="#public.function.gin-extract-trgm-text-internal-smallint-internal-internal">gin_extract_trgm(text, internal, smallint, internal, internal)</a></li><li><a href="#public.function.gin-trgm-consistent-internal-smallint-text-integer-internal-internal">gin_trgm_consistent(internal, smallint, text, integer, internal, internal)</a></li><li><a href="#public.function.gtrgm-compress-internal">gtrgm_compress(internal)</a></li><li><a href="#public.function.gtrgm-consistent-internal-text-integer-oid-internal">gtrgm_consistent(internal, text, integer, oid, internal)</a></li><li><a href="#public.function.gtrgm-decompress-internal">gtrgm_decompress(internal)</a></li><li><a href="#public.function.gtrgm-in-cstring">gtrgm_in(cstring)</a></li><li><a href="#public.function.gtrgm-out-public.gtrgm">gtrgm_out(public.gtrgm)</a></li><li><a href="#public.function.gtrgm-penalty-internal-internal-internal">gtrgm_penalty(internal, internal, internal)</a></li><li><a href="#public.function.gtrgm-picksplit-internal-internal">gtrgm_picksplit(internal, internal)</a></li><li><a href="#public.function.gtrgm-same-public.gtrgm-public.gtrgm-internal">gtrgm_same(public.gtrgm, public.gtrgm, internal)</a></li><li><a href="#public.function.gtrgm-union-bytea-internal">gtrgm_union(bytea, internal)</a></li><li><a href="#public.function.set-limit-real">set_limit(real)</a></li><li><a href="#public.function.show-limit">show_limit()</a></li><li><a href="#public.function.show-trgm-text">show_trgm(text)</a></li><li><a href="#public.function.similarity-text-text">similarity(text, text)</a></li><li><a href="#public.function.similarity-op-text-text">similarity_op(text, text)</a></li>
     </ul>
     
 </ul>
@@ -3635,6 +3635,159 @@ ORDER BY count
 	
 
 	<!-- We've gone through the table structure, now lets take a look at user functions -->
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gin-extract-trgm-text-internal">gin_extract_trgm(text, internal)</a>
+		</h2>
+<h3>Returns: internal</h3>
+<h3>Language: C</h3>
+        
+        <pre>gin_extract_trgm</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gin-extract-trgm-text-internal-smallint-internal-internal">gin_extract_trgm(text, internal, smallint, internal, internal)</a>
+		</h2>
+<h3>Returns: internal</h3>
+<h3>Language: C</h3>
+        
+        <pre>gin_extract_trgm</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gin-trgm-consistent-internal-smallint-text-integer-internal-internal">gin_trgm_consistent(internal, smallint, text, integer, internal, internal)</a>
+		</h2>
+<h3>Returns: boolean</h3>
+<h3>Language: C</h3>
+        
+        <pre>gin_trgm_consistent</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-compress-internal">gtrgm_compress(internal)</a>
+		</h2>
+<h3>Returns: internal</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_compress</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-consistent-internal-text-integer-oid-internal">gtrgm_consistent(internal, text, integer, oid, internal)</a>
+		</h2>
+<h3>Returns: boolean</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_consistent</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-decompress-internal">gtrgm_decompress(internal)</a>
+		</h2>
+<h3>Returns: internal</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_decompress</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-in-cstring">gtrgm_in(cstring)</a>
+		</h2>
+<h3>Returns: gtrgm</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_in</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-out-public.gtrgm">gtrgm_out(public.gtrgm)</a>
+		</h2>
+<h3>Returns: cstring</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_out</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-penalty-internal-internal-internal">gtrgm_penalty(internal, internal, internal)</a>
+		</h2>
+<h3>Returns: internal</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_penalty</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-picksplit-internal-internal">gtrgm_picksplit(internal, internal)</a>
+		</h2>
+<h3>Returns: internal</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_picksplit</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-same-public.gtrgm-public.gtrgm-internal">gtrgm_same(public.gtrgm, public.gtrgm, internal)</a>
+		</h2>
+<h3>Returns: internal</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_same</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.gtrgm-union-bytea-internal">gtrgm_union(bytea, internal)</a>
+		</h2>
+<h3>Returns: integer[]</h3>
+<h3>Language: C</h3>
+        
+        <pre>gtrgm_union</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.set-limit-real">set_limit(real)</a>
+		</h2>
+<h3>Returns: real</h3>
+<h3>Language: C</h3>
+        
+        <pre>set_limit</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.show-limit">show_limit()</a>
+		</h2>
+<h3>Returns: real</h3>
+<h3>Language: C</h3>
+        
+        <pre>show_limit</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.show-trgm-text">show_trgm(text)</a>
+		</h2>
+<h3>Returns: text[]</h3>
+<h3>Language: C</h3>
+        
+        <pre>show_trgm</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.similarity-text-text">similarity(text, text)</a>
+		</h2>
+<h3>Returns: real</h3>
+<h3>Language: C</h3>
+        
+        <pre>similarity</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema"><a name="public.function.similarity-op-text-text">similarity_op(text, text)</a>
+		</h2>
+<h3>Returns: boolean</h3>
+<h3>Language: C</h3>
+        
+        <pre>similarity_op</pre>
 	
 
 

@@ -1,8 +1,14 @@
-%form#signup.home
+= form_for User.new, :html => {:id => :signup, :class => :home} do |f|
   %fieldset
+    .success_wrapper
+      Your account was created successfully. Please check your email
+      %span.email
     .input_wrapper
-      %input#github_name_signup{:type => :text, :placeholder => 'github username', :required => true }
+      = f.text_field :login, :id => :github_name_signup, :placeholder => 'github username', :required => true
+      -# %input#github_name_signup{:name => 'user[login]', :type => :text, :placeholder => 'github username', :required => true }
       .button
         %strong Signup
       .clear
+    .message_wrapper.hide
+      When you press Signup we'll send an email, ok?
 = javascript_include_tag 'signup'

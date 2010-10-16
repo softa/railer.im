@@ -1,5 +1,5 @@
 #!/bin/bash
-git pull
+git pull origin master
 git add *
 if [[ -e /usr/bin/postgresql_autodoc ]]
 then
@@ -12,4 +12,4 @@ then
 else
     git commit -a -m "$1"
 fi
-git push
+git push origin master

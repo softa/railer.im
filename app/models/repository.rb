@@ -2,6 +2,8 @@ class Repository < ActiveRecord::Base
   belongs_to :user
   has_many :dependencies
   def language_icon
+    return "icons/script-code.png" if language.nil?
+
     case language.downcase
     when 'ruby':    "icons/ruby.png"
     when 'javascript': "icons/script-code.png"

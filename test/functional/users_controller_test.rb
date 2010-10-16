@@ -33,6 +33,18 @@ class UsersControllerTest < ActionController::TestCase
     assert_select '#user_name', /Juan Maiz/
   end
 
+  test "should assign used gems" do
+    g = create_rubygem
+    @user = User.create! :login => 'softa'
+    @user.update_attributes :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
+    create_dependency :repository => create_repository(:user => @user), :rubygem => g
+    create_dependency
+    get :show, :id => @user.to_param
+    assert_response :success
+    assert_equal @user, assigns(:user)
+    assert_equal [g], assigns(:user).used_gems
+  end
+
   test "should update user" do
     @user = User.create! :login => 'softa', :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
     

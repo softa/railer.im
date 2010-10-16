@@ -25,5 +25,9 @@ class UsersController < ApplicationController
 
   #TODO q tal?
   #rescue_from ActionController::MethodNotAllowed, :with => lambda{ return redirect_to root_path }
+  
+  def set_password
+    @user = current_user
+  end
 
 end

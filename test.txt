@@ -1,106 +1,13 @@
 (in /mnt/hgfs/ubuntu/railerim)
 Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
 Started
-........EE.......................
-Finished in 8.704597 seconds.
+.................................
+Finished in 8.883539 seconds.
 
-  1) Error:
-test_should_perform_1(GemfileWorkerTest):
-SyntaxError: compile error
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: odd number list for Hash
-{"dependencies":{"runtime":[{"name":"bundler",...
-                ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: syntax error, unexpected ':', expecting '}'
-{"dependencies":{"runtime":[{"name":"bundler",...
-                ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: odd number list for Hash
-{"dependencies":{"runtime":[{"name":"bundler","requiremen...
-                           ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: syntax error, unexpected ':', expecting '}'
-{"dependencies":{"runtime":[{"name":"bundler","requiremen...
-                           ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: odd number list for Hash
-...ndencies":{"runtime":[{"name":"bundler","requirements":"~> 1...
-                              ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: syntax error, unexpected ':', expecting '}'
-...ndencies":{"runtime":[{"name":"bundler","requirements":"~> 1...
-                              ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: syntax error, unexpected ',', expecting $end
-...{"runtime":[{"name":"bundler","requirements":"~> 1.0.0"},{"n...
-                              ^
-    lib/gemfile_eval.rb:13:in `get_binding'
-    lib/gemfile_eval.rb:13:in `get_binding'
-    lib/gemfile_eval.rb:9:in `eval'
-    lib/gemfile_worker.rb:11:in `perform'
-    /test/unit/gemfile_worker_test.rb:34:in `test_should_perform_1'
-
-  2) Error:
-test_should_perform_2(GemfileWorkerTest):
-SyntaxError: compile error
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: odd number list for Hash
-{"dependencies":{"runtime":[{"name":"bundler",...
-                ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: syntax error, unexpected ':', expecting '}'
-{"dependencies":{"runtime":[{"name":"bundler",...
-                ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: odd number list for Hash
-{"dependencies":{"runtime":[{"name":"bundler","requiremen...
-                           ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: syntax error, unexpected ':', expecting '}'
-{"dependencies":{"runtime":[{"name":"bundler","requiremen...
-                           ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: odd number list for Hash
-...ndencies":{"runtime":[{"name":"bundler","requirements":"~> 1...
-                              ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: syntax error, unexpected ':', expecting '}'
-...ndencies":{"runtime":[{"name":"bundler","requirements":"~> 1...
-                              ^
-/mnt/hgfs/ubuntu/railerim/lib/gemfile_eval.rb:13: syntax error, unexpected ',', expecting $end
-...{"runtime":[{"name":"bundler","requirements":"~> 1.0.0"},{"n...
-                              ^
-    lib/gemfile_eval.rb:13:in `get_binding'
-    lib/gemfile_eval.rb:13:in `get_binding'
-    lib/gemfile_eval.rb:9:in `eval'
-    lib/gemfile_worker.rb:11:in `perform'
-    /test/unit/gemfile_worker_test.rb:53:in `test_should_perform_2'
-
-33 tests, 145 assertions, 0 failures, 2 errors
+33 tests, 153 assertions, 0 failures, 0 errors
 Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
 Started
-........EEE...EE
-Finished in 1.086607 seconds.
+................
+Finished in 1.629045 seconds.
 
-  1) Error:
-test_should_login_with_valid_credentials(UserSessionsControllerTest):
-NameError: uninitialized constant User::GithubWorker
-    app/models/user.rb:57:in `work'
-    /test/functional/../test_helper.rb:29:in `create_user'
-    /test/functional/user_sessions_controller_test.rb:6:in `_callback_before_389'
-
-  2) Error:
-test_should_not_login_with_invalid_credentials(UserSessionsControllerTest):
-NameError: uninitialized constant User::GithubWorker
-    app/models/user.rb:57:in `work'
-    /test/functional/../test_helper.rb:29:in `create_user'
-    /test/functional/user_sessions_controller_test.rb:6:in `_callback_before_389'
-
-  3) Error:
-test_should_create_user(UsersControllerTest):
-NameError: uninitialized constant User::GithubWorker
-    app/models/user.rb:57:in `work'
-    /test/functional/users_controller_test.rb:23:in `test_should_create_user'
-    /test/functional/users_controller_test.rb:22:in `test_should_create_user'
-
-  4) Error:
-test_should_show_user(UsersControllerTest):
-NameError: uninitialized constant User::GithubWorker
-    app/models/user.rb:57:in `work'
-    /test/functional/users_controller_test.rb:29:in `test_should_show_user'
-
-  5) Error:
-test_should_update_user(UsersControllerTest):
-NameError: uninitialized constant User::GithubWorker
-    app/models/user.rb:57:in `work'
-    /test/functional/users_controller_test.rb:37:in `test_should_update_user'
-
-16 tests, 13 assertions, 0 failures, 5 errors
+16 tests, 24 assertions, 0 failures, 0 errors

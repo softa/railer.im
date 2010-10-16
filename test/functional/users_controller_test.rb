@@ -30,7 +30,7 @@ class UsersControllerTest < ActionController::TestCase
     @user.update_attributes :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
     get :show, :id => @user.to_param
     assert_response :success
-    assert_select 'h1', 'Juan Maiz'
+    assert_select '#user_name', /Juan Maiz/
   end
 
   test "should update user" do

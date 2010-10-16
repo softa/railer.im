@@ -9,6 +9,10 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures = false
 
+  def teardown
+    Mocha::Mockery.instance.stubba.unstub_all
+  end
+
   # Gets the next id for model
   def get_id
     @unique_id = (@unique_id || 0) + 1
@@ -54,4 +58,5 @@ class ActiveSupport::TestCase
     defaults = {:twitter_user => "twitter user #{get_id}", :user => user, :bio => "bio for user #{get_id}", :link => 'http://www.link.com.br'}.merge(params)
     TwitterProfile.create!(defaults)
   end
+
 end

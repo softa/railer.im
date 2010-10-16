@@ -36,10 +36,6 @@
               .location
                 %strong.small_caps Location
                 %h3 #{@user.location}
-            -#
-              %hr
-              .bio
-                %strong.small_caps Bio
           .right_column
             - unless @user.owned_gems.empty?
               .personal_gems

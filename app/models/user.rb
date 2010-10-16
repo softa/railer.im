@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
 
   has_one :twitter_profile
 
+  has_many :authorships
+  has_many :owned_gems, :class_name => 'Rubygem', :through => :authorships, :source => :rubygem
+
   acts_as_authentic
   
   def recommend(recommended_user)
@@ -40,11 +43,13 @@ class User < ActiveRecord::Base
   
   def to_param; login; end
 protected
+
   before_validation :setup_user, :on => :create
   after_create :work
+  after_create :confirm_email
+
   def setup_user
-    #TODO criar um temporarypass irado
-    self.password_confirmation = self.password = 'temporarypass'
+    self.password_confirmation = self.password = Forgery::Basic.password(:allow_special => true, :at_least => 15, :at_most => 16)
     attemps = 0
     begin
       user = Octopi::User.find self.login
@@ -91,6 +96,10 @@ protected
 
   def work
     Resque.enqueue(GithubWorker, self.id)
+  end
+  
+  def confirm_email
+    UserMailer.confirm_email self
   end
 end
 

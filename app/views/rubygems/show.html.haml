@@ -67,14 +67,9 @@
     .gem_users
       %h3 See who is using this Gem
       %ul.list_of_gem_users
-        - 20.times do
+        - @rubygem.repositories.each do |r|
           %li
             .info
-              #{image_tag 'default_user_image.png', :size => '24x24'}
-              %strong {username}
-              %span.level {level}
--#
-  <Rubygem id: 976, name: "authlogic", description: "A clean, simple, and unobtrusive ruby authenticatio...", downloads: 189505, version: "2.1.6", version_downloads: 41797, homepage_uri: "http://github.com/binarylogic/authlogic", authors_names: "Ben Johnson of Binary Logic", project_uri: "http://rubygems.org/gems/authlogic", gem_uri: "http://rubygems.org/gems/authlogic-2.1.6.gem", source_code_uri: nil, bug_tracker_uri: nil, wiki_uri: nil, mailing_list_uri: nil, created_at: "2010-10-16 00:37:47", updated_at: "2010-10-16 11:12:45", documentation_uri: nil,
-  indicators: [
-  {"Rails 3"=>"yes"}, {"Thread Safety"=>"yes"}, {"JRuby"=>"dontknow"}, {"Ruby 1.9"=>"yes"}], indicators_version: "2.1.6", railsplugins_id: 56
-
+              #{gravatar(r.user.gravatar_id, 24)}
+              %strong #{r.user.name}
+              -# %span.level {level}

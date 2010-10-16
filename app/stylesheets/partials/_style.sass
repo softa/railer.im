@@ -20,8 +20,6 @@ body
     background: white
     h1
       +reset-box-model
-    img#logo
-      background: transparent url(/images/railerim_logo_small_background.png) no-repeat
     form
       padding-top: 12px
       text-align: right
@@ -98,8 +96,7 @@ body
     float: right
   a.railerim_button
     +border-radius(3px)
-    border: 1px solid #808080
-    -webkit-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, rgba(#fff,.5) 0 1px 0
+    -webkit-box-shadow: rgba(#FFF,.6) 0 1px 1px inset, rgba(#fff,.6) 0 1px 1px
     color: white
     text-shadow: #070 1px 1px 0
     font-weight: 900
@@ -108,14 +105,12 @@ body
     +grad(#0E7,#091)
     float: right
     &:hover
-      border-color: #091
       -webkit-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, rgba(#fff,.5) 0 1px 0
       +grad(#0A3,#091)
       color: white
       text-decoration: none
       text-shadow: (#091 - #222) 1px 1px 0
     &:active
-      border-color: #606060
       +grad(#091,#0A3)
     &.recommended
       +grad(#0A3,#091)
@@ -194,7 +189,7 @@ body
     +border-radius(2px)
     +box-shadow(rgba(#000,.6),0,1px,3px, inset)
     background-color: white
-    line-height: 26px
+    line-height: 24px
     padding: 4px 4px 4px 36px
     margin-left: 8px
     float: right

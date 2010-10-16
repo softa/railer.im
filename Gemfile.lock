@@ -42,6 +42,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fastthread (1.0.7)
+    forgery (0.3.4)
     gem_plugin (0.2.3)
     geokit (1.5.0)
     gravtastic (3.0.0)
@@ -136,6 +137,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic
   compass
+  forgery
   geokit
   gravtastic (= 3.0.0)
   haml

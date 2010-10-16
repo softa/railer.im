@@ -7,7 +7,7 @@ class AlterTableUsersAddWwrId < ActiveRecord::Migration
 
   def self.down
     execute "
-    ALTER TABLE users DROP wwr_id int;
+    ALTER TABLE users DROP wwr_id ;
     "
   end
 end

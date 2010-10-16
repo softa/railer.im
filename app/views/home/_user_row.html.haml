@@ -1,0 +1,9 @@
+%li
+  = link_to profile_path(user) do
+    .user_image #{gravatar(user.gravatar_id, 48)}
+    .user_info
+      %time.time= l user.created_at, :format => :short
+      %span.username= user.name
+      %br
+      %span.location= user.location
+    .clear

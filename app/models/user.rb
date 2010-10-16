@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :followers, :class_name => 'User', :through => :git_followers
 
   has_many :repositories
-  #has_many :dependencies, :through => :repositories
+#  scope :used_gems, select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id")
 
   has_one :twitter_profile
 

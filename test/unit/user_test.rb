@@ -72,4 +72,5 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, @u.repositories.size
     assert_equal repo, @u.repositories.first
   end
+
 end

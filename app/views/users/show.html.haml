@@ -24,7 +24,11 @@
           .left_column
             .company_name
               %strong.small_caps Company
-              %h3 #{@user.company_name || 'NA'}
+              %h3 
+                - if @user.company
+                  = link_to @user.company.name, @user.company
+                - else
+                  NA
             %hr
             .blog
               %strong.small_caps Blog
@@ -85,7 +89,7 @@
           %ul
             - @user.followers.each do |f|
               %li
-                = link_to user_path(f.name) do
+                = link_to profile_path(f) do
                   #{gravatar(f.gravatar_id,24)}
                   #{f.name}
       - else
@@ -97,7 +101,7 @@
           %ul
             - @user.used_gems.each do |g|
               %li
-                = link_to rubygem_path(g.name) do
+                = link_to rubygem_path(g) do
                   %samp #{g.name}
       - else
         &nbsp;

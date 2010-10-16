@@ -12,6 +12,7 @@ module Hercules
           Process.kill("TERM", -1*Process.getpgid(File.open(f, 'r').read.strip.to_i))
         end
       rescue Exception => e
+      end
     end
   end
 end

@@ -4,6 +4,12 @@ Railerim::Application.routes.draw do
   resources :rubygems
 
   resources :gems, :controller => :rubygems, :as => :rubygems
+  
+  resource :user_sessions, :controller => 'user_sessions'
+  
+  match 'login' => 'user_sessions#new', :as => :login
+
+#  match 'logout' => 'user_sessions#destroy', :as => :logout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

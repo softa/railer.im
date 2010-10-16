@@ -14,6 +14,11 @@ class ActiveSupport::TestCase
     @unique_id = (@unique_id || 0) + 1
   end
 
+  def create_company(params = {})
+    defaults = {:name => "Company #{get_id}"}.merge(params)
+    Company.create!(defaults)
+  end
+
   def create_rubygem(params = {})
     defaults = {:name => "gem #{get_id}", :description => "description #{get_id}", :downloads => 0, :version => '0.0.0', :version_downloads => 0, :authors => 'great author', :project_uri => 'http://thegem.com', :gem_uri => 'http://gemcutter/gem/tar.tar.gz'}.merge(params)
     Rubygem.create!(defaults)

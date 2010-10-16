@@ -17,11 +17,29 @@
     .profile_recommend
       float: left
       width: 20%
+      margin-bottom: 10px
+      .recommend_wrapper
+        +border-radius
+        +grad(#ddd,#aaa)
+        float: right
+        display: inline-block
+        padding: 14px 8px
+        span.recommendations
+          +border-radius
+          padding: 6px
+          background: white
+          
     .left_column
       float: left
-      width: 38%
-      background: green
+      width: 36%
+      // background: green
     .right_column
-      float: left
-      width: 62%
-      background: red
+      float: right
+      width: 60%
+      // background: red
+    .personal_gems
+      background: white
+      +border-radius
+      padding: 10px
+      +box-shadow(rgba(0,0,0,.4),0,1px,1px)
+      margin: 10px

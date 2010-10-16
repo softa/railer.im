@@ -1,9 +1,9 @@
 #rubygem_profile
   .container
-    .wrapper
-      .span-7
-        .image_wrapper
-          = image_tag @team.thumbnail, :class => 'image'
+    .span-7
+      .rubygem_image
+        - if @team.thumbnail
+          = image_tag @team.thumbnail
     .span-17.last
       .info_wrapper
         .header
@@ -12,23 +12,43 @@
             %span.level
           .clear
         .clear
-        .left_column
-          %strong.small_caps Description
-          %p
+        .rubygem_info_wrapper
+          .left_column
+            %strong.small_caps Description
+            %p #{@team.what}
+          .right_column
+            %strong.small_caps Tools
+            - if not @team.how.nil?
+              - for how in @team.how
+                %br
+                = how
+          .clear
           %hr
-          %strong.small_caps Authors
-          %h2
-        .right_column
-          %strong.small_caps Version
-          %p
-            %strong
-          %hr
-          %dl
-            %dt
-              %strong.small_caps Near Teams
-            %dd
-              %p YOOOO
-        .clear
+          .left_column
+            %dl
+              - if not @team.where.nil?
+                - @team.where.each do |what,link|
+                  %dt
+                    %strong.small_caps= what
+                  %dd
+                    %p= nice_link link
+              
+          .right_column
+            %dl
+              %dt
+                %strong.small_caps Near Teams
+              %dd
+                %p 
+              - for team in @near_teams
+                %dt
+                  %strong.small_caps= team.name
+                %dd
+                  %p
+                    - if team.thumbnail
+                      = image_tag team.thumbnail, :style => 'width:30px'
+                    = link_to team, team.team_home
+
+          .clear
     .clear
 .footer
   .container

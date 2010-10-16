@@ -24,4 +24,11 @@ class RumbleWorker
       return
     end
   end
+
+  def self.perform_all
+    Team.all.each{|team|
+      puts team.name
+      perform(team.id)
+    }
+  end
 end

@@ -18,6 +18,11 @@ class ActiveSupport::TestCase
     @unique_id = (@unique_id || 0) + 1
   end
 
+  def create_team(params = {})
+    defaults = {:name => "Team #{get_id}", :team_home => "http://www.team#{get_id}.com", :what => 'any text', :where => 'any other text', :how => 'yet one more text'}.merge(params)
+    Team.create!(defaults)
+  end
+
   def create_company(params = {})
     defaults = {:name => "Company #{get_id}"}.merge(params)
     Company.create!(defaults)

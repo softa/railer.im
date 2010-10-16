@@ -1,9 +1,14 @@
 class Rubygem < ActiveRecord::Base
+
   label :name
   scope :by_downloads, order('downloads desc')
   has_many :authorships
   has_many :authors, :class_name => 'User', :through => :authorships
 
+  # HERE WE TRY TO GET RUBYGEM USERS
+  has_many :dependents, :class_name => 'Dependency', :foreign_key => :rubygem_id
+  has_many :repositories, :through => :dependents
+  
   serialize :indicators
   def uri
     @uri ||= homepage_uri || wiki_uri || project_uri

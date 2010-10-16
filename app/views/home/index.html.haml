@@ -1,11 +1,10 @@
 #home.content_wrapper
   .container
-    .span-12.last
+    .home_wrapper{:style => 'max-width:1200px; margin: 0 auto;'}
       %h1 Good text that it's not lorem ipsum goes here
-    .span-12.showcase.prepend-top{:style => 'text-align:right'}
-      #{image_tag('plintscleef.png')}
-    .clear
-    = render ('home/signup')
+      .showcase{:style => 'text-align:right; margin-bottom: -5px;'}
+        #{image_tag('plintscleef.png')}
+      = render ('home/signup')
 %footer
   .container
     %h2 Live view

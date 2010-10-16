@@ -1,0 +1,49 @@
+body
+  #home
+    margin-top: 96px
+    padding-bottom: 30px
+    border-bottom: 1px solid #F90
+    background:
+      color: #E0E0E0
+      image: url(/images/background_texture.gif)
+  .map_wrapper
+    +grad(rgba(#F55,.8),rgba(#F90,1))
+    height: 400px
+    border-top: 1px solid #EEE
+  .map, .new_users_list_wrapper
+    padding-top: 30px
+  .map
+    text-align: center
+    img
+      +border-radius
+      +box-shadow
+  .new_users_list_wrapper
+    ul
+      +reset-box-model
+      list-style: none
+      li
+        +reset-box-model
+        +grad(#DDD,#AAA)
+        +border-radius
+        -webkit-box-shadow: #fff 0 1px 0 inset, rgba(#000,.5) 0 1px 0
+        margin-bottom: 4px
+        padding: 4px
+        .user_image
+          float: left
+          width: 15%
+        .user_info
+          float: left
+          width: 85%
+        img
+          vertical-align: top
+        span, time
+          text-shadow: #fff 0 1px 0
+        span
+          &.username
+            font:
+              size: 16px
+              weight: 900
+          &.location
+        time.time
+          float: right
+          line-height: 42px

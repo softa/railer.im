@@ -16,8 +16,6 @@ class GithubWorkerTest < ActiveSupport::TestCase
 
     octopi_authlogic_repos = [
       OpenStruct.new(:username => "softa", :size => 5555, :name => "authlogic", :followers => 7, :created => Time.gm(2002,"jan",1,20,15,1), :type => "repo", :language => "Ruby", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2003,"jan",1,20,15,1), :id => "repo-777433", :score => 1.234567, :fork => false)
-
-      #OpenStruct.new(:username => "softa", :size => 4820, :name => "authlogic", :followers => 7, :created => Time.gm(2000,"jan",1,20,15,1), :type => "repo", :language => "Ruby", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => "2010-10-14T16:02:50Z", :id => "repo-777433", :score => 6.0756235, :fork => false),
     ]
 
     octopi_hstore_repos = [
@@ -36,7 +34,6 @@ class GithubWorkerTest < ActiveSupport::TestCase
     location = OpenStruct.new(:accuracy => 5, :success => true, :provider => "yahoo", :city => "Porto Alegre", :province => nil, :street_address => nil, :lng => -51.22802, :country_code => "BR", :precision => "zip", :state => "Brazil", :all => [], :lat => -30.03425, :full_address => nil, :zip => nil)
     Geokit::Geocoders::YahooGeocoder.expects(:geocode).with('Porto Alegre / RS - Brasil').returns(location)
 
-    @user = User.create :login => 'softa'
   end
 
   def teardown
@@ -44,6 +41,10 @@ class GithubWorkerTest < ActiveSupport::TestCase
   end
 
   test "should perform" do
+    
+    #TODO should check if theres company
+    @user = User.create :login => 'softa', :email => 'foo@bar.com', :password => '123456', :password_confirmation => '123456'
+    @user.update_attribute :email, nil # what a workaround!!!
     GithubWorker.perform @user.id
     @user.reload
     assert_equal "Softa", @user.name
@@ -118,9 +119,22 @@ class GithubWorkerTest < ActiveSupport::TestCase
     # assert_equal "repo-666666", hstore.repo_id # PROBLEM WITH OSRTUCT YACCC
     assert_equal 0, target.size
 
-    #TODO SHOULD NOT GET NON USERS (ORGS)
-    #TODO should check if theres company
-    #TODO should check if theres fields (like name, should not update)
+  end
 
+
+
+  test "should perform - not replacing name and location" do
+    #TODO tirar o confirmation quando o pedro tirar o requirement
+    @user = User.create :login => 'softa', :email => 'foo@bar.com', :password => '123456', :password_confirmation => '123456', :name => 'Pedro Axelrud', :location => 'Nowhere', :blog => 'maiz.tumblr.com'
+
+    #TODO should check if theres company
+
+    GithubWorker.perform @user.id
+    @user.reload
+    assert_equal "Pedro Axelrud", @user.name
+    assert_equal "349785000f9fdb74a286e9b5a638c36a", @user.gravatar_id
+    assert_equal "foo@bar.com", @user.email
+    assert_equal "Nowhere", @user.location
+    assert_equal "maiz.tumblr.com", @user.blog
   end
 end

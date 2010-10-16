@@ -9,7 +9,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should create user" do
-    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     assert_difference('User.count') do
       assert create_user
     end
@@ -19,35 +18,22 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'softa', @u.to_param
   end
   test "should be able to recomend user" do
-    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
-    #u = create_user
     recommended = create_user
     assert_difference('Recommendation.count') do
       @u.recommend(recommended)
     end
     assert_equal @u.recommends.first, recommended
     assert_equal recommended.recommended_by.first, @u
-
-  # 
-  # test "should be able to recommend user" do
-  #   recommended = create_user
-  #   @u.recommend(recommended)
-  #   assert_equal 1, Recommendation.count
-  #   assert_equal @u.recommends.first, recommended
-  #   assert_equal recommended.recommended_by.first, @u
   end
 
   #TODO ORGANIZATIONS!
   test "should be able to create an user only with login" do
-#    setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
-#    user = User.create(:login => 'softa')
     assert_equal 'Softa', @u.name
     assert_equal 'contato@softa.com.br', @u.email
     assert_equal 'Porto Alegre / RS - Brasil', @u.location
   end
   
   test "should be able to follow another user" do
-    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     followee = create_user
     @u.follows followee.login
     assert_equal 1, GitFollower.count
@@ -61,7 +47,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should be able to be followed by another user" do
-    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     follower = create_user
     @u.is_followed_by follower.login
     assert_equal 1, GitFollower.count

@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   actions :show, :create, :update
   respond_to :html, :json
-#TODO IMPORTANTE quando buscar um usuário inexistente, páginca com "é você?"
 
   rescue_from ActiveRecord::RecordNotFound, :with => lambda{
     return render :action => :no_such_user if current_user

@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
 
   has_many :repositories
 
-
   has_one :twitter_profile
 
   acts_as_authentic
@@ -46,8 +45,44 @@ protected
   after_create :confirm_email
 
   def setup_user
+<<<<<<< HEAD
     self.password_confirmation = self.password = Forgery::Basic.password(:allow_special => true, :at_least => 15, :at_most => 16)
     user = Octopi::User.find self.login
+=======
+    #TODO criar um temporarypass irado
+    self.password_confirmation = self.password = 'temporarypass'
+    attemps = 0
+    begin
+      user = Octopi::User.find self.login
+    rescue Octopi::NotFound => e
+      errors.add_to_base 'User not found. This user has to exists on GitHub.'
+      return false
+    rescue APICache::TimeoutError => e
+      # if theres any error in github api, we'll retry 3 times.
+      attemps += 1
+      sleep 5
+      if attemps < 3
+        retry
+      else
+        errors.add_to_base 'User not found. This user has to exists on GitHub.'
+        return false
+      end
+    rescue Octopi::APIError => e
+      # if theres any error in github api, we'll retry 3 times.
+      attemps += 1
+      sleep 5
+      if attemps < 3
+        retry
+      else
+        errors.add_to_base 'User not found. This user has to exists on GitHub.'
+        return false
+      end
+    end
+    if user.type == 'Organization'
+      errors.add_to_base 'This is an organization account. Railer.Im only accepts users. Sorry.'
+      return false
+    end
+>>>>>>> 91a3534ecbf35c498d709d3edfce55edf234e20f
     self.email = user.email
     self.name = user.name
     self.company_name = user.company
@@ -65,4 +100,6 @@ protected
     UserMailer.confirm_email self
   end
 end
+
+
 

@@ -35,13 +35,9 @@ class GithubWorker
         while(more.nil? && i < 10) 
           i += 1
           begin
-            j = JSON.parse(open("http://github.com/api/v2/json/repos/search/#{repo.name}", {'Repo' => repo.name}).read)
-            
+            j = JSON.parse(open("http://github.com/api/v2/json/repos/search/#{repo.name}", {'Repo' => repo.name}).read)            
             more = j["repositories"].detect{|r| r["username"] == u.login} || j["repositories"].first
-            puts "http://github.com/api/v2/json/repos/search/#{repo.name}"
-            puts more.inspect
           rescue => e
-            puts e.inspect
             sleep 5
           end
         end

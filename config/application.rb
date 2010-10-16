@@ -43,3 +43,5 @@ module Railerim
     end
   end
 end
+
+require 'rubygem_worker'

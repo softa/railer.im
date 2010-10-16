@@ -22,4 +22,16 @@ class ActiveSupport::TestCase
     defaults.merge(params)
     User.create!(defaults)
   end
+<<<<<<< HEAD
 end
+=======
+
+  def create_repository(params = {})
+    id = get_id(Repository)
+    owner = create_user
+    defaults = {:name => "repo #{id}", :user => owner}
+    defaults.merge(params)
+    Repository.create!(defaults)
+  end
+end
+>>>>>>> 17d75a2490db1888c31875267b69768729bced7a

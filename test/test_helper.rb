@@ -18,7 +18,8 @@ class ActiveSupport::TestCase
   # Creates a test user with default values
   def create_user(params = {})
     id = get_id(User)
-    defaults = {:name => "test user #{id}", :email => "test_user#{id}@railer.im", :company_name => "co test", :public_repo_count => 1, :blog => 'http://blog.user.com', :github_id => 'repo-1212', :public_gist_count => 1, :login => "test_user_#{id}"}
+    defaults = {:name => "test user #{id}", :email => "test_user#{id}@railer.im", :company_name => "co test", :public_repo_count => 1, :blog => 'http://blog.user.com', :github_id => 'repo-1212', :public_gist_count => 1, :login => "test_user_#{id}",
+    :password => 'testing_password_123', :password_confirmation => 'testing_password_123' }
     defaults.merge(params)
     User.create!(defaults)
   end

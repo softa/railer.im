@@ -12,5 +12,6 @@ class UserTest < ActiveSupport::TestCase
     u.recomend(recomended)
     assert_equal 1, Recomendation.count
     assert_equal u.recomends.first, recomended
+    assert_equal recomended.recomended_by.first, u
   end
 end

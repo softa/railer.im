@@ -8,13 +8,10 @@ class User < ActiveRecord::Base
   has_many :repositories
   has_one :twitter_profile
 
-<<<<<<< HEAD
+  acts_as_authentic
+
   def recomend(recomended_user)
     recomendations_made.create(:recomended_id => recomended_user.id)
   end
 end
-=======
-  acts_as_authentic
-end
 
->>>>>>> fcb5a0aab85f22cc8067f373b3e8499a8e612e46

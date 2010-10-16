@@ -22,8 +22,21 @@ body
     nav
       text-align: right
       display: inline
+      a
+        margin-right: .5em
+        text-decoration: none
+        font-weight: 900
+        color: #666 !important
+        &:hover
+          color: #222 !important
+        &:active
+          color: #000 !important
     h1
       margin: 0
+  a
+    &:active
+      position: relative
+      top: 1px
   #home, #rubygem_profile, #user_profile, #company_profile, #team_profile
     margin-top: 96px
     padding-bottom: 30px

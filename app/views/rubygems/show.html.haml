@@ -46,4 +46,9 @@
     .clear
 .footer
   .container
-    %h3 See who is using this Gem
+    .gem_users
+      %h3 See who is using this Gem
+      %ul.list_of_gem_users
+        - 50.times do
+          %li.span-4.last
+            #{image_tag 'default_user_image.png', :size => '24x24'} {username} {level}

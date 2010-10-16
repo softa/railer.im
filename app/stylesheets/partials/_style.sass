@@ -33,7 +33,10 @@ body
           color: #000 !important
     h1
       margin: 0
-  a
+  a, :link, a:visited
+    color: #0AF
+    &:hover
+      color: (#0AF + #222)
     &:active
       position: relative
       top: 1px

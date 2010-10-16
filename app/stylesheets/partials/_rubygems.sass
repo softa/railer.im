@@ -2,13 +2,14 @@ body
   #rubygem_profile
     .rubygem_image
       margin-top: 30px
-    .gem_info
+    .gem_name
       +border-radius(4px)
       +grad(#555,#000)
       +box-shadow(#888, 0, 1px, 1px, inset)
       border: 1px solid #222
       margin-top: 30px
       padding: 1em
+      margin-bottom: 20px
       h1
         float: left
         +reset-box-model
@@ -28,6 +29,16 @@ body
         size: 22px
         weight: 100
       color: #777
+    .rubygem_info
+      h2
+        margin: 0
+        line-height: 1.5em
+      .left_column
+        float: left
+        width: 70%
+      .right_column
+        float: left
+        width: 30%
   .gem_users
     margin-top: 30px
     h3
@@ -38,11 +49,14 @@ body
       +reset-box-model
       list-style: none
       li
-        +border-radius(4px)
         margin: 0 10px 10px 0
-        padding: 4px
+        width: 250px
         display: inline-block
-        background: rgba(255,255,255,.5)
+        .info
+          +border-radius(4px)
+          padding: 4px
+          background: rgba(255,255,255,.5)
         img
           vertical-align: middle
-          
+        span.level
+          float: right

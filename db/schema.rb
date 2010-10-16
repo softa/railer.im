@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101016005120) do
+ActiveRecord::Schema.define(:version => 20101016013527) do
 
   create_table "recomendations", :force => true do |t|
     t.integer  "recomends_id",  :null => false
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(:version => 20101016005120) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "twitter_profiles", :force => true do |t|
+    t.integer  "user_id",      :null => false
+    t.text     "twitter_user", :null => false
+    t.text     "bio"
+    t.text     "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "twitter_profiles", ["twitter_user"], :name => "twitter_profiles_twitter_user_key", :unique => true
+  add_index "twitter_profiles", ["user_id"], :name => "twitter_profiles_user_id_key", :unique => true
 
   create_table "users", :force => true do |t|
     t.text     "name"

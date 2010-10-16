@@ -24,9 +24,10 @@ class Rubygem < ActiveRecord::Base
     end
   end
 protected
-
   before_validation :search, :on => :create
   after_create :work
+  after_create :update_authorship
+
   def search
     RubygemWorker.perform_initially(self)
   end

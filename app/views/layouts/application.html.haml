@@ -8,6 +8,7 @@
     = csrf_meta_tag
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
   %body
+    #{link_to image_tag('rumble-r10-sash.png', :style => 'position: fixed; right:0; top: 0; z-index: 1000'), '#'}
     = render ('shared/header')
     #root= yield
     %footer

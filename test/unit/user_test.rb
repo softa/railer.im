@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @u = create_user(:email => 'contato@softa.com.br')
+    @u = create_user(:email => 'contato@softa.com.br', :login => 'softa')
   end
   def teardown
     Mocha::Mockery.instance.stubba.unstub_all
@@ -15,6 +15,9 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "should return login on to_param" do
+    assert_equal 'softa', @u.to_param
+  end
   test "should be able to recomend user" do
     #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     #u = create_user

@@ -11,8 +11,7 @@ class ActiveSupport::TestCase
 
   # Gets the next id for model
   def get_id(model)
-    id = model.maximum(:id)
-    id.nil? ? 1 : id + 1
+    (model.maximum(:id) || 0) + 1
   end
 
   # Creates a test user with default values

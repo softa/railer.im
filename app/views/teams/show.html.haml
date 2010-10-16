@@ -12,22 +12,36 @@
         .rubygem_info_wrapper
           .left_column
             %strong.small_caps Description
-            %p
+            %p #{@team.what}
           .right_column
-            %strong.small_caps Version
-            %p
-              %strong
+            %strong.small_caps Tools
+            - for how in @team.how
+              %p
+                %strong= how
           .clear
           %hr
           .left_column
-            %strong.small_caps Authors
-            %h2
+            %dl
+              - @team.where.each do |what,link|
+                %dt
+                  %strong.small_caps= what
+                %dd
+                  %p= nice_link link
+              
           .right_column
             %dl
               %dt
                 %strong.small_caps Near Teams
               %dd
-                %p YOOOO
+                %p 
+              - for team in @near_teams
+                %dt
+                  %strong.small_caps= team.name
+                %dd
+                  %p
+                    - if team.thumbnail
+                      = image_tag team.thumbnail, :style => 'width:30px'
+                    = link_to team, team.team_home
 
           .clear
     .clear

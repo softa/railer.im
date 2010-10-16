@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   scope :recent, order('id desc')
   scope :six, limit(6)
   
+  attr_accessible :login, :email, :password, :password_confirmation
+  
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)
   end
@@ -44,6 +46,14 @@ class User < ActiveRecord::Base
   end
   
   def to_param; login; end
+  
+  
+  def activate!
+    self.active = true
+    save
+  end
+  # TODO write a test for this
+  
 protected
 
   before_validation :setup_user, :on => :create
@@ -113,6 +123,7 @@ protected
   def confirm_email
     UserMailer.confirm_email self
   end
+  
 end
 
 

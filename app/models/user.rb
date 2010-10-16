@@ -27,9 +27,25 @@ class User < ActiveRecord::Base
   scope :recent, order('id desc')
   scope :six, limit(6)
   scope :by_vip, order('score desc')
-  scope :who_use, (lambda do |g| select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id ").where("rubygems.id = ?", g.id)
+  scope :who_use, (lambda do |g| 
+    select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id ").where("rubygems.id = ?", g.id)
+  end)
+
+  # pg_trgm
+  scope :by_similarity, (lambda do |query|
+    where("name % ?", query)
   end)
   
+  def self.similarity_threshold
+    @@threshold
+  end
+
+  def self.set_similarity_threshold threshold
+    return nil unless threshold.instance_of?(Fixnum) or threshold.instance_of?(Float)
+    @@threshold = threshold
+    connection.execute("SELECT set_limit('#{@@threshold}');")
+  end
+
   def used_gems
     Rubygem.used_by(self).all
   end

@@ -1,17 +1,9 @@
 Railerim::Application.routes.draw do
-
-  get "home/index"
-
   resources :users
-
-  resources :rubygems
-
+  resources :rubygems, :only => [:index,:show]
   resources :gems, :controller => :rubygems, :as => :rubygems
-  
-  resource :user_sessions, :controller => 'user_sessions'
-  
+  resource :user_sessions, :controller => 'user_sessions'  
   match 'login' => 'user_sessions#new', :as => :login
-
   match 'logout' => 'user_sessions#destroy', :as => :logout
 
   # The priority is based upon order of creation:
@@ -63,13 +55,8 @@ Railerim::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "home#index"
 
+  root :to => "home#index"
   get ':id' => 'users#show'
 
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 end

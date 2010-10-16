@@ -10,8 +10,11 @@ class GithubWorkerTest < ActiveSupport::TestCase
       OpenStruct.new(:name => "authlogic", :private => false, :owner => {}, :homepage => "http://rdoc.info/projects/binarylogic/authlogic", :watchers => 1, :open_issues => 0, :url => "http://github.com/softa/authlogic", :forks => 0, :description => "A simple model based ruby authentication solution.", :fork => true),
       OpenStruct.new(:name => "activerecord-postgres-hstore", :private => false, :owner => {}, :homepage => "", :watchers => 15, :open_issues => 0, :url => "http://github.com/softa/activerecord-postgres-hstore", :forks => 0, :description => "Goodbye serialize, hello hstore. Speed up hashes in the database.", :fork => false)
     ]
+    
+    octopi_followers = ["ltartari", "gmotta", "reloadbrazil", "cabral", "daviebf", "danieldocki", "gabpaladino", "fabianoleite", "acarubelli"]
+    octopi_following = ["stephp", "fglock", "nkallen"]
 
-    octopi_user = OpenStruct.new :followers_count => 9, :name => "Softa", :gravatar_id => "349785000f9fdb74a286e9b5a638c36a" , :email => "contato@softa.com.br", :public_gist_count => 25, :following_count => 3, :type => "User", :public_repo_count => 39, :company => "Softa", :id => 5027, :login => "softa", :blog => "softa.com.br", :location => "Porto Alegre / RS - Brasil", :repositories => octopi_repos
+    octopi_user = OpenStruct.new :followers_count => 9, :name => "Softa", :gravatar_id => "349785000f9fdb74a286e9b5a638c36a" , :email => "contato@softa.com.br", :public_gist_count => 25, :following_count => 3, :type => "User", :public_repo_count => 39, :company => "Softa", :id => 5027, :login => "softa", :blog => "softa.com.br", :location => "Porto Alegre / RS - Brasil", :repositories => octopi_repos, :followers => octopi_followers, :following => octopi_following
     Octopi::User.expects(:find).returns(octopi_user)
 
     octopi_authlogic_repos = [

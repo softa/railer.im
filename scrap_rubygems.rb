@@ -32,6 +32,7 @@ for name,_,_ in rubygems.first
     :source_code_uri => data['source_code_uri'],  
     :bug_tracker_uri => data['bug_tracker_uri'],  
     :wiki_uri => data['wiki_uri'],  
-    :mailing_list_uri => data['mailing_list_uri']
+    :mailing_list_uri => data['mailing_list_uri'],
+    :documentation_uri => data['documentation_uri']
   puts "OK"
 end

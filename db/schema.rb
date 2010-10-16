@@ -10,7 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20101016013527) do
+=======
+ActiveRecord::Schema.define(:version => 20101016010824) do
+>>>>>>> 5de5224be8b4cc9cfc59e7fae15ef87bc7b779eb
 
   create_table "recomendations", :force => true do |t|
     t.integer  "recomends_id",  :null => false
@@ -35,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20101016013527) do
     t.text     "mailing_list_uri"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "documentation_uri"
   end
 
   create_table "twitter_profiles", :force => true do |t|

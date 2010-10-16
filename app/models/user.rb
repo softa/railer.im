@@ -45,12 +45,7 @@ protected
   after_create :confirm_email
 
   def setup_user
-<<<<<<< HEAD
     self.password_confirmation = self.password = Forgery::Basic.password(:allow_special => true, :at_least => 15, :at_most => 16)
-    user = Octopi::User.find self.login
-=======
-    #TODO criar um temporarypass irado
-    self.password_confirmation = self.password = 'temporarypass'
     attemps = 0
     begin
       user = Octopi::User.find self.login
@@ -82,7 +77,6 @@ protected
       errors.add_to_base 'This is an organization account. Railer.Im only accepts users. Sorry.'
       return false
     end
->>>>>>> 91a3534ecbf35c498d709d3edfce55edf234e20f
     self.email = user.email
     self.name = user.name
     self.company_name = user.company

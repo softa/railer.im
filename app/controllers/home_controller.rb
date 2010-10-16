@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   end
   
   def email
-    Mailer.create_welcome(current_client.users.first).body
+    render :text => UserMailer.confirm_email(User.first).body
   end
    
 end

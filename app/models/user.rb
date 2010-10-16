@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   has_many :followers, :class_name => 'User', :through => :git_followers
 
   has_many :repositories
-#  scope :used_gems, select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id")
 
   has_one :twitter_profile
 
@@ -27,6 +26,10 @@ class User < ActiveRecord::Base
   scope :recent, order('id desc')
   scope :six, limit(6)
   
+  def used_gems
+    Rubygem.used_by(self).all
+  end
+
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)
   end

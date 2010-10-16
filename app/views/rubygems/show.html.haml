@@ -9,7 +9,7 @@
           .header
             %h1#gem_name #{@rubygem.name}
             .detail.download
-              %span #{@rubygem.downloads}
+              %span #{number_to_human(@rubygem.downloads, :precision => 1, :significant => false)}
             .clear
           .clear
         .info_wrapper

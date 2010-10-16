@@ -26,9 +26,6 @@ class RubygemTest < ActiveSupport::TestCase
     assert_equal 'http://www.yahoo.com', @rubygem.uri
   end
 
-  test "should be able to list authors through authorships" do
-  end
-
   test "should insert in table authorships" do
     @rubygem.update_attribute :authors_names, 'Author 1, Dr. Author 2, Sir Author 3'
     @rubygem.update_authorship
@@ -60,5 +57,13 @@ class RubygemTest < ActiveSupport::TestCase
     assert_equal 1, g.dependents.size
     assert_equal 1, Rubygem.used_by(u).count
     assert_equal g, Rubygem.used_by(u).first
+  end
+
+  test "should list distinct users that use this gem" do
+    u = create_user
+    g = create_rubygem
+    create_dependency(:rubygem => g, :repository => create_repository(:user => u))
+    create_dependency(:rubygem => g, :repository => create_repository(:user => u))
+    assert_equal 1, g.users.size
   end
 end

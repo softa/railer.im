@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   scope :recent, order('id desc')
   scope :six, limit(6)
   scope :by_vip, order('score desc')
+  scope :who_use, (lambda do |g| select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id ").where("rubygems.id = ?", g.id)
+  end)
   
   attr_accessible :login, :email, :password, :password_confirmation
   

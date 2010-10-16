@@ -1,13 +1,71 @@
 (in /mnt/hgfs/ubuntu/railerim)
 Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
 Started
-.................................
-Finished in 8.883539 seconds.
+............................F......................
+Finished in 17.548996 seconds.
 
-33 tests, 153 assertions, 0 failures, 0 errors
+  1) Failure:
+test_should_perform_2(RumbleWorkerTest) [/test/unit/rumble_worker_test.rb:33]:
+<4> expected but was
+<0>.
+
+51 tests, 192 assertions, 1 failures, 0 errors
 Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
 Started
-................
-Finished in 1.629045 seconds.
+EEEEEEE.EE.........................
+Finished in 3.068054 seconds.
 
-16 tests, 24 assertions, 0 failures, 0 errors
+  1) Error:
+test_should_create_company(CompaniesControllerTest):
+NoMethodError: undefined method `companies' for #<CompaniesControllerTest:0xb5db56e0>
+    /test/functional/companies_controller_test.rb:5:in `_callback_before_525'
+
+  2) Error:
+test_should_destroy_company(CompaniesControllerTest):
+NoMethodError: undefined method `companies' for #<CompaniesControllerTest:0xb5db56cc>
+    /test/functional/companies_controller_test.rb:5:in `_callback_before_525'
+
+  3) Error:
+test_should_get_edit(CompaniesControllerTest):
+NoMethodError: undefined method `companies' for #<CompaniesControllerTest:0xb5db5690>
+    /test/functional/companies_controller_test.rb:5:in `_callback_before_525'
+
+  4) Error:
+test_should_get_index(CompaniesControllerTest):
+NoMethodError: undefined method `companies' for #<CompaniesControllerTest:0xb5db5654>
+    /test/functional/companies_controller_test.rb:5:in `_callback_before_525'
+
+  5) Error:
+test_should_get_new(CompaniesControllerTest):
+NoMethodError: undefined method `companies' for #<CompaniesControllerTest:0xb5db5618>
+    /test/functional/companies_controller_test.rb:5:in `_callback_before_525'
+
+  6) Error:
+test_should_show_company(CompaniesControllerTest):
+NoMethodError: undefined method `companies' for #<CompaniesControllerTest:0xb5db55dc>
+    /test/functional/companies_controller_test.rb:5:in `_callback_before_525'
+
+  7) Error:
+test_should_update_company(CompaniesControllerTest):
+NoMethodError: undefined method `companies' for #<CompaniesControllerTest:0xb5db55a0>
+    /test/functional/companies_controller_test.rb:5:in `_callback_before_525'
+
+  8) Error:
+test_should_get_city(LocationsControllerTest):
+ActionView::Template::Error: PGError: ERROR:  syntax error at or near "default"
+LINE 1: ... FROM       "users"  WHERE     ("users"."city" IS default) O...
+                                                             ^
+: SELECT     "users".* FROM       "users"  WHERE     ("users"."city" IS default) ORDER BY  score desc
+    app/views/locations/city.html.haml:6:in `_app_views_locations_city_html_haml__270328960__623008288_0'
+    /test/functional/locations_controller_test.rb:10:in `test_should_get_city'
+
+  9) Error:
+test_should_get_country(LocationsControllerTest):
+ActionView::Template::Error: PGError: ERROR:  syntax error at or near "default"
+LINE 1: ...FROM       "users"  WHERE     ("users"."state" IS default) O...
+                                                             ^
+: SELECT     "users".* FROM       "users"  WHERE     ("users"."state" IS default) ORDER BY  score desc LIMIT 1
+    app/views/locations/country.html.haml:6:in `_app_views_locations_country_html_haml__83069125__623063838_0'
+    /test/functional/locations_controller_test.rb:15:in `test_should_get_country'
+
+35 tests, 38 assertions, 0 failures, 9 errors

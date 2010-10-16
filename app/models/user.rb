@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
   has_many :recomended, :class_name => 'User', :through => :recomendations_received
   has_many :repositories
   has_one :twitter_profile
+
+  acts_as_authentic
 end
+

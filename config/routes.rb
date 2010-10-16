@@ -1,8 +1,7 @@
 Railerim::Application.routes.draw do
+
   resources :users
-
-  resources :rubygems
-
+  resources :rubygems, :only => [:index,:show]
   resources :gems, :controller => :rubygems, :as => :rubygems
 
   # The priority is based upon order of creation:

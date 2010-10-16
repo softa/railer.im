@@ -1,0 +1,1 @@
+Mailee::Config.site = 'http://api.82c422b735d30.railerim.maileebeta.me'

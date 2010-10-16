@@ -50,4 +50,15 @@ class RubygemTest < ActiveSupport::TestCase
     create_rubygem
     assert_equal Set.new(['David Heinemeier Hansson']), Set.new(Authorship.all.map{|a| a.author_name})
   end
+
+  test "should list gems used by one user" do
+    u = create_user
+    g = create_rubygem
+    create_dependency(:rubygem => g, :repository => create_repository(:user => u))
+    create_dependency
+    assert_equal 1, u.repositories.size
+    assert_equal 1, g.dependents.size
+    assert_equal 1, Rubygem.used_by(u).count
+    assert_equal g, Rubygem.used_by(u).first
+  end
 end

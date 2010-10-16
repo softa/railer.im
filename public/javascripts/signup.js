@@ -16,7 +16,14 @@ $('form#signup .message_wrapper').ajaxError(function(e, xhr, settings, exception
   // This handles signup errors
   if(settings.url == '/users'){
     $(this).fadeIn()
-    $(this).text($.parseJSON(xhr.responseText)['base'])
+	json = $.parseJSON(xhr.responseText)
+	base = json['base']
+	if(base){
+     $(this).text(base)
+	}else{
+	  login = json['login']		
+      $(this).text('Profile ' + login)
+	}
   }
 })
 $('form#signup').submit(function(){
@@ -29,9 +36,9 @@ $('form#signup').submit(function(){
   }
   $.post(url, data, function(result){
 	$('form#signup .input_wrapper').slideUp()
-	//alert(result['user']['id'])
-    // successfull login!
-    //location.href = '/'+result['login']
+	$('form#signup .message_wrapper').slideUp()
+	$('form#signup .success_wrapper').slideDown().find('.email').html(result['user']['email'].replace(/.{1,3}@.{1,3}/, '...@...'))
+	
   }, 'json')
   return false
 })

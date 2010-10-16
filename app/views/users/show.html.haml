@@ -55,8 +55,20 @@
                 #{@user.recommends}
               %hr
             .owns_the_repos
-              %strong.small_caps Repositories
-              %h3 #{@user.public_repo_count}
+              %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
+              %br
+              %br
+              - for repo in @user.repositories.order('watchers desc').where('not fork')
+                = image_tag repo.language_icon, :style => 'float:left;margin:1em', :title => repo.language
+                %strong #{link_to repo.name, repo.url, :target => :_blank} &nbsp;
+                = image_tag 'icons/foaf.png', :title => :watchers, :style => 'width:14px'
+                #{repo.watchers}
+                %br
+                = repo.description
+
+                %br
+                %hr
+                
 = javascript_include_tag 'user_profile.js'
 - require 'forgery'
 %footer

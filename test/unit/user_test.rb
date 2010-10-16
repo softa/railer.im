@@ -58,4 +58,19 @@ class UserTest < ActiveSupport::TestCase
     @u.is_followed_by 'login_that_does_not_exist'
     assert_equal 0, GitFollower.count
   end
+
+  test "should list owned gems using the Authorship" do
+    a = create_authorship :author => @u
+    rubygem = a.rubygem
+
+    assert_equal 1, @u.owned_gems.size
+    assert_equal rubygem, @u.owned_gems.first
+  end
+
+  test "should list repositories" do
+    repo = create_repository :user => @u
+    assert_equal 1, @u.repositories.size
+    assert_equal repo, @u.repositories.first
+  end
+
 end

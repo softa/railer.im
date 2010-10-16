@@ -9,13 +9,15 @@ class GemfileWorker
     url = "#{r.url}/raw/master/Gemfile"
     begin
       result = GemfileEval.eval(open(url).read)
+    rescue SyntaxError => e
+      return
     rescue => e
       return
     end
 
     for name,version,environments in result.gems
       rubygem = Rubygem.find_or_create_by_name name
-      r.dependencies.create :version => version, :environments => environments, :rubygem => rubygem
+      r.dependencies.create :version => version, :environments => environments, :rubygem => rubygem rescue nil
     end
   end
 end

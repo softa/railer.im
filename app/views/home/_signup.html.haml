@@ -1,8 +1,10 @@
 = form_for User.new, :html => {:id => :signup, :class => :home} do |f|
   %fieldset
-    .success_wrapper
-      Your account was created successfully. Please check your email
-      %span.email
+    .success_wrapper.hide
+      %h1
+        Your account was created successfully. Please check your email
+        %span.email
+        \.
     .input_wrapper
       = f.text_field :login, :id => :github_name_signup, :placeholder => 'github username', :required => true
       -# %input#github_name_signup{:name => 'user[login]', :type => :text, :placeholder => 'github username', :required => true }

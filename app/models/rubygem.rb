@@ -9,6 +9,9 @@ class Rubygem < ActiveRecord::Base
   has_many :dependents, :class_name => 'Dependency', :foreign_key => :rubygem_id
   has_many :repositories, :through => :dependents
   
+  scope :used_by, (lambda do |u| select("DISTINCT rubygems.*").joins("JOIN dependencies ON dependencies.rubygem_id = rubygems.id JOIN repositories ON repositories.id = dependencies.repository_id JOIN users ON repositories.user_id = users.id ").where("users.id = ?", u.id)
+  end)
+
   serialize :indicators
   def uri
     @uri ||= homepage_uri || wiki_uri || project_uri

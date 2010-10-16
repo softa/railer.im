@@ -1,14 +1,13 @@
 class User < ActiveRecord::Base
-  label :name, :login
+
+  acts_as_authentic
   belongs_to :company
   has_one :team_membership
-
   # Recommendation
   has_many :recommendations_made, :class_name => 'Recommendation', :foreign_key => 'recommends_id'
   has_many :recommendations_received, :class_name => 'Recommendation', :foreign_key => 'recommended_id'
   has_many :recommends, :class_name => 'User', :through => :recommendations_made
   has_many :recommended_by, :class_name => 'User', :through => :recommendations_received
-
   # GitFollower
   has_many :git_followers, :class_name => 'GitFollower', :foreign_key => 'followee_id'
   has_many :git_followees, :class_name => 'GitFollower', :foreign_key => 'follower_id'
@@ -16,13 +15,17 @@ class User < ActiveRecord::Base
   has_many :followers, :class_name => 'User', :through => :git_followers
 
   has_many :repositories
+#  scope :used_gems, select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id")
 
   has_one :twitter_profile
 
   has_many :authorships
   has_many :owned_gems, :class_name => 'Rubygem', :through => :authorships, :source => :rubygem
 
-  acts_as_authentic
+  label :name, :login
+
+  scope :recent, order('id desc')
+  scope :six, limit(6)
   
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)
@@ -65,6 +68,16 @@ protected
         errors.add_to_base 'User not found. This user has to exists on GitHub.'
         return false
       end
+    rescue APICache::CannotFetch => e
+      # if theres any error in github api, we'll retry 3 times.
+      attemps += 1
+      sleep 5
+      if attemps < 3
+        retry
+      else
+        errors.add_to_base 'User not found. This user has to exists on GitHub.'
+        return false
+      end
     rescue Octopi::APIError => e
       # if theres any error in github api, we'll retry 3 times.
       attemps += 1
@@ -78,6 +91,10 @@ protected
     end
     if user.type == 'Organization'
       errors.add_to_base 'This is an organization account. Railer.Im only accepts users. Sorry.'
+      return false
+    end
+    unless user.email
+      errors.add_to_base "Your GitHub account doesn't have a public email. Publish your email and come back."
       return false
     end
     self.email = user.email

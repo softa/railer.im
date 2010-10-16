@@ -15,6 +15,7 @@ gem 'geokit'
 gem 'wirble'
 gem 'jquery-rails'
 gem 'mongrel'
+gem 'will_paginate'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -39,6 +40,10 @@ gem 'pg'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
- group :production do
-   gem 'unicorn'
- end
+group :production do
+  gem 'unicorn'
+end
+
+group :test do
+  gem 'mocha'
+end

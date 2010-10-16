@@ -2,7 +2,11 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class TwitterProfileTest < ActiveSupport::TestCase
   def setup
+    #setup_octopi_user
     @twitter = create_twitter_profile
+  end
+  def teardown
+    Mocha::Mockery.instance.stubba.unstub_all
   end
 
   test "should create twitter profile" do
@@ -10,6 +14,7 @@ class TwitterProfileTest < ActiveSupport::TestCase
   end
 
   test "should be able to follow another user" do
+    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     followee = create_twitter_profile
     @twitter.follows followee.twitter_user
     assert_equal 1, TwitterFollower.count
@@ -23,6 +28,7 @@ class TwitterProfileTest < ActiveSupport::TestCase
   end
 
   test "should be able to be followed by another user" do
+    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     follower = create_twitter_profile
     @twitter.is_followed_by follower.twitter_user
     assert_equal 1, TwitterFollower.count

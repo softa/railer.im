@@ -2,22 +2,21 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    setup_octopi_user
-    @u = create_user
+    @u = create_user(:email => 'contato@softa.com.br')
   end
   def teardown
     Mocha::Mockery.instance.stubba.unstub_all
   end
 
   test "should create user" do
-    setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
+    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     assert_difference('User.count') do
       assert create_user
     end
   end
 
   test "should be able to recomend user" do
-    setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
+    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     #u = create_user
     recomended = create_user
     assert_difference('Recomendation.count') do
@@ -45,7 +44,7 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "should be able to follow another user" do
-    setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
+    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     followee = create_user
     @u.follows followee.login
     assert_equal 1, GitFollower.count
@@ -59,7 +58,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should be able to be followed by another user" do
-    setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
+    #setup_octopi_user('ltartari','ltartari@softa.com.br') # needed 'cause it creates 2 users
     follower = create_user
     @u.is_followed_by follower.login
     assert_equal 1, GitFollower.count

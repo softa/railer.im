@@ -16,9 +16,8 @@ class ActiveSupport::TestCase
 
   # Creates a test user with default values
   def create_user(params = {})
-    defaults = {:name => "test user #{get_id}", :email => "test_user#{get_id}@railer.im", :company_name => "co test", :public_repo_count => 1, :blog => 'http://blog.user.com', :github_id => 'repo-1212', :public_gist_count => 1, :login => "test_user_#{get_id}",
-    :password => 'testing_password_123', :password_confirmation => 'testing_password_123' }
-    defaults.merge(params)
+    defaults = {:name => "test user #{get_id}", :email => "test_user#{get_id}@railer.im", :company_name => "co test", :public_repo_count => 1, :blog => 'http://blog.user.com', :github_id => 'repo-1212', :public_gist_count => 1, :login => "test_user_#{get_id}", :password => 'testing_password_123', :password_confirmation => 'testing_password_123' }.merge(params)
+    setup_octopi_user(defaults[:login], defaults[:email])
     User.create!(defaults)
   end
 

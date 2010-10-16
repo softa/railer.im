@@ -3,22 +3,22 @@ require 'github_worker'
 
 class GithubWorkerTest < ActiveSupport::TestCase
 
-  def setup
+  def setup_octopi
 
-    setup_octopi_user
-    setup_octopi_user
+    setup_octopi_user('softa', 'contato@softa.com.br')
+    #setup_octopi_user
 
     octopi_authlogic_repos = [
       OpenStruct.new(:username => "softa", :size => 5555, :name => "authlogic", :followers => 7, :created => Time.gm(2002,"jan",1,20,15,1), :type => "repo", :language => "Ruby", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2003,"jan",1,20,15,1), :id => "repo-777433", :score => 1.234567, :fork => false)
     ]
 
     octopi_hstore_repos = [
-        OpenStruct.new(:username => "diogob", :size => 4820, :name => "activerecord-postgres-hstore", :followers => 7, :created => Time.gm(2000,"jan",1,20,15,1), :type => "repo", :language => "Ruby", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2000,"jan",1,20,15,1), :id => "repo-777433", :score => 6.0756235, :fork => false),
-        OpenStruct.new(:username => "softa", :size => 6666, :name => "activerecord-postgres-hstore", :followers => 6, :created => Time.gm(2005,"jan",1,20,15,1), :type => "repo", :language => "Ruby & Pg", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2006,"jan",1,20,15,1), :id => "repo-666666", :score => 6.666666, :fork => false)
+      OpenStruct.new(:username => "diogob", :size => 4820, :name => "activerecord-postgres-hstore", :followers => 7, :created => Time.gm(2000,"jan",1,20,15,1), :type => "repo", :language => "Ruby", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2000,"jan",1,20,15,1), :id => "repo-777433", :score => 6.0756235, :fork => false),
+      OpenStruct.new(:username => "softa", :size => 6666, :name => "activerecord-postgres-hstore", :followers => 6, :created => Time.gm(2005,"jan",1,20,15,1), :type => "repo", :language => "Ruby & Pg", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2006,"jan",1,20,15,1), :id => "repo-666666", :score => 6.666666, :fork => false)
     ]
     
     octopi_target_repos = [
-            OpenStruct.new(:username => "softa", :size => 0, :name => "Rails-Target", :followers => 7, :created => Time.gm(2001,"feb",1,20,15,1), :type => "repo", :language => "Haskell", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2009,"feb",1,20,15,1), :id => "repo-777433", :score => 6.0756235, :fork => false)
+      OpenStruct.new(:username => "softa", :size => 0, :name => "Rails-Target", :followers => 7, :created => Time.gm(2001,"feb",1,20,15,1), :type => "repo", :language => "Haskell", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2009,"feb",1,20,15,1), :id => "repo-777433", :score => 6.0756235, :fork => false)
     ]
     
     Octopi::Repository.expects(:find_all).with('authlogic').returns(octopi_authlogic_repos)
@@ -37,9 +37,10 @@ class GithubWorkerTest < ActiveSupport::TestCase
   test "should perform" do
     
     #TODO should check if theres company
-    @user = User.create :login => 'softa'
+    @user = create_user(:login => 'softa', :email => 'contato@softa.com.br')#User.create :login => 'softa'
     #, :email => 'foo@bar.com', :password => '123456', :password_confirmation => '123456'
     #@user.update_attribute :email, nil # what a workaround!!!
+    setup_octopi
     GithubWorker.perform @user.id
     @user.reload
     assert_equal "Softa", @user.name
@@ -120,11 +121,11 @@ class GithubWorkerTest < ActiveSupport::TestCase
 
   test "should perform - not replacing name and location" do
     #TODO tirar o confirmation quando o pedro tirar o requirement
-    @user = User.create :login => 'softa'
+    @user = create_user(:login => 'softa')
     @user.update_attributes :email => 'foo@bar.com', :password => '123456', :password_confirmation => '123456', :name => 'Pedro Axelrud', :location => 'Nowhere', :blog => 'maiz.tumblr.com'
 
     #TODO should check if theres company
-
+    setup_octopi
     GithubWorker.perform @user.id
     @user.reload
     assert_equal "Pedro Axelrud", @user.name

@@ -68,9 +68,9 @@
       .gem_users.list_with_pictures
         %h3 See who is using this Gem
         %ul
-          - @rubygem.repositories.each do |r|
+          - @rubygem.users.each do |u|
             %li
-              %a{:href => user_path(r.user.login)}
-                #{gravatar(r.user.gravatar_id, 24)}
-                %strong #{r.user.name}
+              %a{:href => user_path(u.login)}
+                #{gravatar(u.gravatar_id, 24)}
+                %strong #{u.name}
                 -# %span.level {level}

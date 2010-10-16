@@ -8,22 +8,15 @@ class GithubWorkerTest < ActiveSupport::TestCase
     setup_octopi_user('softa', 'contato@softa.com.br')
     #setup_octopi_user
 
-    octopi_authlogic_repos = [
-      OpenStruct.new(:username => "softa", :size => 5555, :name => "authlogic", :followers => 7, :created => Time.gm(2002,"jan",1,20,15,1), :type => "repo", :language => "Ruby", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2003,"jan",1,20,15,1), :id => "repo-777433", :score => 1.234567, :fork => false)
-    ]
-
-    octopi_hstore_repos = [
-      OpenStruct.new(:username => "diogob", :size => 4820, :name => "activerecord-postgres-hstore", :followers => 7, :created => Time.gm(2000,"jan",1,20,15,1), :type => "repo", :language => "Ruby", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2000,"jan",1,20,15,1), :id => "repo-777433", :score => 6.0756235, :fork => false),
-      OpenStruct.new(:username => "softa", :size => 6666, :name => "activerecord-postgres-hstore", :followers => 6, :created => Time.gm(2005,"jan",1,20,15,1), :type => "repo", :language => "Ruby & Pg", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2006,"jan",1,20,15,1), :id => "repo-666666", :score => 6.666666, :fork => false)
-    ]
+    octopi_authlogic_repos = '{"repositories":[{"username": "softa", "size": 5555, "name": "authlogic", "followers": 7, "created": "Mon Jan 01 20:15:01 UTC 2001", "type": "repo", "language": "Ruby", "forks": 1, "description": "Simple deploy solution for ruby applications (using github+bundler).", "pushed": "Wed Jan 01 20:15:01 UTC 2003", "id": "repo-777433", "score": 1.234567, "fork": false}]}'
     
-    octopi_target_repos = [
-      OpenStruct.new(:username => "softa", :size => 0, :name => "Rails-Target", :followers => 7, :created => Time.gm(2001,"feb",1,20,15,1), :type => "repo", :language => "Haskell", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2009,"feb",1,20,15,1), :id => "repo-777433", :score => 6.0756235, :fork => false)
-    ]
+    octopi_hstore_repos = '{"repositories":[{"forks":1,"type":"repo","created":"2000-01-01T20:15:01Z","description":"Simple deploy solution for ruby applications (using github+bundler).","language":"Ruby","username":"diogob","fork":false,"score":6.0756235,"size":4820,"followers":7,"name":"activerecord-postgres-hstore","id":"repo-777433","pushed":"2000-01-01T20:15:01Z"},{"forks":1,"type":"repo","created":"2005-01-01T20:15:01Z","description":"Simple deploy solution for ruby applications (using github+bundler).","language":"Ruby & Pg","username":"softa","fork":false,"score":6.666666,"size":6666,"followers":6,"name":"activerecord-postgres-hstore","id":"repo-666666","pushed":"2006-01-01T20:15:01Z"}]}'
     
-    Octopi::Repository.expects(:find_all).with('authlogic').returns(octopi_authlogic_repos)
-    Octopi::Repository.expects(:find_all).with('activerecord-postgres-hstore').returns(octopi_hstore_repos)
-    Octopi::Repository.expects(:find_all).with('Rails-Target').returns(octopi_target_repos)
+    octopi_target_repos = '{"repositories":[{"forks":1,"type":"repo","created":"2001-02-01T20:15:01Z","description":"Simple deploy solution for ruby applications (using github+bundler).","language":"Haskell","username":"softa","fork":false,"score":6.0756235,"size":0,"followers":7,"name":"Rails-Target","id":"repo-777433","pushed":"2009-02-01T20:15:01Z"}]}'
+    
+    URI::HTTP.any_instance.stubs(:open).with('http://github.com/api/v2/json/repos/search/authlogic').returns((OpenStruct.new({:read => octopi_authlogic_repos})))
+    URI::HTTP.any_instance.stubs(:open).with('http://github.com/api/v2/json/repos/search/activerecord-postgres-hstore').returns((OpenStruct.new({:read => octopi_hstore_repos})))
+    URI::HTTP.any_instance.stubs(:open).with('http://github.com/api/v2/json/repos/search/Rails-Target').returns((OpenStruct.new({:read => octopi_target_repos})))
 
     location = OpenStruct.new(:accuracy => 5, :success => true, :provider => "yahoo", :city => "Porto Alegre", :province => nil, :street_address => nil, :lng => -51.22802, :country_code => "BR", :precision => "zip", :state => "Brazil", :all => [], :lat => -30.03425, :full_address => nil, :zip => nil)
     Geokit::Geocoders::YahooGeocoder.expects(:geocode).with('Porto Alegre / RS - Brasil').returns(location)
@@ -92,7 +85,7 @@ class GithubWorkerTest < ActiveSupport::TestCase
     assert_equal 0, authlogic.forks
     assert_equal "A simple model based ruby authentication solution.", authlogic.description
     assert_equal true, authlogic.fork
-    assert_equal Time.gm(2002,"jan",1,20,15,1), authlogic.originaly_created_at
+    assert_equal Time.gm(2001,"jan",1,20,15,1), authlogic.originaly_created_at
     assert_equal Time.gm(2003,"jan",1,20,15,1), authlogic.pushed_at
     assert_equal 1.234567, authlogic.score
     assert_equal "Ruby", authlogic.language

@@ -22,24 +22,27 @@
             .clear
           .clear
           .left_column
-            - unless @user.company_name.empty?
-              .company_name
-                %strong.small_caps Company
-                %h3 #{@user.company_name}
-            - unless @user.blog.empty?
-              %hr
-              .blog
-                %strong.small_caps Blog
-                %h3 #{link_to nice_link(@user.blog), @user.blog, :target => :_blank}
+            .company_name
+              %strong.small_caps Company
+              %h3 #{@user.company_name || 'NA'}
+            %hr
+            .blog
+              %strong.small_caps Blog
+              %h3 #{link_to nice_link(@user.blog), @user.blog, :target => :_blank}
             - unless @user.location.empty?
               %hr
               .location
                 %strong.small_caps Location
-                %h3 #{@user.city} #{@user.state}
+                %h3 #{link_to @user.city, locations_city_path(:id => @user.city) if @user.city} #{link_to @user.state, locations_country_path(:id => @user.state) if @user.state}
             -#
               %hr
               .bio
                 %strong.small_caps Bio
+            %hr
+            .wwr
+              %strong.small_caps WWR
+              %h3 #{@user.wwr_id ? nice_link(@user.wwr_url) : 'NA'}
+
           .right_column
             - unless @user.owned_gems.empty?
               .personal_gems

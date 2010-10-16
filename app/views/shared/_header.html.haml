@@ -1,3 +1,11 @@
 %header
-  %h1
-    = image_tag('railerim_logo.png')
+  .container
+    .span-6
+      %h1= link_to image_tag('railerim_logo.png'), root_path
+    .span-18.last
+      .span-10
+        %nav= link_to 'Login','#'
+      .span-8.last
+        %form
+          %fieldset
+            %input{:type => :search, :placeholder => 'Search'}

@@ -1,5 +1,5 @@
 !!! 5
-%html
+%html{:lang => :en}
   %head
     %meta{:charset => 'utf-8'}
     %title railer.im
@@ -11,4 +11,4 @@
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
   %body
     = render ('shared/header')
-    = yield
+    .container= yield

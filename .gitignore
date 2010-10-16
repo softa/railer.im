@@ -7,3 +7,4 @@ config/database.yml
 public/stylesheets/
 *.swp
 db/schema.rb
+.DS_Store

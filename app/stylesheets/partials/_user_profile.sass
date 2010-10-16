@@ -52,3 +52,66 @@
         +border-radius
         padding: 6px
         background: white
+.followers, .used_rubygems
+  margin: 1em 0
+  ul, li
+    list-style: none
+    +reset-box-model
+  li
+    display: inline-block
+    margin: 0 4px 8px 0
+    img
+      vertical-align: middle
+      border: 1px solid white
+    a
+      border: 1px solid #888
+      +box-shadow(#fff,0,1px,0,inset)
+      +grad(#DDD,#999)
+      +border-radius(4px)
+      padding: 4px
+      display: block
+      font-weight: 900
+      text-shadow: #fff 0 1px 0
+      color: #444
+      &:hover
+        +grad(#EEE,#AAA)
+        color: #222
+        text-decoration: none
+      &:active
+        +grad(#999,#DDD)
+        color: #111
+        text-decoration: none
+.used_rubygems
+  ul
+    +reset-box-model
+    li
+      display: inline-block
+      a, a:visited
+        padding: 4px 8px
+        color: #444
+        +grad(#F0F0F0,#CCC)
+        &:hover
+          +grad(#FFF,#BBB)
+        &:active
+          +grad(#CCC,#F0F0F0)
+.owns_the_repos
+  ul
+    +reset-box-model
+    list-style: none
+    margin: 1em 0
+    li
+      +border-radius
+      +grad(#e0e0e0,#ccc)
+      +box-shadow(#fff,0,1px,0,inset)
+      border: 1px solid #bbb
+      margin-bottom: 5px
+      padding: 4px
+      .language_icon
+        float: left
+        margin: 1em
+      .watchers
+        float: right
+        background: white
+        padding: 4px
+        +border-radius
+        +box-shadow(rgba(#000,.3),0,-1px,0)

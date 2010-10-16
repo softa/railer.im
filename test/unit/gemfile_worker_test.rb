@@ -8,9 +8,6 @@ class GemfileWorkerTest < ActiveSupport::TestCase
   end
 
   test "should perform 1" do
-    gemfile = File.read("#{Rails.root}/test/fixtures/Gemfile1")
-    URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => gemfile}))
-
     repo = create_repository
     create_rubygem(:name => 'rails')
     create_rubygem(:name => 'haml')
@@ -31,6 +28,10 @@ class GemfileWorkerTest < ActiveSupport::TestCase
     create_rubygem(:name => 'pg')
     create_rubygem(:name => 'mocha')
     create_rubygem(:name => 'unicorn')
+
+    gemfile = File.read("#{Rails.root}/test/fixtures/Gemfile1")
+    URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => gemfile}))
+
     GemfileWorker.perform repo.id
     repo.reload
     assert_equal 19, repo.dependencies.count
@@ -41,15 +42,16 @@ class GemfileWorkerTest < ActiveSupport::TestCase
   end
 
   test "should perform 2" do
-    gemfile = File.read("#{Rails.root}/test/fixtures/Gemfile2")
-    URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => gemfile}))
-
     repo = create_repository
     create_rubygem(:name => 'rails')
     create_rubygem(:name => 'pg')
     create_rubygem(:name => 'mocha')
     create_rubygem(:name => 'foo')
     create_rubygem(:name => 'unicorn')
+
+    gemfile = File.read("#{Rails.root}/test/fixtures/Gemfile2")
+    URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => gemfile}))
+
     GemfileWorker.perform repo.id
     repo.reload
     assert_equal 5, repo.dependencies.count
@@ -62,10 +64,11 @@ class GemfileWorkerTest < ActiveSupport::TestCase
   end
 
   test "should not perform 3" do
+    repo = create_repository
+
     gemfile = File.read("#{Rails.root}/test/fixtures/Gemfile3")
     URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => gemfile}))
 
-    repo = create_repository
     GemfileWorker.perform repo.id
     repo.reload
     assert_equal 0, repo.dependencies.count

@@ -1,11 +1,7 @@
 #rubygem_profile
   .container
     .span-7
-      .rubygem_image
-        - if @rubygem.uri
-          = thumbalizr @rubygem.uri
-        - else
-          #{image_tag 'rubygem.png'}
+      .rubygem_image= thumbalizr @rubygem.uri
     .span-17.last
       .rubygem_info
         .gem_name

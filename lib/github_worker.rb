@@ -30,7 +30,17 @@ class GithubWorker
       :zip => location.zip      
 
       for repo in user.repositories
-        more = Octopi::Repository.find_all(repo.name).detect{|r| r.username == u.login }
+        more = nil
+        i = 0
+        while(more.nil? && i < 10) 
+          i += 1
+          begin
+            j = JSON.parse(open("http://github.com/api/v2/json/repos/search/#{repo.name}", {'Repo' => repo.name}).read)            
+            more = j["repositories"].detect{|r| r["username"] == u.login} || j["repositories"].first
+          rescue => e
+            sleep 5
+          end
+        end
         u.repositories.create :name => repo.name,
           :description => repo.description,
           :forks => repo.forks,
@@ -40,12 +50,12 @@ class GithubWorker
           :url => repo.url,
           :watchers => repo.watchers,
           :fork => repo.fork,
-          :originaly_created_at => more.created,
-          :pushed_at => more.pushed,
-          :score => more.score,
-          :language => more.language,
-          :repo_id => more.id,
-          :size => more.size
+          :originaly_created_at => more["created"],
+          :pushed_at => more["pushed"],
+          :score => more["score"],
+          :language => more["language"],
+          :repo_id => more["id"],
+          :size => more["size"]
         sleep 1.1 unless Rails.env == :test
       end
       for follower in user.followers

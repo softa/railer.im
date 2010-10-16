@@ -9,3 +9,4 @@ public/stylesheets/
 db/schema.rb
 .DS_Store
 db/development_structure.sql
+dump.rdb

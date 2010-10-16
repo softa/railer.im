@@ -43,3 +43,7 @@ module Railerim
     end
   end
 end
+
+require 'rubygem_worker'
+require 'railsplugins_worker'
+require 'github_worker'

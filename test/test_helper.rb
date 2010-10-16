@@ -9,13 +9,25 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures = false
 
+  def teardown
+    Mocha::Mockery.instance.stubba.unstub_all
+  end
+
   # Gets the next id for model
   def get_id
     @unique_id = (@unique_id || 0) + 1
   end
 
+  def create_company(params = {})
+    defaults = {:name => "Company #{get_id}"}.merge(params)
+    Company.create!(defaults)
+  end
+
   def create_rubygem(params = {})
-    defaults = {:name => "gem #{get_id}", :description => "description #{get_id}", :downloads => 0, :version => '0.0.0', :version_downloads => 0, :authors => 'great author', :project_uri => 'http://thegem.com', :gem_uri => 'http://gemcutter/gem/tar.tar.gz'}.merge(params)
+    json = File.read("#{Rails.root}/test/fixtures/rubygem.json")
+    URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => json}))
+#, :description => "description #{get_id}", :downloads => 0, :version => '0.0.0', :version_downloads => 0, :authors => 'great author', :project_uri => 'http://thegem.com', :gem_uri => 'http://gemcutter/gem/tar.tar.gz'
+    defaults = {:name => "gem#{get_id}"}.merge(params)
     Rubygem.create!(defaults)
   end
 
@@ -24,11 +36,6 @@ class ActiveSupport::TestCase
     defaults = {:name => "test user #{get_id}", :email => "test_user#{get_id}@railer.im", :company_name => "co test", :public_repo_count => 1, :blog => 'http://blog.user.com', :github_id => 'repo-1212', :public_gist_count => 1, :login => "test_user_#{get_id}", :password => 'testing_password_123', :password_confirmation => 'testing_password_123' }.merge(params)
     setup_octopi_user(defaults[:login], defaults[:email])
     User.create!(defaults)
-  end
-  
-  def create_rubygem(params = {})
-    defaults = {:name => "rubygem #{get_id}"}.merge(params)
-    Rubygem.create!(defaults)
   end
 
   def create_repository(params = {})
@@ -56,4 +63,5 @@ class ActiveSupport::TestCase
     defaults = {:twitter_user => "twitter user #{get_id}", :user => user, :bio => "bio for user #{get_id}", :link => 'http://www.link.com.br'}.merge(params)
     TwitterProfile.create!(defaults)
   end
+
 end

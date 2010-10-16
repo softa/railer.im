@@ -89,10 +89,10 @@ protected
         return false
       end
     end
-    if user.type == 'Organization'
-      errors.add_to_base 'This is an organization account. Railer.Im only accepts users. Sorry.'
-      return false
-    end
+#    if user.type == 'Organization'
+#      errors.add_to_base 'This is an organization account. Railer.Im only accepts users. Sorry.'
+#      return false
+#    end
     unless user.email
       errors.add_to_base "Your GitHub account doesn't have a public email. Publish your email and come back."
       return false

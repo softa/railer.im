@@ -7,6 +7,7 @@ Railerim::Application.routes.draw do
   resource :user_sessions, :only => [:create, :destroy]
   #TODO remover isso depois?
   match 'home/email' => 'home#email'
+  match 'home/live' => 'home#live'
   root :to => "home#index"
   get ':id' => 'users#show', :as => :profile  
 end

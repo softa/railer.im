@@ -1,30 +1,13 @@
 #home
   .container
-    %h1 Create your account »
-    %form.home
-      %fieldset
-        .input_wrapper
-          %input#github_name_signup{:type => :text, :placeholder => 'github username', :required => true}
-          .button
-            %strong Signup
-          .clear
-    %hr
-    %h2 Search for railers, gems, companies »
-    %form
-      -#.home
-      %fieldset
-        .input_wrapper
-          %input#search{:type => :text, :placeholder => 'Search', :required => true}
-          .button
-            %strong Search
-          .clear
-    :javascript 
-      $('input').focus(function(){
-        $(this).parent('.input_wrapper').addClass('focused')
-      })
-      $('input').blur(function(){
-        $(this).parent('.input_wrapper').removeClass('focused')
-      })
+    .span-12.last
+      %h1 Create »
+      %h2 Share »
+      %h3 Inspire »
+    .span-12.showcase.prepend-top
+      #{image_tag('plintscleef.png')}
+    .clear
+    = render ('home/signup')
 .footer
   .container
     %h3 Worldwide live view

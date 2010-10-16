@@ -11,4 +11,9 @@ module ApplicationHelper
   def thumbalizr url, width = 250 
     image_tag "http://api.thumbalizr.com/?url=%s&width=%s&api_key=%s&quality=%s" % [url, width, '33b0bc3987ab2e24180562fbbcfde491', '100']
   end
+
+  def tweet_this text
+    link_to image_tag('social/twitter_32.png'), "http://twitter.com/?status=#{CGI.escape(text)}"
+  end
+
 end

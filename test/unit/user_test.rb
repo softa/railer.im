@@ -32,4 +32,17 @@ class UserTest < ActiveSupport::TestCase
     @u.follows 'login_that_does_not_exist'
     assert_equal 0, GitFollower.count
   end
+
+  test "should be able to be followed by another user" do
+    follower = create_user
+    @u.is_followed_by follower.login
+    assert_equal 1, GitFollower.count
+    assert_equal @u.followers.first, follower
+    assert_equal follower.followees.first, @u
+  end
+
+  test "should fail gracefully if follower does not exist" do
+    @u.is_followed_by 'login_that_does_not_exist'
+    assert_equal 0, GitFollower.count
+  end
 end

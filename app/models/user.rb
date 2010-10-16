@@ -24,8 +24,12 @@ class User < ActiveRecord::Base
     recomendations_made.create(:recomended_id => recomended_user.id)
   end
   
-  def is_followed_by login#TODO
+  def is_followed_by login
+    follower = User.find_by_login(login)
+    return nil if follower.nil?
+    git_followers.create(:follower_id => follower.id)
   end
+
   def follows login
     followee = User.find_by_login(login)
     return nil if followee.nil?

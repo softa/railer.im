@@ -6,7 +6,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   end
   
   test "should login with valid credentials" do
-    post :create, :format => 'json', :user_session => {:login => 'joao', :password => '102030'}
+    post :create, :format => 'json', :user_session => {:login => 'joao', :password => 'temporarypass'}
     assert_response :success
     json = JSON.parse @response.body
     assert_equal 'joao', json["login"]

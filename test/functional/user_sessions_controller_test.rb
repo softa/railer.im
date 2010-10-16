@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class UserSessionsControllerTest < ActionController::TestCase
   setup do
-    @user = User.create!(:login => 'joao', :email => 'joao@caminhao.com.br', :password => '102030', :password_confirmation => '102030')
+    @user = create_user(:login => 'joao', :password => '102030', :password_confirmation => '102030')
   end
   
   test "should login with valid credentials" do

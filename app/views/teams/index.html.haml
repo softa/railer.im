@@ -1,0 +1,10 @@
+#teams_profile.content_wrapper
+  .container
+    .wrapper
+      - for team in @teams
+        - if team.thumbnail
+          .team.span-5{:style => 'text-align:center'}
+            = link_to team.url do
+              = image_tag team.thumbnail, :class => 'image'
+              %br
+              = team.name

@@ -30,9 +30,15 @@ class User < ActiveRecord::Base
   def used_gems
     Rubygem.used_by(self).all
   end
+
   def wwr_url
     "http://workingwithrails.com/person/#{wwr_id}"
   end
+
+  def wwr_recommendations_for_url
+   "http://workingwithrails.com/recommendation/for/person/#{wwr_id}"
+  end
+
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)
   end

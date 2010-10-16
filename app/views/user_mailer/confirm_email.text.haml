@@ -26,4 +26,4 @@
                         %p
                           Validate your account by accessing the following link:
                           %br
-                          %a{ :href => '#', :style => 'color:#0AF; font-size: 24px' } http://railer.im/validate
+                          %a{ :href => "http://railer.im/user_sessions/token_auth?token=#{@user.perishable_token}", :style => 'color:#0AF; font-size: 24px' } "http://railer.im/user_sessions/token_auth?token=#{@user.perishable_token}"

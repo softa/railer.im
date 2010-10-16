@@ -28,7 +28,7 @@ body
       font:
         size: 22px
         weight: 100
-      color: #777
+      color: #444
     .rubygem_info
       h2
         margin: 0
@@ -39,6 +39,12 @@ body
       .right_column
         float: left
         width: 30%
+        hr
+          margin: .5em 0
+        dl
+          +reset-box-model
+          dt, dd
+            +reset-box-model
   .gem_users
     margin-top: 30px
     h3

@@ -1,0 +1,1504 @@
+<DOCTYPE html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+  <title>
+  
+    authlogic 2.1.6
+    working
+    with Rails 3 - RailsPlugins.org
+  
+</title>
+
+  <link href="/stylesheets/all.css?1285255971" media="screen, projection" rel="stylesheet" type="text/css" />
+
+  <script src="http://www.google.com/jsapi"></script>
+
+  <script src="/javascripts/jquery-1.3.2.js?1275787074" type="text/javascript"></script>
+<script src="/javascripts/jquery-ui-1.8rc3.custom.min.js?1275787074" type="text/javascript"></script>
+<script src="/javascripts/jquery.livequery.js?1275787074" type="text/javascript"></script>
+<script src="/javascripts/jquery.validate.js?1275787074" type="text/javascript"></script>
+  <script src="/javascripts/application.js?1285255971" type="text/javascript"></script>
+
+  <link href="/plugins/56-authlogic/feeds.atom" rel="alternate" title="ATOM" type="application/atom+xml" />
+</head>
+<body>
+  <div id="_TTWNotify" style="display:none"></div>
+  <div id="the_wrapper">
+    <div id="the_top">
+      <div id="the_header" class="bound">
+        <div class="block">
+
+          <h1><a href="/home">RailsPlugins<span class="quiet">.org</span></a></h1>
+          
+          <div id="navigation">
+            <ul class="primary">
+              <li class="nav_item">
+                <a href="/plugins">Browse</a>
+              </li>
+              
+                <li class="nav_item"><a href="/login">Sign In</a></li>
+                <li class="nav_item"><a href="/signup">Sign Up</a></li>
+              <li class="nav_item">
+                <form action="/plugins/search" class="search" method="get">  <fieldset>
+    <input class="empty" id="search" name="search" type="text" value="Search Plugins" />
+  </fieldset>
+  <input name="commit" style="display: none;" type="submit" value="Search" />
+</form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="the_middle">
+      
+      <div id="the_content" class="bound">
+          
+        
+        
+        
+
+<div class="block">
+  <h2>
+    authlogic
+    
+      <span class="version">&mdash; 2.1.6</span>
+    
+  </h2>
+
+  
+    <p class="plain-text">A clean, simple, and unobtrusive ruby authentication solution.</p>
+  
+</div>
+
+<div class="block flush">
+  <div class="meta-information">
+  <ul class="meta">
+    <li>
+      <div class="portrait">
+        <img alt="D3630c5a12aa3e85748670729444d5a9" src="http://www.gravatar.com/avatar/d3630c5a12aa3e85748670729444d5a9" />
+      </div>
+      <p>
+        <strong><a href="/users/62">jwallace</a></strong>
+      </p>
+    </li>
+    
+    
+    <li>
+      <p><span class="quiet">6 February, 2010</span></p>
+    </li>
+    <li>
+      <p><a href="http://rubygems.org/gems/authlogic">View Website</a></p>
+    </li>
+    
+    <li>
+      <p><a href="http://rubygems.org/gems/authlogic">RubyGems Page</a></p>
+    </li>
+    
+    
+  </ul>
+</div>
+
+</div>
+<div class="block shadow">&nbsp;</div>
+
+  <div class="block flush">
+  <div class="compatibility card">
+    <div class="choice"><strong>View Compatibility for:</strong></div>
+    <ul class="criterion-list">
+        <li>
+          
+            <div class="criterion-selection">
+              <p class="selected indicator-pill yes">Rails 3<span>&#10003;</span></p>
+            </div>
+          
+        </li>
+        <li>
+          
+<a href="/plugins/56?criterion_id=2&amp;version_id=1071">              <p class="indicator-pill yes">Thread Safety<span>&#10003;</span></p>
+</a>          
+        </li>
+        <li>
+          
+<a href="/plugins/56?criterion_id=4&amp;version_id=1071">              <p class="indicator-pill dontknow">JRuby<span>?</span></p>
+</a>          
+        </li>
+        <li>
+          
+<a href="/plugins/56?criterion_id=5&amp;version_id=1071">              <p class="indicator-pill yes">Ruby 1.9<span>&#10003;</span></p>
+</a>          
+        </li>
+    </ul>
+  </div>
+</div>
+
+
+
+    <div class="block owner">
+    <h3 class="working">
+      Owner says:
+      <span>Working with Rails 3</span>
+    </h3>
+    <p>
+      
+    </p>
+  </div>
+
+  <div class="block flush">
+      <div id="opinion-forms" class="opinion-form">
+        <p class="plain-text label"><strong>Is it working for you?</strong></p>
+          <a href="/login" class="vote-link">Login to vote</a>
+      </div>
+  </div>
+
+    <div class="block flush">
+      <div id="name">
+        <a href="/plugins/56-authlogic?show_comments=true" id="show-comments">Show All Comments</a>
+      </div>
+      <ul class="opinion-list">
+        <li class="opinion-item" id="opinion_7370">
+  <div class="portrait"><img alt="78cc3c9c597d8796f9059f696a4d8302" src="http://www.gravatar.com/avatar/78cc3c9c597d8796f9059f696a4d8302" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1415">Fusco</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    2 comments
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    14 October, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_668" class="comment-item">
+  <div class="portrait"><img alt="78cc3c9c597d8796f9059f696a4d8302" src="http://www.gravatar.com/avatar/78cc3c9c597d8796f9059f696a4d8302" /></div>
+  <div class="comment-text plain-text">
+    <p>#ruby 1.9.1
+<br />#rails 3.0.0.rc2
+<br />#authlogic 2.1.6
+<br />#bundle check ok</p>
+
+<p>##user_sessions_controller.rb
+<br />def create
+<br />    @user_session = UserSession.new(params[:user_session])
+<br />    if @user_session.save
+<br />      flash[:notice] = "successful"
+<br />      redirect_to root_path
+<br />    else
+<br />      flash[:notice] = "failed"
+<br />      render :action => :new
+<br />    end
+<br />  end</p>
+
+<p>my email pass is correct, but always redirected on user_sessions#new</p>
+
+<p>in log : </p>
+
+<p>DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from block in included at /var/lib/gems/1.9.1/gems/authlogic-2.1.6/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)
+<br />DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from block in included at /var/lib/gems/1.9.1/gems/authlogic-2.1.6/lib/authlogic/acts_as_authentic/logged_in_status.rb:36)
+</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1415">Fusco</a>
+    2 days ago</cite>
+</li>
+<li id="comment_669" class="comment-item">
+  <div class="portrait"><img alt="78cc3c9c597d8796f9059f696a4d8302" src="http://www.gravatar.com/avatar/78cc3c9c597d8796f9059f696a4d8302" /></div>
+  <div class="comment-text plain-text">
+    <p>Working ! 
+<br />change 
+<br />@user_session = UserSession.new(params[:user_session]) 
+<br />to 
+<br />@user_session = UserSession.new(params[:user])
+<br /> i don't know why params is modified.
+<br /> </p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1415">Fusco</a>
+    2 days ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="7370" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_7182">
+  <div class="portrait"><img alt="2b89af7a30009e67dc2280236b05b3fb" src="http://www.gravatar.com/avatar/2b89af7a30009e67dc2280236b05b3fb" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1399">onepixelsolid</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    5 October, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_663" class="comment-item">
+  <div class="portrait"><img alt="2b89af7a30009e67dc2280236b05b3fb" src="http://www.gravatar.com/avatar/2b89af7a30009e67dc2280236b05b3fb" /></div>
+  <div class="comment-text plain-text">
+    <p>This helped me: 
+<br />gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3' 
+<br />rails g authlogic:session user_session</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1399">onepixelsolid</a>
+    11 days ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="7182" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_7142">
+  <div class="portrait"><img alt="Acb6700773511d6c3df5c5023240b2f5" src="http://www.gravatar.com/avatar/acb6700773511d6c3df5c5023240b2f5" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1390">eder.esilva</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle comments-toggle-empty">
+    
+    Comment
+  </div>
+
+  <div class="date plain-text quiet">
+    4 October, 2010
+  </div>
+
+  <ul class="comment-list " style="display: none;">
+    
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="7142" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_7141">
+  <div class="portrait"><img alt="4bce219f7a700f9f67d8b9f34211ccbc" src="http://www.gravatar.com/avatar/4bce219f7a700f9f67d8b9f34211ccbc" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1391">heroting</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle comments-toggle-empty">
+    
+    Comment
+  </div>
+
+  <div class="date plain-text quiet">
+    4 October, 2010
+  </div>
+
+  <ul class="comment-list " style="display: none;">
+    
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="7141" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6984">
+  <div class="portrait"><img alt="8d0e75dbcc8186a9ad8703bd0b48e545" src="http://www.gravatar.com/avatar/8d0e75dbcc8186a9ad8703bd0b48e545" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1199">leobessa</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle comments-toggle-empty">
+    
+    Comment
+  </div>
+
+  <div class="date plain-text quiet">
+    27 September, 2010
+  </div>
+
+  <ul class="comment-list " style="display: none;">
+    
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6984" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6930">
+  <div class="portrait"><img alt="Ab664456527749a289e812956bdb10a4" src="http://www.gravatar.com/avatar/ab664456527749a289e812956bdb10a4" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1374">gregorym</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    24 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_647" class="comment-item">
+  <div class="portrait"><img alt="Ab664456527749a289e812956bdb10a4" src="http://www.gravatar.com/avatar/ab664456527749a289e812956bdb10a4" /></div>
+  <div class="comment-text plain-text">
+    <p>I get the following error when I log in:
+<br /> ArgumentError in User sessionsController#create</p>
+
+<p>comparison of ActiveSupport::TimeWithZone with String failed</p>
+
+<p>Rails.root: /Users/gregorymarcilhacy/Documents/projets/teamTalks
+<br />Application Trace | Framework Trace | Full Trace</p>
+
+<p>app/controllers/user_sessions_controller.rb:8:in `create'</p>
+
+<p></p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1374">gregorym</a>
+    22 days ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6930" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6669">
+  <div class="portrait"><img alt="90e75a8899d596285011a6f17f98b4d8" src="http://www.gravatar.com/avatar/90e75a8899d596285011a6f17f98b4d8" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1346">renemendoza</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    17 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_632" class="comment-item">
+  <div class="portrait"><img alt="90e75a8899d596285011a6f17f98b4d8" src="http://www.gravatar.com/avatar/90e75a8899d596285011a6f17f98b4d8" /></div>
+  <div class="comment-text plain-text">
+    <p>working by switching to odorcicd branch as per kinsamqiu advise</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1346">renemendoza</a>
+    29 days ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6669" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6601">
+  <div class="portrait"><img alt="89eda15e6035c389763e66797485200e" src="http://www.gravatar.com/avatar/89eda15e6035c389763e66797485200e" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1342">handtwerk</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    2 comments
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    15 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_628" class="comment-item">
+  <div class="portrait"><img alt="89eda15e6035c389763e66797485200e" src="http://www.gravatar.com/avatar/89eda15e6035c389763e66797485200e" /></div>
+  <div class="comment-text plain-text">
+    <p>Logging in works, but the session record is nil. Neither amending the session model (to_key, Conversion, persisted?) nor switching to the odorcicd fork worked. </p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1342">handtwerk</a>
+    about 1 month ago</cite>
+</li>
+<li id="comment_646" class="comment-item">
+  <div class="portrait"><img alt="89eda15e6035c389763e66797485200e" src="http://www.gravatar.com/avatar/89eda15e6035c389763e66797485200e" /></div>
+  <div class="comment-text plain-text">
+    <p>Finally switched to Devise, sorry.</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1342">handtwerk</a>
+    23 days ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6601" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6480">
+  <div class="portrait"><img alt="Fb6eb60666f9c4e5cacbb23ab98e03c9" src="http://www.gravatar.com/avatar/fb6eb60666f9c4e5cacbb23ab98e03c9" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1330">Tulsaboyw</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    13 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_620" class="comment-item">
+  <div class="portrait"><img alt="Fb6eb60666f9c4e5cacbb23ab98e03c9" src="http://www.gravatar.com/avatar/fb6eb60666f9c4e5cacbb23ab98e03c9" /></div>
+  <div class="comment-text plain-text">
+    <p>gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3' 
+<br />rails g authlogic:session user_session</p>
+
+<p>When trying the above, I get no such file or directory... bundle install error in source.rb:551</p>
+
+<p>no hardlinks, etc..  </p>
+
+<p>Assumption is Im missing stuff..</p>
+
+<p>This is on rails 3.0 with 2.1.6.</p>
+
+<p>If i leave all of the git=> and only the 
+<br />gem authlogic ...no bundle error.</p>
+
+<p>and of course the rails g part didnt work per no generator found ('could not find generator  authlogic:session'</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1330">Tulsaboyw</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6480" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6332">
+  <div class="portrait"><img alt="Ae967ecde8438bf70c819e5c6a42b72f" src="http://www.gravatar.com/avatar/ae967ecde8438bf70c819e5c6a42b72f" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1320">cabgfx</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    9 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_615" class="comment-item">
+  <div class="portrait"><img alt="Ae967ecde8438bf70c819e5c6a42b72f" src="http://www.gravatar.com/avatar/ae967ecde8438bf70c819e5c6a42b72f" /></div>
+  <div class="comment-text plain-text">
+    <p>As previously mentioned, I added the <code>to_key</code> method in my User model, and it works.
+<br />Rails 3.0.0 + authlogic 2.1.6</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1320">cabgfx</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6332" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6331">
+  <div class="portrait"><img alt="1046d40347b8cfbdb75d852fbc3e9bec" src="http://www.gravatar.com/avatar/1046d40347b8cfbdb75d852fbc3e9bec" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1319">kagemusha</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    9 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_614" class="comment-item">
+  <div class="portrait"><img alt="1046d40347b8cfbdb75d852fbc3e9bec" src="http://www.gravatar.com/avatar/1046d40347b8cfbdb75d852fbc3e9bec" /></div>
+  <div class="comment-text plain-text">
+    <p>ActionView::Template::Error (undefined method `to_key' for #<UserSession: no credentials provided>):
+<br />    1: - user_session = @user_session || UserSession.new
+<br />    2: - form_for(user_session) do |f|
+</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1319">kagemusha</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6331" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6258">
+  <div class="portrait"><img alt="379a3a3ab7a1e9ff08f55f94d379f04f" src="http://www.gravatar.com/avatar/379a3a3ab7a1e9ff08f55f94d379f04f" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1315">EvanC</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    8 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_613" class="comment-item">
+  <div class="portrait"><img alt="379a3a3ab7a1e9ff08f55f94d379f04f" src="http://www.gravatar.com/avatar/379a3a3ab7a1e9ff08f55f94d379f04f" /></div>
+  <div class="comment-text plain-text">
+    <p>It will 'log in' but trying to get the session's record will always return nil. Even after 1) following the instructions below (to_key, Conversion, persisted?, etc), and bundling from the author's repository on github, it did NOT work.</p>
+
+<p>In the end I wound up getting another users' fixes from Github (odorcicd/authlogic, rails3 branch) which seems to work.</p>
+
+<p>I think it's very irresponsible that the author has tagged this as Working because the gem DOES NOT WORK.</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1315">EvanC</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6258" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6194">
+  <div class="portrait"><img alt="B4bf6a12d9ff18abfc1b69f855bb839e" src="http://www.gravatar.com/avatar/b4bf6a12d9ff18abfc1b69f855bb839e" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/665">case</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    7 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_609" class="comment-item">
+  <div class="portrait"><img alt="B4bf6a12d9ff18abfc1b69f855bb839e" src="http://www.gravatar.com/avatar/b4bf6a12d9ff18abfc1b69f855bb839e" /></div>
+  <div class="comment-text plain-text">
+    <p>authlogic still use deprecated function calls and so raise many deprecation warnings</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/665">case</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6194" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6189">
+  <div class="portrait"><img alt="D8cb80b1889c7d19fa9fb857a1180a0b" src="http://www.gravatar.com/avatar/d8cb80b1889c7d19fa9fb857a1180a0b" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1305">styx</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    7 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_608" class="comment-item">
+  <div class="portrait"><img alt="D8cb80b1889c7d19fa9fb857a1180a0b" src="http://www.gravatar.com/avatar/d8cb80b1889c7d19fa9fb857a1180a0b" /></div>
+  <div class="comment-text plain-text">
+    <p>This helped me:
+<br />gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3' 
+<br />rails g authlogic:session user_session</p>
+
+<p>Thanks to kinsamqiu.</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1305">styx</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6189" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_6102">
+  <div class="portrait"><img alt="9655b0a022093c449e610c7c6b70305a" src="http://www.gravatar.com/avatar/9655b0a022093c449e610c7c6b70305a" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1194">rockrep</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    4 September, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_605" class="comment-item">
+  <div class="portrait"><img alt="9655b0a022093c449e610c7c6b70305a" src="http://www.gravatar.com/avatar/9655b0a022093c449e610c7c6b70305a" /></div>
+  <div class="comment-text plain-text">
+    <p>Authlogic::AuthenticatesMany not functioning per documentation at http://rdoc.info/github/binarylogic/authlogic/master/Authlogic/AuthenticatesMany.   Using Rails 3.0.0.rc, Ruby 1.8.7-p174.
+<br />NoMethodError (undefined method `delete_if' for #<Proc:0x103bb3510>):  
+<br />authlogic (2.1.6) lib/authlogic/authenticates_many/base.rb:45:in `user_sessions'</p>
+
+<p>Example:
+<br />class Company < ActiveRecord::Base
+<br />  authenticates_many :user_sessions
+<br />  has_many :users 
+<br />end
+<br />class User < ActiveRecord::Base
+<br />  acts_as_authentic do |c|
+<br />    c.validations_scope = :company_id
+<br />  end
+<br /> belongs_to :company
+<br />end
+<br />class UserSession < Authlogic::Session::Base
+<br />end
+<br />class UserSessionsController < ApplicationController
+<br />  def create
+<br />    company = Company.find(params[:company_id])
+<br />    company.user_sessions.new(params[:user_session])   # causes NoMethodError
+<br />    ...
+<br />  end
+<br />end</p>
+
+<p></p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1194">rockrep</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="6102" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_5589">
+  <div class="portrait"><img alt="D633214bc2b9fb5b86c3714b83cfb24e" src="http://www.gravatar.com/avatar/d633214bc2b9fb5b86c3714b83cfb24e" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1250">kinsamqiu</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    2 comments
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    25 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_583" class="comment-item">
+  <div class="portrait"><img alt="D633214bc2b9fb5b86c3714b83cfb24e" src="http://www.gravatar.com/avatar/d633214bc2b9fb5b86c3714b83cfb24e" /></div>
+  <div class="comment-text plain-text">
+    <p>gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
+<br />rails g authlogic:session user_session
+</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1250">kinsamqiu</a>
+    about 1 month ago</cite>
+</li>
+<li id="comment_640" class="comment-item">
+  <div class="portrait"><img alt="72dcd90c9f10e5112860709d806f10a1" src="http://www.gravatar.com/avatar/72dcd90c9f10e5112860709d806f10a1" /></div>
+  <div class="comment-text plain-text">
+    <p>Thanks for this.   Was having difficulty getting it running on rails 3.  Turns out the problem was I was missing the authlogic: prefix from the generator</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1359">addsy</a>
+    27 days ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="5589" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_5588">
+  <div class="portrait"><img alt="4035ddfe11dbb2afc4e683b1bc6ac68f" src="http://www.gravatar.com/avatar/4035ddfe11dbb2afc4e683b1bc6ac68f" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/112">huacnlee</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    2 comments
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    25 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_581" class="comment-item">
+  <div class="portrait"><img alt="4035ddfe11dbb2afc4e683b1bc6ac68f" src="http://www.gravatar.com/avatar/4035ddfe11dbb2afc4e683b1bc6ac68f" /></div>
+  <div class="comment-text plain-text">
+    <p>undefined method `valid_password?' for #<User:0x1031e8760></p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/112">huacnlee</a>
+    about 1 month ago</cite>
+</li>
+<li id="comment_582" class="comment-item">
+  <div class="portrait"><img alt="4035ddfe11dbb2afc4e683b1bc6ac68f" src="http://www.gravatar.com/avatar/4035ddfe11dbb2afc4e683b1bc6ac68f" /></div>
+  <div class="comment-text plain-text">
+    <p>Oh, It my problem, I can't migrate the new db structure, It's woking fine now.</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/112">huacnlee</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="5588" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_5354">
+  <div class="portrait"><img alt="C7e64ae4740915cd152a7651a901a8a4" src="http://www.gravatar.com/avatar/c7e64ae4740915cd152a7651a901a8a4" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1222">jenjenut233</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    18 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_570" class="comment-item">
+  <div class="portrait"><img alt="C7e64ae4740915cd152a7651a901a8a4" src="http://www.gravatar.com/avatar/c7e64ae4740915cd152a7651a901a8a4" /></div>
+  <div class="comment-text plain-text">
+    <p>It works, however I get the following log output:</p>
+
+<p>DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from included at /Library/Ruby/Gems/1.8/gems/authlogic-2.1.6/lib/authlogic/acts_as_authentic/logged_in_status.rb:35)</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1222">jenjenut233</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="5354" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_5287">
+  <div class="portrait"><img alt="70b86492b31e21b0748cc637a6b2f05a" src="http://www.gravatar.com/avatar/70b86492b31e21b0748cc637a6b2f05a" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1216">gregf</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle comments-toggle-empty">
+    
+    Comment
+  </div>
+
+  <div class="date plain-text quiet">
+    16 August, 2010
+  </div>
+
+  <ul class="comment-list " style="display: none;">
+    
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="5287" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_5276">
+  <div class="portrait"><img alt="Cd2f0ae4617476af515cb312f4143b86" src="http://www.gravatar.com/avatar/cd2f0ae4617476af515cb312f4143b86" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1211">ibrahima</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    14 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_564" class="comment-item">
+  <div class="portrait"><img alt="Cd2f0ae4617476af515cb312f4143b86" src="http://www.gravatar.com/avatar/cd2f0ae4617476af515cb312f4143b86" /></div>
+  <div class="comment-text plain-text">
+    <p>http://github.com/binarylogic/authlogic/issues#issue/101 is still an issue, still doesn't work. But you can easily patch it with voxxit's branch.</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1211">ibrahima</a>
+    2 months ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="5276" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_5082">
+  <div class="portrait"><img alt="C09ba816e972efd478d14ca227e32ea6" src="http://www.gravatar.com/avatar/c09ba816e972efd478d14ca227e32ea6" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1197">scottnicolson</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    10 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_555" class="comment-item">
+  <div class="portrait"><img alt="C09ba816e972efd478d14ca227e32ea6" src="http://www.gravatar.com/avatar/c09ba816e972efd478d14ca227e32ea6" /></div>
+  <div class="comment-text plain-text">
+    <p>need to add to_key  method to user_session  model.  semantic form for not directing to the correct url</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1197">scottnicolson</a>
+    2 months ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="5082" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_4953">
+  <div class="portrait"><img alt="6180d7335815945eda8651e080be4b98" src="http://www.gravatar.com/avatar/6180d7335815945eda8651e080be4b98" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1186">balexand</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    9 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_551" class="comment-item">
+  <div class="portrait"><img alt="6180d7335815945eda8651e080be4b98" src="http://www.gravatar.com/avatar/6180d7335815945eda8651e080be4b98" /></div>
+  <div class="comment-text plain-text">
+    <p>But I was able to make it work with this:</p>
+
+<p>class UserSession < Authlogic::Session::Base
+<br />  include ActiveModel::Conversion 
+<br />  def persisted?
+<br />    false
+<br />  end
+<br />end</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1186">balexand</a>
+    2 months ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="4953" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_4909">
+  <div class="portrait"><img alt="A8f85c99c226595be3f9276cd04e243d" src="http://www.gravatar.com/avatar/a8f85c99c226595be3f9276cd04e243d" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/985">Oldumy</a>
+      
+      says
+    </span>
+    <span class="yes indicator-pill">
+      Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    2 comments
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    8 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_549" class="comment-item">
+  <div class="portrait"><img alt="A8f85c99c226595be3f9276cd04e243d" src="http://www.gravatar.com/avatar/a8f85c99c226595be3f9276cd04e243d" /></div>
+  <div class="comment-text plain-text">
+    <p>add to to_key method in your UserSession model as follows:</p>
+
+<p>  def to_key
+<br />    new_record? ? nil : [ self.send(self.class.primary_key) ]
+<br />  end</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/985">Oldumy</a>
+    2 months ago</cite>
+</li>
+<li id="comment_594" class="comment-item">
+  <div class="portrait"><img alt="866d3a21afb43ced99884aee43e0d126" src="http://www.gravatar.com/avatar/866d3a21afb43ced99884aee43e0d126" /></div>
+  <div class="comment-text plain-text">
+    <p>this works!! =)</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1281">daze21</a>
+    about 1 month ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="4909" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_4895">
+  <div class="portrait"><img alt="3cab87e8c516cb6aa0381e43d15b7720" src="http://www.gravatar.com/avatar/3cab87e8c516cb6aa0381e43d15b7720" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1172">hexorx</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    1 comment
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    6 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_547" class="comment-item">
+  <div class="portrait"><img alt="3cab87e8c516cb6aa0381e43d15b7720" src="http://www.gravatar.com/avatar/3cab87e8c516cb6aa0381e43d15b7720" /></div>
+  <div class="comment-text plain-text">
+    <p>ruby 1.8.7 
+<br />rails 3 beta release candidate</p>
+
+<p>undefined method `to_key' for <UserSession: no credentials provided></p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1172">hexorx</a>
+    2 months ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="4895" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+<li class="opinion-item" id="opinion_4862">
+  <div class="portrait"><img alt="71f4402df3b4cdc8230e9922d3c5af32" src="http://www.gravatar.com/avatar/71f4402df3b4cdc8230e9922d3c5af32" /></div>
+  <h4>
+    <span class="inline-text">
+      <a href="/users/1170">davidjrice</a>
+      
+      says
+    </span>
+    <span class="no indicator-pill">
+      Not Working
+    </span>
+  </h4>
+
+  <div class="plain-text toggle comments-toggle ">
+    2 comments
+    
+  </div>
+
+  <div class="date plain-text quiet">
+    5 August, 2010
+  </div>
+
+  <ul class="comment-list comments-present" style="display: none;">
+    <li id="comment_541" class="comment-item">
+  <div class="portrait"><img alt="71f4402df3b4cdc8230e9922d3c5af32" src="http://www.gravatar.com/avatar/71f4402df3b4cdc8230e9922d3c5af32" /></div>
+  <div class="comment-text plain-text">
+    <p>ruby 1.8.7
+<br />rails 3 beta release candidate</p>
+
+<p>undefined method `to_key' for #<UserSession: no credentials provided></p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1170">davidjrice</a>
+    2 months ago</cite>
+</li>
+<li id="comment_542" class="comment-item">
+  <div class="portrait"><img alt="71f4402df3b4cdc8230e9922d3c5af32" src="http://www.gravatar.com/avatar/71f4402df3b4cdc8230e9922d3c5af32" /></div>
+  <div class="comment-text plain-text">
+    <p>that should be...</p>
+
+<p>    undefined method `to_key' for UserSession: no credentials provided</p>
+  </div>
+  <cite class="">
+    posted by <a href="/users/1170">davidjrice</a>
+    2 months ago</cite>
+</li>
+
+    <li class="comment-item user">
+        <form action="/comments" class="comment-form" id="comment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="9BjKbw2900e5SCVcxhWoUyp2h+rBtTDuDN4IK5sHj9Y=" /></div>  <input id="comment_commentable_type" name="comment[commentable_type]" type="hidden" value="Opinion" />
+  <input id="comment_commentable_id" name="comment[commentable_id]" type="hidden" value="4862" />
+  <p class="toggle">Leave a Comment</p>
+  <span class="comment-submit" style="display: none;">
+    <label for="comment_comment" style="display: none;">Leave a Comment</label>
+    <textarea cols="40" id="comment_comment" name="comment[comment]" rows="20"></textarea>
+    <input id="comment_submit" name="commit" type="submit" value="Leave Comment" />
+  </span>
+</form>
+    </li>
+  </ul>
+</li>
+
+      </ul>
+    </div>
+
+
+
+  <div class="block flush">
+    <div class="selection right">
+<form action="/plugins/56-authlogic" method="get">        <fieldset>
+          <label for="version_id">Other versions:</label>
+          <select id="version_id" name="version_id"><option value="1071">2.1.6</option>
+<option value="695">2.1.5</option>
+<option value="677">2.1.4</option>
+<option value="43">2.1.3</option></select>
+        </fieldset>
+        <fieldset class="buttons">
+          <input name="commit" type="submit" value="Go!" />
+        </fieldset>
+</form>    </div>
+
+        
+      </div>
+      
+    </div>
+    
+    <div id="the_bottom">
+      
+      <div id="the_footer" class="bound">
+        
+        <div class="block small">
+          
+          <p class="attribution">
+            Created by <a href="http://www.engineyard.com">
+            <img alt="Engine Yard, Ruby on Rails Hosting" src="/images/logo-ey-horiz.png" id="EYLOGO"></a>. 
+            on <a href="http://www.engineyard.com/products/cloud">Engine Yard Cloud</a>.
+            Rails Maintenance &amp; Support by <a href="http://rubyx.com" title="RubyX - Complete Rails and Sinatra Development Solutions">
+            <img alt="RubyX, Sinatra and Rails Maintenance and Development" id="RXLOGO" src="/images/rubyx-long.png"></a>.
+          </p>
+
+          <ul class="footer_nav">
+            <li><a href="http://groups.google.com/group/railsplugins">Feedback</a></li>
+            <li><a href="/pages/about">About</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12869375-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

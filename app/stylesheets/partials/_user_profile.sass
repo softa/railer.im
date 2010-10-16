@@ -4,8 +4,14 @@
   .profile_image
     width: 300px
     float: left
+    img
+      +border-radius
   .profile_info
     margin-left: 300px
+    h3
+      font-weight: normal
+      font-size: 16px
+      color: #444
     .profile_name
       float: left
       width: 80%
@@ -17,11 +23,44 @@
     .profile_recommend
       float: left
       width: 20%
+      margin-bottom: 10px
+      .recommend_wrapper
+        +border-radius
+        +grad(#ddd,#aaa)
+        float: right
+        display: inline-block
+        padding: 14px 8px
+        span.recommendations
+          +border-radius
+          padding: 6px
+          background: white
     .left_column
       float: left
-      width: 38%
-      background: green
+      width: 36%
     .right_column
-      float: left
-      width: 62%
-      background: red
+      float: right
+      width: 60%
+    .personal_gems
+      +box-shadow(rgba(0,0,0,.4),0,1px,1px)
+      +border-radius
+      +grad(#F9f9f9,#c9c9c9)
+      padding: 10px
+      margin: 10px
+      ul
+        +reset-box-model
+        list-style: none
+        margin-top: 10px
+        li
+          +reset-box-model
+          display: inline-block
+          margin-right: 10px
+          margin-bottom: 10px
+          a
+            border: 1px solid #BBB
+            -webkit-box-shadow: #FFF 0 1px 0 inset, #FFF 0 1px 0
+            padding: 4px 8px
+            +border-radius(1em)
+            +grad(#EEE,#CCC)
+            white-space: nowrap
+            color: #555
+            text-shadow: #fff 0 1px 0

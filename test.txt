@@ -1,0 +1,69 @@
+(in /mnt/hgfs/ubuntu/railerim)
+Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
+Started
+........EE....EEEEE..............
+Finished in 8.4505 seconds.
+
+  1) Error:
+test_should_perform_1(GemfileWorkerTest):
+ActiveRecord::StatementInvalid: PGError: ERROR:  null value in column "description" violates not-null constraint
+: INSERT INTO "rubygems" ("authors", "bug_tracker_uri", "created_at", "description", "documentation_uri", "downloads", "gem_uri", "homepage_uri", "mailing_list_uri", "name", "project_uri", "source_code_uri", "updated_at", "version", "version_downloads", "wiki_uri") VALUES (default, default, '2010-10-16 09:52:55.265117', default, default, default, default, default, default, 'rails', default, default, '2010-10-16 09:52:55.265117', default, default, default) RETURNING "id"
+    /test/test_helper.rb:31:in `create_rubygem'
+    /test/unit/gemfile_worker_test.rb:15:in `test_should_perform_1'
+
+  2) Error:
+test_should_perform_2(GemfileWorkerTest):
+ActiveRecord::StatementInvalid: PGError: ERROR:  null value in column "description" violates not-null constraint
+: INSERT INTO "rubygems" ("authors", "bug_tracker_uri", "created_at", "description", "documentation_uri", "downloads", "gem_uri", "homepage_uri", "mailing_list_uri", "name", "project_uri", "source_code_uri", "updated_at", "version", "version_downloads", "wiki_uri") VALUES (default, default, '2010-10-16 09:52:55.313232', default, default, default, default, default, default, 'rails', default, default, '2010-10-16 09:52:55.313232', default, default, default) RETURNING "id"
+    /test/test_helper.rb:31:in `create_rubygem'
+    /test/unit/gemfile_worker_test.rb:48:in `test_should_perform_2'
+
+  3) Error:
+test_should_have_uri_-_homepage_uri(RubygemTest):
+ActiveRecord::StatementInvalid: PGError: ERROR:  null value in column "description" violates not-null constraint
+: INSERT INTO "rubygems" ("authors", "bug_tracker_uri", "created_at", "description", "documentation_uri", "downloads", "gem_uri", "homepage_uri", "mailing_list_uri", "name", "project_uri", "source_code_uri", "updated_at", "version", "version_downloads", "wiki_uri") VALUES (default, default, '2010-10-16 09:53:02.238528', default, default, default, default, default, default, 'rubygem 1', default, default, '2010-10-16 09:53:02.238528', default, default, default) RETURNING "id"
+    /test/test_helper.rb:31:in `create_rubygem'
+    /test/unit/rubygem_test.rb:6:in `setup'
+
+  4) Error:
+test_should_have_uri_-_project_uri(RubygemTest):
+ActiveRecord::StatementInvalid: PGError: ERROR:  null value in column "description" violates not-null constraint
+: INSERT INTO "rubygems" ("authors", "bug_tracker_uri", "created_at", "description", "documentation_uri", "downloads", "gem_uri", "homepage_uri", "mailing_list_uri", "name", "project_uri", "source_code_uri", "updated_at", "version", "version_downloads", "wiki_uri") VALUES (default, default, '2010-10-16 09:53:02.263752', default, default, default, default, default, default, 'rubygem 1', default, default, '2010-10-16 09:53:02.263752', default, default, default) RETURNING "id"
+    /test/test_helper.rb:31:in `create_rubygem'
+    /test/unit/rubygem_test.rb:6:in `setup'
+
+  5) Error:
+test_should_have_uri_-_wiki_uri(RubygemTest):
+ActiveRecord::StatementInvalid: PGError: ERROR:  null value in column "description" violates not-null constraint
+: INSERT INTO "rubygems" ("authors", "bug_tracker_uri", "created_at", "description", "documentation_uri", "downloads", "gem_uri", "homepage_uri", "mailing_list_uri", "name", "project_uri", "source_code_uri", "updated_at", "version", "version_downloads", "wiki_uri") VALUES (default, default, '2010-10-16 09:53:02.270504', default, default, default, default, default, default, 'rubygem 1', default, default, '2010-10-16 09:53:02.270504', default, default, default) RETURNING "id"
+    /test/test_helper.rb:31:in `create_rubygem'
+    /test/unit/rubygem_test.rb:6:in `setup'
+
+  6) Error:
+test_should_not_have_uri(RubygemTest):
+ActiveRecord::StatementInvalid: PGError: ERROR:  null value in column "description" violates not-null constraint
+: INSERT INTO "rubygems" ("authors", "bug_tracker_uri", "created_at", "description", "documentation_uri", "downloads", "gem_uri", "homepage_uri", "mailing_list_uri", "name", "project_uri", "source_code_uri", "updated_at", "version", "version_downloads", "wiki_uri") VALUES (default, default, '2010-10-16 09:53:02.278118', default, default, default, default, default, default, 'rubygem 1', default, default, '2010-10-16 09:53:02.278118', default, default, default) RETURNING "id"
+    /test/test_helper.rb:31:in `create_rubygem'
+    /test/unit/rubygem_test.rb:6:in `setup'
+
+  7) Error:
+test_should_perform(RubygemsWorkerTest):
+ActiveRecord::StatementInvalid: PGError: ERROR:  null value in column "description" violates not-null constraint
+: INSERT INTO "rubygems" ("authors", "bug_tracker_uri", "created_at", "description", "documentation_uri", "downloads", "gem_uri", "homepage_uri", "mailing_list_uri", "name", "project_uri", "source_code_uri", "updated_at", "version", "version_downloads", "wiki_uri") VALUES (default, default, '2010-10-16 09:53:02.286991', default, default, default, default, default, default, 'foo', default, default, '2010-10-16 09:53:02.286991', default, default, default) RETURNING "id"
+    /test/test_helper.rb:31:in `create_rubygem'
+    /test/unit/rubygem_worker_test.rb:9:in `setup'
+
+33 tests, 126 assertions, 0 failures, 7 errors
+Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
+Started
+.......E........
+Finished in 1.58557 seconds.
+
+  1) Error:
+test_should_show_rubygem(RubygemsControllerTest):
+ActiveRecord::StatementInvalid: PGError: ERROR:  null value in column "description" violates not-null constraint
+: INSERT INTO "rubygems" ("authors", "bug_tracker_uri", "created_at", "description", "documentation_uri", "downloads", "gem_uri", "homepage_uri", "mailing_list_uri", "name", "project_uri", "source_code_uri", "updated_at", "version", "version_downloads", "wiki_uri") VALUES (default, default, '2010-10-16 09:53:14.885893', default, default, default, default, default, default, 'rails', default, default, '2010-10-16 09:53:14.885893', default, default, default) RETURNING "id"
+    /test/functional/../test_helper.rb:31:in `create_rubygem'
+    /test/functional/rubygems_controller_test.rb:14:in `test_should_show_rubygem'
+
+16 tests, 22 assertions, 0 failures, 1 errors

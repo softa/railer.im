@@ -11,7 +11,7 @@ class RubygemsControllerTest < ActionController::TestCase
   end
 
   test "should show rubygem" do
-    @rubygem = Rubygem.create :name => 'rails'  
+    @rubygem = create_rubygem :name => 'rails'  
     get :show, :id => @rubygem.to_param
     assert_response :success
     assert_select '#gem_name', 'rails'

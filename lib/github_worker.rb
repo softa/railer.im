@@ -16,7 +16,6 @@ class GithubWorker
       :public_gist_count => user.public_gist_count,
       :gravatar_id => user.gravatar_id,
       :location => u.location || user.location,
-      # :login => user.login,
       :accuracy => location.accuracy,
       :city => location.city,
       :province => location.province,

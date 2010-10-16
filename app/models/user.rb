@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   scope :recent, order('id desc')
   scope :six, limit(6)
+  scope :by_vip, order('score desc')
   
   def used_gems
     Rubygem.used_by(self).all

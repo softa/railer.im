@@ -12,6 +12,25 @@ class GemfileWorkerTest < ActiveSupport::TestCase
     URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => gemfile}))
 
     repo = create_repository
+    create_rubygem(:name => 'rails')
+    create_rubygem(:name => 'haml')
+    create_rubygem(:name => 'inherited_resources')
+    create_rubygem(:name => 'labelize')
+    create_rubygem(:name => 'resque')
+    create_rubygem(:name => 'octopi')
+    create_rubygem(:name => 'gravtastic')
+    create_rubygem(:name => 'hpricot')
+    create_rubygem(:name => 'twitter')
+    create_rubygem(:name => 'compass')
+    create_rubygem(:name => 'authlogic')
+    create_rubygem(:name => 'geokit')
+    create_rubygem(:name => 'wirble')
+    create_rubygem(:name => 'jquery-rails')
+    create_rubygem(:name => 'mongrel')
+    create_rubygem(:name => 'will_paginate')
+    create_rubygem(:name => 'pg')
+    create_rubygem(:name => 'mocha')
+    create_rubygem(:name => 'unicorn')
     GemfileWorker.perform repo.id
     repo.reload
     assert_equal 19, repo.dependencies.count
@@ -26,6 +45,11 @@ class GemfileWorkerTest < ActiveSupport::TestCase
     URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => gemfile}))
 
     repo = create_repository
+    create_rubygem(:name => 'rails')
+    create_rubygem(:name => 'pg')
+    create_rubygem(:name => 'mocha')
+    create_rubygem(:name => 'foo')
+    create_rubygem(:name => 'unicorn')
     GemfileWorker.perform repo.id
     repo.reload
     assert_equal 5, repo.dependencies.count

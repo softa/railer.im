@@ -6,7 +6,7 @@ class RubygemsWorkerTest < ActiveSupport::TestCase
   def setup
     json = File.read("#{Rails.root}/test/fixtures/rubygem.json")
     URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => json}))
-    @rubygem = Rubygem.create :name => 'foo'
+    @rubygem = create_rubygem :name => 'foo'
   end
 
   def teardown

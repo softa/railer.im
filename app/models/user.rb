@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   label :name, :login
   belongs_to :company
-  # Recomendation
-  has_many :recomendations_made, :class_name => 'Recomendation', :foreign_key => 'recomends_id'
-  has_many :recomendations_received, :class_name => 'Recomendation', :foreign_key => 'recomended_id'
-  has_many :recomends, :class_name => 'User', :through => :recomendations_made
-  has_many :recomended_by, :class_name => 'User', :through => :recomendations_received
+  # Recommendation
+  has_many :recommendations_made, :class_name => 'Recommendation', :foreign_key => 'recommends_id'
+  has_many :recommendations_received, :class_name => 'Recommendation', :foreign_key => 'recommended_id'
+  has_many :recommends, :class_name => 'User', :through => :recommendations_made
+  has_many :recommended_by, :class_name => 'User', :through => :recommendations_received
 
   # GitFollower
   has_many :git_followers, :class_name => 'GitFollower', :foreign_key => 'followee_id'
@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
 
   acts_as_authentic
   
-  def recomend(recomended_user)
-    recomendations_made.create(:recomended_id => recomended_user.id)
+  def recommend(recommended_user)
+    recommendations_made.create(:recommended_id => recommended_user.id)
   end
   
   def is_followed_by login

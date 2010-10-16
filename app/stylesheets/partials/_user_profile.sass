@@ -6,6 +6,18 @@
     float: left
     img
       +border-radius
+    .user_score
+      margin-top: 10px
+      width: 236px
+      +border-radius
+      +grad(#1Ca,#061)
+      padding: 4px 10px
+      font-weight: 900
+      color: white
+      img
+        vertical-align: middle
+      strong
+        line-height: 28px
   .profile_info
     margin-left: 300px
     h3
@@ -14,7 +26,7 @@
       color: #444
     .profile_name
       float: left
-      width: 80%
+      width: 75%
       margin-bottom: 10px
       h1
         +reset-box-model
@@ -22,7 +34,7 @@
           font-family: $blueprint-fixed-font-family
     .profile_recommend
       float: left
-      width: 20%
+      width: 25%
       margin-bottom: 10px
       .recommend_wrapper
         +border-radius
@@ -56,6 +68,7 @@
           margin-right: 10px
           margin-bottom: 10px
           a
+            font-weight: 900
             border: 1px solid #BBB
             -webkit-box-shadow: #FFF 0 1px 0 inset, #FFF 0 1px 0
             padding: 4px 8px
@@ -64,3 +77,9 @@
             white-space: nowrap
             color: #555
             text-shadow: #fff 0 1px 0
+            &:hover
+              +grad(#FFF,#BBB)
+              text-decoration: none
+              color: #333
+            &:active
+              +grad(#CCC,#EEE)

@@ -8,9 +8,10 @@ $('#new_user_session').submit(function(){
   return false
 })
 
-$('#login_error h2').ajaxError(function(e, xhr, settings, exception) {
+$('#login_error').ajaxError(function(e, xhr, settings, exception) {
   // This handles login errors
   if(settings.url == '/user_sessions'){
+    $(this).fadeIn()
     $(this).text('Incorrect login or password.')
   }
 })

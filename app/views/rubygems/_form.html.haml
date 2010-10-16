@@ -5,7 +5,6 @@
       %ul
       - @rubygem.errors.full_messages.each do |msg|
         %li= msg
-  
   .field
     = f.label :name
     %br
@@ -58,6 +57,5 @@
     = f.label :mailing_list_uri
     %br
     = f.text_area :mailing_list_uri
-
   .actions
     = f.submit

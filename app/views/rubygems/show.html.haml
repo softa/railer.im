@@ -1,37 +1,49 @@
 #rubygem_profile
   .container
     .span-6
-      RUBYGEM IMAGE
+      .rubygem_image
+        RUBYGEM IMAGE
     .span-18.last
       .gem_info
         %span.download #{@rubygem.downloads}
-        %h1
-          %span.quiet Gem name:
-          %span.loud #{@rubygem.name}
-        %h3
-          Version
-          %br
-          %strong #{@rubygem.version}
-        %h3
-          Authors
-          %br
-          %strong #{@rubygem.authors}
-        #{@rubygem.description}
+        %h1 #{@rubygem.name}
+        .clear
+      .clear
+      .span-8.append-1
+        %strong.small_caps Description
+        %p #{@rubygem.description}
+        %hr
+        %strong.small_caps Version
+        %h2 #{@rubygem.version}
+        %hr 
+        %strong.small_caps Authors
+        %h2 #{@rubygem.authors}
+      .span-9.last
+        %strong.small_caps #{Rubygem.human_attribute_name :version_downloads}
+        %p= @rubygem.version_downloads
         -#
-          %dt= Rubygem.human_attribute_name :version_downloads
-          %dd= @rubygem.version_downloads
-          %dt= Rubygem.human_attribute_name :homepage_uri
-          %dd= @rubygem.homepage_uri
-          %dt= Rubygem.human_attribute_name :project_uri
-          %dd= @rubygem.project_uri
-          %dt= Rubygem.human_attribute_name :gem_uri
-          %dd= @rubygem.gem_uri
-          %dt= Rubygem.human_attribute_name :source_code_uri
-          %dd= @rubygem.source_code_uri
-          %dt= Rubygem.human_attribute_name :bug_tracker_uri
-          %dd= @rubygem.bug_tracker_uri
-          %dt= Rubygem.human_attribute_name :wiki_uri
-          %dd= @rubygem.wiki_uri
-          %dt= Rubygem.human_attribute_name :mailing_list_uri
-          %dd= @rubygem.mailing_list_uri
+          %hr
+          %strong.small_caps= Rubygem.human_attribute_name :homepage_uri
+          %p= @rubygem.homepage_uri
+          %hr
+          %strong.small_caps= Rubygem.human_attribute_name :project_uri
+          %p= @rubygem.project_uri
+          %hr
+          %strong.small_caps= Rubygem.human_attribute_name :gem_uri
+          %p= @rubygem.gem_uri
+          %hr
+          %strong.small_caps= Rubygem.human_attribute_name :source_code_uri
+          %p= @rubygem.source_code_uri
+          %hr
+          %strong.small_caps= Rubygem.human_attribute_name :bug_tracker_uri
+          %p= @rubygem.bug_tracker_uri
+          %hr
+          %strong.small_caps= Rubygem.human_attribute_name :wiki_uri
+          %p= @rubygem.wiki_uri
+          %hr
+          %strong.small_caps= Rubygem.human_attribute_name :mailing_list_uri
+          %p= @rubygem.mailing_list_uri
     .clear
+.footer
+  .container
+    %h3 See who is using this Gem

@@ -6,7 +6,7 @@
         %span.email
         \.
     .input_wrapper
-      = f.text_field :login, :id => :github_name_signup, :placeholder => 'github username', :required => true
+      = f.text_field :login, :id => :github_name_signup, :placeholder => 'github username', :required => true, :autocomplete => :off
       -# %input#github_name_signup{:name => 'user[login]', :type => :text, :placeholder => 'github username', :required => true }
       .button
         %strong Signup

@@ -1,5 +1,10 @@
 Railerim::Application.routes.draw do
-  resources :teams, :only => [:show]
+
+  get "locations/index"
+  get "locations/city"
+  get "locations/country"
+  resources :companies, :only => [:index,:show]
+  resources :teams, :only => [:index, :show]
   match 'users/set_password' => 'users#set_password', :as => :set_password
   resources :users, :only => [:show, :create, :update]
   resources :rubygems, :only => [:index, :show]

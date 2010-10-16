@@ -117,7 +117,7 @@
 <ul>
     
     <li><a name="public.schema">public</a></li><ul>
-    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.downloads">downloads</a></li><li><a href="#public.table.git-followers">git_followers</a></li><li><a href="#public.table.recommendations">recommendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.team-memberships">team_memberships</a></li><li><a href="#public.table.teams">teams</a></li><li><a href="#public.table.twitter-followers">twitter_followers</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
+    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.downloads">downloads</a></li><li><a href="#public.table.git-followers">git_followers</a></li><li><a href="#public.view.locations">locations</a></li><li><a href="#public.table.recommendations">recommendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.team-memberships">team_memberships</a></li><li><a href="#public.table.teams">teams</a></li><li><a href="#public.table.twitter-followers">twitter_followers</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
   	
     </ul>
     
@@ -969,6 +969,120 @@
     
 
 	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			<a name="public.view.locations">locations</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>locations Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>lat</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>lng</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>total</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT to_char
+(users.lat
+     ,&#39;999D999&#39;::text
+) AS lat
+, to_char
+(users.lng
+     ,&#39;999D999&#39;::text
+) AS lng
+, count
+(*) AS total 
+FROM users 
+GROUP BY to_char
+(users.lat
+     ,&#39;999D999&#39;::text
+)
+, to_char
+(users.lng
+     ,&#39;999D999&#39;::text
+)
+ORDER BY count
+(*) DESC;</pre>
 	
 
 	<!-- List off permissions -->
@@ -3420,6 +3534,38 @@
                 
                 </td>
             	<td>wwr_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>score</td>
+            	<td>integer</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>level</td>
             	<td>integer</td>
                 <td><i>
 				

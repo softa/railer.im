@@ -1,5 +1,5 @@
 class TeamsController < InheritedResources::Base
-  actions :show
+  actions :show,:index
 protected
   before_filter :set_near_teams
   def set_near_teams

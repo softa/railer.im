@@ -117,7 +117,7 @@
 <ul>
     
     <li><a name="public.schema">public</a></li><ul>
-    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.downloads">downloads</a></li><li><a href="#public.table.git-followers">git_followers</a></li><li><a href="#public.table.recommendations">recommendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.teams">teams</a></li><li><a href="#public.table.twitter-followers">twitter_followers</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
+    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.downloads">downloads</a></li><li><a href="#public.table.git-followers">git_followers</a></li><li><a href="#public.table.recommendations">recommendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.table.team-memberships">team_memberships</a></li><li><a href="#public.table.teams">teams</a></li><li><a href="#public.table.twitter-followers">twitter_followers</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
   	
     </ul>
     
@@ -2004,6 +2004,202 @@
 	
         <hr>
 		<h2>Table:
+			<a name="public.table.team-memberships">team_memberships</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>team_memberships Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>id</td>
+            	<td>serial</td>
+                <td><i>
+				
+					PRIMARY KEY
+					
+
+					
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                  <a href="#public.table.teams">teams.id</a>
+                  
+                
+                  
+                
+                  
+                
+                </td>
+            	<td>team_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+					
+
+					
+                       UNIQUE#2
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                  
+                  <a href="#public.table.users">users.id</a>
+                  
+                
+                </td>
+            	<td>user_id</td>
+            	<td>integer</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE#2
+                    
+				
+					
+
+					
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>name</td>
+            	<td>text</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE#1
+                    
+				
+
+				NOT NULL
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>created_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>updated_at</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+		
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
+		<h2>Table:
 			<a name="public.table.teams">teams</a>
 		</h2>
         
@@ -2169,6 +2365,38 @@
 				</td>
 			 </tr>
             
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>thumbnail</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>image</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
         </table>
 
         <!-- Inherits -->
@@ -2186,7 +2414,7 @@
 			<p>Tables referencing this one via Foreign Key Constraints:</p>
 		
 			<ul>
-				<li><a href="#public.table.users">users</a></li>
+				<li><a href="#public.table.team-memberships">team_memberships</a></li>
 			</ul>
 		
 		
@@ -3187,30 +3415,6 @@
 				</td>
 			 </tr>
             
-            <tr class="tr1">
-				<td>
-                
-                  
-                  <a href="#public.table.teams">teams.id</a>
-                  
-                
-                </td>
-            	<td>team_id</td>
-            	<td>integer</td>
-                <td><i>
-				
-					
-
-					
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
         </table>
 
         <!-- Inherits -->
@@ -3241,6 +3445,10 @@
 		
 			<ul>
 				<li><a href="#public.table.repositories">repositories</a></li>
+			</ul>
+		
+			<ul>
+				<li><a href="#public.table.team-memberships">team_memberships</a></li>
 			</ul>
 		
 			<ul>

@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   label :name, :login
   belongs_to :company
-  belongs_to :team
+  has_one :team_membership
+
   # Recommendation
   has_many :recommendations_made, :class_name => 'Recommendation', :foreign_key => 'recommends_id'
   has_many :recommendations_received, :class_name => 'Recommendation', :foreign_key => 'recommended_id'

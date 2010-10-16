@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class TeamTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "should create team" do
+    create_team
+    assert_equal 1, Team.count
+  end
+
+  test "should be able to insert team members" do
   end
 end

@@ -1,14 +1,13 @@
 class User < ActiveRecord::Base
-  label :name, :login
+
+  acts_as_authentic
   belongs_to :company
   has_one :team_membership
-
   # Recommendation
   has_many :recommendations_made, :class_name => 'Recommendation', :foreign_key => 'recommends_id'
   has_many :recommendations_received, :class_name => 'Recommendation', :foreign_key => 'recommended_id'
   has_many :recommends, :class_name => 'User', :through => :recommendations_made
   has_many :recommended_by, :class_name => 'User', :through => :recommendations_received
-
   # GitFollower
   has_many :git_followers, :class_name => 'GitFollower', :foreign_key => 'followee_id'
   has_many :git_followees, :class_name => 'GitFollower', :foreign_key => 'follower_id'
@@ -23,7 +22,10 @@ class User < ActiveRecord::Base
   has_many :authorships
   has_many :owned_gems, :class_name => 'Rubygem', :through => :authorships, :source => :rubygem
 
-  acts_as_authentic
+  label :name, :login
+
+  scope :recent, order('id desc')
+  scope :six, limit(6)
   
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)

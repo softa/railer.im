@@ -24,7 +24,6 @@ $('form#signup .message_wrapper').ajaxError(function(e, xhr, settings, exception
 	  login = json['login']		
       $(this).text('Profile ' + login)
 	}
-
   }
 })
 $('form#signup').submit(function(){

@@ -10,7 +10,18 @@ class Rubygem < ActiveRecord::Base
   end
 
   def update_authorship
-    connection.execute ""
+    new_authors = authors_names.split(",").map{|a| a.strip }
+    old_authors = authorships.map{|a| a.author_name }
+    authors_to_be_removed = old_authors - new_authors
+    authors_to_be_created = new_authors - old_authors
+    # First we remove only the authors that are no longer in the gem (to preserve already existing associations)
+    authorships.each do |a|
+      a.destroy if authors_to_be_removed.include? a.author_name
+    end
+    # Then we insert only new authors
+    authors_to_be_created.each do |name|
+      authorships.create :author_name => name
+    end
   end
 protected
 

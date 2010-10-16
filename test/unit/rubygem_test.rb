@@ -35,4 +35,14 @@ class RubygemTest < ActiveSupport::TestCase
     assert_equal 3, Authorship.count
     assert_equal Set.new(['Author 1', 'Dr. Author 2', 'Sir Author 3']), Set.new(Authorship.all.map{|a| a.author_name})
   end
+
+  test "should remove from table authorships those who are no longer in authors_names while preserving the others" do
+    authorships = ['Author 1', 'Dr. Author 2', 'Sir Author 3'].map{ |name| @rubygem.authorships.create! :author_name => name }
+    assert_equal 3, Authorship.count
+    @rubygem.update_attribute :authors_names, 'Author 1, Dr. Author, Sir Author 3'
+    @rubygem.update_authorship
+    assert_equal Set.new(['Author 1', 'Dr. Author', 'Sir Author 3']), Set.new(Authorship.all.map{|a| a.author_name})
+    assert_equal(authorships[0], Authorship.find_by_author_name('Author 1'))
+    assert_equal(authorships[2], Authorship.find_by_author_name('Sir Author 3'))
+  end
 end

@@ -14,6 +14,7 @@
               = link_to 'Login', '#', :id => 'open_login_form'
           &middot;&nbsp;
           %input#search{ :type => :search, :placeholder => 'Search' }
+          #{link_to image_tag('rumble_small.png', :style => 'vertical-align: middle'), 'http://railsrumble.com/teams/softa', :target=> :_blank, :title => 'Softa Team @ Rails Rumble MMX'}
     .clear
 - unless current_user
   .page_overlay.hide

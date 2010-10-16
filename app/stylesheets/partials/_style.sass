@@ -1,6 +1,7 @@
 @import "partials/home"
 @import "partials/user_profile"
 @import "partials/rubygems"
+@import "partials/teams"
 body
   +blueprint(true)
   background-color: #F90
@@ -18,7 +19,6 @@ body
     height: 52px
     background: white
     img
-      margin-top: 4px
       &:hover
         background: url(/images/railerim_logo_small_background.png) no-repeat center center
     form
@@ -47,7 +47,7 @@ body
     &:active
       position: relative
       top: 1px
-  #home, #rubygem_profile, #railer_profile, #company_profile, #team_profile
+  .content_wrapper
     margin-top: 52px
     padding-bottom: 30px
     border-bottom: 1px solid #F90

@@ -1,30 +1,20 @@
-#rubygem_profile
+#teams_profile.content_wrapper
   .container
-    .span-7
-      .rubygem_image
-        - if @team.thumbnail
-          = image_tag @team.thumbnail
-    .span-17.last
-      .info_wrapper
-        .header
-          %h1#team_name #{@team.name}
-          .detail
-            %span.level
+    .wrapper
+      .span-7
+        .image_wrapper
+          - if @team.thumbnail
+            = image_tag @team.thumbnail
+      .span-17.last
+        .info_wrapper
+          .header
+            %h1#team_name #{@team.name}
+            .clear
           .clear
-        .clear
-        .rubygem_info_wrapper
           .left_column
             %strong.small_caps Description
             %p #{@team.what}
-          .right_column
-            %strong.small_caps Tools
-            - if not @team.how.nil?
-              - for how in @team.how
-                %br
-                = how
-          .clear
-          %hr
-          .left_column
+            %hr
             %dl
               - if not @team.where.nil?
                 - @team.where.each do |what,link|
@@ -32,24 +22,26 @@
                     %strong.small_caps= what
                   %dd
                     %p= nice_link link
-              
           .right_column
+            %strong.small_caps Tools
+            - if not @team.how.nil?
+              - for how in @team.how
+                %br
+                = how
+            %hr
             %dl
               %dt
                 %strong.small_caps Near Teams
-              %dd
-                %p 
+              %dd &nbsp;
               - for team in @near_teams
                 %dt
                   %strong.small_caps= team.name
                 %dd
-                  %p
-                    - if team.thumbnail
-                      = image_tag team.thumbnail, :style => 'width:30px'
-                    = link_to team, team.team_home
-
-          .clear
-    .clear
+                  - if team.thumbnail
+                    = image_tag team.thumbnail, :style => 'height:24px;vertical-align:middle'
+                  = link_to team, team.team_home
+            .clear
+      .clear
 .footer
   .container
     .gem_users

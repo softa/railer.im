@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
     self.active = true
     save
   end
+  
+  def activated?
+    self.active?
+  end
   # TODO write a test for this
   
 protected

@@ -3,12 +3,14 @@ class GithubWorker
 
   def self.perform(user_id)
     u = User.find(user_id)
-    user = Octopi::User.find u.github
+    raise u.inspect
+    user = Octopi::User.find u.login
     company = Company.find_or_create_by_name user.company
+    raise company.inspect
     u.update_attributes :name => user.name,
       :email => user.email,
       :company_name => user.company,
-      :company => company,
+      :company_id => company.id,
       :public_repo_count => user.public_repo_count,
       :blog => user.blog,
       :github_id => user.id,

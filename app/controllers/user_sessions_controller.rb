@@ -11,6 +11,7 @@ class UserSessionsController < ApplicationController
   def token_auth
     @user = User.find_using_perishable_token(params[:token])
     if params[:token] and @user
+      @user.activate! unless @user.activated?
       @user_session = UserSession.create! @user
       return redirect_to(profile_path(@user))
     else

@@ -3,8 +3,12 @@
     .wrapper
       .span-7
         %h1
-          = image_tag "flags/#{@users.first.country_code.downcase}.png"
+          - unless @users.empty?
+            = image_tag "flags/#{@users.first.country_code.downcase}.png"
           #{@country} 
-        - for user in @users
-          = link_to user.name, profile_path(user)
-          %br
+        - if @users.empty?
+          %em No railers in this country. You should start a group there, man!
+        - else
+          - for user in @users
+            = link_to user.name, profile_path(user)
+            %br

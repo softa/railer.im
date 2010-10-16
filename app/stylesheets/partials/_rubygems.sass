@@ -1,16 +1,29 @@
 body
   #rubygem_profile
+    .rubygem_image
+      margin-top: 30px
     .gem_info
-      +border-radius(1em)
-      +box-shadow
-      +grad(#FFF,#AAA)
-      margin: 30px
+      +border-radius(4px)
+      +grad(#555,#000)
+      +box-shadow(#888, 0, 1px, 1px, inset)
+      border: 1px solid #222
+      margin-top: 30px
       padding: 1em
       h1
-        background: white
-        padding: .25em .5em
+        float: left
+        +reset-box-model
+        color: white
+        text-shadow: #000 0 -1px 0
+        font-weight: 100
+        font-family: $blueprint-fixed-font-family
         +border-radius(6px)
     span.download
+      background: white url(/images/icons/inbox-download.png) no-repeat 4px center
+      +border-radius(2px)
+      +box-shadow(rgba(#000,.4),0,1px,2px, inset)
+      padding: 4px 4px 4px 24px
       float: right
-      font-size: 18px
+      font:
+        size: 22px
+        weight: 100
       color: #777

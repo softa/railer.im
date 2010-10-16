@@ -808,6 +808,11 @@ INSERT INTO schema_migrations (version) VALUES ('20101016003854');
 
 INSERT INTO schema_migrations (version) VALUES ('20101016005120');
 
+<<<<<<< HEAD
+=======
+INSERT INTO schema_migrations (version) VALUES ('20101016010824');
+
+>>>>>>> 3c53474314e7d862e1c1f4f4f3d1a1b6a793664f
 INSERT INTO schema_migrations (version) VALUES ('20101016013527');
 
 INSERT INTO schema_migrations (version) VALUES ('20101016015141');

@@ -1,2 +1,2 @@
 Fugue Icons: http://code.google.com/p/fugue-icons-src/
-
+jQuery Tools: http://flowplayer.org/tools/index.html

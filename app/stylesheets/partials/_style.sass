@@ -20,6 +20,8 @@ body
     background: white
     h1
       +reset-box-model
+      img:hover
+        background-image: url(/images/railerim_logo_small_bg.png)
     form
       padding-top: 12px
       text-align: right
@@ -83,6 +85,10 @@ body
     +grad(rgba(#F55,.8),rgba(#F90,1))
     height: 400px
     border-top: 1px solid #EEE
+    .small_caps
+      color: #b22
+      font-size: 18px
+      text-shadow: rgba(#fff,.5) 0 1px 0
   .page_overlay
     background: rgba(0,0,0,.9)
     position: absolute
@@ -180,6 +186,7 @@ body
     letter-spacing: 3px
     line-height: 32px
     +border-radius(6px)
+    -webkit-font-smoothing: subpixel-antialiased
     font:
       size: 22px
     span

@@ -52,3 +52,40 @@
         +border-radius
         padding: 6px
         background: white
+.followers, .used_rubygems
+  margin: 1em 0
+  ul, li
+    list-style: none
+    +reset-box-model
+  li
+    display: inline-block
+    margin: 0 4px 8px 0
+    img
+      vertical-align: middle
+      border: 1px solid white
+    a
+      border: 1px solid #888
+      +box-shadow(#fff,0,1px,0,inset)
+      +grad(#DDD,#999)
+      +border-radius(4px)
+      padding: 4px
+      display: block
+      font-weight: 900
+      text-shadow: #fff 0 1px 0
+      color: #444
+      &:hover
+        +grad(#EEE,#AAA)
+        color: #222
+        text-decoration: none
+      &:active
+        +grad(#999,#DDD)
+        color: #111
+        text-decoration: none
+.used_rubygems
+  ul
+    +reset-box-model
+    li
+      display: inline-block
+      a
+        padding: 4px 8px
+        +grad(#fff,#ccc)

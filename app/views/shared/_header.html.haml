@@ -1,7 +1,7 @@
 %header
   .container
     .span-6
-      %h1 #{link_to image_tag('railerim_logo_small.png', :id => 'logo'), root_path}
+      %h1{:style => 'margin-top: 4px;'} #{link_to image_tag('railerim_logo_small.png', :id => 'logo'), root_path}
     .span-18.last
       %form
         %fieldset
@@ -12,9 +12,7 @@
               = link_to 'Logout', user_sessions_path, :method => :delete
             - else
               = link_to 'Login', '#', :id => 'open_login_form'
-          &middot;&nbsp;
           %input#search{ :type => :search, :placeholder => 'Search' }
-          #{link_to image_tag('rumble_small.png', :style => 'vertical-align: middle'), 'http://railsrumble.com/teams/softa', :target=> :_blank, :title => 'Softa Team @ Rails Rumble MMX'}
     .clear
 - unless current_user
   .page_overlay.hide

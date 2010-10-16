@@ -22,20 +22,24 @@
             .clear
           .clear
           .left_column
-            .company_name
-              %strong.small_caps Company
-              %h3 #{@user.company_name}
-            %hr
-            .blog
-              %strong.small_caps Blog
-              %h3 #{@user.blog}
-            %hr
-            .location
-              %strong.small_caps Location
-              %h3 #{@user.location}
-            %hr
-            .bio
-              %strong.small_caps Bio
+            - unless @user.company_name.empty?
+              .company_name
+                %strong.small_caps Company
+                %h3 #{@user.company_name}
+            - unless @user.blog.empty?
+              %hr
+              .blog
+                %strong.small_caps Blog
+                %h3 #{@user.blog}
+            - unless @user.location.empty?
+              %hr
+              .location
+                %strong.small_caps Location
+                %h3 #{@user.location}
+            -#
+              %hr
+              .bio
+                %strong.small_caps Bio
           .right_column
             - unless @user.owned_gems.empty?
               .personal_gems
@@ -45,20 +49,32 @@
                   - @user.owned_gems.each do |g|
                     %li
                       %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
-            .recommended
-              %strong.small_caps Recommended
-              #{@user.recommends}
-            %hr
+            - unless @user.recommends.empty?
+              .recommended
+                %strong.small_caps Recommended
+                #{@user.recommends}
+              %hr
             .owns_the_repos
               %strong.small_caps Repositories
               %h3 #{@user.public_repo_count}
 = javascript_include_tag 'user_profile.js'
+- require 'forgery'
 %footer
   .container
-    .span-12
+    .span-11.append-1
       .followers
         %strong.small_caps Followers
-    .span-12.last
+        %ul
+          - 20.times do
+            %li
+              = link_to user_path(@user) do
+                #{gravatar(@user.gravatar_id,24)}
+                #{Forgery::Internet.user_name}
+    .span-11.prepend-1.last
       .used_rubygems
-        
-        %strong.small_caps Rubygems
+        %strong.small_caps Used rubygems
+        %ul
+          - 20.times do
+            %li
+              = link_to rubygems_path(Forgery::Name.company_name.downcase) do
+                %samp #{Forgery::Name.company_name.downcase}

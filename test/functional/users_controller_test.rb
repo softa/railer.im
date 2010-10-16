@@ -4,6 +4,10 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UsersControllerTest < ActionController::TestCase
 
   setup do
+    setup_octopi_user
+  end
+  teardown do
+    Mocha::Mockery.instance.stubba.unstub_all
   end
 
   {:new => :get, :edit => :get, :destroy => :delete}.each{|k,v|
@@ -22,7 +26,8 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should show user" do
-    @user = User.create! :login => 'softa', :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
+    @user = User.create! :login => 'softa'
+    @user.update_attributes :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
     get :show, :id => @user.to_param
     assert_response :success
     assert_select 'h1', 'Juan Maiz'

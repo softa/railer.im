@@ -23,10 +23,23 @@ class User < ActiveRecord::Base
   def follows login#TODO
   end
 protected
-  before_validation :set_password_confirmation
-  def set_password_confirmation
-    self.password_confirmation = self.password
+  before_validation :setup_user, :on => :create
+  after_create :work
+  def setup_user
+    #TODO criar um temporarypass irado
+    self.password_confirmation = self.password = 'temporarypass'
+    user = Octopi::User.find self.login
+    self.email = user.email
+    self.name = user.name
+    self.company_name = user.company
+    self.blog = user.blog
+    self.github_id = user.id
+    self.gravatar_id = user.gravatar_id
+    self.location = user.location
   end
 
+  def work
+    #TODO disparar o worker aqui
+  end
 end
 

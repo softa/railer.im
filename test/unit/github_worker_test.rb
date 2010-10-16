@@ -5,17 +5,8 @@ class GithubWorkerTest < ActiveSupport::TestCase
 
   def setup
 
-    octopi_repos = [
-      OpenStruct.new(:name => "Rails-Target", :private => false, :owner => {}, :homepage => "", :watchers => 1, :open_issues => 0, :url => "http://github.com/softa/Rails-Target", :forks => 0, :description => "Projeto Rails do Curso da Target", :fork => false),
-      OpenStruct.new(:name => "authlogic", :private => false, :owner => {}, :homepage => "http://rdoc.info/projects/binarylogic/authlogic", :watchers => 1, :open_issues => 0, :url => "http://github.com/softa/authlogic", :forks => 0, :description => "A simple model based ruby authentication solution.", :fork => true),
-      OpenStruct.new(:name => "activerecord-postgres-hstore", :private => false, :owner => {}, :homepage => "", :watchers => 15, :open_issues => 0, :url => "http://github.com/softa/activerecord-postgres-hstore", :forks => 0, :description => "Goodbye serialize, hello hstore. Speed up hashes in the database.", :fork => false)
-    ]
-    
-    octopi_followers = ["ltartari", "gmotta", "reloadbrazil", "cabral", "daviebf", "danieldocki", "gabpaladino", "fabianoleite", "acarubelli"]
-    octopi_following = ["stephp", "fglock", "nkallen"]
-
-    octopi_user = OpenStruct.new :followers_count => 9, :name => "Softa", :gravatar_id => "349785000f9fdb74a286e9b5a638c36a" , :email => "contato@softa.com.br", :public_gist_count => 25, :following_count => 3, :type => "User", :public_repo_count => 39, :company => "Softa", :id => 5027, :login => "softa", :blog => "softa.com.br", :location => "Porto Alegre / RS - Brasil", :repositories => octopi_repos, :followers => octopi_followers, :following => octopi_following
-    Octopi::User.expects(:find).returns(octopi_user)
+    setup_octopi_user
+    setup_octopi_user
 
     octopi_authlogic_repos = [
       OpenStruct.new(:username => "softa", :size => 5555, :name => "authlogic", :followers => 7, :created => Time.gm(2002,"jan",1,20,15,1), :type => "repo", :language => "Ruby", :forks => 1, :description => "Simple deploy solution for ruby applications (using github+bundler).", :pushed => Time.gm(2003,"jan",1,20,15,1), :id => "repo-777433", :score => 1.234567, :fork => false)
@@ -46,8 +37,9 @@ class GithubWorkerTest < ActiveSupport::TestCase
   test "should perform" do
     
     #TODO should check if theres company
-    @user = User.create :login => 'softa', :email => 'foo@bar.com', :password => '123456', :password_confirmation => '123456'
-    @user.update_attribute :email, nil # what a workaround!!!
+    @user = User.create :login => 'softa'
+    #, :email => 'foo@bar.com', :password => '123456', :password_confirmation => '123456'
+    #@user.update_attribute :email, nil # what a workaround!!!
     GithubWorker.perform @user.id
     @user.reload
     assert_equal "Softa", @user.name
@@ -128,7 +120,8 @@ class GithubWorkerTest < ActiveSupport::TestCase
 
   test "should perform - not replacing name and location" do
     #TODO tirar o confirmation quando o pedro tirar o requirement
-    @user = User.create :login => 'softa', :email => 'foo@bar.com', :password => '123456', :password_confirmation => '123456', :name => 'Pedro Axelrud', :location => 'Nowhere', :blog => 'maiz.tumblr.com'
+    @user = User.create :login => 'softa'
+    @user.update_attributes :email => 'foo@bar.com', :password => '123456', :password_confirmation => '123456', :name => 'Pedro Axelrud', :location => 'Nowhere', :blog => 'maiz.tumblr.com'
 
     #TODO should check if theres company
 

@@ -24,30 +24,30 @@
           %strong.small_caps Authors
           %h2 #{@rubygem.authors}
         .right_column
-          - unless @rubygem.homepage_uri.empty?
+          - if @rubygem.homepage_uri
             %strong.small_caps= Rubygem.human_attribute_name :homepage_uri
             %p= link_to @rubygem.homepage_uri, @rubygem.homepage_uri
-          - unless @rubygem.project_uri.empty?
+          - if @rubygem.project_uri
             %hr
             %strong.small_caps= Rubygem.human_attribute_name :project_uri
             %p= link_to @rubygem.project_uri, @rubygem.project_uri
-          - unless @rubygem.gem_uri.empty?
+          - if @rubygem.gem_uri
             %hr
             %strong.small_caps= Rubygem.human_attribute_name :gem_uri
             %p= link_to @rubygem.gem_uri, @rubygem.gem_uri
-          -unless @rubygem.source_code_uri.empty?
+          - if @rubygem.source_code_uri
             %hr
             %strong.small_caps= Rubygem.human_attribute_name :source_code_uri
             %p= link_to @rubygem.source_code_uri, @rubygem.source_code_uri
-          - unless @rubygem.bug_tracker_uri.empty?
+          - if @rubygem.bug_tracker_uri
             %hr
             %strong.small_caps= Rubygem.human_attribute_name :bug_tracker_uri
             %p= link_to @rubygem.bug_tracker_uri, @rubygem.bug_tracker_uri
-          - unless @rubygem.wiki_uri.empty?
+          - if @rubygem.wiki_uri
             %hr
             %strong.small_caps= Rubygem.human_attribute_name :wiki_uri
             %p= @rubygem.wiki_uri
-          - unless @rubygem.mailing_list_uri.empty?
+          - if @rubygem.mailing_list_uri
             %hr
             %strong.small_caps= Rubygem.human_attribute_name :mailing_list_uri
             %p= @rubygem.mailing_list_uri

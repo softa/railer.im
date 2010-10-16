@@ -109,11 +109,6 @@ GEM
       redis-namespace (~> 0.8.0)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
-    resque-scheduler (1.9.6)
-      redis (>= 2.0.1)
-      resque (>= 1.8.0)
-      rufus-scheduler
-    rufus-scheduler (2.0.6)
     sinatra (1.0)
       rack (>= 1.0)
     thor (0.14.3)
@@ -150,7 +145,6 @@ DEPENDENCIES
   pg
   rails (= 3.0.0)
   resque
-  resque-scheduler
   twitter
   unicorn
   will_paginate

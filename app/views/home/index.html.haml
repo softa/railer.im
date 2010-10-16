@@ -1,9 +1,24 @@
-%h1 CREATE YOUR ACCOUNT
-
-%form.home_signup
+%h1 Create your account »
+%form.home
   %fieldset
     .input_wrapper
-      %input{:type => :text, :placeholder => 'Github Account Name'}
-      .submit_for_new_account
+      %input#github_name_signup{:type => :text, :placeholder => 'github username', :required => true}
+      .button
         %strong Signup
+      .clear
+%hr
+:javascript 
+  $('#github_name_signup').focus(function(){
+    $(this).parent().addClass('focused')
+  })
+  $('#github_name_signup').blur(function(){
+    $(this).parent().removeClass('focused')
+  })
+%h2 Search for railers, gems, companies »
+%form.home
+  %fieldset
+    .input_wrapper
+      %input#search{:type => :text, :placeholder => 'Search', :required => true}
+      .button
+        %strong Search
       .clear

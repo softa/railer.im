@@ -5,7 +5,7 @@ body
       +reset-box-model
     input[type='search']
       margin: 0
-    &.home_signup
+    &.home
       +border-radius(8px)
       background: rgba(255,255,255,.6)
       margin: 0 auto
@@ -27,6 +27,8 @@ body
           padding: 4px
           margin: 0
           border: 1px solid #C11
+          &.focused
+            background-color: #b4f4ff
           input[type='text']
             +reset-box-model
             background: transparent
@@ -35,7 +37,7 @@ body
             width: 700px
             float: left
             font-size: 36px
-          .submit_for_new_account
+          .button
             +grad(#444,#000)
             +border-radius(3px)
             border: 1px solid #000
@@ -44,14 +46,26 @@ body
             height: 41px
             cursor: pointer
             text-align: center
+            &::-moz-selection
+              background: transparent !important
+            &::selection
+              background: transparent !important
             strong
               text-shadow: #000 0 -1px 0
               color: white
               font-size: 24px
               line-height: 40px
+              &::-moz-selection
+                background: transparent !important
+              &::selection
+                background: transparent !important
             &:hover
               +grad(#666,#222)
             &:active
               +grad(#000,#444)
               position: relative
               top: 1px
+    input::-webkit-input-placeholder
+      color: #333
+    input:-moz-placeholder
+      color: #333

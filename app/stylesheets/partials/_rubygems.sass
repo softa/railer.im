@@ -1,68 +1,39 @@
-body
-  #rubygem_profile
-    .rubygem_image
-      margin-top: 30px
-    .gem_name
-      +border-radius(4px)
-      +grad(#555,#000)
-      +box-shadow(#888, 0, 1px, 1px, inset)
-      border: 1px solid #222
-      margin-top: 30px
-      padding: 1em
-      margin-bottom: 20px
-      h1
-        float: left
-        +reset-box-model
-        color: white
-        text-shadow: #000 0 -1px 0
-        font-weight: 100
-        font-family: $blueprint-fixed-font-family
-        +border-radius(6px)
-    span.download
-      +border-radius(2px)
-      +box-shadow(rgba(#000,.4),0,1px,2px, inset)
-      background: white url(/images/icons/inbox-download.png) no-repeat 4px center
-      padding: 4px 4px 4px 24px
-      float: right
-      letter-spacing: 2px
-      font:
-        size: 22px
-        weight: 100
-      color: #444
-    .rubygem_info
-      h2
-        margin: 0
-        line-height: 1.5em
-      .left_column
-        float: left
-        width: 70%
-      .right_column
-        float: left
-        width: 30%
-        hr
-          margin: .5em 0
-        dl
-          +reset-box-model
-          dt, dd
-            +reset-box-model
-  .gem_users
+#rubygem_profile
+  .rubygem_image
     margin-top: 30px
-    h3
-      color: #BF2F2F
-      font-weight: 900
-      text-shadow: rgba(#ff0,.4) 0 1px 0
-    .list_of_gem_users
+  .rubygem_info h2
+    margin: 0
+    line-height: 1.5em
+  .left_column
+    float: left
+    width: 60%
+  .right_column
+    float: right
+    width: 30%
+    hr
+      margin: .5em 0
+    dl
       +reset-box-model
-      list-style: none
-      li
-        margin: 0 10px 10px 0
-        width: 250px
-        display: inline-block
-        .info
-          +border-radius(4px)
-          padding: 4px
-          background: rgba(255,255,255,.5)
-        img
-          vertical-align: middle
-        span.level
-          float: right
+      dt, dd
+        +reset-box-model
+.gem_users
+  margin-top: 30px
+  h3
+    color: #BF2F2F
+    font-weight: 900
+    text-shadow: rgba(#ff0,.4) 0 1px 0
+  .list_of_gem_users
+    +reset-box-model
+    list-style: none
+    li
+      margin: 0 10px 10px 0
+      width: 250px
+      display: inline-block
+      .info
+        +border-radius(4px)
+        padding: 4px
+        background: rgba(255,255,255,.5)
+      img
+        vertical-align: middle
+      span.level
+        float: right

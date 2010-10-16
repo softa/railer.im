@@ -1,66 +1,65 @@
 #railer_profile
   .container
     .wrapper
-      .profile_image
-        #{gravatar(@user.gravatar_id, 256)}
-        %br
-        .user_score
-          .tweet_this{:style => 'float: right'}
-            #{tweet_this('Level 10 railer.im #rails http://railer.im/username')}
-          %strong Level 10 (1231 points)
+      .span-7
+        .image_wrapper
+          #{gravatar(@user.gravatar_id, 256)}
+          %br
+          .user_score
+            .tweet_this{:style => 'float: right'}
+              #{tweet_this('Level 10 railer.im #rails http://railer.im/username')}
+            %strong Level 10 (1231 points)
+            .clear
+      .span-17.last
+        .info_wrapper
+          .header
+            %h1#user_name
+              #{@user.name}
+              %span (#{@user.login})
+            .detail.recommend
+              %span.recommendations= @user.recommended_by.size
+            %a.railerim_button{:href => '#'} Recommend
+            .clear
           .clear
-      .profile_info
-        .profile_name
-          %h1#user_name
-            #{@user.name}
-            %span (#{@user.login})
-        .profile_recommend
-          .recommend_wrapper
-            -# #TODO USE JQUERY TO MAKE THIS WORK
-            %a.railerim_button{:href => '#', :style => 'margin-right: 6px'} Recommend
-            %a.railerim_button.hide{:href => '#', :style => 'margin-right: 6px'}
-              %span.recommended_text Recommend
-              %span.unrecommend Don't recommend
-            %span.recommendations= @user.recommended_by.size
-        .left_column
-          .company_name
-            %strong.small_caps Company
-            %h3 #{@user.company_name}
-          %hr
-          .blog
-            %strong.small_caps Blog
-            %h3 #{@user.blog}
-          %hr
-          .location
-            %strong.small_caps Location
-            %h3 #{@user.location}
-          %hr
-          .bio
-            %strong.small_caps Bio
-          -#
+          .left_column
+            .company_name
+              %strong.small_caps Company
+              %h3 #{@user.company_name}
             %hr
-            .last_tweet
-              Last Tweet
-          %hr
-          .used_rubygems
-            %strong.small_caps Rubygems
-        .right_column
-          .personal_gems
-            %strong.small_caps Maintener of the following Gems
-            %ul
-              - 5.times do
-                %li
-                  %a{:href => '#'} lorem
-          .recommended
-            %strong.small_caps Recommended
-            #{@user.recommends}
-          %hr
-          .followers
-            %strong.small_caps Followers
-          %hr
-          .owns_the_repos
-            %strong.small_caps Repositories
-            %h3 #{@user.public_repo_count}
+            .blog
+              %strong.small_caps Blog
+              %h3 #{@user.blog}
+            %hr
+            .location
+              %strong.small_caps Location
+              %h3 #{@user.location}
+            %hr
+            .bio
+              %strong.small_caps Bio
+            -#
+              %hr
+              .last_tweet
+                Last Tweet
+            %hr
+            .used_rubygems
+              %strong.small_caps Rubygems
+          .right_column
+            .personal_gems
+              %strong.small_caps Maintener of the following Gems
+              %ul
+                - 5.times do
+                  %li
+                    %a{:href => '#'} lorem
+            .recommended
+              %strong.small_caps Recommended
+              #{@user.recommends}
+            %hr
+            .followers
+              %strong.small_caps Followers
+            %hr
+            .owns_the_repos
+              %strong.small_caps Repositories
+              %h3 #{@user.public_repo_count}
 = javascript_include_tag 'user_profile.js'
 .footer
   .container

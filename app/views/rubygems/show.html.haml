@@ -1,26 +1,22 @@
 #rubygem_profile
   .container
-    .span-7
-      .rubygem_image= thumbalizr @rubygem.uri
-    .span-17.last
-      .rubygem_info
-        .gem_name
-          %span.download #{@rubygem.downloads}
-          %h1#gem_name #{@rubygem.name}
+    .wrapper
+      .span-7
+        .image_wrapper
+          = thumbalizr @rubygem.uri
+      .span-17.last
+        .info_wrapper
+          .header
+            %h1#gem_name #{@rubygem.name}
+            .detail.download
+              %span #{@rubygem.downloads}
+            .clear
           .clear
-        .clear
-        .rubygem_info_wrapper
+        .info_wrapper
           .left_column
             %strong.small_caps Description
             %p #{@rubygem.description}
-          .right_column
-            %strong.small_caps Version
-            %p
-              %strong #{@rubygem.version}
-              (#{@rubygem.version_downloads} downloads)
-          .clear
-          %hr
-          .left_column
+            %hr
             %strong.small_caps Authors
             %h3 #{@rubygem.authors}
             %hr
@@ -30,44 +26,41 @@
                 - @rubygem.indicators.each do |key,value|
                   %li{:class => value } #{hash.key}
           .right_column
+            %strong.small_caps Version
+            %p
+              %strong #{@rubygem.version}
+              (#{@rubygem.version_downloads} downloads)
+            %hr
             %dl
               - if @rubygem.homepage_uri
                 %dt
                   %strong.small_caps Home
-                %dd
-                  %p= nice_link @rubygem.homepage_uri
+                %dd= nice_link @rubygem.homepage_uri
               - if @rubygem.project_uri
                 %dt
                   %strong.small_caps Project
-                %dd
-                  %p= nice_link @rubygem.project_uri
+                %dd= nice_link @rubygem.project_uri
               - if @rubygem.gem_uri
                 %dt
                   %strong.small_caps Gem
-                %dd
-                  %p= nice_link @rubygem.gem_uri
+                %dd= nice_link @rubygem.gem_uri
               - if @rubygem.source_code_uri
                 %dt
                   %strong.small_caps Source
-                %dd
-                  %p= nice_link @rubygem.source_code_uri
+                %dd= nice_link @rubygem.source_code_uri
               - if @rubygem.bug_tracker_uri
                 %dt
                   %strong.small_caps Bugs
-                %dd
-                  %p= nice_link @rubygem.bug_tracker_uri
+                %dd= nice_link @rubygem.bug_tracker_uri
               - if @rubygem.wiki_uri
                 %dt
                   %strong.small_caps Wiki
-                %dd
-                  %p= nice_link @rubygem.wiki_uri
+                %dd= nice_link @rubygem.wiki_uri
               - if @rubygem.mailing_list_uri
                 %dt
                   %strong.small_caps Mailing List
-                %dd
-                  %p= nice_link @rubygem.mailing_list_uri
+                %dd= nice_link @rubygem.mailing_list_uri
           .clear
-          
     .clear
 .footer
   .container

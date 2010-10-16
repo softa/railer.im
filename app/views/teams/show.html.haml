@@ -17,18 +17,20 @@
             %p #{@team.what}
           .right_column
             %strong.small_caps Tools
-            - for how in @team.how
-              %br
-              = how
+            - if not @team.how.nil?
+              - for how in @team.how
+                %br
+                = how
           .clear
           %hr
           .left_column
             %dl
-              - @team.where.each do |what,link|
-                %dt
-                  %strong.small_caps= what
-                %dd
-                  %p= nice_link link
+              - if not @team.where.nil?
+                - @team.where.each do |what,link|
+                  %dt
+                    %strong.small_caps= what
+                  %dd
+                    %p= nice_link link
               
           .right_column
             %dl

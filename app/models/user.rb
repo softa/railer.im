@@ -40,11 +40,13 @@ class User < ActiveRecord::Base
   
   def to_param; login; end
 protected
+
   before_validation :setup_user, :on => :create
   after_create :work
+  after_create :confirm_email
+
   def setup_user
-    #TODO criar um temporarypass irado
-    self.password_confirmation = self.password = 'temporarypass'
+    self.password_confirmation = self.password = Forgery::Basic.password(:allow_special => true, :at_least => 15, :at_most => 16)
     user = Octopi::User.find self.login
     self.email = user.email
     self.name = user.name
@@ -57,6 +59,10 @@ protected
 
   def work
     Resque.enqueue(GithubWorker, self.id)
+  end
+  
+  def confirm_email
+    UserMailer.confirm_email self
   end
 end
 

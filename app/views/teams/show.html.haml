@@ -1,7 +1,9 @@
 #rubygem_profile
   .container
     .span-7
-      .rubygem_image= image_tag @team.thumbnail
+      .rubygem_image
+        - if @team.thumbnail
+          = image_tag @team.thumbnail
     .span-17.last
       .rubygem_info
         .gem_name
@@ -16,8 +18,8 @@
           .right_column
             %strong.small_caps Tools
             - for how in @team.how
-              %p
-                %strong= how
+              %br
+              = how
           .clear
           %hr
           .left_column

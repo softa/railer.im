@@ -17,7 +17,8 @@ $('#new_user_session').submit(function(){
   }
   $.post(url, data, function(result){
     // successfull login!
-    location.href = '/'+result['login']
+    location.reload()
+    //location.href = '/'+result['login']
   }, 'json')
   return false
 })

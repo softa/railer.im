@@ -1,6 +1,7 @@
 @import "partials/home"
 @import "partials/user_profile"
 @import "partials/rubygems"
+@import "partials/teams"
 body
   +blueprint(true)
   background-color: #F90
@@ -18,7 +19,6 @@ body
     height: 52px
     background: white
     img
-      margin-top: 4px
       &:hover
         background: url(/images/railerim_logo_small_background.png) no-repeat center center
     form
@@ -47,7 +47,7 @@ body
     &:active
       position: relative
       top: 1px
-  #home, #rubygem_profile, #railer_profile, #company_profile, #team_profile
+  .content_wrapper
     margin-top: 52px
     padding-bottom: 30px
     border-bottom: 1px solid #F90
@@ -97,11 +97,14 @@ body
     +border-radius(3px)
     border: 1px solid #808080
     -webkit-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, rgba(#fff,.5) 0 1px 0
-    color: #444
-    text-shadow: #FFF 0 1px 0
+    color: white
+    text-shadow: #070 1px 1px 0
     font-weight: 900
-    padding: 6px
-    margin: 2px
+    padding: 4px 8px
+    line-height: 24px
+    //margin: 2px
+    +grad(#0E7,#091)
+    float: right
     &:hover
       border-color: #091
       -webkit-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, rgba(#fff,.5) 0 1px 0
@@ -133,5 +136,76 @@ body
           visibility: visible
       &:active
         +grad(#A33,#D55)
+.wrapper
+  margin-top: 30px
 .text-placeholder
   color: #AAA !important
+.image_wrapper
+  img.image
+    +border-radius(1em)
+    +box-shadow(#fff,0,1px,0)
+  .user_score
+    margin-top: 10px
+    width: 236px
+    +border-radius
+    +grad(#1Ca,#061)
+    padding: 4px 10px
+    font-weight: 900
+    color: white
+    img
+      vertical-align: middle
+    strong
+      line-height: 28px
+.info_wrapper
+  .left_column
+    float: left
+    width: 36%
+  .right_column
+    float: right
+    width: 60%
+  h3
+    font-weight: normal
+    font-size: 16px
+    color: #444
+.header
+  +border-radius(4px)
+  +grad(#555,#000)
+  +box-shadow(#888, 0, 1px, 1px, inset)
+  border: 1px solid #222
+  padding: 1em
+  margin-bottom: 20px
+  h1
+    float: left
+    +reset-box-model
+    color: white
+    text-shadow: #000 0 -1px 0
+    font-weight: 100
+    letter-spacing: 3px
+    line-height: 32px
+    +border-radius(6px)
+    font:
+      size: 22px
+    span
+      letter-spacing: 0px
+      font-family: $blueprint-fixed-font-family
+  .detail
+    +border-radius(2px)
+    +box-shadow(rgba(#000,.6),0,1px,3px, inset)
+    background-color: white
+    line-height: 26px
+    padding: 4px 4px 4px 36px
+    margin-left: 8px
+    float: right
+    letter-spacing: 2px
+      weight: 100
+    color: #444
+    &.download
+      background:
+        image: url(/images/icons/inbox-download.png)
+        repeat: no-repeat
+        position: 4px center
+    &.recommend
+      background:
+        image: url(/images/icons/medal.png)
+        repeat: no-repeat
+        position: 4px center

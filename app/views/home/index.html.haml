@@ -1,16 +1,14 @@
-#home
+#home.content_wrapper
   .container
     .span-12.last
-      %h1 Create »
-      %h1 Share »
-      %h1 Inspire »
+      %h1 Good text that it's not lorem ipsum goes here
     .span-12.showcase.prepend-top{:style => 'text-align:right'}
       #{image_tag('plintscleef.png')}
     .clear
     = render ('home/signup')
 .footer
   .container
-    %h3 Worldwide live view
+    %h2 Live view
     .map.span-16
       #{image_tag 'placeholder_map.jpg'}
     .new_users_list_wrapper.span-8.last

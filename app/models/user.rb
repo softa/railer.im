@@ -54,7 +54,7 @@ protected
   end
 
   def work
-    #TODO disparar o worker aqui
+    Resque.enqueue(GithubWorker, self.id)
   end
 end
 

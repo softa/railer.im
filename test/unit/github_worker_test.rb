@@ -10,13 +10,15 @@ class GithubWorkerTest < ActiveSupport::TestCase
 
     octopi_authlogic_repos = '{"repositories":[{"username": "softa", "size": 5555, "name": "authlogic", "followers": 7, "created": "Mon Jan 01 20:15:01 UTC 2001", "type": "repo", "language": "Ruby", "forks": 1, "description": "Simple deploy solution for ruby applications (using github+bundler).", "pushed": "Wed Jan 01 20:15:01 UTC 2003", "id": "repo-777433", "score": 1.234567, "fork": false}]}'
     
-    octopi_hstore_repos = '{"repositories":[{"forks":1,"type":"repo","created":"2000-01-01T20:15:01Z","description":"Simple deploy solution for ruby applications (using github+bundler).","language":"Ruby","username":"diogob","fork":false,"score":6.0756235,"size":4820,"followers":7,"name":"activerecord-postgres-hstore","id":"repo-777433","pushed":"2000-01-01T20:15:01Z"},{"forks":1,"type":"repo","created":"2005-01-01T20:15:01Z","description":"Simple deploy solution for ruby applications (using github+bundler).","language":"Ruby & Pg","username":"softa","fork":false,"score":6.666666,"size":6666,"followers":6,"name":"activerecord-postgres-hstore","id":"repo-666666","pushed":"2006-01-01T20:15:01Z"}]}'
+    octopi_hstore_repos = '{"repositories":[{"forks":1,"type":"repo","created":"2000-01-01T20:15:01Z","description":"Simple deploy solution for ruby applications (using github+bundler).","language":"Ruby","username":"diogob","fork":false,"score":6.0756235,"size":4820,"followers":7,"name":"activerecord-postgres-hstore","id":"repo-777433","pushed":"2000-01-01T20:15:01Z"},
+    
+    {"forks":1,"type":"repo","created":"2005-01-01T20:15:01Z","description":"Simple deploy solution for ruby applications (using github+bundler).","language":"Ruby & Pg","username":"softa","fork":false,"score":6.666666,"size":6666,"followers":6,"name":"activerecord-postgres-hstore","id":"repo-666666","pushed":"2006-01-01T20:15:01Z"}]}'
     
     octopi_target_repos = '{"repositories":[{"forks":1,"type":"repo","created":"2001-02-01T20:15:01Z","description":"Simple deploy solution for ruby applications (using github+bundler).","language":"Haskell","username":"softa","fork":false,"score":6.0756235,"size":0,"followers":7,"name":"Rails-Target","id":"repo-777433","pushed":"2009-02-01T20:15:01Z"}]}'
     
-    URI::HTTP.any_instance.stubs(:open).with('http://github.com/api/v2/json/repos/search/authlogic').returns((OpenStruct.new({:read => octopi_authlogic_repos})))
-    URI::HTTP.any_instance.stubs(:open).with('http://github.com/api/v2/json/repos/search/activerecord-postgres-hstore').returns((OpenStruct.new({:read => octopi_hstore_repos})))
-    URI::HTTP.any_instance.stubs(:open).with('http://github.com/api/v2/json/repos/search/Rails-Target').returns((OpenStruct.new({:read => octopi_target_repos})))
+    URI::HTTP.any_instance.stubs(:open).with({'Repo' => 'authlogic'}).returns((OpenStruct.new({:read => octopi_authlogic_repos})))
+    URI::HTTP.any_instance.stubs(:open).with({'Repo' => 'activerecord-postgres-hstore'}).returns((OpenStruct.new({:read => octopi_hstore_repos})))
+    URI::HTTP.any_instance.stubs(:open).with({'Repo' => 'Rails-Target'}).returns((OpenStruct.new({:read => octopi_target_repos})))
 
     location = OpenStruct.new(:accuracy => 5, :success => true, :provider => "yahoo", :city => "Porto Alegre", :province => nil, :street_address => nil, :lng => -51.22802, :country_code => "BR", :precision => "zip", :state => "Brazil", :all => [], :lat => -30.03425, :full_address => nil, :zip => nil)
     Geokit::Geocoders::YahooGeocoder.expects(:geocode).with('Porto Alegre / RS - Brasil').returns(location)

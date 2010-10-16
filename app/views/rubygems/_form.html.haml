@@ -1,0 +1,63 @@
+= form_for(@rubygem) do |f|
+  - if @rubygem.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@rubygem.errors.count, 'error')} prohibited this user from being saved:"
+      %ul
+      - @rubygem.errors.full_messages.each do |msg|
+        %li= msg
+  
+  .field
+    = f.label :name
+    %br
+    = f.text_area :name
+  .field
+    = f.label :description
+    %br
+    = f.text_area :description
+  .field
+    = f.label :downloads
+    %br
+    = f.text_field :downloads
+  .field
+    = f.label :version
+    %br
+    = f.text_area :version
+  .field
+    = f.label :version_downloads
+    %br
+    = f.text_field :version_downloads
+  .field
+    = f.label :homepage_uri
+    %br
+    = f.text_area :homepage_uri
+  .field
+    = f.label :authors
+    %br
+    = f.text_area :authors
+  .field
+    = f.label :project_uri
+    %br
+    = f.text_area :project_uri
+  .field
+    = f.label :gem_uri
+    %br
+    = f.text_area :gem_uri
+  .field
+    = f.label :source_code_uri
+    %br
+    = f.text_area :source_code_uri
+  .field
+    = f.label :bug_tracker_uri
+    %br
+    = f.text_area :bug_tracker_uri
+  .field
+    = f.label :wiki_uri
+    %br
+    = f.text_area :wiki_uri
+  .field
+    = f.label :mailing_list_uri
+    %br
+    = f.text_area :mailing_list_uri
+
+  .actions
+    = f.submit

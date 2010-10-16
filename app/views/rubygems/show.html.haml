@@ -1,0 +1,32 @@
+%h1= t '.title'
+%p
+  = link_to t('back'), rubygems_path
+  = link_to t('edit'), edit_rubygem_path(@rubygem)
+
+%dl
+  %dt= Rubygem.human_attribute_name :name
+  %dd= @rubygem.name
+  %dt= Rubygem.human_attribute_name :description
+  %dd= @rubygem.description
+  %dt= Rubygem.human_attribute_name :downloads
+  %dd= @rubygem.downloads
+  %dt= Rubygem.human_attribute_name :version
+  %dd= @rubygem.version
+  %dt= Rubygem.human_attribute_name :version_downloads
+  %dd= @rubygem.version_downloads
+  %dt= Rubygem.human_attribute_name :homepage_uri
+  %dd= @rubygem.homepage_uri
+  %dt= Rubygem.human_attribute_name :authors
+  %dd= @rubygem.authors
+  %dt= Rubygem.human_attribute_name :project_uri
+  %dd= @rubygem.project_uri
+  %dt= Rubygem.human_attribute_name :gem_uri
+  %dd= @rubygem.gem_uri
+  %dt= Rubygem.human_attribute_name :source_code_uri
+  %dd= @rubygem.source_code_uri
+  %dt= Rubygem.human_attribute_name :bug_tracker_uri
+  %dd= @rubygem.bug_tracker_uri
+  %dt= Rubygem.human_attribute_name :wiki_uri
+  %dd= @rubygem.wiki_uri
+  %dt= Rubygem.human_attribute_name :mailing_list_uri
+  %dd= @rubygem.mailing_list_uri

@@ -1,0 +1,37 @@
+#rubygem_profile
+  .container
+    .span-7
+      .rubygem_image= image_tag @team.thumbnail
+    .span-17.last
+      .rubygem_info
+        .gem_name
+          %span.download
+          %h1#team_name #{@team.name}
+          .clear
+        .clear
+        .rubygem_info_wrapper
+          .left_column
+            %strong.small_caps Description
+            %p
+          .right_column
+            %strong.small_caps Version
+            %p
+              %strong
+          .clear
+          %hr
+          .left_column
+            %strong.small_caps Authors
+            %h2
+          .right_column
+            %dl
+              %dt
+                %strong.small_caps Near Teams
+              %dd
+                %p YOOOO
+
+          .clear
+    .clear
+.footer
+  .container
+    .gem_users
+      %h3 See who is using this Team

@@ -9,6 +9,13 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET escape_string_warning = off;
 
+--
+-- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: -
+--
+
+CREATE OR REPLACE PROCEDURAL LANGUAGE plpgsql;
+
+
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -36,8 +43,8 @@ CREATE TABLE authorships (
 CREATE SEQUENCE authorships_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -67,8 +74,8 @@ CREATE TABLE companies (
 CREATE SEQUENCE companies_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -100,8 +107,8 @@ CREATE TABLE dependencies (
 CREATE SEQUENCE dependencies_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -133,8 +140,8 @@ CREATE TABLE downloads (
 CREATE SEQUENCE downloads_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -165,8 +172,8 @@ CREATE TABLE git_followers (
 CREATE SEQUENCE git_followers_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -197,8 +204,8 @@ CREATE TABLE recomendations (
 CREATE SEQUENCE recomendations_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -245,8 +252,8 @@ CREATE TABLE repositories (
 CREATE SEQUENCE repositories_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -289,8 +296,8 @@ CREATE TABLE rubygems (
 CREATE SEQUENCE rubygems_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -330,8 +337,8 @@ CREATE TABLE twitter_followers (
 CREATE SEQUENCE twitter_followers_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -364,8 +371,8 @@ CREATE TABLE twitter_profiles (
 CREATE SEQUENCE twitter_profiles_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -428,8 +435,8 @@ CREATE TABLE users (
 CREATE SEQUENCE users_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -526,11 +533,11 @@ ALTER TABLE ONLY authorships
 
 
 --
--- Name: authorships_rubygem_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: authorships_rubygem_id_author_name_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY authorships
-    ADD CONSTRAINT authorships_rubygem_id_key UNIQUE (rubygem_id, author_name);
+    ADD CONSTRAINT authorships_rubygem_id_author_name_key UNIQUE (rubygem_id, author_name);
 
 
 --
@@ -558,11 +565,11 @@ ALTER TABLE ONLY dependencies
 
 
 --
--- Name: dependencies_repository_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: dependencies_repository_id_rubygem_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY dependencies
-    ADD CONSTRAINT dependencies_repository_id_key UNIQUE (repository_id, rubygem_id);
+    ADD CONSTRAINT dependencies_repository_id_rubygem_id_key UNIQUE (repository_id, rubygem_id);
 
 
 --
@@ -574,19 +581,19 @@ ALTER TABLE ONLY downloads
 
 
 --
--- Name: downloads_rubygem_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: downloads_rubygem_id_version_created_at_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY downloads
-    ADD CONSTRAINT downloads_rubygem_id_key UNIQUE (rubygem_id, version, created_at);
+    ADD CONSTRAINT downloads_rubygem_id_version_created_at_key UNIQUE (rubygem_id, version, created_at);
 
 
 --
--- Name: git_followers_follower_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: git_followers_follower_id_followee_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY git_followers
-    ADD CONSTRAINT git_followers_follower_id_key UNIQUE (follower_id, followee_id);
+    ADD CONSTRAINT git_followers_follower_id_followee_id_key UNIQUE (follower_id, followee_id);
 
 
 --
@@ -606,11 +613,11 @@ ALTER TABLE ONLY recomendations
 
 
 --
--- Name: recomendations_recomends_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: recomendations_recomends_id_recomended_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY recomendations
-    ADD CONSTRAINT recomendations_recomends_id_key UNIQUE (recomends_id, recomended_id);
+    ADD CONSTRAINT recomendations_recomends_id_recomended_id_key UNIQUE (recomends_id, recomended_id);
 
 
 --
@@ -630,11 +637,11 @@ ALTER TABLE ONLY rubygems
 
 
 --
--- Name: twitter_followers_follower_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: twitter_followers_follower_id_followee_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY twitter_followers
-    ADD CONSTRAINT twitter_followers_follower_id_key UNIQUE (follower_id, followee_id);
+    ADD CONSTRAINT twitter_followers_follower_id_followee_id_key UNIQUE (follower_id, followee_id);
 
 
 --
@@ -806,9 +813,9 @@ INSERT INTO schema_migrations (version) VALUES ('20101016003854');
 
 INSERT INTO schema_migrations (version) VALUES ('20101016005120');
 
-INSERT INTO schema_migrations (version) VALUES ('20101016010824');
-
 INSERT INTO schema_migrations (version) VALUES ('20101016013527');
+
+INSERT INTO schema_migrations (version) VALUES ('20101016010824');
 
 INSERT INTO schema_migrations (version) VALUES ('20101016015141');
 

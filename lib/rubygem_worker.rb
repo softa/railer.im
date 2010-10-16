@@ -16,7 +16,7 @@ class RubygemWorker
       :version => data['version'],  
       :version_downloads => data['version_downloads'],  
       :homepage_uri => data['homepage_uri'],  
-      :authors => data['authors'],  
+      :authors_names => data['authors'],  
       :project_uri => data['project_uri'],  
       :gem_uri => data['gem_uri'],  
       :source_code_uri => data['source_code_uri'],  
@@ -42,7 +42,7 @@ class RubygemWorker
     rubygem.version = data['version']
     rubygem.version_downloads = data['version_downloads']
     rubygem.homepage_uri = data['homepage_uri']
-    rubygem.authors = data['authors']
+    rubygem.authors_names = data['authors']
     rubygem.project_uri = data['project_uri']
     rubygem.gem_uri = data['gem_uri']
     rubygem.source_code_uri = data['source_code_uri']  

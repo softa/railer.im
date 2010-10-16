@@ -26,4 +26,13 @@ class RubygemTest < ActiveSupport::TestCase
     assert_equal 'http://www.yahoo.com', @rubygem.uri
   end
 
+  test "should be able to list authors through authorships" do
+  end
+
+  test "should insert in table authorships" do
+    @rubygem.update_attribute :authors_names, 'Author 1, Dr. Author 2, Sir Author 3'
+    @rubygem.update_authorship
+    assert_equal 3, Authorship.count
+    assert_equal Set.new(['Author 1', 'Dr. Author 2', 'Sir Author 3']), Set.new(Authorship.all.map{|a| a.author_name})
+  end
 end

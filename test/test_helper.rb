@@ -18,6 +18,11 @@ class ActiveSupport::TestCase
     @unique_id = (@unique_id || 0) + 1
   end
 
+  def create_authorship(params = {})
+    defaults = {:author_name => "Foo", :rubygem => create_rubygem, :author => create_user}.merge(params)
+    Authorship.create!(defaults)
+  end
+
   def create_team(params = {})
     defaults = {:name => "Foo", :team_home => '/teams/foo'}.merge(params)
     Team.create!(defaults)    
@@ -31,7 +36,6 @@ class ActiveSupport::TestCase
   def create_rubygem(params = {})
     json = File.read("#{Rails.root}/test/fixtures/rubygem.json")
     URI::HTTP.any_instance.stubs(:open).returns(OpenStruct.new({:read => json}))
-#, :description => "description #{get_id}", :downloads => 0, :version => '0.0.0', :version_downloads => 0, :authors => 'great author', :project_uri => 'http://thegem.com', :gem_uri => 'http://gemcutter/gem/tar.tar.gz'
     defaults = {:name => "gem#{get_id}"}.merge(params)
     Rubygem.create!(defaults)
   end

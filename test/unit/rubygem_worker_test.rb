@@ -25,7 +25,7 @@ class RubygemsWorkerTest < ActiveSupport::TestCase
     assert_equal "http://github.com/rails/rails", @rubygem.source_code_uri
     assert_equal "http://rubygems.org/gems/rails-3.0.1.gem", @rubygem.gem_uri
     assert_equal "http://rubygems.org/gems/rails", @rubygem.project_uri
-    assert_equal "David Heinemeier Hansson", @rubygem.authors
+    assert_equal "David Heinemeier Hansson", @rubygem.authors_names
     assert_equal "http://groups.google.com/group/rubyonrails-talk", @rubygem.mailing_list_uri
     assert_equal "http://api.rubyonrails.org", @rubygem.documentation_uri
     assert_equal "http://wiki.rubyonrails.org", @rubygem.wiki_uri

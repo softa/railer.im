@@ -8,3 +8,4 @@ public/stylesheets/
 *.swp
 db/schema.rb
 .DS_Store
+db/development_structure.sql

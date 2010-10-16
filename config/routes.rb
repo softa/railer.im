@@ -5,6 +5,7 @@ Railerim::Application.routes.draw do
   resource :user_sessions, :controller => 'user_sessions'  
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
+  match 'search' => 'home#search', :as => :search
   match 'home/email' => 'home#email'
   root :to => "home#index"
   get ':id' => 'users#show', :as => :profile

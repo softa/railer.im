@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  label :name, :login
   belongs_to :company
   has_many :recomendations_made, :class_name => 'Recomendation', :foreign_key => 'recomends_id'
   has_many :recomendations_received, :class_name => 'Recomendation', :foreign_key => 'recomended_id'

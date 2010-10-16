@@ -1,19 +1,30 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class UserSessionsControllerTest < ActionController::TestCase
   setup do
     @user = User.create!(:login => 'joao', :email => 'joao@caminhao.com.br', :password => '102030', :password_confirmation => '102030')
   end
   
-  # test "should login with valid credentials" do
-  #   post :create, :login => 'joao', :password => '102030'
-  #   assert_redirected_to profile_path @user
-  # end
-  # 
-  # test "should not login with invalid credentials" do
-  #   post :create, :login => 'joaozao', :password => '102030'
-  #   assert_redirected_to profile_path @user
-  # end
+  test "should login with valid credentials" do
+    post :create, :format => 'json', :user_session => {:login => 'joao', :password => '102030'}
+    assert_response :success
+    json = JSON.parse @response.body
+    assert_equal 'joao', json["login"]
+  end
+  
+  test "should not login with invalid credentials" do
+    post :create, :format => 'json', :user_session =>  {:login => 'joaozao', :password => '102030'}
+    assert_response 422
+    json = JSON.parse @response.body
+    assert_equal 'is not valid', json["login"]
+  end
+  
+  test "should destroy the login session" do
+    post :create, :format => 'json', :user_session =>  {:login => 'joao', :password => '102030'}
+    assert_response :success
+    delete :destroy, :format => 'json'
+    assert '', @response.body
+  end
   
   # test "should get index" do
   #   get :index

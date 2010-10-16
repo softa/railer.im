@@ -1,5 +1,6 @@
 class UserSessionsController < InheritedResources::Base
   actions :new, :create, :destroy
+  respond_to :json
   
   def new
     new! do |format|
@@ -7,9 +8,10 @@ class UserSessionsController < InheritedResources::Base
     end
   end
   
-  def create
-    create!{ profile_path current_user }
-  end
+  # def create
+  #   create!{ profile_path current_user }
+  # end
+  
   def destroy
     destroy!{ root_path }
   end

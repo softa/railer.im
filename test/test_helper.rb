@@ -25,11 +25,15 @@ class ActiveSupport::TestCase
     setup_octopi_user(defaults[:login], defaults[:email])
     User.create!(defaults)
   end
+  
+  def create_rubygem(params = {})
+    defaults = {:name => "rubygem #{get_id}"}.merge(params)
+    Rubygem.create!(defaults)
+  end
 
   def create_repository(params = {})
     owner = create_user
-    defaults = {:name => "repo #{get_id}", :user => owner, :url => 'http://github.com/softa/hercules'}
-    defaults.merge(params)
+    defaults = {:name => "repo #{get_id}", :user => owner, :url => 'http://github.com/softa/hercules'}.merge(params)
     Repository.create!(defaults)
   end
   

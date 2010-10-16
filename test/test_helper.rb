@@ -44,8 +44,7 @@ class ActiveSupport::TestCase
 
   def create_twitter_profile(params ={})
     user = create_user
-    defaults = {:twitter_user => "twitter user #{get_id}", :user => user, :bio => "bio for user #{get_id}", :link => 'http://www.link.com.br'}
-    defaults.merge(params)
+    defaults = {:twitter_user => "twitter user #{get_id}", :user => user, :bio => "bio for user #{get_id}", :link => 'http://www.link.com.br'}.merge(params)
     TwitterProfile.create!(defaults)
   end
 end

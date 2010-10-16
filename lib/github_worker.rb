@@ -32,16 +32,16 @@ class GithubWorker
       for repo in user.repositories
         more = nil
         i = 0
-        while(more.nil? && i < 10) 
+        while(more.nil? && i < 30) 
           i += 1
           begin
             j = JSON.parse(open("http://github.com/api/v2/json/repos/search/#{repo.name}", {'Repo' => repo.name}).read)            
             more = j["repositories"].detect{|r| r["username"] == u.login} || j["repositories"].first
           rescue => e
-            sleep 5
+            sleep 15
           end
         end
-        u.repositories.create :name => repo.name,
+        data = {:name => repo.name,
           :description => repo.description,
           :forks => repo.forks,
           :homepage => repo.homepage,
@@ -49,13 +49,15 @@ class GithubWorker
           :owner => repo.owner,
           :url => repo.url,
           :watchers => repo.watchers,
-          :fork => repo.fork,
+          :fork => repo.fork}
+        data.merge!(
           :originaly_created_at => more["created"],
           :pushed_at => more["pushed"],
           :score => more["score"],
           :language => more["language"],
           :repo_id => more["id"],
-          :size => more["size"]
+          :size => more["size"]) if more
+        u.repositories.create data
         sleep 1.1 unless Rails.env == :test
       end
       for follower in user.followers

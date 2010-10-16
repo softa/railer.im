@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   has_many :followers, :class_name => 'User', :through => :git_followers
 
   has_many :repositories
-#  scope :used_gems, select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id")
 
   has_one :twitter_profile
 
@@ -29,6 +28,10 @@ class User < ActiveRecord::Base
   
   attr_accessible :login, :email, :password, :password_confirmation
   
+  def used_gems
+    Rubygem.used_by(self).all
+  end
+
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)
   end
@@ -99,10 +102,10 @@ protected
         return false
       end
     end
-    if user.type == 'Organization'
-      errors.add_to_base 'This is an organization account. Railer.Im only accepts users. Sorry.'
-      return false
-    end
+#    if user.type == 'Organization'
+#      errors.add_to_base 'This is an organization account. Railer.Im only accepts users. Sorry.'
+#      return false
+#    end
     unless user.email
       errors.add_to_base "Your GitHub account doesn't have a public email. Publish your email and come back."
       return false

@@ -37,13 +37,14 @@
             .bio
               %strong.small_caps Bio
           .right_column
-            .personal_gems
-              %strong.small_caps Owner of the following Gems
-              %hr
-              %ul
-                - 5.times do
-                  %li
-                    %a{:href => '#'} lorem
+            - unless @user.owned_gems.empty?
+              .personal_gems
+                %strong.small_caps Owner of the following Gems
+                %hr
+                %ul
+                  - @user.owned_gems.each do |g|
+                    %li
+                      %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
             .recommended
               %strong.small_caps Recommended
               #{@user.recommends}
@@ -59,4 +60,5 @@
         %strong.small_caps Followers
     .span-12.last
       .used_rubygems
+        
         %strong.small_caps Rubygems

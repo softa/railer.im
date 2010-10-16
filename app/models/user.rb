@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
 
   has_one :twitter_profile
 
+  has_many :authorships
+  has_many :owned_gems, :class_name => 'Rubygem', :through => :authorships, :source => :rubygem
+
   acts_as_authentic
   
   def recommend(recommended_user)

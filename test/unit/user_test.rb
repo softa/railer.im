@@ -14,4 +14,9 @@ class UserTest < ActiveSupport::TestCase
     assert_equal u.recomends.first, recomended
     assert_equal recomended.recomended_by.first, u
   end
+  
+  test "should be able to create an user without the password_confirmation" do
+    User.create!(:login => 'joaodocaminhao', :email => 'joaodocaminhao@bol.com.br', :password => 'velhagorda')
+  end
+  
 end

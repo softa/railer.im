@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :followers, :class_name => 'User', :through => :git_followers
 
   has_many :repositories
+  #has_many :dependencies, :through => :repositories
 
   has_one :twitter_profile
 
@@ -73,6 +74,10 @@ protected
     end
     if user.type == 'Organization'
       errors.add_to_base 'This is an organization account. Railer.Im only accepts users. Sorry.'
+      return false
+    end
+    unless user.email
+      errors.add_to_base "Your GitHub account doesn't have a public email. Publish your email and come back."
       return false
     end
     self.email = user.email

@@ -1,2 +1,2 @@
 #!/bin/sh -e
-RAILS_ENV=development QUEUE=* rake resque:work --trace
+RAILS_ENV=development QUEUE=* rake environment resque:work --trace

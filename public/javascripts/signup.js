@@ -29,9 +29,9 @@ $('form#signup').submit(function(){
   }
   $.post(url, data, function(result){
 	$('form#signup .input_wrapper').slideUp()
-	//alert(result['user']['id'])
-    // successfull login!
-    //location.href = '/'+result['login']
+	$('form#signup .message_wrapper').slideUp()
+	$('form#signup .success_wrapper').slideDown().find('.email').html(result['user']['email'].replace(/.{1,3}@.{1,3}/, '...@...'))
+	
   }, 'json')
   return false
 })

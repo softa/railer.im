@@ -18,6 +18,11 @@ class ActiveSupport::TestCase
     @unique_id = (@unique_id || 0) + 1
   end
 
+  def create_company(params = {})
+    defaults = {:name => 'Softa'}.merge(params)
+    Company.create!(defaults)
+  end
+  
   def create_dependency(params = {})
     defaults = {:rubygem => create_rubygem, :repository => create_repository}.merge(params)
     Dependency.create!(defaults)

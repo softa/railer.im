@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
     mapped = users.map{|user|
       html = render_to_string :partial => 'user_row.html.haml', :locals => {:user => user}
-      {:id => user.id, :title => user.name, :lat => user.lat, :lng => user.lng, :html => html }  
+      {:id => user.id, :title => user.name, :lat => user.lat, :lng => user.lng, :html => html, :gravatar_id => user.gravatar_id, :login => user.login}
     }.to_json
     return render :json => mapped
     

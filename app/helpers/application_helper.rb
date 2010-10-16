@@ -5,7 +5,7 @@ module ApplicationHelper
   end
   
   def nice_link url
-    link_to url.gsub(/http\:\/\/(www.)?/,''), url, :target => :_blank
+    link_to url.gsub(/http\:\/\/(www.)?/,'').gsub(/\/$/,''), url, :target => :_blank
   end
 
   def thumbalizr url, width = 250 

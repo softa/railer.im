@@ -5,3 +5,67 @@ body
       +reset-box-model
     input[type='search']
       margin: 0
+    &.home
+      +border-radius(8px)
+      background: rgba(255,255,255,.6)
+      margin: 0 auto
+      margin-bottom: 10px
+      width: 960px
+      padding: 4px
+      fieldset
+        +border-radius(5px)
+        +grad(rgba(#F63,.8),rgba(#F11,.8))
+        -webkit-box-shadow: rgba(#FB9,1) 0 1px 1px inset, rgba(#FFF,.5) 0 -2px 3px inset
+        border: 1px solid #E20
+        padding: 9px
+        .input_wrapper
+          +border-radius(2px)
+          -webkit-box-shadow: rgba(0,0,0,.25) 0 2px 2px inset, rgba(#FF0,.5) 0 1px 1px
+          background-color: white
+          height: 42px
+          width: 928px
+          padding: 4px
+          margin: 0
+          border: 1px solid #C11
+          &.focused
+            background-color: #b4f4ff
+          input[type='text']
+            +reset-box-model
+            background: transparent
+            font-family: $blueprint-fixed-font-family
+            color: #333
+            width: 700px
+            float: left
+            font-size: 36px
+          .button
+            +grad(#444,#000)
+            +border-radius(3px)
+            border: 1px solid #000
+            width: 222px
+            float: right
+            height: 41px
+            cursor: pointer
+            text-align: center
+            &::-moz-selection
+              background: transparent !important
+            &::selection
+              background: transparent !important
+            strong
+              text-shadow: #000 0 -1px 0
+              color: white
+              font-size: 24px
+              line-height: 40px
+              &::-moz-selection
+                background: transparent !important
+              &::selection
+                background: transparent !important
+            &:hover
+              +grad(#666,#222)
+            &:active
+              +grad(#000,#444)
+              position: relative
+              top: 1px
+    input::-webkit-input-placeholder
+      color: #333
+    input:-moz-placeholder
+      color: #333

@@ -1,0 +1,41 @@
+#home
+  .container
+    %h1 Create your account »
+    %form.home
+      %fieldset
+        .input_wrapper
+          %input#github_name_signup{:type => :text, :placeholder => 'github username', :required => true}
+          .button
+            %strong Signup
+          .clear
+    %hr
+    %h2 Search for railers, gems, companies »
+    %form.home
+      %fieldset
+        .input_wrapper
+          %input#search{:type => :text, :placeholder => 'Search', :required => true}
+          .button
+            %strong Search
+          .clear
+    :javascript 
+      $('input').focus(function(){
+        $(this).parent('.input_wrapper').addClass('focused')
+      })
+      $('input').blur(function(){
+        $(this).parent('.input_wrapper').removeClass('focused')
+      })
+.map_wrapper
+  .container
+    .map.span-16
+      #{image_tag 'placeholder_map.jpg'}
+    .new_users_list_wrapper.span-8.last
+      %ul
+        - 6.times do
+          %li
+            .user_image #{image_tag 'default_user_image.png', :size => '48x48'}
+            .user_info
+              %time.time {time}
+              %span.username {Username}
+              %br
+              %span.location {Location}
+            .clear

@@ -1,6 +1,8 @@
-$('input').focus(function(){
+$('form#signup input').focus(function(){
   $(this).parent('.input_wrapper').addClass('focused')
 })
-$('input').blur(function(){
+$('form#signup input').blur(function(){
   $(this).parent('.input_wrapper').removeClass('focused')
 })
+
+

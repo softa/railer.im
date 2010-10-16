@@ -1,0 +1,40 @@
+%h1= t('.title')
+%p= link_to t('.new_rubygem'), new_rubygem_path
+
+%table
+  %thead
+    %tr
+      %th= Rubygem.human_attribute_name :name
+      %th= Rubygem.human_attribute_name :description
+      %th= Rubygem.human_attribute_name :downloads
+      %th= Rubygem.human_attribute_name :version
+      %th= Rubygem.human_attribute_name :version_downloads
+      %th= Rubygem.human_attribute_name :homepage_uri
+      %th= Rubygem.human_attribute_name :authors
+      %th= Rubygem.human_attribute_name :project_uri
+      %th= Rubygem.human_attribute_name :gem_uri
+      %th= Rubygem.human_attribute_name :source_code_uri
+      %th= Rubygem.human_attribute_name :bug_tracker_uri
+      %th= Rubygem.human_attribute_name :wiki_uri
+      %th= Rubygem.human_attribute_name :mailing_list_uri
+      %th{:colspan => 3}= t 'actions'
+  
+  %tbody
+    - for rubygem in @rubygems
+      %tr{ :class => cycle(:odd, :even) }
+        %td= rubygem.name
+        %td= rubygem.description
+        %td= rubygem.downloads
+        %td= rubygem.version
+        %td= rubygem.version_downloads
+        %td= rubygem.homepage_uri
+        %td= rubygem.authors
+        %td= rubygem.project_uri
+        %td= rubygem.gem_uri
+        %td= rubygem.source_code_uri
+        %td= rubygem.bug_tracker_uri
+        %td= rubygem.wiki_uri
+        %td= rubygem.mailing_list_uri
+        %td.action= link_to t('show'), rubygem
+        %td.action= link_to t('edit'), edit_rubygem_path(rubygem)
+        %td.action= link_to t('destroy'), rubygem, :confirm => t('are_you_sure'), :method => :delete

@@ -21,6 +21,7 @@ class RumbleWorker
         team.team_memberships.find_or_create_by_name member
       }
     rescue => e
+      raise e if Rails.env.to_sym == :test
       return
     end
   end

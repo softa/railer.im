@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   scope :who_use, (lambda do |g| select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id ").where("rubygems.id = ?", g.id)
   end)
   
+  attr_accessible :login, :email, :password, :password_confirmation
+  
   def used_gems
     Rubygem.used_by(self).all
   end
@@ -59,6 +61,18 @@ class User < ActiveRecord::Base
   end
   
   def to_param; login; end
+  
+  
+  def activate!
+    self.active = true
+    save
+  end
+  
+  def activated?
+    self.active?
+  end
+  # TODO write a test for this
+  
 protected
 
   before_validation :setup_user, :on => :create
@@ -128,6 +142,7 @@ protected
   def confirm_email
     UserMailer.confirm_email self
   end
+  
 end
 
 

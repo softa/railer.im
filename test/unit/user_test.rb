@@ -73,4 +73,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal repo, @u.repositories.first
   end
 
+  test "should be able to get my team when it is bound" do
+    team = create_team_membership(:user => @u).team
+    assert_equal @u.team, team
+  end
 end

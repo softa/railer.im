@@ -16,7 +16,15 @@ $('form#signup .message_wrapper').ajaxError(function(e, xhr, settings, exception
   // This handles signup errors
   if(settings.url == '/users'){
     $(this).fadeIn()
-    $(this).text($.parseJSON(xhr.responseText)['base'])
+	json = $.parseJSON(xhr.responseText)
+	base = json['base']
+	if(base){
+     $(this).text(base)
+	}else{
+	  login = json['login']		
+      $(this).text('Profile ' + login)
+	}
+
   }
 })
 $('form#signup').submit(function(){

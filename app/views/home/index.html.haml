@@ -7,13 +7,6 @@
         %strong Signup
       .clear
 %hr
-:javascript 
-  $('#github_name_signup').focus(function(){
-    $(this).parent().addClass('focused')
-  })
-  $('#github_name_signup').blur(function(){
-    $(this).parent().removeClass('focused')
-  })
 %h2 Search for railers, gems, companies »
 %form.home
   %fieldset
@@ -22,3 +15,10 @@
       .button
         %strong Search
       .clear
+:javascript 
+  $('input').focus(function(){
+    $(this).parent('.input_wrapper').addClass('focused')
+  })
+  $('input').blur(function(){
+    $(this).parent('.input_wrapper').removeClass('focused')
+  })

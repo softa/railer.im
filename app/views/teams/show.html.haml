@@ -4,7 +4,7 @@
       .span-7
         .image_wrapper
           - if @team.thumbnail
-            = image_tag @team.thumbnail
+            = image_tag @team.thumbnail, :class => 'image'
       .span-17.last
         .info_wrapper
           .header
@@ -26,8 +26,7 @@
             %strong.small_caps Tools
             - if not @team.how.nil?
               - for how in @team.how
-                %br
-                = how
+                %p= how
             %hr
             %dl
               %dt
@@ -42,7 +41,7 @@
                   = link_to team, team.team_home
             .clear
       .clear
-.footer
+%footer
   .container
     .gem_users
       %h3 See who is using this Team

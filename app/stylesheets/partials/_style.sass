@@ -16,11 +16,12 @@ body
     position: fixed
     top: 0
     left: 0
-    height: 52px
+    height: 56px
     background: white
-    img
-      &:hover
-        background: url(/images/railerim_logo_small_background.png) no-repeat center center
+    h1
+      +reset-box-model
+    img#logo
+      background: transparent url(/images/railerim_logo_small_background.png) no-repeat
     form
       padding-top: 12px
       text-align: right
@@ -36,8 +37,6 @@ body
           color: #222 !important
         &:active
           color: #000 !important
-    h1
-      margin: 0
   a, :link, a:visited
     color: #0AF
     text-decoration: none
@@ -47,6 +46,10 @@ body
     &:active
       position: relative
       top: 1px
+  dl
+    +reset-box-model
+    dt, dd
+      +reset-box-model
   .content_wrapper
     margin-top: 52px
     padding-bottom: 30px
@@ -78,7 +81,7 @@ body
     font-variant: small-caps
     text-shadow: #fff 0 1px 0
     color: #AAA
-  .footer
+  footer
     +grad(rgba(#F55,.8),rgba(#F90,1))
     height: 400px
     border-top: 1px solid #EEE
@@ -102,7 +105,6 @@ body
     font-weight: 900
     padding: 4px 8px
     line-height: 24px
-    //margin: 2px
     +grad(#0E7,#091)
     float: right
     &:hover

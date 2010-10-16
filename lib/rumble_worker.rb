@@ -17,12 +17,11 @@ class RumbleWorker
       }]
       how = (doc/'.resources-used p').text.split(/\n/)
       team.update_attributes :thumbnail => thumbnail, :image => image, :what => what, :where => where, :how => how
-      #members...
+      members.each{|member|
+        team.team_memberships.find_or_create_by_name member
+      }
     rescue => e
       return
     end
   end
-
 end
-
-<img alt="Screenshot" src="https://d37iuui1vjm6wb.cloudfront.net/screenshots/html_document/screenshot_windows_chrome_5/1287232148/423628/screenshot.png">

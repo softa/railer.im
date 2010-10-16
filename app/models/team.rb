@@ -8,4 +8,6 @@ class Team < ActiveRecord::Base
     "http://railsrumble.com/teams/#{team_home}"
   end
 
+  serialize :where
+  serialize :how
 end

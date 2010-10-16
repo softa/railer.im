@@ -10,8 +10,8 @@ class RenameRecomendation < ActiveRecord::Migration
   def self.down
     execute "
     ALTER TABLE recommendations RENAME TO recomendations;
-    ALTER TABLE recommendations RENAME recommends_id TO recomends_id;
-    ALTER TABLE recommendations RENAME recommended_id TO recomended_id;
+    ALTER TABLE recomendations RENAME recommends_id TO recomends_id;
+    ALTER TABLE recomendations RENAME recommended_id TO recomended_id;
     "
   end
 end

@@ -19,4 +19,18 @@ class UserTest < ActiveSupport::TestCase
     User.create!(:login => 'joaodocaminhao', :email => 'joaodocaminhao@bol.com.br', :password => 'velhagorda')
   end
   
+  test "should be able to follow another user" do
+    u = create_user
+    followee = create_user
+    u.follows followee.login
+    assert_equal 1, GitFollower.count
+    assert_equal u.followees.first, followee
+    assert_equal followee.followers.first, u
+  end
+
+  test "should fail gracefully if followee does not exist" do
+    u = create_user
+    u.follows 'login_that_does_not_exist'
+    assert_equal 0, GitFollower.count
+  end
 end

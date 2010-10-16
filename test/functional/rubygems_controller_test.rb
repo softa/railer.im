@@ -14,7 +14,7 @@ class RubygemsControllerTest < ActionController::TestCase
     @rubygem = Rubygem.create :name => 'rails'  
     get :show, :id => @rubygem.to_param
     assert_response :success
-    assert_select 'h1', 'rails'
+    assert_select '#gem_name', 'rails'
   end
 
   {:new => :get, :edit => :get, :create => :post, :update => :put, :destroy => :delete}.each{|k,v|

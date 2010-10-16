@@ -1,0 +1,27 @@
+(in /mnt/hgfs/ubuntu/railerim)
+Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
+Started
+...............................
+Finished in 8.235131 seconds.
+
+31 tests, 149 assertions, 0 failures, 0 errors
+Loaded suite /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
+Started
+.......E......F.
+Finished in 1.424562 seconds.
+
+  1) Error:
+test_should_show_rubygem(RubygemsControllerTest):
+ActionView::Template::Error: You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?
+    app/views/rubygems/show.html.haml:27:in `_app_views_rubygems_show_html_haml___802978030__622310928_0'
+    /test/functional/rubygems_controller_test.rb:15:in `test_should_show_rubygem'
+
+  2) Failure:
+test_should_show_user(UsersControllerTest) [/test/functional/users_controller_test.rb:33]:
+<"Juan Maiz"> expected but was
+<"">.
+<false> is not true.
+
+16 tests, 22 assertions, 1 failures, 1 errors

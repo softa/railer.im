@@ -8,11 +8,8 @@ Railerim::Application.routes.draw do
   resource :user_sessions, :only => [:create, :destroy]
   #TODO remover isso depois?
   match 'home/email' => 'home#email'
-<<<<<<< HEAD
   match 'home/live' => 'home#live'
-=======
   match 'user_sessions/token_auth' => 'user_sessions#token_auth'
->>>>>>> f6c75f0f3ddf585c000446571c201c886f8021fd
   root :to => "home#index"
   get ':id' => 'users#show', :as => :profile  
 end

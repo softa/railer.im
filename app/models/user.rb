@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
     return nil if followee.nil?
     git_followees.create(:followee_id => followee.id)
   end
+  
+  def to_param; login; end
 protected
   before_validation :setup_user, :on => :create
   after_create :work

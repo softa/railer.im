@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserSessionsControllerTest < ActionController::TestCase
+
   setup do
     @user = create_user(:login => 'joao')
   end

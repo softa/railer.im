@@ -73,6 +73,7 @@ body
     text-transform: lowercase
     font-variant: small-caps
     text-shadow: #fff 0 1px 0
+    color: #AAA
   .footer
     +grad(rgba(#F55,.8),rgba(#F90,1))
     height: 400px
@@ -91,20 +92,40 @@ body
   a.railerim_button
     +border-radius(3px)
     border: 1px solid #808080
-    -webkit-box-shadow: #FFF 0 1px 0 inset, #fff 0 1px 0
+    -webkit-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, rgba(#fff,.5) 0 1px 0
     color: #444
     text-shadow: #FFF 0 1px 0
+    font-weight: 900
     padding: 6px
     margin: 2px
     &:hover
-      border-color: #606060
-      +box-shadow(#FFF,0,1px,0)
-      +grad(#FFF,#CCC)
-      color: #222
+      border-color: #091
+      -webkit-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, rgba(#fff,.5) 0 1px 0
+      +grad(#0A3,#091)
+      color: white
       text-decoration: none
+      text-shadow: (#091 - #222) 1px 1px 0
     &:active
       border-color: #606060
-      +box-shadow(#FFF,0,1px,0)
-      +grad(#999,#CCC)
-      color: #222
-      text-shadow: #E0E0E0 0 1px 0
+      +grad(#091,#0A3)
+    &.recommended
+      +grad(#0A3,#091)
+      -webkit-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, rgba(#fff,.5) 0 1px 0
+      text-shadow: none
+      color: white
+      span.recommended_text
+        position: relative
+        visibility: visible
+      span.unrecommend
+        position: absolute
+        visibility: hidden
+      &:hover
+        +grad(#D55,#A33)
+        span.recommended_text
+          position: absolute
+          visibility: hidden
+        span.unrecommend
+          position: relative
+          visibility: visible
+      &:active
+        +grad(#A33,#D55)

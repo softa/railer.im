@@ -10,41 +10,50 @@
             %span (#{@user.login})
         .profile_recommend
           .recommend_wrapper
-            %a.railerim_button{:href => '#'} Recommend
+            -# #TODO USE JQUERY TO MAKE THIS WORK
+            %a.railerim_button.hide{:href => '#', :style => 'margin-right: 6px'} Recommend
+            %a.railerim_button.recommended{:href => '#', :style => 'margin-right: 6px'}
+              %span.recommended_text Recommended
+              %span.unrecommend Don't recommend
             %span.recommendations= @user.recommended_by.size
         .left_column
           .company_name
-            Company: #{@user.company_name}
+            %strong.small_caps Company
+            %h3 #{@user.company_name}
           %hr
           .blog
-            Blog: #{@user.blog}
+            %strong.small_caps Blog
+            %h3 #{@user.blog}
           %hr
           .location
-            Location: #{@user.location}
+            %strong.small_caps Location
+            %h3 #{@user.location}
           %hr
           .bio
-            Bio
-          %hr
-          .last_tweet
-            Last Tweet
+            %strong.small_caps Bio
+          -#
+            %hr
+            .last_tweet
+              Last Tweet
           %hr
           .used_rubygems
-            Rubygems
+            %strong.small_caps Rubygems
         .right_column
           .personal_gems
-            Maintener of the following Gems
+            %strong.small_caps Maintener of the following Gems
             %ul
               - 5.times do
-                %li lorem
-          %hr
+                %li
+                  %a{:href => '#'} lorem 
           .recommended
-            Recommended
-            = @user.recommends
+            %strong.small_caps Recommended
+            #{@user.recommends}
           %hr
           .followers
-            Followers
+            %strong.small_caps Followers
           %hr
           .owns_the_repos
-            Repo count: #{@user.public_repo_count}
-            Own the repos
+            %strong.small_caps Repositories
+            %h3 #{@user.public_repo_count}
+
 -# <User id: 2, name: "Leonardo Tartari", email: "ltartari@gmail.com", company_name: "Softa", public_repo_count: 3, blog: "www.softa.com.br", github_id: "114248", public_gist_count: 0, gravatar_id: "7089678f7027c45dc6708825b01c8731", location: "Porto Alegre, Brazil", login: "ltartari", crypted_password: "791a0f0a2afe73e7ef183c8fccfe015e0e9cd1bb36a4e6ca67c...", password_salt: "JsQ98fukSpNVk7lBlaD", persistence_token: "b0528dee602857e8d8f2026dc07d2ffaef24694608bfdb309af...", single_access_token: "FkQWxHeaETte90ZQmP7", perishable_token: "XYBPfAZqeLKnUpFGmk5", login_count: nil, failed_login_count: nil, last_request_at: nil, current_login_at: nil, last_login_at: nil, current_login_ip: nil, last_login_ip: nil, created_at: "2010-10-16 07:47:51", updated_at: "2010-10-16 07:48:36", company_id: 1, accuracy: 5, city: "Porto Alegre", province: nil, street_address: nil, lat: -30.034259, lng: -51.22802, country_code: "BR", precision: "zip", state: "Brazil", full_address: "Porto Alegre, Brazil, BR", zip: nil>

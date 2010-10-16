@@ -1,60 +1,70 @@
 #rubygem_profile
   .container
-    .span-6
+    .span-7
       .rubygem_image
         - if @rubygem.uri
           = thumbalizr @rubygem.uri
         - else
-          TODO
-    .span-18.last
-      .gem_name
-        %span.download #{@rubygem.downloads}
-        %h1#gem_name #{@rubygem.name}
-        .clear
-      .clear
+          #{image_tag 'rubygem.png'}
+    .span-17.last
       .rubygem_info
-        .left_column
-          %strong.small_caps Description
-          %p #{@rubygem.description}
-        .right_column
-          %strong.small_caps Version
-          %p
-            %strong #{@rubygem.version}
-            (#{@rubygem.version_downloads} downloads)
+        .gem_name
+          %span.download #{@rubygem.downloads}
+          %h1#gem_name #{@rubygem.name}
+          .clear
         .clear
-        %hr
-        .left_column
-          %strong.small_caps Authors
-          %h2 #{@rubygem.authors}
-        .right_column
-          - if @rubygem.homepage_uri
-            %strong.small_caps Home
-            %p= nice_link @rubygem.homepage_uri
-          - if @rubygem.project_uri
-            %hr
-            %strong.small_caps Project
-            %p= nice_link @rubygem.project_uri
-          - if @rubygem.gem_uri
-            %hr
-            %strong.small_caps Gem
-            %p= nice_link @rubygem.gem_uri
-          - if @rubygem.source_code_uri
-            %hr
-            %strong.small_caps Source
-            %p= nice_link @rubygem.source_code_uri
-          - if @rubygem.bug_tracker_uri
-            %hr
-            %strong.small_caps Bugs
-            %p= nice_link @rubygem.bug_tracker_uri
-          - if @rubygem.wiki_uri
-            %hr
-            %strong.small_caps Wiki
-            %p= nice_link @rubygem.wiki_uri
-          - if @rubygem.mailing_list_uri
-            %hr
-            %strong.small_caps Mailing List
-            %p= nice_link @rubygem.mailing_list_uri
-        .clear
+        .rubygem_info_wrapper
+          .left_column
+            %strong.small_caps Description
+            %p #{@rubygem.description}
+          .right_column
+            %strong.small_caps Version
+            %p
+              %strong #{@rubygem.version}
+              (#{@rubygem.version_downloads} downloads)
+          .clear
+          %hr
+          .left_column
+            %strong.small_caps Authors
+            %h2 #{@rubygem.authors}
+          .right_column
+            %dl
+              - if @rubygem.homepage_uri
+                %dt
+                  %strong.small_caps Home
+                %dd
+                  %p= nice_link @rubygem.homepage_uri
+              - if @rubygem.project_uri
+                %dt
+                  %strong.small_caps Project
+                %dd
+                  %p= nice_link @rubygem.project_uri
+              - if @rubygem.gem_uri
+                %dt
+                  %strong.small_caps Gem
+                %dd
+                  %p= nice_link @rubygem.gem_uri
+              - if @rubygem.source_code_uri
+                %dt
+                  %strong.small_caps Source
+                %dd
+                  %p= nice_link @rubygem.source_code_uri
+              - if @rubygem.bug_tracker_uri
+                %dt
+                  %strong.small_caps Bugs
+                %dd
+                  %p= nice_link @rubygem.bug_tracker_uri
+              - if @rubygem.wiki_uri
+                %dt
+                  %strong.small_caps Wiki
+                %dd
+                  %p= nice_link @rubygem.wiki_uri
+              - if @rubygem.mailing_list_uri
+                %dt
+                  %strong.small_caps Mailing List
+                %dd
+                  %p= nice_link @rubygem.mailing_list_uri
+          .clear
     .clear
 .footer
   .container

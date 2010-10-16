@@ -1,32 +1,37 @@
-%h1
-  = @rubygem.name
-  %span{:style => 'float:right;font-size:.8em;color:#777'}= @rubygem.downloads
-
-%h3
-  VERSION
-  %br
-  %strong= @rubygem.version
-
-%h3
-  AUTHORS
-  %br
-  %strong= @rubygem.authors
-  
-= @rubygem.description
--#
-  %dt= Rubygem.human_attribute_name :version_downloads
-  %dd= @rubygem.version_downloads
-  %dt= Rubygem.human_attribute_name :homepage_uri
-  %dd= @rubygem.homepage_uri
-  %dt= Rubygem.human_attribute_name :project_uri
-  %dd= @rubygem.project_uri
-  %dt= Rubygem.human_attribute_name :gem_uri
-  %dd= @rubygem.gem_uri
-  %dt= Rubygem.human_attribute_name :source_code_uri
-  %dd= @rubygem.source_code_uri
-  %dt= Rubygem.human_attribute_name :bug_tracker_uri
-  %dd= @rubygem.bug_tracker_uri
-  %dt= Rubygem.human_attribute_name :wiki_uri
-  %dd= @rubygem.wiki_uri
-  %dt= Rubygem.human_attribute_name :mailing_list_uri
-  %dd= @rubygem.mailing_list_uri
+#rubygem_profile
+  .container
+    .span-6
+      RUBYGEM IMAGE
+    .span-18.last
+      .gem_info
+        %span.download #{@rubygem.downloads}
+        %h1
+          %span.quiet Gem name:
+          %span.loud #{@rubygem.name}
+        %h3
+          Version
+          %br
+          %strong #{@rubygem.version}
+        %h3
+          Authors
+          %br
+          %strong #{@rubygem.authors}
+        #{@rubygem.description}
+        -#
+          %dt= Rubygem.human_attribute_name :version_downloads
+          %dd= @rubygem.version_downloads
+          %dt= Rubygem.human_attribute_name :homepage_uri
+          %dd= @rubygem.homepage_uri
+          %dt= Rubygem.human_attribute_name :project_uri
+          %dd= @rubygem.project_uri
+          %dt= Rubygem.human_attribute_name :gem_uri
+          %dd= @rubygem.gem_uri
+          %dt= Rubygem.human_attribute_name :source_code_uri
+          %dd= @rubygem.source_code_uri
+          %dt= Rubygem.human_attribute_name :bug_tracker_uri
+          %dd= @rubygem.bug_tracker_uri
+          %dt= Rubygem.human_attribute_name :wiki_uri
+          %dd= @rubygem.wiki_uri
+          %dt= Rubygem.human_attribute_name :mailing_list_uri
+          %dd= @rubygem.mailing_list_uri
+    .clear

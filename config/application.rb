@@ -45,3 +45,4 @@ module Railerim
 end
 
 require 'rubygem_worker'
+require 'railsplugins_worker'

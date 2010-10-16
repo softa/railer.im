@@ -9,8 +9,13 @@ class Rubygem < ActiveRecord::Base
 protected
 
   before_validation :search, :on => :create
+  after_create :work
   def search
     RubygemWorker.perform_initially(self)
+  end
+
+  def work
+    Resque.enqueue(RailspluginsWorker, self.id)
   end
 
 end

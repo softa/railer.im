@@ -1,7 +1,7 @@
 %header
   .container
     .span-6
-      %h1 #{link_to image_tag('railerim_logo.png'), root_path}
+      %h1 #{link_to image_tag('railerim_logo_small.png'), root_path}
     .span-18.last
       %form
         %fieldset
@@ -13,7 +13,7 @@
             - else
               = link_to 'Login', '#', :id => 'open_login_form'
           &middot;&nbsp;
-          %input{ :type => :search, :placeholder => 'Search' }
+          %input#search{ :type => :search, :placeholder => 'Search' }
     .clear
 - unless current_user
   .page_overlay.hide
@@ -25,11 +25,17 @@
         %fieldset
           = f.label :login
           %br
-          = f.text_field :login, :style => 'margin-bottom:10px'
+          = f.text_field :login
+        #user_session_login_required.required_field.hide
+          %strong Login required
+        %br
         %fieldset
           = f.label :password
           %br
           = f.password_field :password
+        #user_session_password_required.required_field.hide
+          %strong Password required
+        %br
         %fieldset
           .actions
             = f.submit 'Login'

@@ -1,3 +1,7 @@
+Icons
 Fugue Icons: http://code.google.com/p/fugue-icons-src/
+Social Icons by www.komodomedia.com
 
-www.komodomedia.com (social icons)
+Javascript
+jQuery
+jQuery.placeholder - http://github.com/NV/placeholder.js

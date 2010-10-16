@@ -1,6 +1,20 @@
 $('#new_user_session').submit(function(){
   var url = $(this).attr('action')
   var data = $(this).serialize()
+  if( ! $('#user_session_login').val() ){
+    $('#user_session_login').focus()
+    $('#user_session_login_required').slideDown()
+    return false
+  }else{
+    $('#user_session_login_required').slideUp()
+  }
+  if( ! $('#user_session_password').val() ){
+    $('#user_session_password').focus()
+    $('#user_session_password_required').slideDown()
+    return false
+  }else{
+    $('#user_session_password_required').slideUp()
+  }
   $.post(url, data, function(result){
     // successfull login!
     location.href = '/'+result['login']

@@ -15,10 +15,14 @@ body
     position: fixed
     top: 0
     left: 0
-    height: 96px
+    height: 52px
     background: white
+    img
+      margin-top: 4px
+      &:hover
+        background: url(/images/railerim_logo_small_background.png) no-repeat center center
     form
-      padding-top: 30px
+      padding-top: 12px
       text-align: right
     nav
       text-align: right
@@ -44,7 +48,7 @@ body
       position: relative
       top: 1px
   #home, #rubygem_profile, #railer_profile, #company_profile, #team_profile
-    margin-top: 96px
+    margin-top: 52px
     padding-bottom: 30px
     border-bottom: 1px solid #F90
     background:
@@ -129,3 +133,5 @@ body
           visibility: visible
       &:active
         +grad(#A33,#D55)
+.text-placeholder
+  color: #AAA !important

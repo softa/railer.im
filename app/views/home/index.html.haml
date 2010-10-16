@@ -4,7 +4,7 @@
       %h1 Good text that it's not lorem ipsum goes here
       .showcase{:style => 'text-align:right; margin-bottom: -5px;'}
         #{image_tag('plintscleef.png')}
-      = render ('home/signup')
+      = render ('home/signup') unless current_user
 %footer
   .container
     %h2 Live view

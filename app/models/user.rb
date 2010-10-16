@@ -66,6 +66,16 @@ protected
         errors.add_to_base 'User not found. This user has to exists on GitHub.'
         return false
       end
+    rescue APICache::CannotFetch => e
+      # if theres any error in github api, we'll retry 3 times.
+      attemps += 1
+      sleep 5
+      if attemps < 3
+        retry
+      else
+        errors.add_to_base 'User not found. This user has to exists on GitHub.'
+        return false
+      end
     rescue Octopi::APIError => e
       # if theres any error in github api, we'll retry 3 times.
       attemps += 1

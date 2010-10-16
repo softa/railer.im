@@ -1,1 +1,49 @@
-%h1= @user.name
+#railer_profile
+  .container
+    .wrapper
+      .profile_image
+        #{gravatar(@user.gravatar_id, 256)}
+      .profile_info
+        .profile_name
+          %h1
+            #{@user.name}
+            %span (#{@user.login})
+        .profile_recommend
+          %a{:href => '#'} Recommend
+          %span
+            -#= @user.recommends
+        .left_column
+          .company_name
+            Company: #{@user.company_name}
+          %hr
+          .blog
+            Blog: #{@user.blog}
+          %hr
+          .location
+            Location: #{@user.location}
+          %hr
+          .bio
+            Bio
+          %hr
+          .last_tweet
+            Last Tweet
+          %hr
+          .used_rubygems
+            Rubygems
+        .right_column
+          .personal_gems
+            Maintener of the following Gems
+          %hr
+          .recommended
+            Recommended
+          %hr
+          .followers
+            Followers
+          %hr
+          .owns_the_repos
+            Repo count: #{@user.public_repo_count}
+            Own the repos
+          
+        
+-#
+  <User id: 2, name: "Leonardo Tartari", email: "ltartari@gmail.com", company_name: "Softa", public_repo_count: 3, blog: "www.softa.com.br", github_id: "114248", public_gist_count: 0, gravatar_id: "7089678f7027c45dc6708825b01c8731", location: "Porto Alegre, Brazil", login: "ltartari", crypted_password: "791a0f0a2afe73e7ef183c8fccfe015e0e9cd1bb36a4e6ca67c...", password_salt: "JsQ98fukSpNVk7lBlaD", persistence_token: "b0528dee602857e8d8f2026dc07d2ffaef24694608bfdb309af...", single_access_token: "FkQWxHeaETte90ZQmP7", perishable_token: "XYBPfAZqeLKnUpFGmk5", login_count: nil, failed_login_count: nil, last_request_at: nil, current_login_at: nil, last_login_at: nil, current_login_ip: nil, last_login_ip: nil, created_at: "2010-10-16 07:47:51", updated_at: "2010-10-16 07:48:36", company_id: 1, accuracy: 5, city: "Porto Alegre", province: nil, street_address: nil, lat: -30.034259, lng: -51.22802, country_code: "BR", precision: "zip", state: "Brazil", full_address: "Porto Alegre, Brazil, BR", zip: nil>        

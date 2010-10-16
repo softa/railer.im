@@ -1,4 +1,5 @@
 @import "partials/home"
+@import "partials/user_profile"
 @import "partials/rubygems"
 body
   +blueprint(true)
@@ -35,12 +36,14 @@ body
       margin: 0
   a, :link, a:visited
     color: #0AF
+    text-decoration: none
     &:hover
+      text-decoration: underline
       color: (#0AF + #222)
     &:active
       position: relative
       top: 1px
-  #home, #rubygem_profile, #user_profile, #company_profile, #team_profile
+  #home, #rubygem_profile, #railer_profile, #company_profile, #team_profile
     margin-top: 96px
     padding-bottom: 30px
     border-bottom: 1px solid #F90

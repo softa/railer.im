@@ -1,3 +1,29 @@
-UserMailer#confirm_email
-
-== #{ @greeting }, find me in app/views/user_mailer/confirm_email
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+%html{:lang => :en}
+  %head
+    %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html;charset:utf-8' }
+    %title Mailer
+  %body{:style => 'font-family:Helvetica, arial, sans, sans-serif; font-size:15px; line-height:21px; color:#444;'}
+    %center
+      %table{ :width => '100%', :border => 0, :frame => :void, :cellspacing => 0, :cellpadding => 0, :style => 'margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse;' }
+        %tbody{ :style => 'margin:0; padding:0; border:0;' }
+          %tr
+            %td{ :align => :center, :valign => :top, :style => 'margin:0; padding:0; border:0 none;' }
+              %table{ :width => 600, :border => 0, :frame => :void, :cellspacing => 0, :cellpadding => 0, :style => 'margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse;' }
+                %tbody{ :style => 'margin:0; padding:0; border:0;' }
+                  %tr
+                    %td{ :align => :left, :valign => :middle, :style => 'margin:0; padding:0; border:0 none;' }
+                      %a{:href => 'http://railer.im/', :style => 'border: 0;'}
+                        %img{:src => '/images/railerim_mailer_logo.gif', :style => 'border: 0;'}
+                        -# http://railer.im
+                    %td{ :align => :right, :valign => :middle, :style => 'margin:0; padding:0; border:0 none;' }
+                      %h1{:style => 'margin:0; padding:0; font-size: 20px;'} Welcome {username}
+              %table{ :width => 600, :border => 0, :frame => :void, :cellspacing => 0, :cellpadding => 0, :style => 'margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse;' }
+                %tbody{ :style => 'margin:0; padding:0; border:0;' }
+                  %tr
+                    %td{ :align => :left, :valign => :top, :style => 'margin:0; padding:0; border:0 none;' }
+                      .validate_account{:style => 'padding:10px; background: #EEE; border: 1px solid grey'}
+                        %p
+                          Validate your account by accessing the following link:
+                          %br
+                          %a{ :href => '#', :style => 'color:#0AF; font-size: 24px' } http://railer.im/validate

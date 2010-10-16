@@ -7,12 +7,41 @@
         %fieldset
           %nav
             - if current_user
-              = link_to 'My profile', profile_path(current_user)
-              &middot;&nbsp;
-              = link_to 'Logout', user_sessions_path, :method => :delete
+              #{link_to 'My profile', profile_path(current_user)}&nbsp;&middot;&nbsp;#{link_to 'Logout', user_sessions_path, :method => :delete}
             - else
-              = link_to 'Login', '#', :id => 'open_login_form'
-          %input#search{ :type => :search, :placeholder => 'Search' }
+              #{link_to 'Login', '#', :id => 'open_login_form'}
+          %input#search{ :type => :search, :placeholder => 'Search', :autocomplete => :off }
+        #search_panel
+          -#.hide
+          %table
+            %tr
+              %th User
+              %td
+                %table
+                  - 4.times do
+                    %tr
+                      %td search
+            %tr
+              %th Gems
+              %td
+                %table
+                  - 4.times do
+                    %tr
+                      %td search
+            %tr
+              %th Teams
+              %td
+                %table
+                  - 4.times do
+                    %tr
+                      %td search
+            %tr
+              %th Companies
+              %td
+                %table
+                  - 4.times do
+                    %tr
+                      %td search
     .clear
 - unless current_user
   .page_overlay.hide
@@ -42,3 +71,7 @@
             = f.submit 'Login', :tabindex => 3
             .clear
   = javascript_include_tag 'login'
+  :javascript 
+    $('#search').focus(function(){
+      $('#search_panel').slideDown()
+    })

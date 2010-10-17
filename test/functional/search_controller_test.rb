@@ -8,7 +8,7 @@ class SearchControllerTest < ActionController::TestCase
     expected_json = Search.results_for('pedroaxl@gmail.com').to_json
     get :index, :format => :json, :query => 'pedroaxl@gmail.com'
     assert_response :success
-    assert_equal 4, assigns(:results).size
+    assert_equal 5, assigns(:results).size
     assert_equal 3, assigns(:results)["users"].size
     assert_equal expected_json, @response.body
   end

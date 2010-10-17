@@ -15,7 +15,8 @@ class Search < ActiveRecord::Base
     rubygems = self.query_model(Rubygem, query)
     companies = self.query_model(Company, query)
     teams = self.query_model(Team, query)
-    {:users => users, :rubygems => rubygems, :companies => companies, :teams => teams }
+    locations = connection.execute(User.rank_by_location_similarity(query).to_sql).map
+    {:users => users, :rubygems => rubygems, :companies => companies, :teams => teams, :locations => locations }
   end
 
   protected

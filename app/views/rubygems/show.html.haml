@@ -18,9 +18,23 @@
             %strong.small_caps Description
             %p #{@rubygem.description}
             %hr
-            %strong.small_caps Authors
-            %h3 #{@rubygem.authors_names}
-            - if not @rubygem.indicators.nil?
+            %strong.small_caps Authors 
+            .list_with_pictures
+              %ul
+                - for a in @rubygem.authorships
+                  %li
+                    - if a.author
+                      = link_to profile_path(a.author), :tile => a.author.name do
+                        #{gravatar(a.author.gravatar_id,40)}
+                        #{a.author_name}
+                        (#{a.author.login})
+                        
+                    - else
+                      = a.author_name
+
+
+
+            - unless @rubygem.indicators.nil?
               %hr
               %strong.small_caps Indicators
               %ul.indicators{:style => 'margin:15px 0'}

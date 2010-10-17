@@ -1,3 +1,7 @@
+out_error = function(){ $('#login_error').fadeOut() }
+$('#user_session_login').keyup(out_error)
+$('#user_session_password').keyup(out_error)
+
 $('#new_user_session').submit(function(){
   if( ! $('#user_session_login').val() ){
     $('#user_session_login').focus()
@@ -17,7 +21,11 @@ $('#new_user_session').submit(function(){
   var data = $(this).serialize()
   $.post(url, data, function(result){
     // successfull login!
-    location.reload()
+
+	if(result['ok'])
+      location.href = result['redirect']
+	else
+      $('#login_error').fadeIn().text('Incorrect login or password.')
   }, 'json')
   return false
 })

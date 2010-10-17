@@ -23,7 +23,13 @@ class User < ActiveRecord::Base
   has_many :owned_gems, :class_name => 'Rubygem', :through => :authorships, :source => :rubygem
 
   label :name, :login
+  def near_railers
+    User.near_railers(self)
+  end
 
+  scope :near_railers, lambda{|u| 
+    u.lat && u.lng ? where(:lat => u.lat,:lng => u.lng).limit(12) : where('1=2')
+  }
   scope :recent, order('id desc')
   scope :six, limit(6)
   scope :by_vip, order('score desc')
@@ -50,7 +56,8 @@ class User < ActiveRecord::Base
   
   def reload_score
     score = Score.find(self.id)
-    update_attributes :score => score.score, :level => score.level 
+    update_attributes :score => score.score||0, :level => score.level||0
+  rescue 
   end
 
   def used_gems

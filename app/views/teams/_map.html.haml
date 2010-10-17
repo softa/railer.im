@@ -1,0 +1,27 @@
+:javascript
+  ls = []
+%hr
+%strong.small_caps Members location
+
+#map{:style => 'width:260px;height:180px'}
+- for user in @team.users
+  :javascript 
+    ls.push([#{user.lat}, #{user.lng}, '#{user.name}', '#{user.gravatar_id}', '#{user.login}'])
+%script{:src => "http://maps.google.com/maps/api/js?sensor=false&hl=pt-br"}
+:javascript 
+  $(function(){
+    var latlng = new google.maps.LatLng(ls[0][0],ls[0][1]);
+    var options = {
+      zoom: 2,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map"), options);
+    for(var i=0;i<ls.length;i++){
+      var latlng = new google.maps.LatLng(ls[i][0], ls[i][1])
+      var m = new google.maps.Marker({title:ls[i][2], icon:'http://gravatar.com/avatar/'+ls[i][3]+'?s=24',position:latlng,map:map,page:'/'+ls[i][4]});
+      google.maps.event.addListener(m, 'click', function() {
+        location.href = this.page 
+      });
+    }
+  })

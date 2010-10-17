@@ -180,7 +180,9 @@ protected
   end
 
   def work
+    require 'team_association_worker'
     Resque.enqueue(GithubWorker, self.id)
+    Resque.enqueue(TeamAssociationWorker)
   end
     
 end

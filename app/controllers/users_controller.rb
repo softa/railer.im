@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    params[:user].delete(:level)
+    params[:user].delete(:score)
     puts UserSession.find(@user).inspect
     raise "NO" unless me?
     update! do |s,f|

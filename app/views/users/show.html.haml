@@ -50,10 +50,14 @@
                   edit
               .detail.recommend
                 %span#recommendations_total.recommendations= @user.recommended_by.size
-              %a#recommend_button.railerim_button{:href => '#', :class => recommend_button_class }= recommend_button_text
-              :javascript
-                var user_id = #{@user.id}
-                var logged = #{current_user ? 'true' : 'false'}
+              - if me?
+                %strong{:style => 'color:white;line-height:30px;float:right;'}
+                  Recommendations
+              - else
+                %a#recommend_button.railerim_button{:href => '#', :class => recommend_button_class }= recommend_button_text
+                :javascript
+                  var user_id = #{@user.id}
+                  var logged = #{current_user ? 'true' : 'false'}
               .clear
             .clear
             - if @user.punchline

@@ -20,6 +20,8 @@
           .column_right{:style => 'margin-top:60px; width:500px; height:500px; float:left; background:url(/images/light.png) no-repeat left center; text-align:right;'}
             #{image_tag 'geographic_report.png'}
           .clear
+        .fourth_slide.slide_wrapper.hide
+        .fifth_slide.slide_wrapper.hide
       .clear
       = render ('home/signup') unless current_user
 :javascript
@@ -27,19 +29,31 @@
     slides = $('.slides > div')
     foxes = $('.foxes > div')
     current_slide = 0
+    repeated = 0
     slides.eq(current_slide).fadeIn(2000)
     foxes.eq(current_slide).slideDown(2000)
 
     change_slide = function(){
       slides.eq(current_slide).fadeOut(1000)
-      slides.eq(current_slide).fadeIn()
-      foxes.eq(current_slide).fadeIn()
-    setTimeout(change_slide,4000)
-    }
-    setTimeout(change_slide,4000)
+      foxes.eq(current_slide).hide()
+      current_slide++
+      if(current_slide >= slides.length - 1){
+        if(repeated == 3){
+          slides.eq(current_slide).fadeIn(2000)
+          foxes.eq(current_slide).slideDown(2000)
+          return
+        }
+        current_slide = 0
+        repeated++
+
+      }
+      
       slides.eq(current_slide).fadeIn(2000)
       foxes.eq(current_slide).slideDown(2000)
-    setTimeout(change_slide,7000)
+      if(current_slide == 3 || current_slide == 4)
+        setTimeout(change_slide,15000)
+      else
+        setTimeout(change_slide,7000)
     }
     setTimeout(change_slide,7000)
   })

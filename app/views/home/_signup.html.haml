@@ -7,8 +7,11 @@
         #{image_tag 'second_fox.png', :style => 'margin-bottom:-5px;margin-right:150px'}
       .third_fox.hide{:style => 'text-align: left;'}
         #{image_tag 'third_fox.png', :style => 'margin-bottom:-5px;margin-left:150px'}
-      .last_foxes{:style => 'text-align: left;'}
+      .fourth_foxes.hide{:style => 'text-align: left;'}
         #{image_tag 'last_foxes.png', :style => 'margin-bottom:-5px;margin-left:90px'}
+      .fifth_foxes.hide{:style => 'text-align: left;'}
+        #{image_tag 'foxes_want_to_sue_us.png', :style => 'margin-bottom:-5px;margin-left:90px'}
+
     = form_for User.new, :html => {:id => :signup, :class => :home} do |f|
       %fieldset
         .success_wrapper.hide

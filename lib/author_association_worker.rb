@@ -34,5 +34,27 @@ UPDATE authorships
         WHERE a.user_id = authorships.user_id AND a.author_name = authorships.author_name
       );
     )
+
+
+    threshold = 0.5
+    begin
+      ActiveRecord::Base.connection.execute %(
+      SELECT set_limit(#{threshold});
+      UPDATE authorships 
+      SET user_id = (
+        SELECT id 
+        FROM users u
+      WHERE (u.name % authorships.name OR u.email % authorships.name OR u.login % authorships.name)
+      AND NOT EXISTS (SELECT 1 FROM authorships a WHERE a.user_id = u.id AND a.rubygem_id = authorships.rubygem_id)
+      ORDER BY greatest(similarity(u.name, authorships.name), similarity(u.email, authorships.name), similarity(u.login, authorships.name)) DESC
+      LIMIT 1
+    )  
+      WHERE authorships.user_id IS NULL;
+      )
+    rescue Exception => e
+      threshold += 0.1
+      raise "Error while associating teams" if threshold > 1
+      retry
+    end
   end
 end

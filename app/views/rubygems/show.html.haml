@@ -25,6 +25,7 @@
               %ul.indicators
                 - @rubygem.indicators.each do |key,value|
                   %li{:class => value } #{key}
+                %li= link_to 'more', @rubygem.railsplugins_url, :target => :_blank
           .right_column
             %strong.small_caps Version
             %p

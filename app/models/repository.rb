@@ -3,7 +3,6 @@ class Repository < ActiveRecord::Base
   has_many :dependencies
   def language_icon
     return "icons/script-code.png" if language.nil?
-
     case language.downcase
     when 'ruby':    "icons/ruby.png"
     when 'javascript': "icons/script-code.png"
@@ -29,6 +28,8 @@ class Repository < ActiveRecord::Base
     else "icons/script-code.png"
     end
   end
+  scope :decent, order('watchers desc').where('not fork and watchers > 1')
+  
 protected
   after_create :work
   def work

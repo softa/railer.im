@@ -12,6 +12,10 @@ class Rubygem < ActiveRecord::Base
   scope :used_by, (lambda do |u| select("DISTINCT rubygems.*").joins("JOIN dependencies ON dependencies.rubygem_id = rubygems.id JOIN repositories ON repositories.id = dependencies.repository_id JOIN users ON repositories.user_id = users.id ").where("users.id = ?", u.id)
   end)
   
+  def railsplugins_url
+    "http://www.railsplugins.org/plugins/%s" % railsplugins_id
+  end
+
   def users
     User.who_use(self).all
   end

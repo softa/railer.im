@@ -9,9 +9,21 @@
           .user_score
             - if me?
               .tweet_this{:style => 'float: right'}
-                #{tweet_this("railer.im a level #{@user.level} » http://railer.im/#{@user.login}")}
-            %strong Level #{@user.level} (#{@user.score} points)
+                #{tweet_this("RailerRank #{@user.level} » http://railer.im/#{@user.login}")}
+            %h3{:style => 'text-align:center;margin:0;color:white'}
+              RailerRank: #{@user.level.ordinalize} level
+              %br
+              %span.small{:style => 'font-size:.6em'} #{@user.score} points
           .clear
+          %br
+          .recommended_bu
+            %strong.small_caps Recommended by
+            %ul
+              - @user.recommended_by.each do |r|
+                %li
+                  = link_to profile_path(r) do
+                    #{gravatar(r.gravatar_id,24)}
+                    #{r.name}
       .span-17.last
         .info_wrapper
           .header
@@ -79,11 +91,11 @@
                         #{gravatar(u.gravatar_id, 24)}
                         %strong #{u.name}              
                 %hr
-          - unless @user.repositories.order('watchers desc').where('not fork').empty?
+          - unless @user.repositories.decent.empty?
             .owns_the_repos
               %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
               %ul
-                - for repo in @user.repositories.order('watchers desc').where('not fork')
+                - for repo in @user.repositories.decent
                   %li
                     = image_tag repo.language_icon, :class => 'language_icon', :title => repo.language
                     %strong #{link_to repo.name, repo.url, :target => :_blank}

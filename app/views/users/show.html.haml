@@ -55,6 +55,9 @@
                 var user_id = #{@user.id}
               .clear
             .clear
+            - if @user.punchline
+              %h3 “#{@user.punchline}”
+            .clear
             .left_column
               .company_name
                 %strong.small_caps Company

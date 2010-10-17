@@ -14,8 +14,8 @@ module ApplicationHelper
     image_tag "http://api.thumbalizr.com/?url=%s&width=%s&api_key=%s&quality=%s" % [url, width, '33b0bc3987ab2e24180562fbbcfde491', '100'], :class => 'image'
   end
 
-  def tweet_this text
-    link_to image_tag('social/twitter_16.png'), "http://twitter.com/?status=#{URI.escape(text)}", :target => :_blank
+  def tweet_this text, outer_text = ''
+    link_to image_tag('social/twitter_16.png') + outer_text, "http://twitter.com/?status=#{URI.escape(text)}", :target => :_blank
   end
 
 end

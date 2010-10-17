@@ -1,22 +1,22 @@
 #home.content_wrapper
   .container{:style => 'overflow:visible;'}
-    .home_wrapper{:style => 'max-width:1200px;min-width:1200px; margin: 0 auto; margin-top:20px;'}
+    .home_wrapper{:style => 'max-width:1200px; min-width:960px; margin: 0 auto; margin-top:20px;'}
       .slides{:style => 'height:500px;'}
         .first_slide.slide_wrapper
-          .column_left{:style => 'width:660px; margin-left:20px; float:left;'}
-            %h1{:style => 'font-size: 60px;'} Find relevant information about railers around the world
+          .column_left{:style => 'width:460px; margin-left:20px; float:left;'}
+            %h1{:style => 'font-size:50px;'} Find relevant information about railers around the world
           .column_right{:style => 'margin-top: 20px; width:500px; height:500px; float:right; background:url(/images/light.png) no-repeat left center; text-align: right;'}
             #{image_tag 'chuck_norris_print.png'}
           .clear
         .second_slide.slide_wrapper.hide
           .column_left{:style => 'margin-top: 20px; width:500px; height:500px; float:left; background:url(/images/light.png) no-repeat right center; text-align: left;'}
             #{image_tag 'rails_profile.png'}
-          .column_right{:style => 'width:660px; margin-left:20px; float:right;'}
-            %h1{:style => 'font-size: 60px;'} Discover more about railers and their favorite gems
+          .column_right{:style => 'min-width:460px; margin-left:20px; float:right;'}
+            %h1{:style => 'font-size:50px;'} Discover more about railers and their favorite gems
           .clear
         .third_slide.slide_wrapper.hide
-          .column_left{:style => 'width:660px; margin-left:20px; float:left;'}
-            %h1{:style => 'font-size: 60px; margin-top:100px;'} Meet the railers in your local area
+          .column_left{:style => 'min-width:460px; width:60%; margin-left:20px; float:left;'}
+            %h1{:style => 'font-size:50px; margin-top:100px;'} Meet the railers in your local area
           .column_right{:style => 'margin-top: 20px; width:500px; height:500px; float:left; background:url(/images/light.png) no-repeat left center; text-align:right;'}
             #{image_tag 'geographic_report.png'}
           .clear

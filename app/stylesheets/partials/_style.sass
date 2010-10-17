@@ -22,6 +22,7 @@ body
     top: 0
     left: 0
     height: 56px
+    z-index: 500
     background: white
     h1
       +reset-box-model
@@ -284,3 +285,13 @@ body
         margin-left: 16px
         img
           vertical-align: middle
+.search_table
+  th
+    color: #888
+.search_list
+  +reset-box-model
+  list-style: none
+  li
+    +reset-box-model
+*:focus
+  outline: none

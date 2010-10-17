@@ -1,32 +1,31 @@
 #search_panel.hide{:style => 'z-index:5000000; position: relative;'}
-  #search_panel_loader
+  .close_search{:title => 'Close'} #{image_tag 'icons/minus-circle.png'}
+  #search_panel_loader{:style => 'text-align:center;'}
     = image_tag 'loader.png'
-  .close_search{:title => 'Close'} #{image_tag 'icons/minus-circle.png'} close
-  %table
-    %tr
-      %th
-        Best Match
-      %td
-        %ul#best_search_list
-    %tr
-      %th
-        User
-      %td
-        %ul#users_search_list
-    %tr
-      %th Gems
-      %td
-        %ul#rubygems_search_list
-    %tr
-      %th Teams
-      %td
-        %ul#teams_search_list
-    %tr
-      %th Companies
-      %td
-        %ul#companies_search_list
-    %tr
-      %th Location
-      %td
-        %ul#locations_search_list
+  %div{:style =>'margin:10px 20px;'}
+    %table.search_table
+      %tr
+        %th{:width => 120, :style => 'background:rgba(0,128,255,.25);color:#444;'} Best Match
+        %td{ :style => 'background:rgba(0,128,255,.25)' }
+          %ul#best_search_list.search_list
+      %tr
+        %th{:width => 120} User
+        %td
+          %ul#users_search_list.search_list
+      %tr
+        %th{:width => 120} Gems
+        %td
+          %ul#rubygems_search_list.search_list
+      %tr
+        %th{:width => 120} Teams
+        %td
+          %ul#teams_search_list.search_list
+      %tr
+        %th{:width => 120} Companies
+        %td
+          %ul#companies_search_list.search_list
+      %tr
+        %th{:width => 120} Location
+        %td
+          %ul#locations_search_list.search_list
 = javascript_include_tag 'jquery.timers-1.2', 'timedKeyup', 'search'

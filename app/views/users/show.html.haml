@@ -53,6 +53,7 @@
               %a#recommend_button.railerim_button{:href => '#', :class => recommend_button_class }= recommend_button_text
               :javascript
                 var user_id = #{@user.id}
+                var logged = #{current_user ? 'true' : 'false'}
               .clear
             .clear
             - if @user.punchline
@@ -92,17 +93,21 @@
               - unless @user.followers.empty?
                 %hr
                 .followers.list_with_pictures
-                  %strong.small_caps Followers
+                  %strong.small_caps 
+                    Followers on Github (#{@user.followers.count})
+                  %div{:style => 'float:right;'}
+                    =link_to "view all", repositories_on_github_url, :target => :_blank
+                  .clear
                   %ul
-                    - @user.followers.each do |f|
+                    - @user.followers.limit(25).each do |f|
                       %li
-                        = link_to profile_path(f), :tile => f.name do
+                        = link_to profile_path(f), :title => f.name do
                           #{gravatar(f.gravatar_id,32)}
 
               - unless @user.used_gems.all.empty?
                 %hr
                 .used_rubygems
-                  %strong.small_caps Used rubygems
+                  %strong.small_caps Used rubygems (#{@user.used_gems.count})
                   %ul
                     - @user.used_gems.all.each do |g|
                       %li
@@ -118,24 +123,38 @@
                       %li
                         %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
               .recommended.list_with_pictures{:class => @user.recommended_by.empty? ? 'hide' : ''}
-                %strong.small_caps Recommended by
-                %ul
+                %strong#total_recommended_by.small_caps Recommended by (#{@user.recommended_by.count})
+                %div#view_all_recommendeds{:style => 'float:right;'}
+                  =link_to "view all", '#' if @user.recommended_by.count > 24
+                .clear
+                %ul#recommended_by_limited
                   - if current_user && ! @user.recommended_by.include?(current_user)
                     %li.my_reco{:style => 'display:none'}
-                      %a{:href => user_path(current_user.login)}
-                        #{gravatar(current_user.gravatar_id, 24)}
-                        %strong #{current_user.name}
+                      %a{:href => user_path(current_user.login), :title => current_user.name}
+                        #{gravatar(current_user.gravatar_id, 48)}
+                  - @user.recommended_by.limit(24).each do |u|
+                    %li{:class => u == current_user ? 'my_reco' : ''}
+                      %a{:href => user_path(u.login), :title => u.name}
+                        #{gravatar(u.gravatar_id, 48)}
+                %ul#recommended_by_unlimited.hide
+                  - if current_user && ! @user.recommended_by.include?(current_user)
+                    %li.my_reco{:style => 'display:none'}
+                      %a{:href => user_path(current_user.login), :title => current_user.name}
+                        #{gravatar(current_user.gravatar_id, 48)}
                   - @user.recommended_by.each do |u|
                     %li{:class => u == current_user ? 'my_reco' : ''}
-                      %a{:href => user_path(u.login)}
-                        #{gravatar(u.gravatar_id, 40)}
-                        %strong #{u.name}
+                      %a{:href => user_path(u.login), :title => u.name}
+                        #{gravatar(u.gravatar_id, 48)}                        
                   %hr
               - unless @user.repositories.decent.empty?
                 .owns_the_repos
-                  %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
+                  %strong.small_caps
+                    Repositories (#{@user.repositories.decent.count})
+                  %div{:style => 'float:right;'}
+                    =link_to "view all", repositories_on_github_url, :target => :_blank
+                  .clear
                   %ul
-                    - for repo in @user.repositories.decent
+                    - for repo in @user.repositories.decent.limit(8)
                       %li
                         = image_tag repo.language_icon, :class => 'language_icon', :title => repo.language
                         %strong #{link_to repo.name, repo.url, :target => :_blank}

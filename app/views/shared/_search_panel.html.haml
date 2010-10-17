@@ -1,46 +1,47 @@
 #search_panel.hide{:style => 'z-index:5000000; position: relative;'}
   .close_search{:title => 'Close'} #{image_tag 'icons/minus-circle.png'} close
-  %table.best_match
+  %table
     %tr
       %th
-        Best match
+        Best Match
       %td
-        #{image_tag 'icons/star.png'}
-        %strong lorem ipsum
-  %table
+        %table#best_search_list
+          %tr
+            %td.gravatar
+            %td.user_name
     %tr
       %th
         User
       %td
-        %table#users_results
+        %table#users_search_list
           %tr
             %td.gravatar
             %td.user_name
     %tr
       %th Gems
       %td
-        %table
+        %table#rubygems_search_list
           %tr
             %td
               #{image_tag 'icons/ruby.png'}
     %tr
       %th Teams
       %td
-        %table
+        %table#teams_search_list
           %tr
             %td
               #{image_tag 'rumble_small.png', :size => '16x16'}
     %tr
       %th Companies
       %td
-        %table
+        %table#companies_search_list
           %tr
             %td
               #{image_tag 'icons/briefcase.png'}
     %tr
       %th Location
       %td
-        %table
+        %table#locations_search_list
           %tr
             %td
               #{image_tag 'icons/marker.png'}

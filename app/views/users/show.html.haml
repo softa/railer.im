@@ -72,7 +72,7 @@
                   #{link_to @user.city, locations_city_path(:id => @user.city) if @user.city}
                   - if @user.state
                     = image_tag "flags/#{@user.country_code.downcase}.png"
-                    #{link_to @user.state, locations_country_path(:id => @user.state) }
+                    #{link_to "#{@user.state} #{@user.country_code}", locations_country_path(:id => @user.country_code) }
                   - else
                     NA
             -#

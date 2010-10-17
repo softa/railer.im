@@ -30,7 +30,6 @@ $.fn.show_results = function(data) {
                 </tr>
               </table>
               */
-  html = '<table>'
 /*
                 <tr>
                   <th>
@@ -99,8 +98,32 @@ $.fn.show_results = function(data) {
               </table>
               '
               */
-  $.each(data, function(row){
+  var tophit = {"rank" : -1};
+  var html_tables = {"users": "", "rubygems" : "", "teams" : "", "companies": "", "locations" : "", "best" : "" };
+  $.each(data["users"], function(key, row){
+      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
+      html_tables["users"] += '<tr><td><img src="http://gravatar.com/avatar/' + row["gravatar_id"] + '?s=16" /></td><td>' + row["label"] + '</td></tr>';
+    })
+  $.each(data["rubygems"], function(key, row){
+      tophit = (row["rubygems"] > tophit["rank"] ? row : tophit);
+      html_tables["rubygems"] += '<tr><td><img src="/images/icons/ruby.png" /></td><td>' + row["label"] + '</td></tr>';
+    })
+  $.each(data["teams"], function(key, row){
+      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
+      html_tables["teams"] += '<tr><td></td><td>' + row["label"] + '</td></tr>';
+    })
+  $.each(data["companies"], function(key, row){
+      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
+      html_tables["companies"] += '<tr><td></td><td>' + row["label"] + '</td></tr>';
+    })
+  $.each(data["locations"], function(key, row){
+      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
+      html_tables["locations"] += '<tr><td></td><td>' + row["label"] + '</td></tr>';
+    })
 
+  html_tables["best"] = (tophit["rank"] < 0 ? "" : '<tr><td></td><td><img src="/images/icons/star.png"><strong> ' + tophit["label"] + '</strong></tr>');
+  $.each(html_tables, function(k,v){
+      $('#' + k + '_search_list').html((v == '' ? '<tr><td>None found</td></tr>' : v));
     })
 }
 

@@ -1,4 +1,4 @@
-#railer_profile.content_wrapper
+.content_wrapper
   .container
     .wrapper
       .span-7
@@ -11,16 +11,15 @@
               #{@company.name}
             .clear
           .clear
-          .left_column
-            .company_name
-              %strong.small_caps Users
-              %h3 
+          .company_name
+            %strong.small_caps Users
+            .list_with_pictures
+              %ul
                 - for user in @company.users
-                  = link_to user.name, profile_path(user)
-            %hr
-
-          .right_column
-
+                  %li
+                    = link_to profile_path(user) do
+                      #{gravatar user.gravatar_id, 24}
+                      #{user.name}
 = javascript_include_tag 'company_profile.js'
 %footer
   .container

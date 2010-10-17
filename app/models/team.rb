@@ -10,4 +10,9 @@ class Team < ActiveRecord::Base
 
   serialize :where
   serialize :how
+
+  def to_param
+    team_home
+  end
+  
 end

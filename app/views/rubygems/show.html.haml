@@ -27,6 +27,18 @@
                 - @rubygem.indicators.each do |key,value|
                   %li{:class => value } #{key}
               = link_to 'See more at Rails Plugins »', @rubygem.railsplugins_url, :target => :_blank
+            %hr
+            %strong.small_caps Fight
+            
+            %h3
+              Fight with
+              %input#fight{:type => :text, :style => 'width:100px'}
+              %a#go_fight{:href => '#'} Go!
+            :javascript
+              $('#go_fight').click(function(){
+                location.href = '/gems/#{@rubygem.name}/' + $('#fight').val() + '/fight'
+              })
+
           .right_column
             %strong.small_caps Version
             %p

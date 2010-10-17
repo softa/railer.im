@@ -1,0 +1,85 @@
+#home.content_wrapper
+  .container
+    %h1 Status
+    %h1{:style => 'font-size:1.4em'}
+      = pluralize(User.count, 'railer')
+      &middot;
+      = pluralize(Company.count, 'company')
+      &middot;
+      = pluralize(Team.count, 'team')
+      &middot;
+      = pluralize(Rubygem.count, 'gem')
+      &middot;
+      = pluralize(Repository.count, 'repo')
+      &middot;
+      = pluralize(Country.count, 'country')
+      &middot;
+      = pluralize(City.count, 'city')
+
+
+    .span-12
+      %hr
+      .small_caps Top Railers
+      %table
+        - max_score = User.maximum(:score)
+        - for railer in User.by_vip.limit(10)
+          - railer_perc = (railer.score / max_score.to_f)*100
+          %tr
+            %td{:style => 'white-space:nowrap'}= link_to railer.login, profile_path(railer)
+            %td{:style => 'width:100%'}
+              %div{:style => "background:#996;color:white;width:#{railer_perc}%;padding:2px 4px"}
+                = railer.score
+
+    .span-12.last
+      %hr
+      .small_caps Top Gems
+      %table
+        - max_downloads = Rubygem.maximum(:downloads)
+        - for g in Rubygem.by_downloads.limit(10)
+          - g_perc = (g.downloads / max_downloads.to_f)*100
+          %tr
+            %td{:style => 'white-space:nowrap'}= link_to g.name, g
+            %td{:style => 'width:100%'}
+              %div{:style => "background:#969;color:white;width:#{g_perc}%;padding:2px 4px"}
+                = g.downloads
+    .clear
+                     
+    .span-8
+      %hr
+      .small_caps Levels
+      %table
+        - levels_sum = Level.sum('total')
+        - for level in Level.all
+          - levels_perc = (level.total / levels_sum.to_f)*100
+          %tr
+            %td= level.level.ordinalize
+            %td{:style => 'width:100%'}
+              %div{:style => "background:#966;color:white;width:#{levels_perc}%;padding:2px 4px"}
+                = level.total
+    .span-8
+      %hr
+      .small_caps Top Countries
+      %table
+        - countries_sum = Country.sum('total')
+        - for country in Country.all
+          - countries_perc = (country.total / countries_sum.to_f)*100
+          %tr
+            %td{:style => 'white-space:nowrap'}= link_to COUNTRY_CODES[country.country_code], locations_country_path(:id => country.country_code)
+            %td{:style => 'width:100%'}
+              %div{:style => "background:#696;color:white;width:#{countries_perc}%;padding:2px 4px"}
+                = country.total
+
+    .span-8.last
+      %hr
+      .small_caps Top Cities
+      %table
+        - cities_sum = City.sum('total')
+        - for city in City.limit(Country.count).all
+          - cities_perc = (city.total / cities_sum.to_f)*100
+          %tr
+            %td{:style => 'white-space:nowrap'}= link_to city.city, locations_city_path(:id => city.city)
+            %td{:style => 'width:100%'}
+              %div{:style => "background:#669;color:white;width:#{cities_perc}%;padding:2px 4px"}
+                = city.total
+
+

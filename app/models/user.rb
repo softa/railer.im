@@ -32,7 +32,13 @@ class User < ActiveRecord::Base
   end)
 
   # default similarity threshold (pg_trgm)
-  @@threshold = nil
+  scope :by_location_similarity, (lambda do |query|
+    where("(city % ? OR province % ?)", query, query).order("greatest(similarity(city, quote_literal('#{query}')), similarity(province, quote_literal('#{query}'))) DESC")
+  end)
+
+  scope :rank_by_location_similarity, (lambda do |query|
+    by_location_similarity(query).select("DISTINCT 'location' AS entry_type, coalesce(city || ', ' || province, city, province) AS key, name AS label, gravatar_id, greatest(similarity(city, quote_literal('#{query}')), similarity(province, quote_literal('#{query}'))) AS rank")
+  end)
 
   scope :by_similarity, (lambda do |query|
     where("(name % ? OR email % ? OR login % ?)", query, query, query).order("greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) DESC")
@@ -42,18 +48,13 @@ class User < ActiveRecord::Base
     by_similarity(query).select("'user' AS entry_type, login AS key, name AS label, gravatar_id, greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) AS rank")
   end)
   
-  def self.similarity_threshold
-    @@threshold
-  end
-
-  def self.set_similarity_threshold threshold
-    return nil unless threshold.instance_of?(Fixnum) or threshold.instance_of?(Float)
-    @@threshold = threshold
-    connection.execute("SELECT set_limit('#{@@threshold}');")
+  def reload_score
+    score = Score.find(self.id)
+    update_attributes :score => score.score, :level => score.level 
   end
 
   def used_gems
-    Rubygem.used_by(self).all
+    Rubygem.used_by(self).order('downloads desc')
   end
 
   def token_link
@@ -70,10 +71,12 @@ class User < ActiveRecord::Base
 
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)
+    recommended_user.reload_score
   end
 
   def unrecommend(unrecommended_user)
     recommendations_made.find_by_recommended_id(unrecommended_user.id).destroy
+    unrecommended_user.reload_score
   end
 
   def is_followed_by login

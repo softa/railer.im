@@ -7,7 +7,8 @@ class SearchTest < ActiveSupport::TestCase
     create_user.update_attributes :name => 'Seu Pedro', :login => 'spedro', :email => 'spedro@gmail.com'
     Search.set_similarity_threshold(0.5)
     result = Search.results_for('pedroaxl@gmail.com')
-    assert_equal({'entry_type' => 'user', 'key' => 'pedroaxl', 'label' => 'Pedro Axelrud', 'gravatar_id' => '123', 'rank' => '1'}, result[0])
-    assert_equal 3, result.num_tuples
+    assert_equal({'entry_type' => 'user', 'key' => 'pedroaxl', 'label' => 'Pedro Axelrud', 'gravatar_id' => '123', 'rank' => '1'}, result[:users][0])
+    assert_equal 1, result.size
+    assert_equal 3, result[:users].size
   end
 end

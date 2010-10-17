@@ -3,9 +3,11 @@
     .wrapper
       .span-7
         .image_wrapper
+          = image_tag 'rumble_logo-1.png'
           - if @team.thumbnail
-            = image_tag 'rumble_logo-1.png'
-            = image_tag @team.thumbnail, :class => 'image'
+            = link_to @team.url, :target => :_blank do
+              = image_tag @team.thumbnail, :class => 'image'
+        = render 'map' unless @team.users.empty?
       .span-17.last
         .info_wrapper
           .header
@@ -16,6 +18,21 @@
             %strong.small_caps Description
             %p #{@team.what}
             %hr
+            %strong.small_caps Members
+
+            .followers.list_with_pictures
+              %ul
+                - for m in @team.team_memberships
+                  %li
+                    - if m.user
+                      = link_to profile_path(m.user), :tile => m.user do
+                        = gravatar(m.user.gravatar_id,32)
+                        = m.user.name
+
+                    - else
+                      = m.name
+            %hr
+
             %dl
               - if not @team.where.nil?
                 - @team.where.each do |what,link|
@@ -23,23 +40,23 @@
                     %strong.small_caps= what
                   %dd
                     %p= nice_link link
+
           .right_column
             %strong.small_caps Tools
             - if not @team.how.nil?
               - for how in @team.how
                 %p= how
             %hr
-            %dl
-              %dt
-                %strong.small_caps Near Teams
-              %dd &nbsp;
-              - for team in @near_teams
-                %dt
-                  %strong.small_caps= team.name
-                %dd
-                  - if team.thumbnail
-                    = image_tag team.thumbnail, :style => 'height:24px;vertical-align:middle'
-                  = link_to team, team.team_home
+            %strong.small_caps Near Teams
+            = link_to 'See all teams', teams_path
+            .followers.list_with_pictures
+              %ul
+                - for team in @near_teams
+                  %li
+                    = link_to team do
+                      - if team.thumbnail
+                        = image_tag team.thumbnail, :style => 'height:40px;vertical-align:middle'
+                      = team.team_home
             .clear
       .clear
 %footer

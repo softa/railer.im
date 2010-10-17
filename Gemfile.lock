@@ -104,6 +104,7 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    rdiscount (1.6.5)
     redis (2.0.11)
     redis-namespace (0.8.0)
       redis (< 3.0.0)
@@ -151,6 +152,7 @@ DEPENDENCIES
   octopi
   pg
   rails (= 3.0.0)
+  rdiscount
   resque
   twitter
   unicorn

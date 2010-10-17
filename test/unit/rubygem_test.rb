@@ -66,4 +66,14 @@ class RubygemTest < ActiveSupport::TestCase
     create_dependency(:rubygem => g, :repository => create_repository(:user => u))
     assert_equal 1, g.users.size
   end
+
+  test "scope by_similarity should match gem names and partial gem names, description, authors_names" do
+    @rubygem.update_attributes :name => 'search 1', :description => 'description 1', :authors_names => 'author 1'
+    create_rubygem.update_attributes :name => 'second search 2', :description => 'second description 2', :authors_names => 'second author 2'
+
+    Search.set_similarity_threshold(0.5)
+    r = Rubygem.by_similarity('search')
+    assert_equal 1, r.size
+    assert_equal 'search 1', r.first.name
+  end
 end

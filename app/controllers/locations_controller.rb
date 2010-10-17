@@ -10,9 +10,11 @@ class LocationsController < ApplicationController
   end
 
   def country
-    @country = params[:id]
+    @country_code = params[:id]
+    return redirect_to '/404.html' unless @country_code
+    @country = COUNTRY_CODES[@country_code]
     return redirect_to '/404.html' unless @country
-    @users = User.by_vip.where(:state => @country)
+    @users = User.by_vip.where(:country_code => @country_code)
   end
 
 end

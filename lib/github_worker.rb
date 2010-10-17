@@ -69,5 +69,6 @@ class GithubWorker
       for follower in user.following
         u.follows follower        
       end
+      u.reload_score
   end
 end

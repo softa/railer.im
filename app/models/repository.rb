@@ -28,7 +28,10 @@ class Repository < ActiveRecord::Base
     else "icons/script-code.png"
     end
   end
-  scope :decent, order('watchers desc').where('not fork and watchers > 1').limit(10)
+  scope :by_watchers, order('watchers desc')
+  scope :non_fork, where('not fork')
+  scope :decent, by_watchers.where('not fork and watchers > 1').limit(10)
+
   
 protected
   after_create :work

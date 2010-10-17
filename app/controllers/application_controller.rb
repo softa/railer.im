@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   before_filter :user_session
 
+
 protected
 
   def user_session

@@ -70,7 +70,7 @@
                       %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
             - unless @user.recommends.empty?
               .recommended.list_with_pictures
-                %strong.small_caps Recommended
+                %strong.small_caps Recommended by
                 %ul
                   - @user.recommends.each do |u|
                     %li

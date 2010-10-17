@@ -48,7 +48,7 @@ class Rubygem < ActiveRecord::Base
     end
     # Then we insert only new authors
     authors_to_be_created.each do |name|
-      authorships.create :author_name => name
+      authorships.create :author_name => name rescue nil
     end
   end
 protected

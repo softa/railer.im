@@ -1,7 +1,10 @@
 class TeamAssociationWorker
+  @queue = :association
   def self.perform
+    threshold = 0.5
+    begin
     ActiveRecord::Base.connection.execute %(
-      SELECT set_limit(0.6);
+      SELECT set_limit(#{threshold});
       UPDATE team_memberships 
       SET user_id = (
         SELECT id 
@@ -13,5 +16,10 @@ class TeamAssociationWorker
     )  
       WHERE user_id IS NULL;
     )
+    rescue Exception => e
+      threshold += 0.1
+      raise "Error while associating teams" if threshold > 1
+      retry
+    end
   end
 end

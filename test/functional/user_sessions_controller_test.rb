@@ -11,14 +11,14 @@ class UserSessionsControllerTest < ActionController::TestCase
     post :create, :format => 'json', :user_session => {:login => 'joao', :password => '102030'}
     assert_response :success
     json = JSON.parse @response.body
-    assert_equal 'joao', json["login"]
+    assert json["ok"]
   end
   
   test "should not login with invalid credentials" do
     post :create, :format => 'json', :user_session =>  {:login => 'joaozao', :password => '102030'}
-    assert_response 422
+    assert_response 200
     json = JSON.parse @response.body
-    assert_equal 'is not valid', json["login"]
+    assert ! json["ok"]
   end
   
   

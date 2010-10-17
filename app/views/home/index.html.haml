@@ -22,22 +22,27 @@
           .clear
       .clear
       = render ('home/signup') unless current_user
--#
-  :javascript
+:javascript
+  $(function(){
     slides = $('.slides > div')
     foxes = $('.foxes > div')
     current_slide = 0
+    slides.eq(current_slide).fadeIn(2000)
+    foxes.eq(current_slide).slideDown(2000)
+
     change_slide = function(){
-      slides.eq(current_slide).hide()
-      foxes.eq(current_slide).hide()
-      current_slide++
-      if(current_slide >= slides.length)
-        current_slide = 0
+      slides.eq(current_slide).fadeOut(1000)
       slides.eq(current_slide).fadeIn()
       foxes.eq(current_slide).fadeIn()
     setTimeout(change_slide,4000)
     }
     setTimeout(change_slide,4000)
+      slides.eq(current_slide).fadeIn(2000)
+      foxes.eq(current_slide).slideDown(2000)
+    setTimeout(change_slide,7000)
+    }
+    setTimeout(change_slide,7000)
+  })
 %footer
   .container
     = render ('home/live')

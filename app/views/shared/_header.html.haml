@@ -2,7 +2,7 @@
   .container
     .span-6
       %h1{:style => 'margin-top: 6px;'} #{link_to image_tag('railerim_logo_small.png', :id => 'logo'), root_path}
-    .span-18.last
+    .span-14.append-4.last
       %form{:style =>'margin-top: 6px;'}
         %fieldset
           %nav
@@ -11,7 +11,7 @@
             - else
               #{link_to 'Login', '#', :id => 'open_login_form'}
           %input#search.span-8{ :type => :search, :placeholder => 'Search', :autocomplete => :off }
-      .prepend-14.last
+      .prepend-8.last
         =render ('shared/search_panel')
     .clear
 = render 'shared/login' unless current_user

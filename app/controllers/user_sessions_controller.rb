@@ -5,8 +5,9 @@ class UserSessionsController < ApplicationController
   respond_to :html, :only => [:token_auth]
  
   def create
-    create!{
-      return render :json => {:ok => true, :redirect => "/#{params[:user_session][:login]}"}
+    create!{|s,f|
+      s.json{ return render :json => {:ok => true, :redirect => "/#{params[:user_session][:login]}"} }
+      f.json{ return render :json => {:ok => false} }
     }
   end
  

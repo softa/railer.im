@@ -15,11 +15,6 @@
     #root
       = yield
       .clear
-      #colophon
-        .container
-          #{link_to image_tag('softa_logo.png'), 'http://softa.com.br', :target => :_blank, :style=>'float:right;'}
-          %strong{:style => 'line-height: 48px; color:#AAA'} Railer.Im is Softa open source project for Rails Rumble MMX. Fork on GitHub.
-          .clear
-        .final_div
+      = render ('shared/colophon')
     :javascript 
       $("[placeholder]").textPlaceholder();

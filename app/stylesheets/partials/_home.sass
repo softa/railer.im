@@ -46,3 +46,28 @@ body
         time.time
           float: right
           line-height: 42px
+#home_stats
+  .horizontal_bars
+    +border-radius(6px)
+    -webkit-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, #FFF 0 1px 0
+    -moz-box-shadow: rgba(#FFF,.5) 0 1px 0 inset, #FFF 0 1px 0
+    border: 1px solid
+    color: white
+    padding: 2px 4px
+    text-shadow: #000 0 0 2px
+    &.railer_scores
+      +grad(rgba(#D44,.8),rgba(#B22,.9))
+      border-color: #B22
+    &.downloads
+      +grad(rgba(#4D4,.8),rgba(#2B2,.8))
+      border-color: #2B2
+    &.level_total
+      +grad(rgba(#FB0,.8),rgba(#B50,.8))
+      border-color: #B50
+    &.country_total
+      +grad(rgba(#0BF,.8),rgba(#05B,.8))
+      border-color: #05B
+    &.city_total
+      +grad(rgba(#888,.8),rgba(#222,.8))
+      border-color: #222
+      

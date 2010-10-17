@@ -69,7 +69,7 @@ class UsersController < ApplicationController
       recommended = User.find params[:id]
       raise "You cannot recommend yourself" if recommended == current_user
       current_user.recommend recommended
-      return render :json => {:ok => true, :total => recommended.recommended_by.count}.to_json
+      return render :json => {:ok => true, :total => recommended.recommended_by.count, :score => recommended.score}.to_json
     rescue
       return render :json => {:ok => false}
     end
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     begin
       unrecommended = User.find params[:id]
       current_user.unrecommend unrecommended
-      return render :json => {:ok => true, :total => unrecommended.recommended_by.count}.to_json
+      return render :json => {:ok => true, :total => unrecommended.recommended_by.count, :score => unrecommended.score}.to_json
     rescue
       return render :json => {:ok => false}
     end

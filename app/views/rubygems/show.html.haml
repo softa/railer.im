@@ -3,7 +3,8 @@
     .wrapper
       .span-7
         .image_wrapper
-          = thumbalizr @rubygem.uri
+          = link_to @rubygem.uri, :target => :_blank do
+            = thumbalizr @rubygem.uri
       .span-17.last
         .info_wrapper
           .header
@@ -72,6 +73,6 @@
           - @rubygem.users.each do |u|
             %li
               %a{:href => user_path(u.login)}
-                #{gravatar(u.gravatar_id, 24)}
+                #{gravatar(u.gravatar_id, 40)}
                 %strong #{u.name}
                 -# %span.level {level}

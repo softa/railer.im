@@ -45,6 +45,11 @@ class User < ActiveRecord::Base
   def self.similarity_threshold
     @@threshold
   end
+  
+  def reload_score
+    score = Score.find(self.id)
+    update_attributes :score => score.score, :level => score.level 
+  end
 
   def self.set_similarity_threshold threshold
     return nil unless threshold.instance_of?(Fixnum) or threshold.instance_of?(Float)
@@ -53,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def used_gems
-    Rubygem.used_by(self).all
+    Rubygem.used_by(self).order('downloads desc')
   end
 
   def token_link
@@ -70,10 +75,12 @@ class User < ActiveRecord::Base
 
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)
+    recommended_user.reload_score
   end
 
   def unrecommend(unrecommended_user)
     recommendations_made.find_by_recommended_id(unrecommended_user.id).destroy
+    unrecommended_user.reload_score
   end
 
   def is_followed_by login

@@ -8,6 +8,12 @@ $('#recommend_button').click(function(){
        $('#recommend_button').addClass('unrecommend_button')
        $('#recommend_button').text('Unrecommend')
        $('#recommendations_total').text(r.total)
+	   $('#user_score').countTo({
+		  from: parseInt($('#user_score').text()),
+		  to: r.score,
+		  speed: 1000,
+		  refreshInterval: 50
+	   })
      }
    }) 
   } else {
@@ -20,6 +26,12 @@ $('#recommend_button').click(function(){
         $('#recommend_button').addClass('recommend_button')
         $('#recommend_button').text('Recommend')
         $('#recommendations_total').text(r.total)
+	    $('#user_score').countTo({
+		   from: parseInt($('#user_score').text()),
+		   to: r.score,
+		   speed: 1000,
+		   refreshInterval: 50
+	    })
       }
     })
   }

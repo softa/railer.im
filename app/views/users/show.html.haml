@@ -1,3 +1,4 @@
+= javascript_include_tag 'jquery.countto'
 = render 'password_modal' if @password_modal
 #railer_profile.content_wrapper
   .container
@@ -19,7 +20,9 @@
                 %strong
                   Railer.Im Rank
                   %br
-                  %span.quiet #{@user.score} points
+                  %span.quiet
+                    %span#user_score= @user.score
+                    points
                 .clear
           .clear
       .span-17.last
@@ -40,6 +43,7 @@
             .clear
           .clear
           .left_column
+
             .company_name
               %strong.small_caps Company
               %h3
@@ -65,11 +69,34 @@
               %hr
               .bio
                 %strong.small_caps Bio
-          - if @user.wwr_id
-            %hr
-              .wwr
-                %strong.small_caps WWR
-                %h3= nice_link(@user.wwr_url)
+
+
+            - if @user.wwr_id
+              %hr
+                .wwr
+                  %strong.small_caps WWR
+                  %h3= nice_link(@user.wwr_url)
+
+            - unless @user.followers.empty?
+              %hr
+              .followers.list_with_pictures
+                %strong.small_caps Followers
+                %ul
+                  - @user.followers.each do |f|
+                    %li
+                      = link_to profile_path(f), :tile => f.name do
+                        #{gravatar(f.gravatar_id,32)}
+
+            - unless @user.used_gems.empty?
+              %hr
+              .used_rubygems
+                %strong.small_caps Used rubygems
+                %ul
+                  - @user.used_gems.each do |g|
+                    %li
+                      = link_to rubygem_path(g), {:style => 'font-size:.75em;'} do
+                        %samp #{g.name}
+
           .right_column
             - unless @user.owned_gems.empty?
               .personal_gems
@@ -90,7 +117,7 @@
                 - @user.recommended_by.each do |u|
                   %li{:class => u == current_user ? 'my_reco' : ''}
                     %a{:href => user_path(u.login)}
-                      #{gravatar(u.gravatar_id, 24)}
+                      #{gravatar(u.gravatar_id, 40)}
                       %strong #{u.name}
                 %hr
             - unless @user.repositories.decent.empty?
@@ -111,25 +138,6 @@
 %footer
   .container
     .span-11.append-1
-      - unless @user.followers.empty?
-        .followers.list_with_pictures
-          %strong.small_caps Followers
-          %ul
-            - @user.followers.each do |f|
-              %li
-                = link_to profile_path(f) do
-                  #{gravatar(f.gravatar_id,24)}
-                  #{f.name}
-      - else
-        &nbsp;
+      &nbsp;
     .span-11.prepend-1.last
-      - unless @user.used_gems.empty?
-        .used_rubygems
-          %strong.small_caps Used rubygems
-          %ul
-            - @user.used_gems.each do |g|
-              %li
-                = link_to rubygem_path(g) do
-                  %samp #{g.name}
-      - else
-        &nbsp;
+      &nbsp;

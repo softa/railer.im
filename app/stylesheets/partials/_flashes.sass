@@ -1,0 +1,36 @@
+.flash
+  .notice_wrapper, .success_wrapper, .error_wrapper
+    padding: 10px
+    +border-radius
+    position: fixed
+    top: 10px
+    right: 10px
+    width: 300px
+    z-index: 1000
+    .notice, .success, .error
+      background-color: transparent
+      border: 0 none
+      font-weight: 900
+    small
+      float: right
+      color: rgba(255,255,255,.5)
+    a
+      color: white
+      text-decoration: underline
+  .notice_wrapper
+    +grad(rgba(#F90,.85),rgba(#D70,.85))
+    .notice
+      text-shadow: rgba(#FF0,.5) 0 1px 0
+      color: #222
+    a
+      color: #222
+  .success_wrapper
+    +grad(rgba(#0A0,.85),rgba(#060,.85))
+    .success
+      text-shadow: #060 0 1px 0
+      color: white
+  .error_wrapper
+    +grad(rgba(#A00,.85),rgba(#600,.85))
+    .error
+      color: white
+      text-shadow: #600 0 1px 0

@@ -1,1 +1,32 @@
-#teams_profile
+.teams_list
+  +reset-box-model
+  list-style: none
+  text-align: center
+  li
+    +reset-box-model
+    +border-radius(8px)
+    +grad(#FFF,#CCC)
+    display: inline-block
+    width: 272px
+    height: 220px
+    padding: 8px
+    margin: 0 10px 10px 0
+    border: 1px solid #CCC
+    text-align: center
+    vertical-align: top
+    overflow: hidden
+    a, a:visited, :link
+      display: block
+      color: #444
+      font-weight: 900
+      text-shadow: #fff 0 1px 0
+      &:hover
+        text-decoration: none
+        color: #111
+      &:active
+        color: #000
+    img
+      width: 256px
+      height: 192px
+      background: #808080
+      border: 1px solid white

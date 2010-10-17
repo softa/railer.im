@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def tweet_this text
-    link_to image_tag('social/twitter_32.png'), "http://twitter.com/?status=#{URI.escape(text)}", :target => :_blank
+    link_to image_tag('social/twitter_16.png'), "http://twitter.com/?status=#{URI.escape(text)}", :target => :_blank
   end
 
 end

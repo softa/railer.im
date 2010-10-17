@@ -33,10 +33,47 @@
                 %br
                 = link_to @user.team.name, @user.team
                 - if @user.team.thumbnail
+=======
+= javascript_include_tag 'jquery.countto'
+= render 'password_modal' if @password_modal
+#railer_profile.content_wrapper
+  .container
+    .wrapper
+      .span-7
+        .image_wrapper
+          #{gravatar(@user.gravatar_id, 256)}
+          %br
+          .level_and_score
+            .level_and_score_wrapper
+              .more_wrapper
+                %h3
+                  #{@user.level.ordinalize}
+>>>>>>> 74d9c23440b63a99d957d550aa237479d1844b07
                   %br
                   %br
+<<<<<<< HEAD
                   = link_to @user.team do
                     = image_tag @user.team.thumbnail, :class => 'image', :style => 'margin-left:50px;width:150px'
+=======
+                  %span.quiet
+                    %span#user_score= @user.score
+                    points
+                  - if me?
+                    #{tweet_this("My RailerRank level is #{@user.level} (#{@user.score}). See more at http://railer.im/#{@user.login}")}
+                .clear
+          - if @user.team
+            %hr
+            .used_rubygems
+              = image_tag 'rumble_small.png', :style => 'float:left;margin:1em'
+              %strong.small_caps Rails Rumble Team
+              %br
+              = link_to @user.team.name, @user.team
+              - if @user.team.thumbnail
+                %br
+                %br
+                = link_to @user.team do
+                  = image_tag @user.team.thumbnail, :class => 'image', :style => 'margin-left:50px;width:150px'
+>>>>>>> 74d9c23440b63a99d957d550aa237479d1844b07
 
             .clear
         .span-17.last

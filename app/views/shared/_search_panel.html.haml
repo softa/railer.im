@@ -1,49 +1,32 @@
 #search_panel.hide{:style => 'z-index:5000000; position: relative;'}
+  #search_panel_loader
+    = image_tag 'loader.png'
   .close_search{:title => 'Close'} #{image_tag 'icons/minus-circle.png'} close
-  %table.best_match
+  %table
     %tr
       %th
-        Best match
+        Best Match
       %td
-        #{image_tag 'icons/star.png'}
-        %strong lorem ipsum
-  %table
+        %ul#best_search_list
     %tr
       %th
         User
       %td
-        %table#users_results
-          %tr
-            %td.gravatar
-            %td.user_name
+        %ul#users_search_list
     %tr
       %th Gems
       %td
-        %table
-          %tr
-            %td
-              #{image_tag 'icons/ruby.png'}
+        %ul#rubygems_search_list
     %tr
       %th Teams
       %td
-        %table
-          %tr
-            %td
-              #{image_tag 'rumble_small.png', :size => '16x16'}
+        %ul#teams_search_list
     %tr
       %th Companies
       %td
-        %table
-          %tr
-            %td
-              #{image_tag 'icons/briefcase.png'}
+        %ul#companies_search_list
     %tr
       %th Location
       %td
-        %table
-          %tr
-            %td
-              #{image_tag 'icons/marker.png'}
+        %ul#locations_search_list
 = javascript_include_tag 'jquery.timers-1.2', 'timedKeyup', 'search'
--#
-  [{"gravatar_id":"7089678f7027c45dc6708825b01c8731", "label":"Leonardo Tartari","entry_type":"user","rank":"1","key":"ltartari"}]

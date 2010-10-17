@@ -22,9 +22,9 @@
             - if not @rubygem.indicators.nil?
               %hr
               %strong.small_caps Indicators
-              %ul
+              %ul.indicators
                 - @rubygem.indicators.each do |key,value|
-                  %li{:class => value } #{hash.key}
+                  %li{:class => value } #{key}
           .right_column
             %strong.small_caps Version
             %p

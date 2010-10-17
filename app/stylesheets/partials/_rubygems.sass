@@ -32,3 +32,17 @@
         vertical-align: middle
       span.level
         float: right
+.indicators
+  list-style: none
+  +reset-box-model
+  li
+    +reset-box-model
+    display: inline
+    &.yes
+      +grad(#0E7,#091)
+    &.dontknow
+      background: yellow
+    &.no
+      background: red
+    
+    

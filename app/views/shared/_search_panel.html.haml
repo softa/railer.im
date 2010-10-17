@@ -1,0 +1,58 @@
+#search_panel.hide{:style => 'z-index:5000000; position: relative;'}
+  .close_search{:title => 'Close'} #{image_tag 'icons/minus-circle.png'} close
+  %table.best_match
+    %tr
+      %th
+        Best match
+      %td
+        #{image_tag 'icons/star.png'}
+        %strong lorem ipsum
+  %table
+    %tr
+      %th
+        User
+      %td
+        %table
+          %tr
+            %td
+              #{image_tag 'icons/user-silhouette.png'}
+    %tr
+      %th Gems
+      %td
+        %table
+          %tr
+            %td
+              #{image_tag 'icons/ruby.png'}
+    %tr
+      %th Teams
+      %td
+        %table
+          %tr
+            %td
+              #{image_tag 'rumble_small.png', :size => '16x16'}
+    %tr
+      %th Companies
+      %td
+        %table
+          %tr
+            %td
+              #{image_tag 'icons/briefcase.png'}
+    %tr
+      %th Location
+      %td
+        %table
+          %tr
+            %td
+              #{image_tag 'icons/marker.png'}
+
+-#
+  [{"gravatar_id":"7089678f7027c45dc6708825b01c8731", "label":"Leonardo Tartari","entry_type":"user","rank":"1","key":"ltartari"}]
+  :javascript
+    $('#search'). 
+    if($('#search').val() != '').keyUp (function(){
+      $('#search_panel').slideDown()
+    })
+    $('.close_search').click(function(){
+      $('#search_panel').slideUp()
+    })
+

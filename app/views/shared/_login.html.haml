@@ -47,11 +47,3 @@
           = f.submit 'Login', :tabindex => 4
           .clear
 = javascript_include_tag 'login'
-:javascript 
-  $('#search').focus(function(){
-    $('#search_panel').slideDown()
-  })
-  $('.close_search').click(function(){
-    $('#search_panel').slideUp()
-  })
-

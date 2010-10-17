@@ -2,7 +2,7 @@
   .container{:style => 'overflow:visible;'}
     .home_wrapper{:style => 'width:970px; margin: 0 auto; margin-top:20px;height:500px;'}
       .slides{:style => 'height:500px;position:relative;'}
-        .first_slide.slide_wrapper{:style => 'position: absolute;'}
+        .first_slide.slide_wrapper.hide{:style => 'position: absolute;'}
           .column_left{:style => 'width:460px; margin-left:10px; float:left;'}
             %h1{:style => 'font-size:50px; margin-top:60px'} Find relevant information about railers around the world
           .column_right{:style => 'margin-top: 20px; width:500px; height:500px; float:right; background:url(/images/light.png) no-repeat left center; text-align: right;'}
@@ -23,20 +23,25 @@
       .clear
       = render ('home/signup') unless current_user
 :javascript
-  slides = $('.slides > div')
-  foxes = $('.foxes > div')
-  current_slide = 0
-  change_slide = function(){
-    slides.eq(current_slide).hide()
-    foxes.eq(current_slide).hide()
-    current_slide++
-    if(current_slide >= slides.length)
-      current_slide = 0
-    slides.eq(current_slide).fadeIn()
-    foxes.eq(current_slide).fadeIn()
-  setTimeout(change_slide,4000)
-  }
-  setTimeout(change_slide,4000)
+  $(function(){
+    slides = $('.slides > div')
+    foxes = $('.foxes > div')
+    current_slide = 0
+    slides.eq(current_slide).fadeIn(2000)
+    foxes.eq(current_slide).slideDown(2000)
+
+    change_slide = function(){
+      slides.eq(current_slide).fadeOut(1000)
+      foxes.eq(current_slide).hide()
+      current_slide++
+      if(current_slide >= slides.length)
+        current_slide = 0
+      slides.eq(current_slide).fadeIn(2000)
+      foxes.eq(current_slide).slideDown(2000)
+    setTimeout(change_slide,7000)
+    }
+    setTimeout(change_slide,7000)
+  })
 %footer
   .container
     = render ('home/live')

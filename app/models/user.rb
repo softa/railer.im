@@ -54,7 +54,8 @@ class User < ActiveRecord::Base
   
   def reload_score
     score = Score.find(self.id)
-    update_attributes :score => score.score, :level => score.level 
+    update_attributes :score => score.score||0, :level => score.level||0
+  rescue 
   end
 
   def used_gems

@@ -1,5 +1,6 @@
 #!/bin/bash
 git pull origin master
+rm -f dump.rdb
 git add *
 if [[ -e /usr/bin/postgresql_autodoc ]]
 then

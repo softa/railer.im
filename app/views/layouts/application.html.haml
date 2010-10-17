@@ -9,6 +9,7 @@
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
     = render ('shared/analytics')
   %body
+    = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
     = render ('shared/header')
     #root
       = yield

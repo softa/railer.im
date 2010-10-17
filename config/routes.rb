@@ -3,6 +3,7 @@ Railerim::Application.routes.draw do
   get "locations/index"
   get "locations/city"
   get "locations/country"
+  get "users/resend_activation_email"
   resources :companies, :only => [:index,:show]
   resources :teams, :only => [:index, :show]
   match 'users/set_password' => 'users#set_password', :as => :set_password

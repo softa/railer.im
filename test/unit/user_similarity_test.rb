@@ -64,4 +64,11 @@ class UserSimilarityTest < ActiveSupport::TestCase
     results = User.by_similarity(%{pedroaxl@gmail.com'; DELETE FROM users;})
     assert_equal 5, User.count
   end
+
+  test "scope rank_by_similarity should return type, key and rank" do
+    User.set_similarity_threshold(1)
+    assert_equal 1, User.rank_by_similarity('Diogo Biazus').count
+    u = User.rank_by_similarity('Diogo Biazus').first
+    assert_equal ['user', 'diogob', '1'], [u.entry_type, u.key, u.rank]
+  end
 end

@@ -3,6 +3,9 @@ require File.dirname(__FILE__) + '/../test_helper'
 #TODO SHOULD NOT GET NON USERS (ORGS)
 class UsersControllerTest < ActionController::TestCase
 
+  require 'authlogic/test_case'
+  setup :activate_authlogic
+
   setup do
     #setup_octopi_user
   end
@@ -25,7 +28,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to user_path(assigns(:user))
   end
 
-
   test "should assign used gems" do
     g = create_rubygem
     @user = create_user :login => 'softa'
@@ -39,9 +41,9 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    @user = create_user :login => 'softa', :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
-    
-    put :update, :id => @user.to_param, :user => {:email => 'juanmaiz@gmail.com', :name => 'João Milho'}
+    @user = create_user(:login => 'softa', :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz')
+    UserSession.create!(@user)
+    put :update, {:id => @user.to_param, :user => {:email => 'juanmaiz@gmail.com', :name => 'João Milho'}}
     assert_response :redirect
     user = assigns(:user)
     assert_equal 'João Milho', user.name

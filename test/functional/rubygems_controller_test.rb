@@ -24,8 +24,8 @@ class RubygemsControllerTest < ActionController::TestCase
     create_dependency(:rubygem => g, :repository => create_repository(:user => u))
     get :show, :id => g.to_param
     assert_response :success
-    assert_equal [u], assigns(:rubygem).users
-    assert_equal 1, assigns(:rubygem).users.size
+    assert_equal [u], assigns(:rubygem).users.all
+    assert_equal 1, assigns(:rubygem).users.all.size
   end
 
   {:new => :get, :edit => :get, :create => :post, :update => :put, :destroy => :delete}.each{|k,v|

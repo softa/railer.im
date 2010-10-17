@@ -1,8 +1,11 @@
-#railer_profile.content_wrapper
+.content_wrapper
   .container
     .wrapper
-      .span-7
+      .list_with_pictures
         %h1= @city
-        - for user in @users
-          = link_to user.name, profile_path(user)
-          %br
+        %ul
+          - for user in @users
+            %li
+              = link_to profile_path(user) do
+                #{gravatar user.gravatar_id, 24}
+                #{user.name}

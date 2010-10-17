@@ -8,15 +8,15 @@
           %br
           .user_score
             .tweet_this{:style => 'float: right'}
-              #{tweet_this('Level 10 railer.im #rails http://railer.im/username')}
-            %strong Level 10 (1231 points)
-            .clear
+              #{tweet_this("railer.im a level #{@user.level} » http://railer.im/#{@user.login}")}
+            %strong Level #{@user.level} (#{@user.score} points)
+          .clear
       .span-17.last
         .info_wrapper
           .header
             %h1#user_name
               #{@user.name}
-              %span (#{@user.login})
+              %span (#{link_to @user.login, "http://github.com/#{@user.login}"})
               - if me?
                 = link_to edit_profile_path(current_user) do
                   = image_tag 'icons/pencil.png'
@@ -37,7 +37,7 @@
             %hr
             .blog
               %strong.small_caps Blog
-              %h3 #{link_to nice_link(@user.blog), @user.blog, :target => :_blank}
+              %h3 #{nice_link @user.blog}
               %hr
               .location
                 %strong.small_caps Location

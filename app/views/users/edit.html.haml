@@ -2,10 +2,9 @@
   .container
     .wrapper
       = form_for(current_user) do |f|
-        = f.error_messages
         %h3
           Your info.
-        %strong#password_error.hide
+        = f.error_messages
         %fieldset
           = f.label :name
           %br

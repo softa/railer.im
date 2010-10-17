@@ -40,7 +40,7 @@ class ActiveSupport::TestCase
   end
 
   def create_team(params = {})
-    defaults = {:name => "Foo #{get_id}", :team_home => "/teams/foo#{get_id}"}.merge(params)
+    defaults = {:name => "Foo #{get_id}", :team_home => "foo#{get_id}"}.merge(params)
     Team.create!(defaults)    
   end
 
@@ -69,6 +69,10 @@ class ActiveSupport::TestCase
     owner = create_user
     defaults = {:name => "repo #{get_id}", :user => owner, :url => 'http://github.com/softa/hercules'}.merge(params)
     Repository.create!(defaults)
+  end
+  
+  def create_session user
+    UserSession.create!(user)
   end
   
   def setup_octopi_user(login='softa',email='contato@softa.com.br')

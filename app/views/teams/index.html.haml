@@ -3,8 +3,7 @@
     .wrapper
       - for team in @teams
         - if team.thumbnail
-          .team.span-5{:style => 'text-align:center'}
-            = link_to team.url do
-              = image_tag team.thumbnail, :class => 'image'
-              %br
-              = team.name
+          = link_to team, :style => 'text-align:center; display: inline-block; width: 256px; height: 256px; padding:4px; background:white; vertical-align:top;' do
+            = image_tag team.thumbnail, :class => 'image'
+            %br
+            %strong= team.name

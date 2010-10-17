@@ -30,7 +30,7 @@ class RailspluginsWorker
   end
 
   def self.perform_all
-    Rubygem.order('downloads desc').each do |g|
+    Rubygem.order('downloads desc').limit(2000).each do |g|
       puts g.name
       perform g.id
     end

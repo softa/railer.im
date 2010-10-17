@@ -19,14 +19,21 @@ $.fn.search = function(results) {
 var search_panel = {
   tophit: {"rank" : -1},
   html_tables: {"users": "", "rubygems" : "", "teams" : "", "companies": "", "locations" : "", "best" : "" },
+
+  icons: {"rubygems": "icons/ruby.png", "teams" : "rumble_small.png", "companies": "icons/briefcase.png", "locations" : "icons/marker.png"},
   json2html: function(table_name, entries){
     var self = this;
     self.html_tables[table_name] = "";
     $.each(entries, function(key, row){
         self.tophit = (row["rank"] > self.tophit["rank"] ? row : self.tophit);
-        self.html_tables[table_name] += '<li><img src="http://gravatar.com/avatar/' + row["gravatar_id"] + '?s=16" />' + row["label"] + '</li>';
+        if(table_name == "users")
+          img = '<img src="http://gravatar.com/avatar/' + row["gravatar_id"] + '?s=16" />';
+        else 
+          img = '<img src="/images/' + self.icons[table_name] + '" />';
+        self.html_tables[table_name] += '<li>' + img + ' ' + row["label"] + '</li>';
       });
   },
+
   show_results: function(data){
     var self = this;
     $.each(this.html_tables, function(k,v){

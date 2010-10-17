@@ -3,8 +3,9 @@ $.fn.search = function(results) {
   $(this).timedKeyup(function(){
       if($(this).val() != '')
       {
+        $('#search_panel_loader').show();
         $.get('/search/index?query=' + $(this).val(), function(data){
-            $(results).show_results(data);
+            results.show_results(data);
           });
         $('#search_panel').slideDown();
       }
@@ -15,39 +16,32 @@ $.fn.search = function(results) {
     }, 300)
 }
 
-// Here we format data to show inside the JQuery target element
-// functio
-$.fn.show_results = function(data) {
-  var tophit = {"rank" : -1};
-  var html_tables = {"users": "", "rubygems" : "", "teams" : "", "companies": "", "locations" : "", "best" : "" };
-  $.each(data["users"], function(key, row){
-      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
-      html_tables["users"] += '<li><img src="http://gravatar.com/avatar/' + row["gravatar_id"] + '?s=16" />' + row["label"] + '</li>';
-    })
-  $.each(data["rubygems"], function(key, row){
-      tophit = (row["rubygems"] > tophit["rank"] ? row : tophit);
-      html_tables["rubygems"] += '<li><img src="/images/icons/ruby.png" />' + row["label"] + '</li>';
-    })
-  $.each(data["teams"], function(key, row){
-      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
-      html_tables["teams"] += '<li>' + row["label"] + '</li>';
-    })
-  $.each(data["companies"], function(key, row){
-      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
-      html_tables["companies"] += '<li>' + row["label"] + '</li>';
-    })
-  $.each(data["locations"], function(key, row){
-      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
-      html_tables["locations"] += '<li>' + row["label"] + '</li>';
-    })
-
-  html_tables["best"] = (tophit["rank"] < 0 ? "" : '<li><img src="/images/icons/star.png"><strong> ' + tophit["label"] + '</strong></li>');
-  $.each(html_tables, function(k,v){
-      $('#' + k + '_search_list').html((v == '' ? '<li>None found</li>' : v));
-    })
+var search_panel = {
+  tophit: {"rank" : -1},
+  html_tables: {"users": "", "rubygems" : "", "teams" : "", "companies": "", "locations" : "", "best" : "" },
+  json2html: function(table_name, entries){
+    var self = this;
+    self.html_tables[table_name] = "";
+    $.each(entries, function(key, row){
+        self.tophit = (row["rank"] > self.tophit["rank"] ? row : self.tophit);
+        self.html_tables[table_name] += '<li><img src="http://gravatar.com/avatar/' + row["gravatar_id"] + '?s=16" />' + row["label"] + '</li>';
+      });
+  },
+  show_results: function(data){
+    var self = this;
+    $.each(this.html_tables, function(k,v){
+        if(k != "best")
+          self.json2html(k, data[k]);
+      });
+    this.html_tables["best"] = (this.tophit["rank"] < 0 ? "" : '<li><img src="/images/icons/star.png"><strong> ' + this.tophit["label"] + '</strong></li>');
+    $.each(this.html_tables, function(k,v){
+        $('#' + k + '_search_list').html((v == '' ? '<li>None found</li>' : v));
+      });
+    $('#search_panel_loader').hide();
+  }
 }
 
-$('#search').search('#search_panel')
+$('#search').search(search_panel)
 
 $('.close_search').click(function(){
     $('#search_panel').slideUp()

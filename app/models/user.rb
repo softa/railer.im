@@ -66,7 +66,8 @@ class User < ActiveRecord::Base
 
   def token_link
    require 'digest/md5'
-   digest = Digest::MD5.hexdigest("tosco#{login}tosco") "http://railer.im/user_sessions/token_auth?token=#{digest}"
+   digest = Digest::MD5.hexdigest("tosco#{login}tosco")
+   "http://railer.im/user_sessions/token_auth?token=#{digest}"
   end
 
   def wwr_url

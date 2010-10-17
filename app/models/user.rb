@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end)
 
   scope :rank_by_similarity, (lambda do |query|
-    by_similarity(query).select("'user' AS entry_type, login AS key, greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) AS rank")
+    by_similarity(query).select("'user' AS entry_type, login AS key, name AS label, gravatar_id, greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) AS rank")
   end)
   
   def self.similarity_threshold

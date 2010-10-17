@@ -1,0 +1,36 @@
+#railer_profile.content_wrapper
+  .container
+    .wrapper
+      = form_for(current_user) do |f|
+        = f.error_messages
+        %h3
+          Your info.
+        %strong#password_error.hide
+        %fieldset
+          = f.label :name
+          %br
+          = f.text_field :name, :tabindex => 1
+        %fieldset
+          = f.label :email
+          %br
+          = f.text_field :email, :tabindex => 2
+        %fieldset
+          = f.label :blog
+          %br
+          = f.text_field :blog, :tabindex => 3
+        %fieldset
+          = f.label :wwr_id, 'Working with Rails id (just the number)'
+          %br
+          = f.text_field :wwr_id, :tabindex => 4
+
+        -#
+          %fieldset
+            = f.label :location
+            %br
+            = f.text_field :location, :tabindex => 1
+
+        %br
+        %fieldset
+          .actions
+            = f.submit 'Update', :tabindex => 5
+            .clear

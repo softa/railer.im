@@ -2,7 +2,11 @@ class GithubWorker
   @queue = :important
 
   def self.perform(user_id)
-    u = User.find(user_id)
+    begin
+      u = User.find(user_id)
+    rescue => e
+      return
+    end
     user = Octopi::User.find u.login
     company = Company.find_or_create_by_name(user.company) if user.company && ! u.company_id
     location = Geokit::Geocoders::YahooGeocoder.geocode user.location

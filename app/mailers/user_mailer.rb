@@ -5,7 +5,10 @@ class UserMailer < ActionMailer::Base
 # TODO descomentar no final
   def confirm_email user
     @user = user
-    mail :to => user.email, :subject => 'Welcome to railer.im'
+    mail :to => user.email, :subject => '[railer.im] Welcome railer'
   end
-
+  def reset_email user
+    @user = user
+    mail :to => user.email, :subject => '[railer.im] Password reset'
+  end
 end

@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
     Rubygem.used_by(self).all
   end
 
-  def activation_link
+  def token_link
     "http://railer.im/user_sessions/token_auth?token=#{perishable_token}"
   end
 

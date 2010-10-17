@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-  actions :show, :create, :update
+  actions :show, :edit, :create, :update
   respond_to :html, :json
-  
-  
+
   def update
     @user = User.find(params[:id])
     raise "NO" unless me?
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
     show!{
       @password_modal = session['define_password'] && me?
     }
-
   rescue ActiveRecord::RecordNotFound => e
     return render :action => :no_such_user if current_user
     @login = params[:id]
@@ -49,10 +47,22 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     unless @user.active?
       @user.send_activation_email 
-      flash[:success] = "Activation email has been resent. Please verify your mailbox. If you're having problems, please <a href='mailto:contact@railer.im'>contact us</a>."
+      flash[:success] = "An activation email has been resent. Please verify your mailbox. If you're having problems, please <a href='mailto:contact@railer.im'>contact us</a>."
     end
     redirect_to root_path
   end
+
+  def send_reset_email
+    @user = User.find_by_email params[:user][:email]
+    if @user
+      @user.send_reset_email 
+      flash[:success] = "A password reset email has been sent. Please verify your mailbox. If you're having problems, please <a href='mailto:contact@railer.im'>contact us</a>."
+    else
+      flash[:failure] = "Email not found."
+    end
+    redirect_to :back
+  end
+
   #TODO q tal?
   #rescue_from ActionController::MethodNotAllowed, :with => lambda{ return redirect_to root_path }
 

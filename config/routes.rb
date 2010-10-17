@@ -1,5 +1,4 @@
 Railerim::Application.routes.draw do
-
   get "locations/index"
   get "locations/city"
   get "locations/country"
@@ -7,7 +6,8 @@ Railerim::Application.routes.draw do
   resources :companies, :only => [:index,:show]
   resources :teams, :only => [:index, :show]
   match 'users/set_password' => 'users#set_password', :as => :set_password
-  resources :users, :only => [:show, :create, :update]
+  resources :users, :only => [:show, :edit, :create, :update]
+  post 'users/send_reset_email'
   resources :rubygems, :only => [:index, :show]
   resources :gems, :controller => :rubygems, :as => :rubygems
   match 'search' => 'home#search', :as => :search
@@ -18,4 +18,5 @@ Railerim::Application.routes.draw do
   match 'user_sessions/token_auth' => 'user_sessions#token_auth'
   root :to => "home#index"
   get ':id' => 'users#show', :as => :profile  
+  get ':id/edit' => 'users#edit', :as => :edit_profile
 end

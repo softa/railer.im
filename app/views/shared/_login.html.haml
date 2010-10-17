@@ -1,4 +1,26 @@
 .page_overlay.hide
+  #amnesia_form.hide
+    = form_for(User.new, :url => {:action => 'send_reset_email'}) do |f|
+      .close{:title => 'Close'} #{image_tag 'icons/minus-octagon-frame.png'}
+      .clear
+      %h3
+        Inform your email to get a password reset link.
+
+      %strong#amnesia_error.hide
+      %fieldset
+        = f.label :email
+
+        %small
+          %a.back_to_login{:href => '#'} &laquo; Back to login
+        %br
+        = f.text_field :email, :tabindex => 1
+      #user_session_email_required.required_field.hide
+        %strong Email required
+      %br
+      %fieldset
+        .actions
+          = f.submit 'Send', :tabindex => 3
+          .clear
   #login_form.hide
     = form_for(@user_session) do |f|
       .close{:title => 'Close'} #{image_tag 'icons/minus-circle.png'}
@@ -33,19 +55,3 @@
     $('#search_panel').slideUp()
   })
 
-  #amnesia_form
-    = form_for(@user_session) do |f|
-      .close{:title => 'Close'} #{image_tag 'icons/minus-octagon-frame.png'}
-      .clear
-      %strong#amnesia_error.hide
-      %fieldset
-        = f.label :email
-        %br
-        = f.text_field :email, :tabindex => 1
-      #user_session_email_required.required_field.hide
-        %strong Email required
-      %br
-      %fieldset
-        .actions
-          = f.submit 'Login', :tabindex => 3
-          .clear

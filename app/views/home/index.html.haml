@@ -1,8 +1,22 @@
 #home.content_wrapper
   .container
-    .home_wrapper{:style => 'max-width:1200px; margin: 0 auto;'}
-      %h1{:style => 'text-align:center;'} Good text that it's not lorem ipsum goes here
-      .showcase{:style => 'text-align:center; background: url(/images/plintscleef.png) no-repeat center bottom; height: 350px'}
+    .home_wrapper{:style => 'max-width:1200px; margin: 0 auto; margin-top:20px;'}
+      .column_left{:style => 'width:380px; margin-right:20px; float:left;'}
+        #{image_tag 'plintscleef.png', :width => 320}
+        %h1{:style => 'margin:0;'} Find information about railers from around the world
+      .column_center{:style => 'width:380px; margin:0 10px; float:left;'}
+        #{image_tag 'plintscleef.png', :width => 320}
+        %h1{:style => 'margin:0;'}  Discover peoples favorite gems
+      .column_right{:style => 'width:380px; margin-left: 20px; float:left;'}
+        #{image_tag 'plintscleef.png', :width => 320}
+        %h1{:style => 'margin:0;'}  Meet the railers in yout local area
+      .clear
+      -#
+        %h1{:style => 'text-align:center;'} Good text that it's not lorem ipsum goes here
+      .cool_arrow{:style => 'position:absolute; '}
+        %strong{ :style => 'text-shadow:#fff 0 1px 0; color: #444;'} Signup here
+        %br
+        #{image_tag 'signup_arrow.png'}
       = render ('home/signup') unless current_user
 %footer
   .container

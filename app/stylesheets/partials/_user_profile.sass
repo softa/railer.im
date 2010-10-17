@@ -115,3 +115,45 @@
         padding: 4px
         +border-radius
         +box-shadow(rgba(#000,.3),0,-1px,0)
+.level_and_score
+  +border-radius(8px)
+  background: rgba(#F90,.3)
+  width: 248px
+  padding: 4px
+  .level_and_score_wrapper
+    +border-radius(5px)
+    +grad(rgba(#F63,.8),rgba(#F11,.8))
+    -webkit-box-shadow: rgba(#FB9,1) 0 1px 1px inset, rgba(#FFF,.5) 0 -2px 3px inset
+    border: 1px solid (#F90 - #444)
+    padding: 6px
+    .more_wrapper
+      +border-radius(2px)
+      -webkit-box-shadow: rgba(0,0,0,.25) 0 2px 2px inset, rgba(#FF0,.5) 0 1px 1px
+      background-color: white
+      height: 52px
+      width: 224px
+      padding: 2px 4px
+      margin: 0
+      border: 1px solid #C11
+      strong
+        font-size: 14px
+        color: #444
+        height: 50px
+        line-height: 25px
+      h3
+        +grad(#E55,#B22)
+        +border-radius
+        +reset-box-model
+        border: 1px solid #B22
+        text-align: center
+        +box-shadow(rgba(#FFF,.4),0, 1px, 0, inset)
+        color: #FFF
+        padding: 4px 16px
+        font-weight: 900
+        font-size: 28px
+        float: right
+        line-height: 16px
+        text-shadow: rgba(#000,.7) 0 1px 0
+        small
+          font-size: 12px
+          font-weight: normal

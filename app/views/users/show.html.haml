@@ -6,14 +6,21 @@
         .image_wrapper
           #{gravatar(@user.gravatar_id, 256)}
           %br
-          .user_score
-            - if me?
-              .tweet_this{:style => 'float: right'}
-                #{tweet_this("RailerRank #{@user.level} » http://railer.im/#{@user.login}")}
-            %h3{:style => 'text-align:center;margin:0;color:white'}
-              RailerRank: #{@user.level.ordinalize} level
-              %br
-              %span.small{:style => 'font-size:.6em'} #{@user.score} points
+          .level_and_score
+            -#
+              - if me?
+                .tweet_this{:style => 'float: right'} #{tweet_this("RailerRank #{@user.level} » http://railer.im/#{@user.login}")}
+            .level_and_score_wrapper
+              .more_wrapper
+                %h3
+                  #{@user.level.ordinalize}
+                  %br
+                  %small level
+                %strong
+                  Railer.Im Rank
+                  %br
+                  %span.quiet #{@user.score} points
+                .clear
           .clear
           %br
           .recommended_bu
@@ -89,21 +96,21 @@
                     %li
                       %a{:href => user_path(u.login)}
                         #{gravatar(u.gravatar_id, 24)}
-                        %strong #{u.name}              
+                        %strong #{u.name}
                 %hr
-          - unless @user.repositories.decent.empty?
-            .owns_the_repos
-              %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
-              %ul
-                - for repo in @user.repositories.decent
-                  %li
-                    = image_tag repo.language_icon, :class => 'language_icon', :title => repo.language
-                    %strong #{link_to repo.name, repo.url, :target => :_blank}
-                    .watchers{ :title => :watchers }
-                      #{image_tag 'icons/foaf.png'} #{repo.watchers}
-                    %br
-                    = repo.description
-                    .clear
+            - unless @user.repositories.decent.empty?
+              .owns_the_repos
+                %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
+                %ul
+                  - for repo in @user.repositories.decent
+                    %li
+                      = image_tag repo.language_icon, :class => 'language_icon', :title => repo.language
+                      %strong #{link_to repo.name, repo.url, :target => :_blank}
+                      .watchers{ :title => :watchers }
+                        #{image_tag 'icons/foaf.png'} #{repo.watchers}
+                      %br
+                      = repo.description
+                      .clear
 = javascript_include_tag 'user_profile.js'
 = javascript_include_tag 'recommend_user.js'
 %footer

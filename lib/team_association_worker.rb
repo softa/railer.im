@@ -1,7 +1,7 @@
 class TeamAssociationWorker
   @queue = :association
   def self.perform
-    threshold = 0.5
+    threshold = 0.8
     begin
     ActiveRecord::Base.connection.execute %(
       SELECT set_limit(#{threshold});

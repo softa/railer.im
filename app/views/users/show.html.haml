@@ -7,8 +7,9 @@
           #{gravatar(@user.gravatar_id, 256)}
           %br
           .user_score
-            .tweet_this{:style => 'float: right'}
-              #{tweet_this("railer.im a level #{@user.level} » http://railer.im/#{@user.login}")}
+            - if me?
+              .tweet_this{:style => 'float: right'}
+                #{tweet_this("railer.im a level #{@user.level} » http://railer.im/#{@user.login}")}
             %strong Level #{@user.level} (#{@user.score} points)
           .clear
       .span-17.last
@@ -78,6 +79,7 @@
                         #{gravatar(u.gravatar_id, 24)}
                         %strong #{u.name}              
                 %hr
+          - unless @user.repositories.order('watchers desc').where('not fork').empty?
             .owns_the_repos
               %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
               %ul

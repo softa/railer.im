@@ -1,3 +1,8 @@
+Railerim::Application.config.middleware.use "::ExceptionNotifier",
+  :email_prefix => "[railer.im] ",
+  :sender_address => %{"notifier" <notifier@railer.im>},
+  :exception_recipients => %w{juanmaiz@gmail.com pedroaxl@gmail.com diogob@gmail.com}
+  
 Railerim::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 

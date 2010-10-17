@@ -47,8 +47,12 @@ class UsersController < ApplicationController
   def resend_activation_email
     @user = User.find params[:id]
     unless @user.active?
-      @user.send_activation_email 
-      flash[:success] = "An activation email has been resent. Please verify your mailbox. If you're having problems, please <a href='mailto:contact@railer.im'>contact us</a>."
+      if @user.last_request_at <= Time.now - 1.day
+        @user.send_activation_email 
+        flash[:success] = "The activation email was resent. Please verify your mailbox. If you're having problems, please <a href='mailto:contact@railer.im'>contact us</a>."
+      else
+        flash[:notice] = "We already sent you an activation email recently. If you're having problems, please <a href='mailto:contact@railer.im'>contact us</a>."
+      end
     end
     redirect_to root_path
   end

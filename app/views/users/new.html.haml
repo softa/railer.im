@@ -10,10 +10,10 @@
         .center_column
           %h3{ :style => 'font-size: 48px;' }
             %strong{ :style => 'color:#000;' } Are you #{@login}?
-          %button.yes_button
+          %a.yes_button{:href => root_path(:login => @login,:anchor => :signup)}
             %strong YES!
             %br
-            %span And i wanna create my account.
+            %span And I wanna create my account.
           %a.no_button{:href => root_path}
             %strong No.
             %br

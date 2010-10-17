@@ -3,7 +3,7 @@
     .wrapper
       .span-7
         .image_wrapper
-          %br
+          = render 'map'
       .span-17.last
         .info_wrapper
           .header
@@ -16,10 +16,17 @@
             .list_with_pictures
               %ul
                 - for user in @company.users
-                  %li
+                  %li.span-12.last
                     = link_to profile_path(user) do
-                      #{gravatar user.gravatar_id, 24}
-                      #{user.name}
+                      %table
+                        %tr
+                          %td{:style => 'width:100px' }= gravatar user.gravatar_id, 100
+                          %td{:style => 'vertical-align:top' }
+                            %strong #{user.name}
+                            %br
+                            #{user.location}
+                            %br
+                            #{user.level.ordinalize} level RailerRank
 = javascript_include_tag 'company_profile.js'
 %footer
   .container

@@ -101,6 +101,7 @@ class User < ActiveRecord::Base
 
   after_create :send_activation_email
   def send_activation_email
+    update_attribute(:last_request_at, Time.now)
     UserMailer.confirm_email(self).deliver
   end
 

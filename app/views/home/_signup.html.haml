@@ -5,7 +5,7 @@
     .success_wrapper.hide
       %strong{:style=> 'color:white'} Your account was created successfully. Please check your email <span class="email"></span>.
     .input_wrapper{:style => 'position:relative'}
-      = f.text_field :login, :id => :github_name_signup, :placeholder => 'github username', :required => true, :autocomplete => :off, :tabindex => 1
+      = f.text_field :login, :id => :github_name_signup, :placeholder => 'github username', :required => true, :autocomplete => :off, :tabindex => 1, :value => params[:login]
       = image_tag 'loader.png', :style => 'position:absolute;right:240px;top:20px', :class => :hide, :id => :signup_loader
       .button
         %strong Signup

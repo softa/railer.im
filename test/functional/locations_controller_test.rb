@@ -12,7 +12,7 @@ class LocationsControllerTest < ActionController::TestCase
   end
 
   test "should get country" do
-    get :country, :id => 'Brazil'
+    get :country, :id => 'BR'
     assert_response :success
   end
 

@@ -25,4 +25,7 @@ class HomeController < ApplicationController
   #   render :text => UserMailer.confirm_email(User.first).body
   # end
 
+  def raise
+    raise 'now you can test the error' 
+  end
 end

@@ -7,6 +7,7 @@ Railerim::Application.routes.draw do
   post 'users/send_reset_email'
   post "users/recommend"
   post "users/unrecommend"
+  get "home/raise"
   resources :companies, :only => [:index,:show]
   resources :teams, :only => [:index, :show]
   match 'users/set_password' => 'users#set_password', :as => :set_password

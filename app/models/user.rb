@@ -29,11 +29,14 @@ class User < ActiveRecord::Base
   scope :by_vip, order('score desc')
   scope :who_use, (lambda do |g| select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id ").where("rubygems.id = ?", g.id)
   end)
-  
   #attr_accessible :login, :email, :password, :password_confirmation
-  
+
   def used_gems
     Rubygem.used_by(self).all
+  end
+
+  def activation_link
+    "http://railer.im/user_sessions/token_auth?token=#{perishable_token}"
   end
 
   def wwr_url
@@ -47,7 +50,7 @@ class User < ActiveRecord::Base
   def recommend(recommended_user)
     recommendations_made.create(:recommended_id => recommended_user.id)
   end
-  
+
   def is_followed_by login
     follower = User.find_by_login(login)
     return nil if follower.nil?
@@ -67,19 +70,27 @@ class User < ActiveRecord::Base
     self.active = true
     save
   end
-  
-  def activated?
-    self.active?
+
+  after_create :send_activation_email
+  def send_activation_email
+    UserMailer.confirm_email(self).deliver
   end
-  # TODO write a test for this
-  
+
 protected
 
   before_validation :setup_user, :on => :create
   after_create :work
-  after_create :confirm_email
+
 
   def setup_user
+    u = User.find self.login rescue nil
+    if u
+      if u.active?
+        errors.add_to_base 'Account has already been taken. Please contact us if you have any question.'
+      else
+        errors.add_to_base "Account has already been taken. If you are #{u.name||u.login}, <a href='/users/resend_activation_email?id=#{u.id}'>click here</a> to resend the activation email."
+      end
+    end
     self.password_confirmation = self.password = Forgery::Basic.password(:allow_special => true, :at_least => 15, :at_most => 16)
     attemps = 0
     begin
@@ -137,10 +148,6 @@ protected
 
   def work
     Resque.enqueue(GithubWorker, self.id)
-  end
-  
-  def confirm_email
-    UserMailer.confirm_email self
   end
   
 end

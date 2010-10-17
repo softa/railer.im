@@ -8,6 +8,7 @@
     = csrf_meta_tag
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
   %body
+    = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
     = render ('shared/header')
     #root= yield
     :javascript 

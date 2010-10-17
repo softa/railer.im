@@ -1,6 +1,4 @@
 $('#new_user_session').submit(function(){
-  var url = $(this).attr('action')
-  var data = $(this).serialize()
   if( ! $('#user_session_login').val() ){
     $('#user_session_login').focus()
     $('#user_session_login_required').slideDown()
@@ -15,6 +13,8 @@ $('#new_user_session').submit(function(){
   }else{
     $('#user_session_password_required').slideUp()
   }
+  var url = $(this).attr('action')
+  var data = $(this).serialize()
   $.post(url, data, function(result){
     // successfull login!
     location.reload()

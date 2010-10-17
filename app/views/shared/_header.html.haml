@@ -14,31 +14,5 @@
               = link_to 'Login', '#', :id => 'open_login_form'
           %input#search{ :type => :search, :placeholder => 'Search' }
     .clear
-- unless current_user
-  .page_overlay.hide
-    #login_form.hide
-      = form_for(@user_session) do |f|
-        .close{:title => 'Close'} #{image_tag 'icons/minus-octagon-frame.png'}
-        .clear
-        %strong#login_error.hide
-        %fieldset
-          = f.label :login
-          %br
-          = f.text_field :login, :tabindex => 1
-        #user_session_login_required.required_field.hide
-          %strong Login required
-        %br
-        %fieldset
-          = f.label :password
-          %small
-            %a.forgot_password{:href => '#'} Forgot your password?
-          %br
-          = f.password_field :password, :tabindex => 2
-        #user_session_password_required.required_field.hide
-          %strong Password required
-        %br
-        %fieldset
-          .actions
-            = f.submit 'Login', :tabindex => 3
-            .clear
-  = javascript_include_tag 'login'
+
+= render 'shared/login' unless current_user

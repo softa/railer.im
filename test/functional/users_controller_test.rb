@@ -25,7 +25,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to user_path(assigns(:user))
   end
 
-
   test "should assign used gems" do
     g = create_rubygem
     @user = create_user :login => 'softa'

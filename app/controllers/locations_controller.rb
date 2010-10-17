@@ -15,5 +15,4 @@ class LocationsController < ApplicationController
     @users = User.by_vip.where(:state => @country)
   end
 
-
 end

@@ -219,15 +219,15 @@ body
   +border-radius
   +box-shadow(#fff, 0, 1px, 0, inset)
   font-family: $blueprint-font-family
-  height: 96px
+  height: 56px
   width: 200px
   margin: 10px
   float: left
   text-align: center
   vertical-align: middle
-  line-height: 36px
+  //line-height: 30px
   text-shadow: #fff 0 1px 0
-  padding: 4px 10px
+  padding: 20px 10px
   display: block
   strong
     font-size: 48px
@@ -235,9 +235,11 @@ body
     font-size: 14px
   &:hover
     +grad(#FFF,#BBB)
+    text-decoration: none !important
   &:active
     +grad(#CCC,#EEE)
     position: relative
+    text-decoration: none !important
     top: 1px
 .yes_button
   strong, span
@@ -249,13 +251,10 @@ body
     strong, span
       color: #0C0
 .no_button
-  height: 86px
   strong, span
     color: #d99
   &:hover
-    text-decoration: none !important
     strong, span
-      text-decoration: none !important
       color: #b66
   &:active
     strong, span

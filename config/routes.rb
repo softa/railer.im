@@ -1,4 +1,5 @@
 Railerim::Application.routes.draw do
+  get "search/index"
   get "locations/index"
   get "locations/city"
   get "locations/country"

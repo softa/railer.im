@@ -71,6 +71,10 @@ class ActiveSupport::TestCase
     Repository.create!(defaults)
   end
   
+  def create_session user
+    UserSession.create!(user)
+  end
+  
   def setup_octopi_user(login='softa',email='contato@softa.com.br')
     octopi_repos = [
       OpenStruct.new(:name => "Rails-Target", :private => false, :owner => {}, :homepage => "", :watchers => 1, :open_issues => 0, :url => "http://github.com/softa/Rails-Target", :forks => 0, :description => "Projeto Rails do Curso da Target", :fork => false),

@@ -1,5 +1,5 @@
-.fox_signup{:style => 'text-align: center;'}
-  #{image_tag 'signup_foxes.png', :style => 'margin-bottom:-5px'}
+.fox_signup.hide{:style => 'text-align: left;'}
+  #{image_tag 'signup_fox.png', :style => 'margin-bottom:-5px;margin-left:150px'}
 = form_for User.new, :html => {:id => :signup, :class => :home} do |f|
   %fieldset
     .success_wrapper.hide

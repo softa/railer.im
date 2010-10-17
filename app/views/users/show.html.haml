@@ -24,6 +24,19 @@
                     %span#user_score= @user.score
                     points
                 .clear
+          - if @user.team
+            %hr
+            .used_rubygems
+              = image_tag 'rumble_small.png', :style => 'float:left;margin:1em'
+              %strong.small_caps Rails Rumble Team
+              %br
+              = link_to @user.team.name, @user.team
+              - if @user.team.thumbnail
+                %br
+                %br
+                = link_to @user.team do
+                  = image_tag @user.team.thumbnail, :class => 'image', :style => 'margin-left:50px;width:150px'
+
           .clear
       .span-17.last
         .info_wrapper

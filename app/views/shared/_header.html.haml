@@ -14,6 +14,16 @@
       .prepend-14.last
         - require 'forgery'
         #search_panel.hide
+          .close_search{:title => 'Close'} #{image_tag 'icons/minus-circle.png'} close
+          %table.best_match
+            %tr
+              %th
+                Best match
+              %td
+                %table
+                  %tr
+                    %td
+                      lorem ipsum
           %table
             %tr
               %th
@@ -72,7 +82,7 @@
         %fieldset
           = f.label :login
           %br
-          = f.text_field :login, :tabindex => 1
+          = f.text_field :login, :tabindex => 2
         #user_session_login_required.required_field.hide
           %strong Login required
         %br
@@ -81,16 +91,19 @@
           %small
             %a.forgot_password{:href => '#'} Forgot your password?
           %br
-          = f.password_field :password, :tabindex => 2
+          = f.password_field :password, :tabindex => 3
         #user_session_password_required.required_field.hide
           %strong Password required
         %br
         %fieldset
           .actions
-            = f.submit 'Login', :tabindex => 3
+            = f.submit 'Login', :tabindex => 4
             .clear
   = javascript_include_tag 'login'
   :javascript 
     $('#search').focus(function(){
       $('#search_panel').slideDown()
+    })
+    $('.close_search').click(function(){
+      $('#search_panel').slideUp()
     })

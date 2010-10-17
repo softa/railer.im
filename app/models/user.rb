@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
   scope :by_similarity, (lambda do |query|
     where("(name % ? OR email % ? OR login % ?)", query, query, query).order("greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) DESC")
   end)
+
+  scope :rank_by_similarity, (lambda do |query|
+    by_similarity(query).select("'user' AS entry_type, login AS key, greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) AS rank")
+  end)
   
   def self.similarity_threshold
     @@threshold

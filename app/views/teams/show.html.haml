@@ -4,6 +4,7 @@
       .span-7
         .image_wrapper
           - if @team.thumbnail
+            = image_tag 'rumble_logo-1.png'
             = image_tag @team.thumbnail, :class => 'image'
       .span-17.last
         .info_wrapper
@@ -43,5 +44,4 @@
       .clear
 %footer
   .container
-    .gem_users
-      %h3 See who is using this Team
+    %h2 lorem

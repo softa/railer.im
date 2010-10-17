@@ -1,6 +1,6 @@
 .page_overlay.hide
   #amnesia_form.hide
-    = form_for(User.new, :url => {:action => 'send_reset_email'}) do |f|
+    = form_for(User.new, :url => {:controller => 'users', :action => 'send_reset_email'}) do |f|
       .close{:title => 'Close'} #{image_tag 'icons/minus-octagon-frame.png'}
       .clear
       %h3

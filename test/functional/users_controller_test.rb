@@ -13,7 +13,8 @@ class UsersControllerTest < ActionController::TestCase
     Mocha::Mockery.instance.stubba.unstub_all
   end
 
-  {:new => :get, :edit => :get, :destroy => :delete}.each{|k,v|
+  # PEDRO: edit method was being tested below. Now that the method really exists, the test was failling, so I took it out.
+  {:new => :get, :destroy => :delete}.each{|k,v|
     test "should not get #{k}" do
       assert_raises ActionController::RoutingError do
         send(v,k, :id => 123)

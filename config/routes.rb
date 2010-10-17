@@ -3,13 +3,13 @@ Railerim::Application.routes.draw do
   get "locations/city"
   get "locations/country"
   get "users/resend_activation_email"
+  post 'users/send_reset_email'
   post "users/recommend"
   post "users/unrecommend"
   resources :companies, :only => [:index,:show]
   resources :teams, :only => [:index, :show]
   match 'users/set_password' => 'users#set_password', :as => :set_password
   resources :users, :only => [:show, :edit, :create, :update]
-  post 'users/send_reset_email'
   resources :rubygems, :only => [:index, :show]
   resources :gems, :controller => :rubygems, :as => :rubygems
   match 'search' => 'home#search', :as => :search

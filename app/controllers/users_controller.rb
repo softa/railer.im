@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       @user.send_reset_email 
       flash[:success] = "A password reset email has been sent. Please verify your mailbox. If you're having problems, please <a href='mailto:contact@railer.im'>contact us</a>."
     else
-      flash[:notice] = "Email not found."
+      flash[:failure] = "Email not found."
     end
     redirect_to :back
   end

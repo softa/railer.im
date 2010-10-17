@@ -27,11 +27,28 @@ class User < ActiveRecord::Base
   scope :recent, order('id desc')
   scope :six, limit(6)
   scope :by_vip, order('score desc')
-  scope :who_use, (lambda do |g| select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id ").where("rubygems.id = ?", g.id)
+  scope :who_use, (lambda do |g| 
+    select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id ").where("rubygems.id = ?", g.id)
+  end)
+
+  # default similarity threshold (pg_trgm)
+  @@threshold = nil
+
+  scope :by_similarity, (lambda do |query|
+    where("(name % ? OR email % ? OR login % ?)", query, query, query)
   end)
   
-  attr_accessible :login, :email, :password, :password_confirmation
-  
+  def self.similarity_threshold
+    @@threshold
+  end
+
+  def self.set_similarity_threshold threshold
+    return nil unless threshold.instance_of?(Fixnum) or threshold.instance_of?(Float)
+    @@threshold = threshold
+    connection.execute("SELECT set_limit('#{@@threshold}');")
+  end
+  #self.set_similarity_threshold(0.5)
+
   def used_gems
     Rubygem.used_by(self).all
   end
@@ -144,6 +161,3 @@ protected
   end
   
 end
-
-
-

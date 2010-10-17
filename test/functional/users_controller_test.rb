@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UsersControllerTest < ActionController::TestCase
 
   setup do
-    setup_octopi_user
+    #setup_octopi_user
   end
   teardown do
     Mocha::Mockery.instance.stubba.unstub_all
@@ -25,17 +25,10 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to user_path(assigns(:user))
   end
 
-  test "should show user" do
-    @user = User.create! :login => 'softa'
-    @user.update_attributes! :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
-    get :show, :id => @user.to_param
-    assert_response :success
-    assert_select '#user_name', /Juan Maiz/
-  end
 
   test "should assign used gems" do
     g = create_rubygem
-    @user = User.create! :login => 'softa'
+    @user = create_user :login => 'softa'
     @user.update_attributes! :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
     create_dependency :repository => create_repository(:user => @user), :rubygem => g
     create_dependency
@@ -46,13 +39,23 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    @user = User.create! :login => 'softa', :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
+    @user = create_user :login => 'softa', :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
     
     put :update, :id => @user.to_param, :user => {:email => 'juanmaiz@gmail.com', :name => 'João Milho'}
     assert_response :redirect
     user = assigns(:user)
     assert_equal 'João Milho', user.name
     assert_equal 'juanmaiz@gmail.com', user.email
+  end
+
+  test "should show user" do
+    @user = create_user
+    assert @user.update_attributes! :email => 'contato@softa.com.br', :password => '123456', :password_confirmation => '123456', :name => 'Juan Maiz'
+
+    get :show, :id => @user.to_param
+
+    assert_response :success
+    assert_select '#user_name', /Juan Maiz/
   end
 
 end

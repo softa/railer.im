@@ -1,28 +1,27 @@
 #home.content_wrapper
   .container{:style => 'overflow:visible;'}
     .home_wrapper{:style => 'max-width:1200px;min-width:1200px; margin: 0 auto; margin-top:20px;'}
-      .slide_wrapper.hide
-        .column_left{:style => 'width:540px; margin-left:20px; float:left;'}
-          %h1{:style => 'font-size: 64px;'} Find information about railers from around the world
-        .column_right{:style => 'margin-top: 20px; width:600px; height:500px; float:right; background:url(/images/light.png) no-repeat left center; text-align: right;'}
-          #{image_tag 'chuck_norris_print.png'}
-        .clear
-      .slide_wrapper.hide
-        .column_left{:style => 'margin-top: 20px; width:600px; height:500px; float:left; background:url(/images/light.png) no-repeat left center; text-align: right;'}
-          #{image_tag 'rails_profile.png'}
-        .column_right{:style => 'width:540px; margin-left:20px; float:right;'}
-          %h1{:style => 'font-size: 64px;'} Discover more about railers and their favorite gems
-        .clear
-      .slide_wrapper.hide
-        .column_left
-          %h1{:style => 'font-size: 64px;'} Meet the railers in your local area
-        .column_right
-          
-        .clear
+      .slides{:style => 'height:500px;'}
+        .first_slide.slide_wrapper
+          .column_left{:style => 'width:660px; margin-left:20px; float:left;'}
+            %h1{:style => 'font-size: 60px;'} Find relevant information about railers from around the world
+          .column_right{:style => 'margin-top: 20px; width:500px; height:500px; float:right; background:url(/images/light.png) no-repeat left center; text-align: right;'}
+            #{image_tag 'chuck_norris_print.png'}
+          .clear
+        .second_slide.slide_wrapper.hide
+          .column_left{:style => 'margin-top: 20px; width:500px; height:500px; float:left; background:url(/images/light.png) no-repeat right center; text-align: left;'}
+            #{image_tag 'rails_profile.png'}
+          .column_right{:style => 'width:660px; margin-left:20px; float:right;'}
+            %h1{:style => 'font-size: 60px;'} Discover more about railers and their favorite gems
+          .clear
+        .third_slide.slide_wrapper.hide
+          .column_left{:style => 'width:660px; margin-left:20px; float:left;'}
+            %h1{:style => 'font-size: 60px; margin-top:100px;'} Meet the railers in your local area
+          .column_right{:style => 'margin-top: 20px; width:500px; height:500px; float:left; background:url(/images/light.png) no-repeat left center; text-align:right;'}
+            #{image_tag 'geographic_report.png'}
+          .clear
       .clear
-      .signup_box{:style => 'position:relative;'}
-        -#.signup_wrapper{:style => 'position:absolute; bottom:0; margin-left:-480px; left:50%;'}
-        = render ('home/signup') unless current_user
+      = render ('home/signup') unless current_user
 %footer
   .container
     = render ('home/live')

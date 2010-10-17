@@ -1,15 +1,21 @@
-.fox_signup.hide{:style => 'text-align: left;'}
-  #{image_tag 'signup_fox.png', :style => 'margin-bottom:-5px;margin-left:150px'}
-= form_for User.new, :html => {:id => :signup, :class => :home} do |f|
-  %fieldset
-    .success_wrapper.hide
-      %strong{:style=> 'color:white'} Your account was created successfully. Please check your email <span class="email"></span>.
-    .input_wrapper{:style => 'position:relative'}
-      = f.text_field :login, :id => :github_name_signup, :placeholder => 'github username', :required => true, :autocomplete => :off, :tabindex => 1, :value => params[:login]
-      = image_tag 'loader.png', :style => 'position:absolute;right:240px;top:20px', :class => :hide, :id => :signup_loader
-      .button
-        %strong Signup
-      .clear
-    .message_wrapper.hide{:style=> 'color:white;font-weight:bold'}
-      We'll try to contact GitHub and send you an email.
+.signup_box{:style => 'position:relative;'}
+  .signup_wrapper{:style => 'position:absolute; bottom:0; margin-left:-480px; left:50%;'}
+    .first_fox{:style => 'text-align: left;'}
+      #{image_tag 'first_fox.png', :style => 'margin-bottom:-5px;margin-left:150px'}
+    .second_fox.hide{:style => 'text-align: right;'}
+      #{image_tag 'second_fox.png', :style => 'margin-bottom:-5px;margin-right:150px'}
+    .third_fox.hide{:style => 'text-align: left;'}
+      #{image_tag 'third_fox.png', :style => 'margin-bottom:-5px;margin-left:150px'}
+    = form_for User.new, :html => {:id => :signup, :class => :home} do |f|
+      %fieldset
+        .success_wrapper.hide
+          %strong{:style=> 'color:white'} Your account was created successfully. Please check your email <span class="email"></span>.
+        .input_wrapper{:style => 'position:relative'}
+          = f.text_field :login, :id => :github_name_signup, :placeholder => 'github username', :required => true, :autocomplete => :off, :tabindex => 1, :value => params[:login]
+          = image_tag 'loader.png', :style => 'position:absolute;right:240px;top:20px', :class => :hide, :id => :signup_loader
+          .button
+            %strong Signup
+          .clear
+        .message_wrapper.hide{:style=> 'color:white;font-weight:bold'}
+          We'll try to contact GitHub and send you an email.
 = javascript_include_tag 'signup'

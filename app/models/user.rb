@@ -23,7 +23,11 @@ class User < ActiveRecord::Base
   has_many :owned_gems, :class_name => 'Rubygem', :through => :authorships, :source => :rubygem
 
   label :name, :login
+  def near_railers
+    User.near_railers(self)
+  end
 
+  scope :near_railers, lambda{|u| where(:lat => u.lat,:lng => u.lng).limit(12)  }
   scope :recent, order('id desc')
   scope :six, limit(6)
   scope :by_vip, order('score desc')

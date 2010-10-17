@@ -7,7 +7,7 @@
         %fieldset
           %nav
             - if current_user
-              #{link_to 'My profile', profile_path(current_user)}&nbsp;&middot;&nbsp;#{link_to 'Logout', user_sessions_path, :method => :delete}
+              #{link_to "My profile (#{current_user.name})", profile_path(current_user)}&nbsp;&middot;&nbsp;#{link_to 'Logout', user_sessions_path, :method => :delete}
             - else
               #{link_to 'Login', '#', :id => 'open_login_form'}
           %input#search.span-8{ :type => :search, :placeholder => 'Search', :autocomplete => :off }

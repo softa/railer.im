@@ -17,7 +17,7 @@ $('#new_user_session').submit(function(){
   var data = $(this).serialize()
   $.post(url, data, function(result){
     // successfull login!
-    location.reload()
+    location.href = result['redirect']
   }, 'json')
   return false
 })

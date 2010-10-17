@@ -25,7 +25,7 @@ UPDATE authorships
               )
 
               AND g.id = authorships.rubygem_id
-          ORDER BY greatest(similarity(u.name, authorships.name), similarity(u.email, authorships.name), similarity(u.login, authorships.name)) DESC LIMIT 1
+          ORDER BY greatest(similarity(u.name, authorships.author_name), similarity(u.email, authorships.author_name), similarity(u.login, authorships.author_name)) DESC LIMIT 1
         )
       WHERE user_id IS NULL
       AND NOT EXISTS (
@@ -44,9 +44,9 @@ UPDATE authorships
       SET user_id = (
         SELECT id 
         FROM users u
-      WHERE (u.name % authorships.name OR u.email % authorships.name OR u.login % authorships.name)
+      WHERE (u.name % authorships.author_name OR u.email % authorships.author_name OR u.login % authorships.author_name)
       AND NOT EXISTS (SELECT 1 FROM authorships a WHERE a.user_id = u.id AND a.rubygem_id = authorships.rubygem_id)
-      ORDER BY greatest(similarity(u.name, authorships.name), similarity(u.email, authorships.name), similarity(u.login, authorships.name)) DESC
+      ORDER BY greatest(similarity(u.name, authorships.author_name), similarity(u.email, authorships.author_name), similarity(u.login, authorships.author_name)) DESC
       LIMIT 1
     )  
       WHERE authorships.user_id IS NULL;

@@ -64,7 +64,6 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
-    mailee (0.4.3)
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
     mime-types (1.16)
@@ -145,7 +144,6 @@ DEPENDENCIES
   inherited_resources (= 1.1.2)
   jquery-rails
   labelize (= 0.1.4)
-  mailee (= 0.4.3)
   mocha
   mongrel
   octopi

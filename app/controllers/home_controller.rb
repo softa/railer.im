@@ -1,6 +1,11 @@
 class HomeController < ApplicationController
 
+  def stats
+    @title = " · Statistics"
+  end
+
   def index
+    @title = " · Home"
   end
     
   def search

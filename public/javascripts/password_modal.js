@@ -21,7 +21,6 @@ $('form.edit_user').submit(function(){
   $.post(url, data, function(result){
     // successfull login!
 	if(result['ok']){
-	  $('form.edit_user').html('Ok!')
 	  location.reload()
 	}
   }, 'json')

@@ -28,10 +28,26 @@ $('#search').keydown(function(event) {
    }
 });
 
+$('#search').keydown(function(event) {
+  if (event.keyCode == '10' || event.keyCode == '13') {
+    event.preventDefault();
+    search_panel.go_to_best_match();
+   }
+   else
+   {
+     search_panel.tophit["href"] = null;
+   }
+});
+
 var search_panel = {
-  tophit: {"rank" : -1},
+  tophit: {"rank" : -1, "href": null},
   html_tables: {"users": "", "rubygems" : "", "teams" : "", "companies": "", "locations" : "", "best" : "" },
   routes: {"users": "", "rubygems" : "gems/", "teams" : "teams/", "companies": "companies/", "locations" : "locations/city/" },
+
+  go_to_best_match: function(){
+    if(this.tophit["href"])
+      window.location.href = this.tophit["href"];
+  },
 
   icons: {"rubygems": "icons/ruby.png", "teams" : "rumble_small.png", "companies": "icons/briefcase.png", "locations" : "icons/marker.png"},
   json2html: function(table_name, entries){
@@ -42,12 +58,13 @@ var search_panel = {
         {
           self.tophit = row;
           self.tophit["route"] = self.routes[table_name];
+          self.tophit["href"] = '/' + self.routes[table_name] + row["key"].toLowerCase();
         }
         if(table_name == "users")
           img = '<img src="http://gravatar.com/avatar/' + row["gravatar_id"] + '?s=16" />';
         else 
           img = '<img src="/images/' + self.icons[table_name] + '" />';
-        self.html_tables[table_name] += '<li>' + img + ' <a href="/' + self.routes[table_name] + row["key"] + '">' + unescape(row["label"]) + '<a/></li>';
+        self.html_tables[table_name] += '<li>' + img + ' <a href="/' + self.routes[table_name] + row["key"].toLowerCase() + '">' + unescape(row["label"]) + '<a/></li>';
       });
   },
 

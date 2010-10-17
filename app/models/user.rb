@@ -41,9 +41,6 @@ class User < ActiveRecord::Base
   scope :rank_by_similarity, (lambda do |query|
     by_similarity(query).select("'user' AS entry_type, login AS key, greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) AS rank")
   end)
-<<<<<<< HEAD
-  #attr_accessible :login, :email, :password, :password_confirmation
-=======
   
   def self.similarity_threshold
     @@threshold
@@ -54,8 +51,6 @@ class User < ActiveRecord::Base
     @@threshold = threshold
     connection.execute("SELECT set_limit('#{@@threshold}');")
   end
-  #self.set_similarity_threshold(0.5)
->>>>>>> 75c4bc7e9d08405a0e3b6fd839219401cf5b6ed6
 
   def used_gems
     Rubygem.used_by(self).all
@@ -175,13 +170,5 @@ protected
   def work
     Resque.enqueue(GithubWorker, self.id)
   end
-  
-<<<<<<< HEAD
+    
 end
-=======
-  def confirm_email
-    UserMailer.confirm_email self
-  end
-  
-end
->>>>>>> 75c4bc7e9d08405a0e3b6fd839219401cf5b6ed6

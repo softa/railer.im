@@ -40,3 +40,14 @@ $('.close').click(function(){
   $('.page_overlay').fadeOut('slow')
   $('#login_form').hide()
 })
+
+
+$('.forgot_password').click(function(){
+  $('#login_form').hide()
+  $('#amnesia_form').show()
+})
+
+$('.back_to_login').click(function(){
+  $('#login_form').show()
+  $('#amnesia_form').hide()
+})

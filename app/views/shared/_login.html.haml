@@ -1,13 +1,13 @@
-.page_overlay
-  #login_form
+.page_overlay.hide
+  #login_form.hide
     = form_for(@user_session) do |f|
-      .close{:title => 'Close'} #{image_tag 'icons/minus-octagon-frame.png'}
+      .close{:title => 'Close'} #{image_tag 'icons/minus-circle.png'}
       .clear
       %strong#login_error.hide
       %fieldset
         = f.label :login
         %br
-        = f.text_field :login, :tabindex => 1
+        = f.text_field :login, :tabindex => 2
       #user_session_login_required.required_field.hide
         %strong Login required
       %br
@@ -16,14 +16,22 @@
         %small
           %a.forgot_password{:href => '#'} Forgot your password?
         %br
-        = f.password_field :password, :tabindex => 2
+        = f.password_field :password, :tabindex => 3
       #user_session_password_required.required_field.hide
         %strong Password required
       %br
       %fieldset
         .actions
-          = f.submit 'Login', :tabindex => 3
+          = f.submit 'Login', :tabindex => 4
           .clear
+= javascript_include_tag 'login'
+:javascript 
+  $('#search').focus(function(){
+    $('#search_panel').slideDown()
+  })
+  $('.close_search').click(function(){
+    $('#search_panel').slideUp()
+  })
 
   #amnesia_form
     = form_for(@user_session) do |f|
@@ -35,19 +43,9 @@
         %br
         = f.text_field :email, :tabindex => 1
       #user_session_email_required.required_field.hide
-        %strong Login required
-      %br
-      %fieldset
-        = f.label :password
-        %small
-          %a.forgot_password{:href => '#'} Forgot your password?
-        %br
-        = f.password_field :password, :tabindex => 2
-      #user_session_password_required.required_field.hide
-        %strong Password required
+        %strong Email required
       %br
       %fieldset
         .actions
           = f.submit 'Login', :tabindex => 3
-          .clear          
-= javascript_include_tag 'login'
+          .clear

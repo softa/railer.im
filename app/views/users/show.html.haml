@@ -28,10 +28,9 @@
             %h1#user_name
               #{@user.name}
               %span (#{link_to @user.login, "http://github.com/#{@user.login}"})
-              - if me?
-                = link_to edit_profile_path(current_user) do
-                  = image_tag 'icons/pencil.png'
-                  edit
+            - if me?
+              = link_to edit_profile_path(current_user), :class => 'railerim_button', :style => 'float:left; font-size: 14px' do
+                edit
             .detail.recommend
               %span#recommendations_total.recommendations= @user.recommended_by.size
             %a#recommend_button.railerim_button{:href => '#', :class => recommend_button_class }= recommend_button_text
@@ -65,8 +64,8 @@
               %hr
               .bio
                 %strong.small_caps Bio
-          - if @user.wwr_id
-            %hr
+            - if @user.wwr_id
+              %hr
               .wwr
                 %strong.small_caps WWR
                 %h3= nice_link(@user.wwr_url)

@@ -28,7 +28,7 @@ class CreateViewScores < ActiveRecord::Migration
      CREATE VIEW scores AS
        SELECT
         i.id,
-        i.initial_score + coalesce((SELECT sum(score) FROM recomendation_scores rs WHERE rs.id = i.id),0)
+        i.initial_score + coalesce((SELECT sum(score) FROM recomendation_scores rs WHERE rs.id = i.id),0) as score
         FROM initial_scores i;
       ) 
 

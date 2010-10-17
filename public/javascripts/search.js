@@ -16,6 +16,11 @@ $.fn.search = function(results) {
     }, 300)
 }
 
+$('#search_panel').ajaxError(function(event, request, settings) {
+    if(settings.url.substring(0,12))
+      $('#search_panel').html('').append('<div class="flash"><div class="error_wrapper"><div class="error"> Sorry, error requesting page ' + settings.url + '. <br>Try again in a few minutes.</div></div></div>');
+});
+
 $('#search').keydown(function(event) {
   if (event.keyCode == '27') {
     $('#search').val('');

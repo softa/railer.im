@@ -15,15 +15,6 @@
               %br
               %span.small{:style => 'font-size:.6em'} #{@user.score} points
           .clear
-          %br
-          .recommended_bu
-            %strong.small_caps Recommended by
-            %ul
-              - @user.recommended_by.each do |r|
-                %li
-                  = link_to profile_path(r) do
-                    #{gravatar(r.gravatar_id,24)}
-                    #{r.name}
       .span-17.last
         .info_wrapper
           .header
@@ -81,11 +72,11 @@
                   - @user.owned_gems.each do |g|
                     %li
                       %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
-            - unless @user.recommends.empty?
+            - unless @user.recommended_by.empty?
               .recommended.list_with_pictures
                 %strong.small_caps Recommended by
                 %ul
-                  - @user.recommends.each do |u|
+                  - @user.recommended_by.each do |u|
                     %li
                       %a{:href => user_path(u.login)}
                         #{gravatar(u.gravatar_id, 24)}

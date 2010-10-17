@@ -19,10 +19,10 @@
             %hr
             %strong.small_caps Authors
             %h3 #{@rubygem.authors_names}
-            %hr
-            %strong.small_caps Indicators
-            %ul
-              - if not @rubygem.indicators.nil?
+            - if not @rubygem.indicators.nil?
+              %hr
+              %strong.small_caps Indicators
+              %ul
                 - @rubygem.indicators.each do |key,value|
                   %li{:class => value } #{hash.key}
           .right_column

@@ -77,4 +77,5 @@ class UserTest < ActiveSupport::TestCase
     team = create_team_membership(:user => @u).team
     assert_equal @u.team, team
   end
+
 end

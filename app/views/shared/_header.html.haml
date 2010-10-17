@@ -7,12 +7,108 @@
         %fieldset
           %nav
             - if current_user
-              = link_to 'My profile', profile_path(current_user)
-              &middot;&nbsp;
-              = link_to 'Logout', user_sessions_path, :method => :delete
+              #{link_to 'My profile', profile_path(current_user)}&nbsp;&middot;&nbsp;#{link_to 'Logout', user_sessions_path, :method => :delete}
             - else
-              = link_to 'Login', '#', :id => 'open_login_form'
-          %input#search{ :type => :search, :placeholder => 'Search' }
+              #{link_to 'Login', '#', :id => 'open_login_form'}
+          %input#search.span-8{ :type => :search, :placeholder => 'Search', :autocomplete => :off }
+      .prepend-14.last
+        - require 'forgery'
+        #search_panel.hide
+          .close_search{:title => 'Close'} #{image_tag 'icons/minus-circle.png'} close
+          %table.best_match
+            %tr
+              %th
+                Best match
+              %td
+                %table
+                  %tr
+                    %td
+                      lorem ipsum
+          %table
+            %tr
+              %th
+                User
+              %td
+                %table
+                  - 2.times do
+                    %tr
+                      %td
+                        #{image_tag 'icons/user-silhouette.png'}
+                        #{Forgery::Internet.user_name}
+            %tr
+              %th Gems
+              %td
+                %table
+                  - 2.times do
+                    %tr
+                      %td
+                        #{image_tag 'icons/ruby.png'}
+                        #{Forgery::Name.company_name.downcase}
+            %tr
+              %th Teams
+              %td
+                %table
+                  - 2.times do
+                    %tr
+                      %td
+                        #{image_tag 'rumble_small.png', :size => '16x16'}
+                        #{Forgery::Name.company_name}
+            %tr
+              %th Companies
+              %td
+                %table
+                  - 2.times do
+                    %tr
+                      %td
+                        #{image_tag 'icons/briefcase.png'}
+                        #{Forgery::Name.company_name.downcase}
+            %tr
+              %th Location
+              %td
+                %table
+                  - 2.times do
+                    %tr
+                      %td
+                        #{image_tag 'icons/marker.png'}
+                        #{Forgery::Address.city}
     .clear
+<<<<<<< HEAD
 
 = render 'shared/login' unless current_user
+=======
+- unless current_user
+  .page_overlay.hide
+    #login_form.hide
+      = form_for(@user_session) do |f|
+        .close{:title => 'Close'} #{image_tag 'icons/minus-circle.png'}
+        .clear
+        %strong#login_error.hide
+        %fieldset
+          = f.label :login
+          %br
+          = f.text_field :login, :tabindex => 2
+        #user_session_login_required.required_field.hide
+          %strong Login required
+        %br
+        %fieldset
+          = f.label :password
+          %small
+            %a.forgot_password{:href => '#'} Forgot your password?
+          %br
+          = f.password_field :password, :tabindex => 3
+        #user_session_password_required.required_field.hide
+          %strong Password required
+        %br
+        %fieldset
+          .actions
+            = f.submit 'Login', :tabindex => 4
+            .clear
+  = javascript_include_tag 'login'
+  :javascript 
+    $('#search').focus(function(){
+      $('#search_panel').slideDown()
+    })
+    $('.close_search').click(function(){
+      $('#search_panel').slideUp()
+    })
+>>>>>>> 75c4bc7e9d08405a0e3b6fd839219401cf5b6ed6

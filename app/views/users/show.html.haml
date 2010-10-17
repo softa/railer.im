@@ -1,28 +1,30 @@
-= javascript_include_tag 'jquery.countto'
-= render 'password_modal' if @password_modal
-#railer_profile.content_wrapper
-  .container
-    .wrapper
-      .span-7
-        .image_wrapper
-          #{gravatar(@user.gravatar_id, 256)}
-          %br
-          .level_and_score
-            .level_and_score_wrapper
-              .more_wrapper
-                %h3
-                  #{@user.level.ordinalize}
-                  %br
-                  %small level
-                %strong
-                  Railer.Im Rank
-                  %br
-                  %span.quiet
-                    %span#user_score= @user.score
-                    points
-                  - if me?
-                    #{tweet_this("My RailerRank level is #{@user.level} (#{@user.score}). See more at http://railer.im/#{@user.login}")}
-                .clear
+- if @user.active?
+  = javascript_include_tag 'jquery.countto'
+  = render 'password_modal' if @password_modal
+  #railer_profile.content_wrapper
+    .container
+      .wrapper
+        .span-7
+          .image_wrapper
+            #{gravatar(@user.gravatar_id, 256)}
+            %br
+            .level_and_score
+              .level_and_score_wrapper
+                .more_wrapper
+                  %h3
+                    #{@user.level.ordinalize}
+                    %br
+                    %small level
+                  %strong
+                    Railer.Im Rank
+                    %br
+                    %span.quiet
+                      %span#user_score= @user.score
+                      points
+                      - if me?
+                        #{tweet_this("My RailerRank level is #{@user.level} (#{@user.score}). See more at http://railer.im/#{@user.login}")}
+                    .clear
+                  .clear
           - if @user.team
             %hr
             .used_rubygems
@@ -36,115 +38,132 @@
                 = link_to @user.team do
                   = image_tag @user.team.thumbnail, :class => 'image', :style => 'margin-left:50px;width:150px'
 
-          .clear
-      .span-17.last
-        .info_wrapper
-          .header
-            %h1#user_name
-              #{@user.name}
-              %span (#{link_to @user.login, "http://github.com/#{@user.login}"})
-            - if me?
-              = link_to edit_profile_path(current_user), :class => 'railerim_button', :style => 'float:left; font-size: 14px' do
-                edit
-            .detail.recommend
-              %span#recommendations_total.recommendations= @user.recommended_by.size
-            %a#recommend_button.railerim_button{:href => '#', :class => recommend_button_class }= recommend_button_text
-            :javascript
-              var user_id = #{@user.id}
             .clear
-          .clear
-          .left_column
-            .company_name
-              %strong.small_caps Company
-              %h3
-                - if @user.company
-                  = link_to @user.company.name, @user.company
-                - else
-                  NA
-            %hr
-            .blog
-              %strong.small_caps Blog
-              %h3 #{nice_link @user.blog}
-              %hr
-              .location
-                %strong.small_caps Location
+        .span-17.last
+          .info_wrapper
+            .header
+              %h1#user_name
+                #{@user.name}
+                %span (#{link_to @user.login, "http://github.com/#{@user.login}"})
+              - if me?
+                = link_to edit_profile_path(current_user), :class => 'railerim_button', :style => 'float:left; font-size: 14px' do
+                  edit
+              .detail.recommend
+                %span#recommendations_total.recommendations= @user.recommended_by.size
+              %a#recommend_button.railerim_button{:href => '#', :class => recommend_button_class }= recommend_button_text
+              :javascript
+                var user_id = #{@user.id}
+              .clear
+            .clear
+            - if @user.punchline
+              %h3 “#{@user.punchline}”
+            .clear
+            .left_column
+              .company_name
+                %strong.small_caps Company
                 %h3
-                  #{link_to @user.city, locations_city_path(:id => @user.city) if @user.city}
-                  - if @user.state
-                    = image_tag "flags/#{@user.country_code.downcase}.png"
-                    #{link_to "#{@user.state} #{@user.country_code}", locations_country_path(:id => @user.country_code) }
+                  - if @user.company
+                    = link_to @user.company.name, @user.company
                   - else
                     NA
-            -#
               %hr
-              .bio
-                %strong.small_caps Bio
-            - if @user.wwr_id
-              %hr
-                .wwr
-                  %strong.small_caps WWR
-                  %h3= nice_link(@user.wwr_url)
-            - unless @user.followers.empty?
-              %hr
-              .followers.list_with_pictures
-                %strong.small_caps Followers
-                %ul
-                  - @user.followers.each do |f|
-                    %li
-                      = link_to profile_path(f), :tile => f.name do
-                        #{gravatar(f.gravatar_id,32)}
+              .blog
+                %strong.small_caps Blog
+                %h3 #{nice_link @user.blog}
+                %hr
+                .location
+                  %strong.small_caps Location
+                  %h3
+                    #{link_to @user.city, locations_city_path(:id => @user.city) if @user.city}
+                    - if @user.state
+                      = image_tag "flags/#{@user.country_code.downcase}.png"
+                      #{link_to "#{@user.state} #{@user.country_code}", locations_country_path(:id => @user.country_code) }
+                    - else
+                      NA
+              -#
+                %hr
+                .bio
+                  %strong.small_caps Bio
+              - if @user.wwr_id
+                %hr
+                  .wwr
+                    %strong.small_caps WWR
+                    %h3= nice_link(@user.wwr_url)
+              - unless @user.followers.empty?
+                %hr
+                .followers.list_with_pictures
+                  %strong.small_caps Followers
+                  %ul
+                    - @user.followers.each do |f|
+                      %li
+                        = link_to profile_path(f), :tile => f.name do
+                          #{gravatar(f.gravatar_id,32)}
 
-            - unless @user.used_gems.empty?
-              %hr
-              .used_rubygems
-                %strong.small_caps Used rubygems
-                %ul
-                  - @user.used_gems.each do |g|
-                    %li
-                      = link_to rubygem_path(g), {:style => 'font-size:.75em;'} do
-                        %samp #{g.name}
-          .right_column
-            - unless @user.owned_gems.empty?
-              .personal_gems
-                %strong.small_caps Owner of the following Gems
+              - unless @user.used_gems.empty?
                 %hr
+                .used_rubygems
+                  %strong.small_caps Used rubygems
+                  %ul
+                    - @user.used_gems.each do |g|
+                      %li
+                        = link_to rubygem_path(g), {:style => 'font-size:.75em;'} do
+                          %samp #{g.name}
+            .right_column
+              - unless @user.owned_gems.empty?
+                .personal_gems
+                  %strong.small_caps Owner of the following Gems
+                  %hr
+                  %ul
+                    - @user.owned_gems.each do |g|
+                      %li
+                        %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
+              .recommended.list_with_pictures{:class => @user.recommended_by.empty? ? 'hide' : ''}
+                %strong.small_caps Recommended by
                 %ul
-                  - @user.owned_gems.each do |g|
-                    %li
-                      %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
-            .recommended.list_with_pictures{:class => @user.recommended_by.empty? ? 'hide' : ''}
-              %strong.small_caps Recommended by
-              %ul
-                - if current_user && ! @user.recommended_by.include?(current_user)
-                  %li.my_reco{:style => 'display:none'}
-                    %a{:href => user_path(current_user.login)}
-                      #{gravatar(current_user.gravatar_id, 24)}
-                      %strong #{current_user.name}
-                - @user.recommended_by.each do |u|
-                  %li{:class => u == current_user ? 'my_reco' : ''}
-                    %a{:href => user_path(u.login)}
-                      #{gravatar(u.gravatar_id, 40)}
-                      %strong #{u.name}
-                %hr
-            - unless @user.repositories.decent.empty?
-              .owns_the_repos
-                %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
-                %ul
-                  - for repo in @user.repositories.decent
-                    %li
-                      = image_tag repo.language_icon, :class => 'language_icon', :title => repo.language
-                      %strong #{link_to repo.name, repo.url, :target => :_blank}
-                      .watchers{ :title => :watchers }
-                        #{image_tag 'icons/foaf.png'} #{repo.watchers}
-                      %br
-                      = repo.description
-                      .clear
-= javascript_include_tag 'user_profile.js'
-= javascript_include_tag 'recommend_user.js'
-%footer
-  .container
-    .span-11.append-1
+                  - if current_user && ! @user.recommended_by.include?(current_user)
+                    %li.my_reco{:style => 'display:none'}
+                      %a{:href => user_path(current_user.login)}
+                        #{gravatar(current_user.gravatar_id, 24)}
+                        %strong #{current_user.name}
+                  - @user.recommended_by.each do |u|
+                    %li{:class => u == current_user ? 'my_reco' : ''}
+                      %a{:href => user_path(u.login)}
+                        #{gravatar(u.gravatar_id, 40)}
+                        %strong #{u.name}
+                  %hr
+              - unless @user.repositories.decent.empty?
+                .owns_the_repos
+                  %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
+                  %ul
+                    - for repo in @user.repositories.decent
+                      %li
+                        = image_tag repo.language_icon, :class => 'language_icon', :title => repo.language
+                        %strong #{link_to repo.name, repo.url, :target => :_blank}
+                        .watchers{ :title => :watchers }
+                          #{image_tag 'icons/foaf.png'} #{repo.watchers}
+                        %br
+                        = repo.description
+                        .clear
+  = javascript_include_tag 'user_profile.js'
+  = javascript_include_tag 'recommend_user.js'
+  %footer
+    .container
+      .span-11.append-1
+        &nbsp;
+      .span-11.prepend-1.last
+        &nbsp;
+- else
+  #railer_profile.content_wrapper
+    .container
+      .wrapper
+        .span-24
+          %h1
+            #{gravatar(@user.gravatar_id, 40)}
+            Inactive user
+          .header
+            %h1 #{@user.name||@user.login} signed up #{time_ago_in_words @user.created_at} ago but has not veryfied his account yet.
+            .clear
+          .clear
+  %footer
+    .container
       &nbsp;
-    .span-11.prepend-1.last
-      &nbsp;
-    .clear

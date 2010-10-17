@@ -21,6 +21,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     assert_equal 'is not valid', json["login"]
   end
   
+  
   test "should redirect to home if you try to login without a valid token" do
     get :token_auth
     assert_equal nil, assigns(:user_session)

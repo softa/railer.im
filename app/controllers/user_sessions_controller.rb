@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
   end
 
   def token_auth
-    @user = User.find_using_perishable_token(params[:token])
+    @user = User.find_by_perishable_token(params[:token]) rescue nil
     if params[:token] and @user
       @user.activate! unless @user.active?
       @user_session = UserSession.create! @user

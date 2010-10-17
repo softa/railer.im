@@ -16,7 +16,7 @@ gem 'geokit'
 gem 'wirble'
 gem 'jquery-rails'
 gem 'mongrel'
-gem 'will_paginate'
+gem 'will_paginate', '2.3.15'
 gem 'mailee', '0.4.3'
 gem 'forgery'
 

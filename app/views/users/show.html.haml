@@ -99,22 +99,22 @@
                         = link_to profile_path(f), :tile => f.name do
                           #{gravatar(f.gravatar_id,32)}
 
-              - unless @user.used_gems.empty?
+              - unless @user.used_gems.all.empty?
                 %hr
                 .used_rubygems
                   %strong.small_caps Used rubygems
                   %ul
-                    - @user.used_gems.each do |g|
+                    - @user.used_gems.all.each do |g|
                       %li
                         = link_to rubygem_path(g), {:style => 'font-size:.75em;'} do
                           %samp #{g.name}
             .right_column
-              - unless @user.owned_gems.empty?
+              - unless @user.owned_gems.all.empty?
                 .personal_gems
                   %strong.small_caps Owner of the following Gems
                   %hr
                   %ul
-                    - @user.owned_gems.each do |g|
+                    - @user.owned_gems.all.each do |g|
                       %li
                         %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
               .recommended.list_with_pictures{:class => @user.recommended_by.empty? ? 'hide' : ''}

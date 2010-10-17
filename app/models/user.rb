@@ -101,6 +101,10 @@ class User < ActiveRecord::Base
     UserMailer.confirm_email(self).deliver
   end
 
+  def send_reset_email
+    UserMailer.reset_email(self).deliver
+  end
+
 protected
 
   before_validation :setup_user, :on => :create

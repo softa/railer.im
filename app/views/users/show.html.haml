@@ -54,10 +54,11 @@
               %hr
               .bio
                 %strong.small_caps Bio
+          - if @user.wwr_id
             %hr
-            .wwr
-              %strong.small_caps WWR
-              %h3 #{@user.wwr_id ? nice_link(@user.wwr_url) : 'NA'}
+              .wwr
+                %strong.small_caps WWR
+                %h3= nice_link(@user.wwr_url)
           .right_column
             - unless @user.owned_gems.empty?
               .personal_gems

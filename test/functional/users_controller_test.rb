@@ -59,5 +59,23 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     assert_select '#user_name', /Juan Maiz/
   end
-
+  
+  test "should be able to recommend another user" do
+    u1 = create_user
+    UserSession.create!(u1)
+    u2 = create_user
+    assert_equal 0, u2.recommended_by.count
+    post :recommend, :id => u2.id
+    assert_response :success
+    assert_equal({:ok => true, :total => 1}.to_json, @response.body)
+    assert_equal 1, u2.recommended_by.count    
+  end
+  
+  test "shouldnt be able to recommend yourself" do
+    u1 = create_user
+    UserSession.create!(u1)
+    post :recommend, :id => u1.id
+    assert_equal({:ok => false}.to_json, @response.body)
+  end
+  
 end

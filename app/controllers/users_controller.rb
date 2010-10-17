@@ -63,6 +63,17 @@ class UsersController < ApplicationController
     end
     redirect_to :back
   end
+  
+  def recommend
+    begin
+      recommended = User.find params[:id]
+      raise "You cannot recommend yourself" if recommended == current_user
+      current_user.recommend recommended
+      return render :json => {:ok => true, :total => recommended.recommended_by.count}.to_json
+    rescue
+      return render :json => {:ok => false}
+    end
+  end
 
   #TODO q tal?
   #rescue_from ActionController::MethodNotAllowed, :with => lambda{ return redirect_to root_path }

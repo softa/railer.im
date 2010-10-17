@@ -22,8 +22,10 @@
                   = image_tag 'icons/pencil.png'
                   edit
             .detail.recommend
-              %span.recommendations= @user.recommended_by.size
-            %a.railerim_button{:href => '#'} Recommend
+              %span#recommendations_total.recommendations= @user.recommended_by.size
+            %a#recommend_button.railerim_button{:href => '#', :class => recommend_button_class }= recommend_button_text
+            :javascript
+              var user_id = #{@user.id}
             .clear
           .clear
           .left_column
@@ -83,6 +85,7 @@
                     = repo.description
                     .clear
 = javascript_include_tag 'user_profile.js'
+= javascript_include_tag 'recommend_user.js'
 %footer
   .container
     .span-11.append-1

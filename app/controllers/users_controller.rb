@@ -75,6 +75,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def unrecommend
+    begin
+      unrecommended = User.find params[:id]
+      current_user.unrecommend unrecommended
+      return render :json => {:ok => true, :total => unrecommended.recommended_by.count}.to_json
+    rescue
+      return render :json => {:ok => false}
+    end
+  end
   #TODO q tal?
   #rescue_from ActionController::MethodNotAllowed, :with => lambda{ return redirect_to root_path }
 

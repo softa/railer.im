@@ -78,4 +78,16 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal({:ok => false}.to_json, @response.body)
   end
   
+  test "should be able to unrecommend another user" do
+    u1 = create_user
+    UserSession.create!(u1)
+    u2 = create_user
+    u1.recommend u2
+    assert_equal 1, u2.recommended_by.count
+    post :unrecommend, :id => u2.id
+    assert_response :success
+    assert_equal({:ok => true, :total => 0}.to_json, @response.body)
+    assert_equal 0, u2.recommended_by.count    
+  end
+  
 end

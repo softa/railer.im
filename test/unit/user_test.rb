@@ -26,6 +26,15 @@ class UserTest < ActiveSupport::TestCase
     assert_equal recommended.recommended_by.first, @u
   end
 
+  test "should be able to unrecomend user" do
+    unrecommended = create_user
+    @u.recommend(unrecommended)
+    assert_difference('Recommendation.count',-1) do
+      @u.unrecommend(unrecommended)
+    end
+    assert_equal [], unrecommended.recommended_by
+  end
+
   #TODO ORGANIZATIONS!
   test "should be able to create an user only with login" do
     assert_equal 'Softa', @u.name

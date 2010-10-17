@@ -72,6 +72,10 @@ class User < ActiveRecord::Base
     recommendations_made.create(:recommended_id => recommended_user.id)
   end
 
+  def unrecommend(unrecommended_user)
+    recommendations_made.find_by_recommended_id(unrecommended_user.id).destroy
+  end
+
   def is_followed_by login
     follower = User.find_by_login(login)
     return nil if follower.nil?

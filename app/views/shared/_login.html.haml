@@ -3,13 +3,10 @@
     = form_for(User.new, :url => {:controller => 'users', :action => 'send_reset_email'}) do |f|
       .close{:title => 'Close'} #{image_tag 'icons/minus-octagon-frame.png'}
       .clear
-      %h3
-        Inform your email to get a password reset link.
-
+      %h3 Inform your email to get a password reset link.
       %strong#amnesia_error.hide
       %fieldset
         = f.label :email
-
         %small
           %a.back_to_login{:href => '#'} &laquo; Back to login
         %br
@@ -29,7 +26,7 @@
       %fieldset
         = f.label :login
         %br
-        = f.text_field :login, :tabindex => 2
+        = f.text_field :login, :tabindex => 2, :autofocus => :on
       #user_session_login_required.required_field.hide
         %strong Login required
       %br

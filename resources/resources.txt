@@ -5,3 +5,4 @@ Social Icons by www.komodomedia.com
 Javascript
 jQuery
 jQuery.placeholder - http://github.com/NV/placeholder.js
+jQuery.timers.1.2

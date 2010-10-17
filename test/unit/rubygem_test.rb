@@ -68,12 +68,32 @@ class RubygemTest < ActiveSupport::TestCase
   end
 
   test "scope by_similarity should match gem names and partial gem names, description, authors_names" do
-    @rubygem.update_attributes :name => 'search 1', :description => 'description 1', :authors_names => 'author 1'
-    create_rubygem.update_attributes :name => 'second search 2', :description => 'second description 2', :authors_names => 'second author 2'
+    @rubygem.update_attributes :name => 'search 1', :description => 'descript 1', :authors_names => 'aauthors 1'
+    create_rubygem.update_attributes :name => 'second search 2', :description => 'second descript 2', :authors_names => 'second aauthors 2'
 
     Search.set_similarity_threshold(0.5)
-    r = Rubygem.by_similarity('search')
+    r = Rubygem.by_similarity('search 1')
     assert_equal 1, r.size
+    assert_equal 'search 1', r.first.name
+
+    r = Rubygem.by_similarity('search')
+    assert_equal 2, r.size
+    assert_equal 'search 1', r.first.name
+
+    r = Rubygem.by_similarity('descript 1')
+    assert_equal 1, r.size
+    assert_equal 'search 1', r.first.name
+
+    r = Rubygem.by_similarity('descript')
+    assert_equal 2, r.size
+    assert_equal 'search 1', r.first.name
+
+    r = Rubygem.by_similarity('aauthors 1')
+    assert_equal 1, r.size
+    assert_equal 'search 1', r.first.name
+
+    r = Rubygem.by_similarity('aauthors')
+    assert_equal 2, r.size
     assert_equal 'search 1', r.first.name
   end
 end

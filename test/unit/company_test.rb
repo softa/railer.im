@@ -19,4 +19,19 @@ class CompanyTest < ActiveSupport::TestCase
     create_company :name => "entry that will not appear"
     assert_equal 2, Company.search("test").count
   end
+
+  test "scope by_similarity should match company name" do
+    create_company :name => "testing search"
+    create_company :name => "another testing search"
+    create_company :name => "entry that will not appear"
+
+    Search.set_similarity_threshold(0.5)
+    r = Company.by_similarity('testing search')
+    assert_equal 2, r.size
+    assert_equal 'testing search', r.first.name
+
+    r = Company.by_similarity('another testing search')
+    assert_equal 2, r.size
+    assert_equal 'another testing search', r.first.name
+  end
 end

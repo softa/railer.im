@@ -11,8 +11,16 @@ class Search < ActiveRecord::Base
   end
 
   def self.results_for(query)
-    sql = User.rank_by_similarity(query).to_sql
-    users = connection.execute(sql).map
-    {:users => users}
+    users = self.query_model(User, query)
+    rubygems = self.query_model(Rubygem, query)
+    companies = self.query_model(Company, query)
+    teams = self.query_model(Team, query)
+    {:users => users, :rubygems => rubygems, :companies => companies, :teams => teams }
+  end
+
+  protected
+  def self.query_model(model, query)
+    sql = model.rank_by_similarity(query).to_sql
+    connection.execute(sql).map
   end
 end

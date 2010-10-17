@@ -8,6 +8,7 @@ body
   background-color: #F90
   font-size: 15px
   line-height: 21px
+  text-rendering: optimizeLegibility
   article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary
     +reset-box-model
     display: block
@@ -158,6 +159,9 @@ body
   .right_column
     float: right
     width: 60%
+  .center_column
+    width: 60%
+    margin: 0 auto
   h3
     font-weight: normal
     font-size: 16px
@@ -207,7 +211,56 @@ body
         position: 4px center
 #colophon
   border-top: 1px dashed rgba(#F90,.6)
+  border-bottom: 2px solid black
   background: black
-  padding: 5px 0
+  padding: 5px 0 0 0
   color: white
-  font
+  .final_div
+    border-top: 1px dashed rgba(#F90,.6)
+.yes_button, .no_button
+  border: 1px solid #BBB
+  +grad(#EEE,#CCC)
+  +border-radius
+  +box-shadow(#fff, 0, 1px, 0, inset)
+  font-family: $blueprint-font-family
+  height: 96px
+  width: 200px
+  margin: 10px
+  float: left
+  text-align: center
+  vertical-align: middle
+  line-height: 36px
+  text-shadow: #fff 0 1px 0
+  padding: 4px 10px
+  display: block
+  strong
+    font-size: 48px
+  span
+    font-size: 14px
+  &:hover
+    +grad(#FFF,#BBB)
+  &:active
+    +grad(#CCC,#EEE)
+    position: relative
+    top: 1px
+.yes_button
+  strong, span
+    color: #090
+  &:hover
+    strong, span
+      color: #080
+  &:active
+    strong, span
+      color: #0C0
+.no_button
+  height: 86px
+  strong, span
+    color: #d99
+  &:hover
+    text-decoration: none !important
+    strong, span
+      text-decoration: none !important
+      color: #b66
+  &:active
+    strong, span
+      color: #c22

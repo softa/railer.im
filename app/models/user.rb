@@ -27,7 +27,9 @@ class User < ActiveRecord::Base
     User.near_railers(self)
   end
 
-  scope :near_railers, lambda{|u| where(:lat => u.lat,:lng => u.lng).limit(12)  }
+  scope :near_railers, lambda{|u| 
+    u.lat && u.lng ? where(:lat => u.lat,:lng => u.lng).limit(12) : where('1=2')
+  }
   scope :recent, order('id desc')
   scope :six, limit(6)
   scope :by_vip, order('score desc')

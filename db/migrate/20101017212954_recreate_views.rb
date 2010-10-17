@@ -1,8 +1,9 @@
 class RecreateViews < ActiveRecord::Migration
   def self.up
-    execute "DROP VIEW initial_scores;"
-    execute "DROP VIEW recomendation_scores;"
     execute "DROP VIEW scores;"
+    execute "DROP VIEW recomendation_scores;"
+    execute "DROP VIEW initial_scores;"
+
     execute %(
     CREATE VIEW initial_scores AS
       SELECT

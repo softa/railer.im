@@ -28,4 +28,11 @@ class RailspluginsWorker
       return
     end
   end
+
+  def self.perform_all
+    Rubygem.order('downloads desc').each do |g|
+      puts g.name
+      perform g.id
+    end
+  end
 end

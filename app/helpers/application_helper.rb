@@ -8,6 +8,8 @@ module ApplicationHelper
     nice_presentation = url.gsub(/http\:\/\/(www.)?/,'').gsub(/\/$/,'')
     nice_url = url =~ /^http/ ? url : "http://#{url}"
     link_to nice_presentation, nice_url, :target => :_blank
+  rescue => e
+    ''
   end
 
   def thumbalizr url, width = 250 

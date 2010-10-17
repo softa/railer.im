@@ -1,9 +1,9 @@
 .flash{ :style => 'display:none' }
   - for key,msg in flash
     %div{ :class => "#{key}_wrapper" }
-      %div{ :class => key }
-        = image_tag "shared/flash_#{key}.png", :style => 'vertical-align:middle'
-        = msg
+      %small (click to dismiss)
+      %div{ :class => key }= raw msg
+      
 :javascript 
   $(function(){
     if($.browser.webkit){

@@ -8,9 +8,6 @@
           #{gravatar(@user.gravatar_id, 256)}
           %br
           .level_and_score
-            -#
-              - if me?
-                .tweet_this{:style => 'float: right'} #{tweet_this("RailerRank #{@user.level} » http://railer.im/#{@user.login}")}
             .level_and_score_wrapper
               .more_wrapper
                 %h3
@@ -23,6 +20,8 @@
                   %span.quiet
                     %span#user_score= @user.score
                     points
+                  - if me?
+                    #{tweet_this("My RailerRank level is #{@user.level} (#{@user.score}). See more at http://railer.im/#{@user.login}")}
                 .clear
           - if @user.team
             %hr

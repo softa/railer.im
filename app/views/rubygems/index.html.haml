@@ -1,12 +1,26 @@
 #gems_list.content_wrapper
   .container
     %br
-    %h1 RubyGems
-    - for rubygem in @rubygems
-      %span.small_caps #{link_to rubygem.name, rubygem} #{rubygem.version} (#{rubygem.downloads})
-      = truncate rubygem.description, :length => 105
-      %hr
-    = will_paginate @rubygems
+    .wraaaaaper{ :style => 'width: 720px; margin:0 auto;'}
+      %h1 RubyGems
+      .pagination_yooo{:style => 'text-align:center;'}
+        = will_paginate @rubygems
+      %ul{:style => 'margin:0; padding:0; border:0; list-style:none;'}
+        - for rubygem in @rubygems
+          %li{:style => 'margin:0; padding:0; border:0;'}
+            .header{:style => 'margin:4px;'}
+              %h3{:style => 'margin:0; padding:0; border:0; font-weight: 900; font-size: 20px;'}
+                #{link_to rubygem.name, rubygem}
+                %small{:style => 'float:right; color: white;'} #{rubygem.version}
+              .clear
+            .clear
+            %p{:style => 'padding-right: 10px; padding-left:10px;'}
+              %strong{:style => 'float:right;'} #{pluralize(rubygem.downloads,'download')}
+              %br
+              = rubygem.description
+            .clear
+      .pagination_yooo{:style => 'text-align:center;'}
+        = will_paginate @rubygems
 %footer
   .container
     &nbsp;

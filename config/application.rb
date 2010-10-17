@@ -48,6 +48,8 @@ require 'rubygem_worker'
 require 'railsplugins_worker'
 require 'github_worker'
 require 'gemfile_worker'
+require 'author_association_worker'
+require 'team_association_worker'
 
 
 COUNTRY_CODES = {

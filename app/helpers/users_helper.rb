@@ -2,9 +2,9 @@ module UsersHelper
   
   def recommend_button_class
     classes = []
-    if me? or !current_user
-      classes << 'hide'
-    end
+    # if me? or !current_user
+    #   classes << 'hide'
+    # end
     if @user.recommended_by.include?(current_user)
       classes << 'unrecommend_button'
     else
@@ -21,4 +21,11 @@ module UsersHelper
     end
   end
   
+  def followers_on_github_url
+    "http://github.com/#{@user.login}/followers"
+  end
+  
+  def repositories_on_github_url
+    "http://github.com/#{@user.login}/repositories"
+  end
 end

@@ -2,6 +2,7 @@ class TeamsController < InheritedResources::Base
   actions :show,:index
   def index
     @title = " · Rails Rumble Teams"
+    index!
   end
   def show
     show!{ @title = " · #{@team.name} · Rails Rumble Team" }

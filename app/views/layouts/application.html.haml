@@ -11,6 +11,15 @@
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
     = render ('shared/analytics')
   %body
+    /[if IE]
+      .page_overlay{:style => 'background:black;'}
+        .ie_sucks{:style => "margin-top:100px; text-align: center;"}
+          = image_tag 'ie_reject.gif'
+        %ul{:style => 'list-style: none; text-align: center'}
+          %li
+            = link_to 'Try with Google Chrome', 'http://www.google.com/chrome/intl/en/landing_chrome_mac.html?hl=en&hl=en', :target => :_blank
+            %h1 INTERNET EXPLORER
+            %p.quiet The best browser for downloading other browsers.
     = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
     = render ('shared/header')
     #root

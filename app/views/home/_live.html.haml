@@ -9,9 +9,6 @@
       :javascript 
         ls.push([#{user.lat}, #{user.lng}, '#{user.name}', '#{user.gravatar_id}', '#{user.login}'])
       = render :partial => 'user_row', :locals => {:user => user}
-- for loc in Location.biggest.ten
-  :javascript 
-    locs.push([#{loc.lat}, #{loc.lng}, '#{loc.total}'])
 %script{:src => "http://maps.google.com/maps/api/js?sensor=false&hl=pt-br"}
 :javascript 
   last_id = #{User.recent.first.id rescue 0}
@@ -23,11 +20,6 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("map"), options);
-    for(var i=0;i<locs.length;i++){
-      var latlng = new google.maps.LatLng(locs[i][0], locs[i][1])
-      railers = locs[i][2]
-      new google.maps.Marker({title: railers == 1 ? railers + ' railer' : railers + ' railers', icon:'/images/icons/ruby.png',position:latlng,map:map});
-    }
     for(var i=0;i<ls.length;i++){
       var latlng = new google.maps.LatLng(ls[i][0], ls[i][1])
       var m = new google.maps.Marker({title:ls[i][2], icon:'http://gravatar.com/avatar/'+ls[i][3]+'?s=24',position:latlng,map:map,page:'/'+ls[i][4]});
@@ -56,6 +48,6 @@
         last_id = data[i].id
       }
     })
-    setTimeout( live, 6000 )
+    setTimeout( live, 15000 )
   }
-  setTimeout( live, 3000 )
+  setTimeout( live, 20000 )

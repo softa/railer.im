@@ -2,10 +2,10 @@
   .container
     %h1 Statistics
     .header
-      %h1{:style => 'font-size:1.4em'}
+      %h1{:style => 'font-size:1.2em'}
         = pluralize(User.count, 'railer')
         &middot;
-        = pluralize(Company.count, 'company')
+        = pluralize(Company.count, 'corp')
         &middot;
         = pluralize(Team.count, 'team')
         &middot;

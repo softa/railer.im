@@ -1,0 +1,79 @@
+#home.content_wrapper
+  .container
+    %h1 Fight
+    .span-12
+      %h1{:style => 'font-size:1.4em;text-align:right'}
+        #{@a.name}
+    .span-12.last
+      %h1{:style => 'font-size:1.4em;text-align:left'}
+        #{@b.name}
+    - max_downloads = Rubygem.maximum(:downloads)
+    - a_download_perc = (@a.downloads / max_downloads.to_f)*100
+    - b_download_perc = (@b.downloads / max_downloads.to_f)*100
+    - max_version_downloads = Rubygem.maximum(:version_downloads)
+    - a_version_download_perc = (@a.version_downloads / max_version_downloads.to_f)*100
+    - b_version_download_perc = (@b.version_downloads / max_version_downloads.to_f)*100
+
+    - users_count = User.count
+    - a_users_perc = (@a.users.count / users_count.to_f)*100
+    - b_users_per = (@b.users.count / users_count.to_f)*100
+
+    .span-12
+      %hr
+      .small_caps{:style => 'text-align:right'} Downloads
+      %div{:style => "float:right;background:#966;color:white;width:#{a_download_perc}%;padding:2px 4px"}
+        %div{:style => 'float:right'}= @a.downloads
+      .clear
+      .small_caps{:style => 'text-align:right'} Version Downloads
+      %div{:style => "float:right;background:#696;color:white;width:#{a_version_download_perc}%;padding:2px 4px"}
+        %div{:style => 'float:right'}= @a.version_downloads
+      .clear
+      .small_caps{:style => 'text-align:right'} Railer.Im Users
+      %div{:style => "float:right;background:#669;color:white;width:#{a_users_perc}%;padding:2px 4px"}
+        %div{:style => 'float:right'}= @a.users.count
+      .clear
+      .small_caps{:style => 'text-align:right'} Notable Users
+      .list_with_pictures{:style => 'float:right'}
+        %ul
+          - @a.users.limit(10).each do |u|
+            %li
+              %a{:href => user_path(u.login)}
+                #{gravatar(u.gravatar_id, 40)}
+                %strong #{u.name}
+
+
+
+
+
+
+    .span-12.last
+      %hr
+      .small_caps Downloads
+      %div{:style => "background:#966;color:white;width:#{b_download_perc}%;padding:2px 4px"}
+        = @b.downloads
+
+      .clear
+      .small_caps Version Downloads
+      %div{:style => "background:#696;color:white;width:#{b_version_download_perc}%;padding:2px 4px"}
+        = @b.version_downloads
+
+      .clear
+      .small_caps Railer.Im Users
+      %div{:style => "background:#669;color:white;width:#{b_users_per}%;padding:2px 4px"}
+        = @b.users.count
+
+      .clear
+      .small_caps Notable Users
+      .list_with_pictures
+        %ul
+          - @b.users.limit(10).each do |u|
+            %li
+              %a{:href => user_path(u.login)}
+                #{gravatar(u.gravatar_id, 40)}
+                %strong #{u.name}
+
+    .clear
+    .span-24{:style => 'text-align:center'}
+      powered by
+      %br
+      = image_tag 'fight_club.png'

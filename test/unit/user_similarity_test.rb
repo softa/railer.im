@@ -40,4 +40,28 @@ class UserSimilarityTest < ActiveSupport::TestCase
     assert_equal 1, User.by_similarity('juanmaiz').count
     assert_equal 1, User.by_similarity('leotartari').count
   end
+
+  test "should order by similarity" do
+    User.where("login <> 'pedroaxl'").destroy_all
+    create_user.update_attributes :name => 'João Pedro', :login => 'jpedro', :email => 'jpedro@gmail.com'
+    create_user.update_attributes :name => 'Seu Pedro', :login => 'spedro', :email => 'spedro@gmail.com'
+    User.set_similarity_threshold(0.5)
+    results = User.by_similarity('pedroaxl@gmail.com')
+    assert_equal 3, results.count
+    assert_equal User.find_by_login('pedroaxl'), results.first
+
+    results = User.by_similarity('spedro@gmail.com')
+    assert_equal 3, results.count
+    assert_equal User.find_by_login('spedro'), results.first
+
+    results = User.by_similarity('jpedro@gmail.com')
+    assert_equal 3, results.count
+    assert_equal User.find_by_login('jpedro'), results.first
+  end
+
+  test "should be safe agains injections" do
+    User.set_similarity_threshold(0.5)
+    results = User.by_similarity(%{pedroaxl@gmail.com'; DELETE FROM users;})
+    assert_equal 5, User.count
+  end
 end

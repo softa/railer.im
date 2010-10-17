@@ -38,11 +38,27 @@
   li
     +reset-box-model
     display: inline
+    padding: 4px
+    +border-radius(4px)
+    font-weight: 900
+    text-shadow: rgba(#000,.6) 0 1px 0
+    +box-shadow(rgba(#FFF,1),0,1px,1px)
     &.yes
       +grad(#0E7,#091)
+      color: white
+      &:after
+        content: ' Ok'
     &.dontknow
-      background: yellow
+      +grad(#FF0, #BB0)
+      color: #444
+      text-shadow: rgba(#FFF,.6) 0 1px 0
+      &:after
+        content: ' Don\'t know'
     &.no
-      background: red
-    
+      +grad(#D66, #B22)
+      color: white
+      &:after
+        content: ' No'
+    a
+      text-shadow: rgba(#FFF,.6) 0 1px 0
     

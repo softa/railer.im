@@ -22,10 +22,10 @@
             - if not @rubygem.indicators.nil?
               %hr
               %strong.small_caps Indicators
-              %ul.indicators
+              %ul.indicators{:style => 'margin:15px 0'}
                 - @rubygem.indicators.each do |key,value|
                   %li{:class => value } #{key}
-                %li= link_to 'more', @rubygem.railsplugins_url, :target => :_blank
+              = link_to 'See more at Rails Plugins »', @rubygem.railsplugins_url, :target => :_blank
           .right_column
             %strong.small_caps Version
             %p

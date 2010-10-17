@@ -266,7 +266,10 @@ body
   left: 0
   width: 100%
   .wrapper
-    background: black
+    background:
+      position: center center
+      repeat: repeat
+      image: url("data:image/gif;base64,R0lGODlhDgAcANUAABQUFBUVFSoqKhgYGA4ODhAQEBYWFg8PDwsLCygoKCcnJxEREQwMDCUlJRcXFxkZGSEhISkpKSIiIiQkJC0tLSwsLCMjIwgICBMTExISEh0dHRoaGiAgIBwcHB4eHhsbGx8fHwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAOABwAAAb/QA9H2AFkMhoOB/TxaDod0GTz2DQ+IA9o2cFqBBXBB7oZPjtK5lC7iQKgajNUQ2AwACBop83cBBYHGBleQhofSgABBhkbII0eGx8bGx5FgwqGemMcHxYgAQIQjmpwTQoJThogGpBpSU6pGw4ZFxiTHoWGTBgIGAQFHLdsrBgFRwAcZI6UqwGCA0xCh10aCR0OHRBDeVEf3h8CCQrce1oaG09ZTIdbHAcDTmOGsAMZCAgFqpRdURoZDAQAFGgjRAuILIIMYPigwVCjMqweGIAmAVKeQ7caTBJwzkMTSR2EgIhAAWLDbWXYeVTSQcMCAhmgeSsIacOBBRkCjYnnTUkGBoXOsMwMAgA7")
     padding: 20px 0
     height: 40px
     text-align: right
@@ -278,6 +281,7 @@ body
       &:active
     ul
       list-style: none
+      margin-top: 5px
       +reset-box-model
       li
         +reset-box-model

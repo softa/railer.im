@@ -148,10 +148,17 @@
   = javascript_include_tag 'recommend_user.js'
   %footer
     .container
-      .span-11.append-1
-        &nbsp;
-      .span-11.prepend-1.last
-        &nbsp;
+      .span-24
+        - unless @user.near_railers.empty?
+          .gem_users.list_with_pictures
+            %h3 Near Railers
+            %ul
+              - @user.near_railers.each do |n|
+                %li
+                  = link_to profile_path(n), :tile => n.name do
+                    #{gravatar(n.gravatar_id,32)}
+                    = n.name
+                    
 - else
   #railer_profile.content_wrapper
     .container

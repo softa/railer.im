@@ -4,6 +4,12 @@ class UserSessionsController < ApplicationController
   respond_to :json
   respond_to :html, :only => [:token_auth]
  
+  def create
+    create!{
+      return render :json => {:ok => true, :redirect => "/#{params[:user_session][:login]}"}
+    }
+  end
+ 
   def destroy
     destroy!{ return redirect_to :back }
   rescue

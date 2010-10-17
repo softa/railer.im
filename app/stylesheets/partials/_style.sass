@@ -5,6 +5,7 @@
 @import "partials/search_panel"
 @import "partials/flashes"
 @import "partials/teams"
+
 body
   +blueprint(true)
   background-color: #F90
@@ -88,7 +89,6 @@ body
   footer
     +grad(rgba(#F55,.8),rgba(#F90,1))
     border-top: 1px solid #EEE
-    border-bottom: 2px solid #000
     .small_caps
       color: #b22
       font-size: 18px
@@ -211,27 +211,6 @@ body
         image: url(/images/icons/medal.png)
         repeat: no-repeat
         position: 4px center
-#colophon
-  border-top: 1px dashed rgba(#F90,.6)
-  border-bottom: 2px solid black
-  background: black
-  padding: 20px 0
-  text-align: right
-  color: white
-  a
-    color: #ddd
-    &:hover
-      color: white
-    &:active
-  ul
-    list-style: none
-    +reset-box-model
-    li
-      +reset-box-model
-      display: inline
-      margin-left: 16px
-      img
-        vertical-align: middle
 .yes_button, .no_button
   border: 1px solid #BBB
   +grad(#EEE,#CCC)
@@ -279,3 +258,24 @@ body
   &:active
     strong, span
       color: #c22
+#colophon
+  .wrapper
+    background: black
+    padding: 20px 0
+    height: 40px
+    text-align: right
+    color: white
+    a
+      color: #ddd
+      &:hover
+        color: white
+      &:active
+    ul
+      list-style: none
+      +reset-box-model
+      li
+        +reset-box-model
+        display: inline
+        margin-left: 16px
+        img
+          vertical-align: middle

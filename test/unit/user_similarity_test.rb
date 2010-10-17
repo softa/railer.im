@@ -9,7 +9,7 @@ class UserSimilarityTest < ActiveSupport::TestCase
     create_user.update_attributes :name => 'Felipe Benites Cabral', :login => 'cabral', :email => 'felipe.benites@gmail.com'
   end
 
-  test "should be able to search by similarity of name" do
+  test "should be able to search by similarity of name, email and login" do
     assert_equal 5, User.count
     # 100% match
     User.set_similarity_threshold(1)
@@ -25,11 +25,19 @@ class UserSimilarityTest < ActiveSupport::TestCase
     assert_equal 1, User.by_similarity('diogo-biazus').count
     assert_equal 1, User.by_similarity('diogo_biazus').count
     assert_equal 1, User.by_similarity('diogo.biazus').count
+
+    # matches against email or login are also valid
+    assert_equal 1, User.by_similarity('diogob').count
+    assert_equal 1, User.by_similarity('diogob@gmail.com').count
+
   end
 
   test "should match partial" do
     # partial match
-    User.set_similarity_threshold(1)
-#    assert_equal 1, User.by_similarity('diogob').count
+    User.set_similarity_threshold(0.5)
+    assert_equal 1, User.by_similarity('diogo').count
+    assert_equal 1, User.by_similarity('pedro').count
+    assert_equal 1, User.by_similarity('juanmaiz').count
+    assert_equal 1, User.by_similarity('leotartari').count
   end
 end

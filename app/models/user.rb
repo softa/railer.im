@@ -31,9 +31,11 @@ class User < ActiveRecord::Base
     select("DISTINCT users.*").joins("JOIN repositories ON repositories.user_id = users.id JOIN dependencies ON dependencies.repository_id = repositories.id JOIN rubygems ON dependencies.rubygem_id = rubygems.id ").where("rubygems.id = ?", g.id)
   end)
 
-  # pg_trgm
+  # default similarity threshold (pg_trgm)
+  @@threshold = nil
+
   scope :by_similarity, (lambda do |query|
-    where("name % ?", query)
+    where("(name % ? OR email % ? OR login % ?)", query, query, query)
   end)
   
   def self.similarity_threshold
@@ -45,6 +47,7 @@ class User < ActiveRecord::Base
     @@threshold = threshold
     connection.execute("SELECT set_limit('#{@@threshold}');")
   end
+  #self.set_similarity_threshold(0.5)
 
   def used_gems
     Rubygem.used_by(self).all

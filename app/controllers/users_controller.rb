@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     show!{
+      @title = " · #{@user.name} · Railer"
       @password_modal = session['define_password'] && me?
     }
   rescue ActiveRecord::RecordNotFound => e

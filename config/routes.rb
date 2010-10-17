@@ -8,7 +8,7 @@ Railerim::Application.routes.draw do
   post "users/recommend"
   post "users/unrecommend"
   get "home/raise"
-  resources :companies, :only => [:index,:show]
+  resources :companies, :only => [:show]
   resources :teams, :only => [:index, :show]
   match 'users/set_password' => 'users#set_password', :as => :set_password
   resources :users, :only => [:show, :edit, :create, :update]

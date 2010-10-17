@@ -25,7 +25,7 @@ class Rubygem < ActiveRecord::Base
   end
 
   def users
-    User.who_use(self).all
+    User.who_use(self)
   end
 
   def to_param

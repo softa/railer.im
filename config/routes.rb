@@ -20,7 +20,9 @@ Railerim::Application.routes.draw do
   match 'home/stats' => 'home#stats'
   match 'home/live' => 'home#live'
   match 'user_sessions/token_auth' => 'user_sessions#token_auth'
+  match 'gems/:a/:b/fight' => 'rubygems#fight'
   root :to => "home#index"
   get ':id' => 'users#show', :as => :profile  
   get ':id/edit' => 'users#edit', :as => :edit_profile
+
 end

@@ -3,9 +3,11 @@ module ApplicationHelper
   def gravatar(gravatar_id, size = 48)
     image_tag("http://gravatar.com/avatar/" + gravatar_id + "?s=#{size}", :class => 'image')
   end
-  
+
   def nice_link url
-    link_to url.gsub(/http\:\/\/(www.)?/,'').gsub(/\/$/,''), url, :target => :_blank
+    nice_presentation = url.gsub(/http\:\/\/(www.)?/,'').gsub(/\/$/,'')
+    nice_url = url =~ /^http/ ? url : "http://#{url}"
+    link_to nice_presentation, nice_url, :target => :_blank
   end
 
   def thumbalizr url, width = 250 

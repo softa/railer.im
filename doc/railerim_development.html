@@ -535,7 +535,7 @@ ORDER BY count
 
     <!-- Indexes -->
     
-       companies_name_trgm_idx name gin_trgm_ops
+       companies_name_trgm_idx name gist_trgm_ops
     
 
 	<!-- View Definition -->
@@ -2549,11 +2549,11 @@ FROM recommendations r;</pre>
 
     <!-- Indexes -->
     
-       rubygems_authors_names_trgm_idx authors_names gin_trgm_ops
+       rubygems_authors_names_trgm_idx authors_names gist_trgm_ops
     
-       rubygems_description_trgm_idx description gin_trgm_ops
+       rubygems_description_trgm_idx description gist_trgm_ops
     
-       rubygems_name_trgm_idx name gin_trgm_ops
+       rubygems_name_trgm_idx name gist_trgm_ops
     
        rubygems_partial_bug_tracker_github id) WHERE (substr(bug_tracker_uri, 1, 17) = 'http://github.com'::text
     
@@ -3145,7 +3145,7 @@ FROM initial_scores i;</pre>
 
     <!-- Indexes -->
     
-       teams_name_trgm_idx name gin_trgm_ops
+       teams_name_trgm_idx name gist_trgm_ops
     
 
 	<!-- View Definition -->
@@ -4271,13 +4271,13 @@ FROM initial_scores i;</pre>
     
        users_crypted_password_ix crypted_password
     
-       users_email_trgm_idx email gin_trgm_ops
+       users_email_trgm_idx email gist_trgm_ops
     
        users_login_ix login
     
-       users_login_trgm_idx login gin_trgm_ops
+       users_login_trgm_idx login gist_trgm_ops
     
-       users_name_trgm_idx name gin_trgm_ops
+       users_name_trgm_idx name gist_trgm_ops
     
        users_perishable_token_ix perishable_token
     

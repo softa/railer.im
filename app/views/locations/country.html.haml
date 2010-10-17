@@ -1,17 +1,33 @@
 .content_wrapper
   .container
     .wrapper
+      %h1
+        - unless @users.empty?
+          = image_tag "flags/#{@users.first.country_code.downcase}.png"
+        #{@country}
+        
+      - if @users.empty?
+        %em No railers in this country. You should start a group there, man!
+      - else
+
+        = render 'map'
+        .span-1 &nbsp;
+        .span-7.last
+          %h3.small_caps Cities
+          - for city in City.from(@country_code)
+            = city.total
+            = link_to city.city, locations_city_path(:id => city.city)
+            %br
+          
+- unless @users.empty?
+  %footer
+    .container
+      .gem_users
+        %h3 See who's from #{@country}
       .list_with_pictures
-        %h1
-          - unless @users.empty?
-            = image_tag "flags/#{@users.first.country_code.downcase}.png"
-          #{@country}
-        - if @users.empty?
-          %em No railers in this country. You should start a group there, man!
-        - else
-          %ul
-            - for user in @users
-              %li
-                = link_to profile_path(user) do
-                  #{gravatar user.gravatar_id, 24}
-                  #{user.name}
+        %ul
+          - for user in @users
+            %li
+              = link_to profile_path(user) do
+                #{gravatar user.gravatar_id, 40}
+                #{user.name}

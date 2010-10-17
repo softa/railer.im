@@ -8,7 +8,7 @@ class Rubygem < ActiveRecord::Base
   # HERE WE TRY TO GET RUBYGEM USERS
   has_many :dependents, :class_name => 'Dependency', :foreign_key => :rubygem_id
   has_many :repositories, :through => :dependents
-  
+
   scope :by_similarity, (lambda do |query|
     where("(name % ? OR email % ? OR login % ?)", query, query, query).order("greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) DESC")
   end)

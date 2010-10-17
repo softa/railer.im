@@ -4,6 +4,6 @@ class SearchController < ApplicationController
 
   def index
     @results = Search.results_for(params[:query])
-    render :json => @results.map.to_json
+    render :json => @results.to_json
   end
 end

@@ -71,4 +71,7 @@ class UserSimilarityTest < ActiveSupport::TestCase
     u = User.rank_by_similarity('Diogo Biazus').first
     assert_equal ['user', 'diogob', '1'], [u.entry_type, u.key, u.rank]
   end
+
+  test "scope by_location_similarity should match city or province" do
+  end
 end

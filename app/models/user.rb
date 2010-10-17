@@ -33,6 +33,13 @@ class User < ActiveRecord::Base
 
   # default similarity threshold (pg_trgm)
   @@threshold = nil
+  scope :by_location_similarity, (lambda do |query|
+    where("(city % ? OR province % ?)", query, query, query).order("greatest(similarity(city, quote_literal('#{query}')), similarity(province, quote_literal('#{query}'))) DESC")
+  end)
+
+  scope :rank_by_location_similarity, (lambda do |query|
+    by_location_similarity(query).select("'user' AS entry_type, login AS key, name AS label, gravatar_id, greatest(similarity(city, quote_literal('#{query}')), similarity(province, quote_literal('#{query}'))) AS rank")
+  end)
 
   scope :by_similarity, (lambda do |query|
     where("(name % ? OR email % ? OR login % ?)", query, query, query).order("greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) DESC")

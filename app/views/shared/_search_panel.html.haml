@@ -12,10 +12,10 @@
       %th
         User
       %td
-        %table
+        %table#users_results
           %tr
-            %td
-              #{image_tag 'icons/user-silhouette.png'}
+            %td.gravatar
+            %td.user_name
     %tr
       %th Gems
       %td
@@ -44,15 +44,6 @@
           %tr
             %td
               #{image_tag 'icons/marker.png'}
-
+= javascript_include_tag 'jquery.timers-1.2', 'timedKeyup', 'search'
 -#
   [{"gravatar_id":"7089678f7027c45dc6708825b01c8731", "label":"Leonardo Tartari","entry_type":"user","rank":"1","key":"ltartari"}]
-  :javascript
-    $('#search'). 
-    if($('#search').val() != '').keyUp (function(){
-      $('#search_panel').slideDown()
-    })
-    $('.close_search').click(function(){
-      $('#search_panel').slideUp()
-    })
-

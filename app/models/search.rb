@@ -12,6 +12,7 @@ class Search < ActiveRecord::Base
 
   def self.results_for(query)
     sql = User.rank_by_similarity(query).to_sql
-    connection.execute(sql)
+    users = connection.execute(sql).map
+    {:users => users}
   end
 end

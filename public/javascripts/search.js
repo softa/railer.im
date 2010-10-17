@@ -116,8 +116,12 @@ $.fn.show_results = function(data) {
       tophit = (row["rank"] > tophit["rank"] ? row : tophit);
       html_tables["companies"] += '<tr><td></td><td>' + row["label"] + '</td></tr>';
     })
+  $.each(data["locations"], function(key, row){
+      tophit = (row["rank"] > tophit["rank"] ? row : tophit);
+      html_tables["locations"] += '<tr><td></td><td>' + row["label"] + '</td></tr>';
+    })
 
-  html_tables["best"] = (tophit["rank"] < 0 ? "" : '<tr><td><img src="/images/icons/star.png"><strong> ' + tophit["label"] + '</strong></tr>');
+  html_tables["best"] = (tophit["rank"] < 0 ? "" : '<tr><td></td><td><img src="/images/icons/star.png"><strong> ' + tophit["label"] + '</strong></tr>');
   $.each(html_tables, function(k,v){
       $('#' + k + '_search_list').html((v == '' ? '<tr><td>None found</td></tr>' : v));
     })

@@ -117,7 +117,7 @@
 <ul>
     
     <li><a name="public.schema">public</a></li><ul>
-    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.downloads">downloads</a></li><li><a href="#public.table.git-followers">git_followers</a></li><li><a href="#public.view.initial-scores">initial_scores</a></li><li><a href="#public.view.locations">locations</a></li><li><a href="#public.view.recomendation-scores">recomendation_scores</a></li><li><a href="#public.table.recommendations">recommendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.view.scores">scores</a></li><li><a href="#public.table.team-memberships">team_memberships</a></li><li><a href="#public.table.teams">teams</a></li><li><a href="#public.table.twitter-followers">twitter_followers</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
+    	<li><a href="#public.table.authorships">authorships</a></li><li><a href="#public.view.cities">cities</a></li><li><a href="#public.table.companies">companies</a></li><li><a href="#public.view.countries">countries</a></li><li><a href="#public.table.dependencies">dependencies</a></li><li><a href="#public.table.downloads">downloads</a></li><li><a href="#public.table.git-followers">git_followers</a></li><li><a href="#public.view.initial-scores">initial_scores</a></li><li><a href="#public.view.levels">levels</a></li><li><a href="#public.view.locations">locations</a></li><li><a href="#public.view.recomendation-scores">recomendation_scores</a></li><li><a href="#public.table.recommendations">recommendations</a></li><li><a href="#public.table.repositories">repositories</a></li><li><a href="#public.table.rubygems">rubygems</a></li><li><a href="#public.table.schema-migrations">schema_migrations</a></li><li><a href="#public.view.scores">scores</a></li><li><a href="#public.table.team-memberships">team_memberships</a></li><li><a href="#public.table.teams">teams</a></li><li><a href="#public.table.twitter-followers">twitter_followers</a></li><li><a href="#public.table.twitter-profiles">twitter_profiles</a></li><li><a href="#public.table.users">users</a></li>
   	<li><a href="#public.function.gin-extract-trgm-text-internal">gin_extract_trgm(text, internal)</a></li><li><a href="#public.function.gin-extract-trgm-text-internal-smallint-internal-internal">gin_extract_trgm(text, internal, smallint, internal, internal)</a></li><li><a href="#public.function.gin-trgm-consistent-internal-smallint-text-integer-internal-internal">gin_trgm_consistent(internal, smallint, text, integer, internal, internal)</a></li><li><a href="#public.function.gtrgm-compress-internal">gtrgm_compress(internal)</a></li><li><a href="#public.function.gtrgm-consistent-internal-text-integer-oid-internal">gtrgm_consistent(internal, text, integer, oid, internal)</a></li><li><a href="#public.function.gtrgm-decompress-internal">gtrgm_decompress(internal)</a></li><li><a href="#public.function.gtrgm-in-cstring">gtrgm_in(cstring)</a></li><li><a href="#public.function.gtrgm-out-public.gtrgm">gtrgm_out(public.gtrgm)</a></li><li><a href="#public.function.gtrgm-penalty-internal-internal-internal">gtrgm_penalty(internal, internal, internal)</a></li><li><a href="#public.function.gtrgm-picksplit-internal-internal">gtrgm_picksplit(internal, internal)</a></li><li><a href="#public.function.gtrgm-same-public.gtrgm-public.gtrgm-internal">gtrgm_same(public.gtrgm, public.gtrgm, internal)</a></li><li><a href="#public.function.gtrgm-union-bytea-internal">gtrgm_union(bytea, internal)</a></li><li><a href="#public.function.set-limit-real">set_limit(real)</a></li><li><a href="#public.function.show-limit">show_limit()</a></li><li><a href="#public.function.show-trgm-text">show_trgm(text)</a></li><li><a href="#public.function.similarity-text-text">similarity(text, text)</a></li><li><a href="#public.function.similarity-op-text-text">similarity_op(text, text)</a></li>
     </ul>
     
@@ -309,6 +309,112 @@
     </p>
 	
         <hr>
+		<h2>View:
+			<a name="public.view.cities">cities</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>cities Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>city</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>country_code</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>total</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT users.city
+, users.country_code
+, count
+(*) AS total 
+FROM users 
+WHERE (
+     (users.country_code IS NOT NULL)
+   AND (users.city IS NOT NULL)
+)
+GROUP BY users.city
+, users.country_code 
+ORDER BY count
+(*) DESC;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
 		<h2>Table:
 			<a name="public.table.companies">companies</a>
 		</h2>
@@ -429,6 +535,91 @@
     
 
 	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			<a name="public.view.countries">countries</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>countries Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>country_code</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>total</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT users.country_code
+, count
+(*) AS total 
+FROM users 
+WHERE (users.country_code IS NOT NULL)
+GROUP BY users.country_code 
+ORDER BY count
+(*) DESC;</pre>
 	
 
 	<!-- List off permissions -->
@@ -1096,6 +1287,89 @@ SELECT u.id
      )::double precision
 ) AS initial_score 
 FROM users u;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			<a name="public.view.levels">levels</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>levels Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>level</td>
+            	<td>integer</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>total</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT users.level
+, count
+(*) AS total 
+FROM users 
+GROUP BY users.level 
+ORDER BY users.level DESC;</pre>
 	
 
 	<!-- List off permissions -->
@@ -3890,6 +4164,22 @@ FROM initial_scores i;</pre>
 
 				NOT NULL
 				DEFAULT false
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>punchline</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
 				</i>
 				
 				</td>

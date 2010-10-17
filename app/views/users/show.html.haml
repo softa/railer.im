@@ -68,10 +68,15 @@
                     %li
                       %a{:href => "#{rubygem_path(g.name)}"} #{g.name}
             - unless @user.recommends.empty?
-              .recommended
+              .recommended.list_with_pictures
                 %strong.small_caps Recommended
-                #{@user.recommends}
-              %hr
+                %ul
+                  - @user.recommends.each do |u|
+                    %li
+                      %a{:href => user_path(u.login)}
+                        #{gravatar(u.gravatar_id, 24)}
+                        %strong #{u.name}              
+                %hr
             .owns_the_repos
               %strong.small_caps Repositories (#{@user.repositories.where('not fork').count})
               %ul

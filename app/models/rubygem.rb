@@ -9,6 +9,14 @@ class Rubygem < ActiveRecord::Base
   has_many :dependents, :class_name => 'Dependency', :foreign_key => :rubygem_id
   has_many :repositories, :through => :dependents
   
+  scope :by_similarity, (lambda do |query|
+    where("(name % ? OR email % ? OR login % ?)", query, query, query).order("greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) DESC")
+  end)
+
+  scope :rank_by_similarity, (lambda do |query|
+    by_similarity(query).select("'user' AS entry_type, login AS key, name AS label, gravatar_id, greatest(similarity(name, quote_literal('#{query}')), similarity(email, quote_literal('#{query}')), similarity(login, quote_literal('#{query}'))) AS rank")
+  end)
+
   scope :used_by, (lambda do |u| select("DISTINCT rubygems.*").joins("JOIN dependencies ON dependencies.rubygem_id = rubygems.id JOIN repositories ON repositories.id = dependencies.repository_id JOIN users ON repositories.user_id = users.id ").where("users.id = ?", u.id)
   end)
   

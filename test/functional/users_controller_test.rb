@@ -68,7 +68,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal 0, u2.recommended_by.count
     post :recommend, :id => u2.id
     assert_response :success
-    assert_equal({:ok => true, :total => 1}.to_json, @response.body)
+    assert_equal({:ok => true, :score => 0, :total => 1}.to_json, @response.body)
     assert_equal 1, u2.recommended_by.count    
   end
   
@@ -87,7 +87,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal 1, u2.recommended_by.count
     post :unrecommend, :id => u2.id
     assert_response :success
-    assert_equal({:ok => true, :total => 0}.to_json, @response.body)
+    assert_equal({:ok => true, :score => 0, :total => 0}.to_json, @response.body)
     assert_equal 0, u2.recommended_by.count    
   end
   

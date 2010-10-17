@@ -89,7 +89,5 @@ class UsersController < ApplicationController
       return render :json => {:ok => false}
     end
   end
-  #TODO q tal?
-  #rescue_from ActionController::MethodNotAllowed, :with => lambda{ return redirect_to root_path }
 
 end

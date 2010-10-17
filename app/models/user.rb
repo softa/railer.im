@@ -108,13 +108,13 @@ class User < ActiveRecord::Base
 
   after_create :send_activation_email
   def send_activation_email
-    reset_perishable_token
+    reset_perishable_token!
     update_attribute(:last_request_at, Time.now)
     UserMailer.confirm_email(self).deliver
   end
 
   def send_reset_email
-    reset_perishable_token
+    reset_perishable_token!
     UserMailer.reset_email(self).deliver
   end
 

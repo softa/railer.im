@@ -7,10 +7,9 @@ module Hercules
     end
     def self.after_deploy(options)
       cmd = options[:shell]
-      cmd.run "kill -HUP `cat /home/railerim/pids/unicorn.pid`"
+      cmd.run "kill -USR2 `cat /home/railerim/pids/unicorn.pid`"
       cmd.run "ps auxw | grep resque-1 | grep -v grep  | cut -d " " -f 3 | xargs kill -TERM"
       cmd.run "rake resque:workers COUNT=2 QUEUE=* > /dev/null 2>&1 &"
-      cmd.run "/home/railerim/.rvm/gems/ruby-1.8.7-p302/bin/unicorn master -Dc /home/railerim/configs/unicorn.rb -E production"
     end
   end
 end

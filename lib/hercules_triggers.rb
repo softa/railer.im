@@ -8,7 +8,7 @@ module Hercules
     def self.after_deploy(options)
       cmd = options[:shell]
       cmd.run "kill -HUP `cat /home/railerim/pids/unicorn.pid`"
-      cmd.run 'ps auxw | grep resque-1 | grep -v grep  | cut -d " " -f 3 | xargs kill -TERM'
+      cmd.run 'ps auxw | grep resque | grep -v grep  | cut -d " " -f 3 | xargs kill -TERM'
       cmd.run "rake resque:workers COUNT=2 QUEUE=* > /dev/null 2>&1 &"
     end
   end

@@ -6,13 +6,11 @@ module Hercules
       options[:shell].run "rake db:migrate RAILS_ENV=production"
     end
     def self.after_deploy(options)
-      options[:shell].run "kill -HUP `cat /home/railerim/pids/unicorn.pid`"
-      begin
-        Dir.glob("/home/railerim/pids/resque_worker_*").each do |f|
-          Process.kill("TERM", -1*Process.getpgid(File.open(f, 'r').read.strip.to_i))
-        end
-      rescue Exception => e
-      end
+      cmd = options[:shell]
+      cmd.run "kill -HUP `cat /home/railerim/pids/unicorn.pid`"
+      cmd.run "ps auxw | grep resque-1 | grep -v grep  | cut -d " " -f 3 | xargs kill -TERM"
+      cmd.run "rake resque:workers COUNT=2 QUEUE=* > /dev/null 2>&1 &"
+      cmd.run "/home/railerim/.rvm/gems/ruby-1.8.7-p302/bin/unicorn master -Dc /home/railerim/configs/unicorn.rb -E production"
     end
   end
 end

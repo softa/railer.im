@@ -42,7 +42,7 @@ $('#search').keydown(function(event) {
 var search_panel = {
   tophit: {"rank" : -1, "href": null},
   html_tables: {"users": "", "rubygems" : "", "teams" : "", "companies": "", "locations" : "", "best" : "" },
-  routes: {"users": "", "rubygems" : "gems/", "teams" : "teams/", "companies": "companies/", "locations" : "locations/city/" },
+  routes: {"users": "", "rubygems" : "gems/", "teams" : "teams/", "companies": "companies/", "locations" : "locations/city?id=" },
 
   go_to_best_match: function(){
     if(this.tophit["href"])
@@ -58,13 +58,13 @@ var search_panel = {
         {
           self.tophit = row;
           self.tophit["route"] = self.routes[table_name];
-          self.tophit["href"] = '/' + self.routes[table_name] + row["key"].toLowerCase();
+          self.tophit["href"] = '/' + self.routes[table_name] + row["key"];
         }
         if(table_name == "users")
           img = '<img src="http://gravatar.com/avatar/' + row["gravatar_id"] + '?s=16" />';
         else 
           img = '<img src="/images/' + self.icons[table_name] + '" />';
-        self.html_tables[table_name] += '<li>' + img + ' <a href="/' + self.routes[table_name] + row["key"].toLowerCase() + '">' + unescape(row["label"]) + '<a/></li>';
+        self.html_tables[table_name] += '<li>' + img + ' <a href="/' + self.routes[table_name] + row["key"] + '">' + unescape(row["label"]) + '<a/></li>';
       });
   },
 

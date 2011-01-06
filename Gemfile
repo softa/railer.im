@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.3'
 gem 'haml'
 gem 'inherited_resources', '1.1.2'
 gem 'labelize', '0.1.4'
